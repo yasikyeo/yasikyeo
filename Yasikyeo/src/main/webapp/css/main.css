@@ -1,0 +1,28 @@
+@CHARSET "UTF-8";
+/* 폰트속성 */
+@font-face{
+	font-family:'hoonStyle';
+	src:url('../etc/HoonWhitecatR.ttf') format('truetype');
+}
+/* 탑네비게이터 */
+.topNav{
+	background: black;
+}
+.topNav ul{
+	list-style-type: none;
+    overflow: hidden;
+}
+.topNav li{
+	float: left;
+	padding: 5px 5px;
+	font-size: 0.8em;
+}
+.topNav li:FIRST-CHILD{
+	margin-left: 60%;
+}
+.topNav a{
+	color: white;
+	font-family: hoonStyle;
+	font-size: 2em;
+	font-weight: bold;
+}
