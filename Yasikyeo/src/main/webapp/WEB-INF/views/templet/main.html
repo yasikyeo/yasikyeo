@@ -5,6 +5,23 @@
 <title>Yasikyeo</title>
 <link rel="stylesheet" type="text/css" href="../../../css/reset.css" />
 <link rel="stylesheet" type="text/css" href="../../../css/main.css" />
+<link rel="stylesheet" type="text/css" href="../../../css/style.css" />
+<script type="text/javascript" src="../../../jquery/jquery-3.1.0.min.js"></script>
+<script type="text/javascript" src="../../../jquery/jquery-ui.js"></script>
+<script type="text/javascript">
+ $(function() {
+	 $(".dongBT").click(function() {
+		 if($(".addressfrm").css("display")=="none"){
+			 var options = {};
+			 $( ".addressfrm" ).show("drop" , options, 1000);
+		 }else{
+			 $(".addressfrm").hide();
+		 } 
+	 });
+	 
+	 $(".addressfrm").hide();
+  } );	
+</script>
 </head>
 <body>
 <div class="topNav">
@@ -33,9 +50,6 @@
 						<form action="">
 							<input type="text" class="findDong" placeholder="동명을 입력하세요">
 							<input type="image" class="sbmDong" src="../../../images/search.png">
-							
-								
-							
 						</form>
 					</div>
 				</div>
@@ -48,5 +62,51 @@
 			</form>
 		</div>
 </header>
+<section class="mainSection">
+	<article class="mainBanner">
+		<!-- Start WOWSlider.com BODY section -->
+		<div id="wowslider-container1">
+		<div class="ws_images"><ul>
+				<li><a href="http://wowslider.net"><img src="../../../images/b1.png" alt="wowslider.net" title="배너1" id="wows1_0"/></a></li>
+				<li><img src="../../../images/b2.png" alt="배너3" title="배너3" id="wows1_1"/></li>
+			</ul></div>
+			<div class="ws_bullets"><div>
+				<a href="#" title="배너1"><span><img src="../../../images/bs1.png" alt="배너1"/>1</span></a>
+				<a href="#" title="배너3"><span><img src="../../../images/bs2.png" alt="배너3"/>2</span></a>
+			</div></div><div class="ws_script" style="position:absolute;left:-99%"><a href="http://wowslider.com">wowslideshow</a> by WOWSlider.com v8.7</div>
+		<div class="ws_shadow"></div>
+		</div>	
+		<script type="text/javascript" src="../../../jquery/wowslider.js"></script>
+		<script type="text/javascript" src="../../../jquery/script.js"></script>
+		<!-- End WOWSlider.com BODY section -->
+	</article>
+	<article class="mainMenu">
+		<div class="foodItem">
+			<a href="#" >
+	  			<img src="../../../images/m.png">
+			</a>
+		</div>
+		<div class="foodItem">
+			<a href="#" >
+	  			<img src="../../../images/m.png">
+			</a>
+		</div>
+		<div class="foodItem">
+			<a href="#" >
+	  			<img src="../../../images/m.png">
+			</a>
+		</div>
+		<div class="foodItem">
+			<a href="#" >
+	  			<img src="../../../images/m.png">
+			</a>
+		</div>
+		<div class="foodItem">
+			<a href="#" >
+	  			<img src="../../../images/m.png">
+			</a>
+		</div>
+	</article>
+</section>
 </body>
 </html>
