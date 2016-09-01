@@ -14,7 +14,7 @@
 }
 .topNav li{
 	float: left;
-	padding: 5px 5px;
+	padding: 8px 10px;
 	font-size: 0.8em;
 }
 .topNav li:FIRST-CHILD{
@@ -25,4 +25,93 @@
 	font-family: hoonStyle;
 	font-size: 2em;
 	font-weight: bold;
+}
+/* 헤더 */
+.logo{
+	position:relative;
+	padding: 20px;
+	width: 300px;
+	margin: 0 auto;
+}
+.logo img{
+	width: 100%;
+}
+.searchInput{
+	width: 500px;
+	position: relative;
+	margin: 0 auto;
+}
+/* 주소 검색 */
+.address{
+	width: 250px;
+	float: left;
+}
+.addressdiv{
+	width: 200px;
+	height: 32px;
+	border: 1px solid silver;
+	float: right;
+	text-indent: 10px;
+}
+.dong{
+	vertical-align: middle;
+}
+.dongBT{
+	background-color: black;
+	border: none;
+	cursor: pointer;
+	height: 33px;
+	float: right;
+}
+.addressfrm{
+	border: 1px solid silver;
+	position: relative;
+	padding: 10px 15px;
+	display: inline-block;
+	float: right;
+	margin-top: -1px;
+}
+.noti{
+	font-size: .8em;
+	width: 100%;	
+}
+.dongdiv{
+	position: relative;
+}
+.findDong{
+	width: 170px;
+	border: 3px solid silver;
+	height: 30px;
+	margin-top: 10px;
+	padding: 0 30px 0 10px;
+}
+.sbmDong{
+	height: 22px;
+	width: 22px;
+	position: absolute;
+	top: 17px;
+	right: 5px;
+	border: none;
+	background: transparent;
+}
+.findDong:focus{
+	border: 3px solid skyblue;
+}
+
+/* 상점 검색 */
+.shop{
+	position: relative;
+	float: right;
+}
+.fishop{
+	width: 200px;
+	height: 30px;
+	border: 1px solid silver;
+}
+.findBT{
+	background-color: black;
+	border: none;
+	cursor: pointer;
+	height: 34px;
+	margin-left: -6px;
 }
