@@ -1,0 +1,63 @@
+/**********************
+  login FORM
+*********************/
+
+#alignlogin{
+	
+	margin: 110px 70px 70px 80px;
+}
+
+.input {
+
+	padding: 15px 5px 15px 10px;
+	border: 1px solid #949494;
+	border-bottom: 1px solid #949494;
+	color: #a5a5a5;
+	font-size: 14px;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 700;
+	width: 235px;
+	background: #E8E8E8;
+	box-shadow: outset 0px 1px 1px #949494;
+	
+}
+
+/**********************
+  BUTTONS
+*********************/
+
+.login_button {
+	color: #ffffff;
+	margin: 0px auto 20px auto;
+	padding: 0px;
+	width: 250px;
+	height: 50px;
+	font-size: 15px;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 700;
+	cursor: pointer;
+	background: #000000;
+	border: 1px solid #000000;
+	display: block;
+}
+
+.login_button:hover {
+	opacity: 0.8;
+}
+
+/**********************
+  FONT
+*********************/
+@font-face{
+   font-family:'BMJUA';
+   src:url('../font/BMJUA_ttf.ttf') format('truetype');
+}
+#alignlogin p{
+   color: black;
+   font-family: BMJUA;
+   font-size: 1em;
+   margin-top: 7px;
+
+}
+
+

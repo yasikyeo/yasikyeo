@@ -1,0 +1,54 @@
+@font-face{
+   font-family:'BMJUA';
+   src:url('../font/BMJUA_ttf.ttf') format('truetype');
+}
+
+.menu_test {
+	clear: both;
+	position: relative;
+	background: #FFF;
+	height: 50px;
+	line-height: 50px;
+	width: 600px;
+	margin: 0 auto;
+	z-index:100;
+	
+}
+
+.menu_test .float_leftmenu {
+	font-family: BMJUA;
+	float: left;
+	width: 120px;
+	height: 50px;
+	font-size: 15px;
+	box-sizing: border-box;
+
+	text-shadow: none;
+}
+
+.menu_test .float_leftmenu:hover {
+	background: #fff;
+	font-weight: bold;
+	color: #333;
+}
+
+.menu_test .float_leftmenu:hover .open_menu {
+	display: block;
+}
+
+.menu_test .float_leftmenu .open_menu {
+	clear: both;
+	display: none;
+	background: #FFF;
+	width: 200px;
+}
+
+.menu_test .float_leftmenu .open_menu li {
+	border-top: 1px solid #fff;
+	color: #333;
+}
+
+.menu_test .float_leftmenu .open_menu li:hover {
+	background: #FFF;
+	color: #a4a4a4;
+}
