@@ -86,7 +86,7 @@
 	height: 75px;
 	float: left;
 	position: relative; 
-	background-image: url("../image/info1_button.png");
+	background-image: url("../images/info1_button.png");
 }
 
 #info_2 {
@@ -95,7 +95,7 @@
 	float: left;
 	position: relative;
 	margin-left: 0.5px;
-	background-image: url("../image/info2_button.png");
+	background-image: url("../images/info2_button.png");
 }
 
 #info_3 {
@@ -103,19 +103,19 @@
 	height: 75px;
 	float: right;
 	position: relative; 
-	background-image: url("../image/info3_button.png");
+	background-image: url("../images/info3_button.png");
 }
 
 #info_1:hover {
-	background-image: url("../image/info1_button_on.png");
+	background-image: url("../images/info1_button_on.png");
 	cursor: pointer;
 }
 #info_2:hover {
-	background-image: url("../image/info2_button_on.png");
+	background-image: url("../images/info2_button_on.png");
 	cursor: pointer;
 }
 #info_3:hover {
-	background-image: url("../image/info3_button_on.png");
+	background-image: url("../images/info3_button_on.png");
 	cursor: pointer;
 }
 
