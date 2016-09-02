@@ -71,6 +71,8 @@
 	float: right;
 	margin-top: 33px;
 	margin-left: 2px;
+	z-index: 100;
+	background: white;
 }
 .noti{
 	font-size: .8em;
@@ -118,9 +120,8 @@
 }
 /* 섹션 */
 .mainSection{
-	width: 1200px;
+	width: 1020px;
 	margin: 0 auto;
-	border: 1px solid red;
 }
 /* 배너 */
 .mainBanner{
@@ -128,22 +129,39 @@
 }
 /*음식 사진*/
 .mainMenu{
-	border: 1px solid blue;
 }
 .foodItem{
-	width: 200px;
+	width: 216px;
 	display: inline-block;
     border: 2px solid #ddd;
     border-radius: 5px;
     margin: 10px;
     padding: 5px;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
+    position: relative;
 }
 .foodItem:hover {
 	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
-.foodItem img{
+.foodImg{
 	width: 100%;
 	height: auto;
+}
+.foodIcon{
+	width: 100px;
+	height: auto;
+	position: absolute;
+	top: 25%;
+	left: 25%;
+	display: none;
+}
+.foodIcon img{
+	width: 100%;
+	height: auto;
+}
+.foodIcon p{
+	text-align: center;
+	font-size: 1.4em;
+	font-weight: bold;
 }
