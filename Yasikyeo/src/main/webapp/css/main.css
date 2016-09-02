@@ -7,6 +7,9 @@
 /* 탑네비게이터 */
 .topNav{
 	background: black;
+	position: fixed;
+	width: 100%;
+	z-index: 100;
 }
 .topNav ul{
 	list-style-type: none;
@@ -27,6 +30,10 @@
 	font-weight: bold;
 }
 /* 헤더 */
+.header{
+	top: 41px;
+	position: relative;
+}
 .logo{
 	position:relative;
 	padding: 20px;
@@ -40,11 +47,13 @@
 	width: 500px;
 	position: relative;
 	margin: 0 auto;
+	height: 35px;
 }
 /* 주소 검색 */
 .address{
 	width: 250px;
 	float: left;
+	position: relative;
 }
 .addressdiv{
 	width: 200px;
@@ -73,6 +82,7 @@
 	margin-left: 2px;
 	z-index: 100;
 	background: white;
+	position: relative;
 }
 .noti{
 	font-size: .8em;
@@ -122,14 +132,13 @@
 .mainSection{
 	width: 1020px;
 	margin: 0 auto;
+	position: relative;
 }
 /* 배너 */
 .mainBanner{
-	margin-top: 60px;
+	padding-top: 60px;
 }
 /*음식 사진*/
-.mainMenu{
-}
 .foodItem{
 	width: 216px;
 	display: inline-block;
@@ -167,36 +176,40 @@
 }
 /* 푸터 */
 .footer{
-	border: 1px solid red;
 	width: 1020px;
 	margin: 0 auto;
-	position: relative;
+}
+.footer p{
+	font-size: 0.7em;
+	letter-spacing: 1px;
+	color: silver;
 }
 .leftFoot{
-	border: 1px solid red;
-	width: 49%;
-	float: left;
+	width: 46%;
+	display: inline-block;
+	padding: 13px;
 }
 .rightFoot{
-	border: 1px solid red;
-	width: 49%;
-	float: left;
+	width: 47%;
+	display: inline-block;
+	padding: 13px;
 }
-.leftFoot ul{
+.centerFoot{
+	text-align: center;
+}
+.centerFoot ul{
 	list-style-type: none;
     overflow: hidden;
+    display: inline-block;
 }
-.leftFoot li{
+.centerFoot li{
 	float: left;
-	padding: 8px 4px;
-	font-size: 0.8em;
+	padding: 3px 4px;
 }
-.leftFoot a{
+.centerFoot a{
 	font-weight: bold;
-	font-size: 0.9em;
+	font-size: 0.75em;
 }
-.separater{
-	height: 16px;
-	width:2px;
-	padding-top: 2px;
+.centerFoot p{
+	font-size: 0.9em;
 }
