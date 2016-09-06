@@ -6,11 +6,11 @@
 <title>Untitled Document</title>
 
 
-<link rel="stylesheet" href="../../../css/reset.css" type="text/css"/>
-<link rel="stylesheet" href="../../../css/dropmenu.css" type="text/css" />
-<link rel="stylesheet" href="../../../css/slideimg.css" type="text/css" />
-<link rel="stylesheet" href="../../../css/login.css" type="text/css"/>
-<link rel="stylesheet" href="../../../css/marketmember3.css" type="text/css"/>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css" type="text/css"/>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/dropmenu.css" type="text/css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/slideimg.css" type="text/css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/login.css" type="text/css"/>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/marketmember3.css" type="text/css"/>
 
 <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 <script language="javascript">
@@ -27,7 +27,7 @@
 	<div id="wrap">
 		<div id="top_1">
 			<div id="header">
-				<div id="logo"> <img src="../../../images/logo_p.png" width="188" height="90"> </div>
+				<div id="logo"> <img src="${pageContext.request.contextPath}/images/logo_p.png" width="188" height="90"> </div>
 				<div id="nav">
 					<div class="menu_test">
 						<ul>
