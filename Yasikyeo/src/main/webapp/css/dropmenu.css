@@ -1,3 +1,4 @@
+@CHARSET "UTF-8";
 @font-face{
    font-family:'BMJUA';
    src:url('../font/BMJUA_ttf.ttf') format('truetype');
@@ -5,7 +6,7 @@
 
 .menu_test {
 	clear: both;
-	position: relative;
+	position: absolute;
 	background: #FFF;
 	height: 50px;
 	line-height: 50px;
@@ -28,6 +29,7 @@
 
 .menu_test .float_leftmenu:hover {
 	background: #fff;
+	border-bottom: 3px solid #0ff996;
 	font-weight: bold;
 	color: #333;
 }
@@ -40,11 +42,13 @@
 	clear: both;
 	display: none;
 	background: #FFF;
-	width: 200px;
+	width: 100px;
+	margin: 0 auto;
+	border: 0.1px solid #f2f2f2;
+	font-size: 14px;
 }
 
 .menu_test .float_leftmenu .open_menu li {
-	border-top: 1px solid #fff;
 	color: #333;
 }
 

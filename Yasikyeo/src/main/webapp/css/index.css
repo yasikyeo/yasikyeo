@@ -1,3 +1,4 @@
+@CHARSET "UTF-8";
 @font-face{
    font-family:'BMJUA';
    src:url('../font/BMJUA_ttf.ttf') format('truetype');
@@ -193,5 +194,5 @@
 }
 
 #footer p{
-		font-family: BMJUA;
+	font-family: BMJUA;
 }

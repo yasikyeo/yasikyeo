@@ -1,4 +1,5 @@
-<!DOCTYPE HTML>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta charset="utf-8">
@@ -9,9 +10,16 @@
 <link rel="stylesheet" href="../../../css/dropmenu.css" type="text/css" />
 <link rel="stylesheet" href="../../../css/slideimg.css" type="text/css" />
 <link rel="stylesheet" href="../../../css/login.css" type="text/css"/>
-<link rel="stylesheet" href="../../../css/marketmember2.css" type="text/css"/>
+<link rel="stylesheet" href="../../../css/marketmember3.css" type="text/css"/>
 
 <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script language="javascript">
+
+</script>
+
+<!-- 회원 폼페이지 css -->
+
+
 
 
 </head>
@@ -49,39 +57,37 @@
 				<div id="box_1">
 					<div id="a_1">
 						<div id="show1">
-						이용약관 및 정책
+						정보입력
 						</div>
 						<div class="show2">
 							<div id="lsh">
-							아래의 이용약관을 읽고 동의해주세요.
+							사장님께서 등록하실 업소의 상세 내용을 기재해주세요.
 							</div>
 							<div id="rsh">
-							02 약관동의
+							04 업소등록
 							</div>
 						</div>
-						<div id="allcheck">
-							<input type="checkbox">사장님사이트 이용약관,개인정보 수집•이용에 모두 동의합니다.
+						<div class="market_info">
+							업소카테고리 
+							<select option>
+								<option value="koreafood">한식</option>
+								<option value="japanfood">일식</option>
+								<option value="chinafood">중식</option>
+								<option value="yangkifood">양식</option>
+							</select>
+							업소명 <input type="text">
+							업소이미지 <input type="file">
+							업소소개 <input type="text">
+							최소금액 <input type="text">
+							오픈시간 <input type="text">
+							마감시간 <input type="text">
+							전화번호 <input type="text">
+							배달여부 <input type="checkbox">
+							원산지내용 <input type="text">
+							지도좌표
+							업소은행계좌 <input type="text">
+							
 						</div>
-						<div class="checkarticle1">
-							<b>야시켜 사장님사이트 이용약관</b><br>
-							<iframe src="provision1.html" width="100%" height="300px" name="ㅇㅇ"></iframe>
-							<div id="checkb1">
-								<p>위 야시켜 사장님사이트 이용약관에 동의합니다. <input type="checkbox"> 동의함 </p> 
-							</div>
-						</div>
-						<div class="checkarticle2">
-							<b>개인정보 수집·이용 동의</b><br><br>
-							<iframe src="provision2.html" width="100%" height="300px"></iframe>
-							<div id="checkb2">
-								<p>위 개인정보 수집 및 이용에 동의 합니다. <input type="checkbox"> 동의함</p> 
-							</div>
-						</div>
-							<div id="buttonset">							
-								<input type="submit" value="동의 후 다음 단계로" name="next" class="next_button">
-								<input type="button" value="이전 단계로" name="back" class="back_button">
-							</div>
-						</div>
-						
 					</div>
 				</div>
 			</div>
