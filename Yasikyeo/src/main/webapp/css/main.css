@@ -1,8 +1,8 @@
 @CHARSET "UTF-8";
 /* 폰트속성 */
 @font-face{
-	font-family:'hoonStyle';
-	src:url('../etc/HoonWhitecatR.ttf') format('truetype');
+	font-family:'BMJUA';
+	src:url('../font/BMJUA_ttf.ttf') format('truetype');
 }
 /* 로그인 박스*/
 .modal {
@@ -130,8 +130,8 @@ img.avatar {
 }
 .topNav a{
 	color: white;
-	font-family: hoonStyle;
-	font-size: 2em;
+	font-family: BMJUA;
+	font-size: 1.2em;
 	font-weight: bold;
 }
 /* 헤더 */
@@ -319,3 +319,38 @@ header{
 .centerFoot p{
 	font-size: 0.9em;
 }
+/* 메인 네비게이션 */
+.mainNav{
+	background: black;
+	width: 100%;
+	z-index: 100;
+	margin-top: 20px;
+	overflow: hidden;
+	height: 100px;
+}
+.navContain{
+	width: 1020px;
+	margin: 0 auto;
+}
+.categoriContain{
+	padding-top: 10px;
+	width: 110px;
+	margin: 5px;
+	float: left;
+}
+.mainNav ul{
+	list-style-type: none;
+    overflow: hidden;
+}
+.imgContain{
+	width: 50px;
+	height: auto;
+	margin: 0 auto;
+}
+.mainNav span{
+	color: white;
+	font-family: BMJUA;
+	font-size: 1.1em;
+	margin: 5px;
+}
+
