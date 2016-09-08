@@ -17,14 +17,14 @@
 			<form name="frm" id="" action="">
 				<div>
 					<label class="lb1">이메일</label>
-					<input type="text" style="width: 50%" placeholder="abcd@abcd.com">
+					<input type="text" style="width: 48%" placeholder="abcd@abcd.com">
 					<input type="button" style="width: 12%" value="중복확인">
 					<input type="button" style="width: 12%" value="메일인증">
 					
 				</div>
 				<div>
 					<label class="lb1">&nbsp</label>
-					<input type="text" style="width: 62.55%" placeholder="인증번호를 입력해주세요.">
+					<input type="text" style="width: 60.55%" placeholder="인증번호를 입력해주세요.">
 					<input type="button" style="width: 12%" value="확인">
 				</div>
 				<div>
