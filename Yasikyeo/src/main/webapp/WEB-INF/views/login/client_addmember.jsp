@@ -17,14 +17,14 @@
 			<form name="frm" id="" action="">
 				<div>
 					<label class="lb1">이메일</label>
-					<input type="text" style="width: 50%">
+					<input type="text" style="width: 50%" placeholder="abcd@abcd.com">
 					<input type="button" style="width: 12%" value="중복확인">
 					<input type="button" style="width: 12%" value="메일인증">
 					
 				</div>
 				<div>
 					<label class="lb1">&nbsp</label>
-					<input type="text" style="width: 62.55%">
+					<input type="text" style="width: 62.55%" placeholder="인증번호를 입력해주세요.">
 					<input type="button" style="width: 12%" value="확인">
 				</div>
 				<div>
@@ -33,19 +33,19 @@
 				</div>
 				<div>
 					<label class="lb1">비밀번호</label>
-					<input type="text">
+					<input type="text" placeholder="4~20자로 입력해주세요">
 				</div>
 				<div>
 					<label class="lb1">비밀번호확인</label>
-					<input type="text">
+					<input type="text" placeholder="비밀번호를 재입력 해주세요.">
 				</div>
 				<div>
 					<label class="lb1">휴대폰</label>
-					<input type="text">
+					<input type="text" placeholder="'-'를 제외하고 입력해주세요">
 				</div>
 				<div>
 					<label class="lb1">생년월일</label>
-					<input type="text">
+					<input type="text" placeholder="8자리 입력(예19850815)">
 				</div>
 				<div>
 					<label class="lb1">약관동의</label>

@@ -13,4 +13,7 @@ public class TempletTestContoller {
 	@RequestMapping("/login/client_addmember.do")
 	public void addmember(){
 	}
+	@RequestMapping("/login/client_findPwd.do")
+	public void client_findPwd(){
+	}
 }
