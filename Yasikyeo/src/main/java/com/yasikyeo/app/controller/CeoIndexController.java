@@ -7,8 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class CeoController {
-	private static final Logger logger = LoggerFactory.getLogger(IndexController.class);
+public class CeoIndexController {
+	private static final Logger logger = LoggerFactory.getLogger(CustomerIndexController.class);
 	
 	@RequestMapping("ceo_templet/marketmember_reg4.do")
 	public void marketmember_reg4(){
