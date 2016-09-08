@@ -95,8 +95,10 @@
 <div class="topNav">
 	<ul>
 		<li><a href="#" id="mainlogin">로그인</a></li>
+		<li><a href="#">마이페이지</a></li>
 		<li><a href="#">회원가입</a></li>
 		<li><a href="#">고객센터</a></li>
+		<li><a href="#">즐겨찾기</a></li>
 	</ul>
 </div>
 <header>
