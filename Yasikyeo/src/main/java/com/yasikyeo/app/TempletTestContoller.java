@@ -9,4 +9,8 @@ public class TempletTestContoller {
 	@RequestMapping("/index2.do")
 	public void index2(){
 	}
+	
+	@RequestMapping("/login/client_addmember.do")
+	public void addmember(){
+	}
 }

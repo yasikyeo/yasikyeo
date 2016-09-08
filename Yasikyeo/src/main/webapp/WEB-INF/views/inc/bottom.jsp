@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 </section>
-<footer >
-	<hr>
+<footer>
 	<div class="footer">
 		<div class="leftFoot">
 			<p>야시켜는 통신판매중개자이며 통신판매의 당사자가 아닙니다. 따라서 배달의민족은 상품 거래정보 및 거래에 대해 책임지지 않습니다.</p>

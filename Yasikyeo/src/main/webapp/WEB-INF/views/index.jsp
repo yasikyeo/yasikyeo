@@ -1,6 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="inc/top.jsp" %>
+<style type="text/css">
+section{
+	background-color: white;
+}
+</style>
+<div  class="mainSection">
 	<article class="mainBanner">
 		<!-- Start WOWSlider.com BODY section -->
 		<div id="wowslider-container1">
@@ -101,5 +107,5 @@
   			</div>
 		</div>
 	</article>	
-
+</div>
 <%@ include file="inc/bottom.jsp" %>

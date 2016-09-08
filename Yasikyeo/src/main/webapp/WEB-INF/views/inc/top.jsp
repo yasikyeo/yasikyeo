@@ -116,4 +116,4 @@
 		</div>
 	</div>
 </header>
-<section class="mainSection">
+<section>

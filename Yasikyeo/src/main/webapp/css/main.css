@@ -111,7 +111,7 @@ img.avatar {
 
 /* 탑네비게이터 */
 .topNav{
-	background: black;
+	background: #222;
 	position: fixed;
 	width: 100%;
 	z-index: 100;
@@ -237,7 +237,46 @@ header{
 	height: 34px;
 	margin-left: -6px;
 }
+/* 메인 네비게이션 */
+.mainNav{
+	background: #222;
+	width: 100%;
+	z-index: 100;
+	margin-top: 20px;
+	overflow: hidden;
+	height: 100px;
+}
+.navContain{
+	width: 1020px;
+	margin: 0 auto;
+}
+.categoriContain{
+	padding-top: 10px;
+	width: 110px;
+	margin: 5px;
+	float: left;
+}
+.mainNav ul{
+	list-style-type: none;
+    overflow: hidden;
+}
+.imgContain{
+	width: 50px;
+	height: auto;
+	margin: 0 auto;
+}
+.mainNav span{
+	color: white;
+	font-family: BMJUA;
+	font-size: 1.1em;
+	margin: 5px;
+}
+
 /* 섹션 */
+section{
+	background-color: #dddddd;
+	/* background-color: #f4ebdd; */
+}
 .mainSection{
 	width: 1020px;
 	margin: 0 auto;
@@ -281,6 +320,9 @@ header{
 	font-weight: bold;
 }
 /* 푸터 */
+footer{
+	border-top: 2px solid silver;	
+}
 .footer{
 	width: 1020px;
 	margin: 0 auto;
@@ -319,38 +361,77 @@ header{
 .centerFoot p{
 	font-size: 0.9em;
 }
-/* 메인 네비게이션 */
-.mainNav{
-	background: black;
-	width: 100%;
-	z-index: 100;
-	margin-top: 20px;
+/* 위치 네비게이션 */
+.location{
 	overflow: hidden;
-	height: 100px;
 }
-.navContain{
-	width: 1020px;
-	margin: 0 auto;
-}
-.categoriContain{
-	padding-top: 10px;
-	width: 110px;
-	margin: 5px;
-	float: left;
-}
-.mainNav ul{
+.location ul{
 	list-style-type: none;
     overflow: hidden;
 }
-.imgContain{
-	width: 50px;
-	height: auto;
-	margin: 0 auto;
+.location li{
+    padding: 30px 10px 10px 0;
+	float: left;
+	font-size: 0.8em;
 }
-.mainNav span{
+/* 필드셋 */
+.fieldsetContain{
+	background-color: white;
+	border: 1px solid silver;
+	padding: 40px;
+}
+.fieldsetContain legend{
+	font-size: 2.5em;
+	font-weight: bold;
+	padding-bottom: 20px;
+}
+.fieldsetContain form{
+	border-top: 2px solid #222;
+	padding-top: 20px;
+}
+.fieldsetContain form div{
+	padding: 10px 0;
+	vertical-align: middle;
+}
+.fieldsetContain form input[type=text]{
+	height: 25px;
+	width: 75%;
+}
+.lb1{
+	width: 20%;
+	font-weight: bold;
+	display: inline-block;
+	text-align: right;
+	padding-right: 30px;
+	vertical-align: middle;
+}
+.fieldsetContain input[type=button]{
+	height: 31px;
+	vertical-align: middle;
+	background-color: #222;
 	color: white;
-	font-family: BMJUA;
-	font-size: 1.1em;
-	margin: 5px;
+	font-weight: bold;
+	font-size: 1em;
+	border: none;
+	cursor: pointer;
 }
-
+.fieldsetContain button[type=submit]{
+	height: 41px;
+	vertical-align: middle;
+	width: 98%;
+	background-color: #222;
+	color: white;
+	font-weight: bold;
+	font-size: 1.2em;
+	border: none;
+	cursor: pointer;
+}
+div.checkboxContainer{
+	display: inline-block;
+	font-size: 0.8em;
+	margin: 0 15px;
+}
+a.a1{
+	color: #808080;
+	font-size: 0.9em;
+}
