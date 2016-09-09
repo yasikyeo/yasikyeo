@@ -17,6 +17,8 @@ public class MemberVO {
 	private String address;
 	private String addressDetail;
 	private int postcode;
+	private String authcode;
+	
 	public int getMember_No() {
 		return member_No;
 	}
@@ -101,12 +103,19 @@ public class MemberVO {
 	public void setPostcode(int postcode) {
 		this.postcode = postcode;
 	}
+	public String getAuthcode() {
+		return authcode;
+	}
+	public void setAuthcode(String authcode) {
+		this.authcode = authcode;
+	}
+	
 	@Override
 	public String toString() {
 		return "MemberVO [member_No=" + member_No + ", member_Id=" + member_Id + ", member_Pwd=" + member_Pwd
 				+ ", member_Name=" + member_Name + ", member_Nickname=" + member_Nickname + ", member_Tel=" + member_Tel
 				+ ", member_Email=" + member_Email + ", member_Birth=" + member_Birth + ", member_Point=" + member_Point
 				+ ", member_Rgedate=" + member_Rgedate + ", member_Wtihdraw=" + member_Wtihdraw + ", address=" + address
-				+ ", addressDetail=" + addressDetail + ", postcode=" + postcode + "]";
+				+ ", addressDetail=" + addressDetail + ", postcode=" + postcode + ", authcode=" + authcode + "]";
 	}
 }
