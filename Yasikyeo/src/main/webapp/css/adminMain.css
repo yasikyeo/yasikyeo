@@ -21,6 +21,7 @@ body, td, th{
 	width:96%;margin: 0 auto;
 	height: 98px;	
 	}
+	
 	#header h1	{
 		float: left;
 		width: 20%;
@@ -58,8 +59,18 @@ body, td, th{
 		
 /* 	header2 */
 #header2{
+	
+	border: 1px solid black;
+	margin: 10px 0 10px 0;
 	padding:0;
+	height: 100px;
+	background-color:#2a3954;
 
+}
+
+#header2 ul{
+	margin: 0;
+	padding: 0;
 }
 	#header2 .topNav{
 		background:black;
@@ -77,7 +88,7 @@ body, td, th{
 	
 		#header2 .topNav ul li{
 		float: left;	
-		margin: 0 50px 0 0;
+		margin: 0 30px 0 70px;
 	
 		
 	}
@@ -97,7 +108,7 @@ body, td, th{
 /* container */
 .container	{
 	/*clear: both;*/
-	width:15%;
+	width:100%;
 	
 	overflow: auto;
 	background: white;
@@ -106,7 +117,7 @@ body, td, th{
 	}
 	.container .leftNavi	{		
 		float: left; /*background:#FFCCCC;*/
-		width: 100%;
+		width: 15%;
 		padding: 35px 0 0 0;
 		}
 		.container .leftNavi dt	{
@@ -136,20 +147,20 @@ body, td, th{
 					background:#EDF2C6 ;
 					}
 					
-		
+	
 
 /* contents */
 
-.container #contents	{
+.container .contents	{
 	float: left;
 	background: #fff;
 	width: 78.0%;
-	/*position: relative;*/
+	position: relative;
 	padding: 1% 0 5% 0; 
 	}
 	
-/* centerCon */
-.container #contents #centerCon	{
+/*  centerCon  */
+.container .contents .centerCon	{
 	clear: both;
 	padding: 3% 2% 0 1%;
 	float: left;
@@ -159,16 +170,16 @@ body, td, th{
 	
 /* rightCon */
 
-.container #contents #rightCon	{
+.container .contents .rightCon	{
 	float: right;
 	padding: 0 0 0 1.5%;
 	width: 38.5%;
 	}
 
-.container #contents #listCon	{
+.container .contents .listCon	{
 	clear:both;
 	float:left;
 	padding: 1% 0 0 1%;
 	width: 78%;
-}
-	
+} 
+	 */ */
