@@ -14,13 +14,16 @@
 	<div class="fieldsetContain">
 		<fieldset>
 			<legend>회원가입</legend>
-			<form name="frm" id="" method="post" action="<c:url value='/member/client_addmember.do'/>">
+			<form name="frm" method="post" action="<c:url value='/login/client_addmember.do'/>">
+				<div>
+					<label class="lb1">아이디</label>
+					<input type="text" style="width: 60.5%" name="member_Id" id="member_Id">
+					<input type="button" style="width: 12%" value="중복확인">
+				</div>
 				<div>
 					<label class="lb1">이메일</label>
-					<input type="text" style="width: 48%" id="member_Email" placeholder="abcd@abcd.com">
-					<input type="button" style="width: 12%" value="중복확인">
+					<input type="text" style="width: 60.5%" name="member_Email" id="member_Email" placeholder="abcd@abcd.com">
 					<input type="button" style="width: 12%" value="메일인증">
-					
 				</div>
 				<div>
 					<label class="lb1">&nbsp</label>
@@ -29,15 +32,15 @@
 				</div>
 				<div>
 					<label class="lb1">이름</label>
-					<input type="text" id="member_Name">
+					<input type="text" name="member_Name" id="member_Name">
 				</div>
 				<div>
 					<label class="lb1">닉네임</label>
-					<input type="text" id="member_Nickname">
+					<input type="text" name="member_Nickname" id="member_Nickname">
 				</div>
 				<div>
 					<label class="lb1">비밀번호</label>
-					<input type="text" id="member_Pwd" placeholder="4~20자로 입력해주세요">
+					<input type="text" name="member_Pwd" id="member_Pwd" placeholder="4~20자로 입력해주세요">
 				</div>
 				<div>
 					<label class="lb1">비밀번호확인</label>
@@ -45,20 +48,20 @@
 				</div>
 				<div>
 					<label class="lb1">휴대폰</label>
-					<input type="text" id="member_Tel" placeholder="'-'를 제외하고 입력해주세요">
+					<input type="text" name="member_Tel" id="member_Tel" placeholder="'-'를 제외하고 입력해주세요">
 				</div>
 				<div>
 					<label class="lb1">생년월일</label>
-					<input type="text" id="member_Birth" placeholder="8자리 입력(예19850815)">
+					<input type="text" name="member_Birth" id="member_Birth" placeholder="8자리 입력(예19850815)">
 				</div>
 				<div>
 					<label class="lb1">우편번호</label>
-					<input type="text" ReadOnly id="postcode" title="우편번호" style="width: 15%">        
+					<input type="text" ReadOnly name="postcode" id="postcode" title="우편번호" style="width: 15%">        
 					<input type="Button" value="우편번호 찾기" id="wrap" title="새창열림" onclick="execDaumPostcode()"><br>
 					<label class="lb1">주소</label>
-					<input type="text" id="address"><br>
+					<input type="text" name="address" id="address"><br>
 					<label class="lb1">상세주소</label>
-					<input type="text" id="addressDetail">
+					<input type="text" name="addressDetail" id="addressDetail">
 				</div>
 				<div>
 					<label class="lb1">약관동의</label>

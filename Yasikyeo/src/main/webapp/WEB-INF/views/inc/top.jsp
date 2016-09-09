@@ -42,6 +42,10 @@
 	 $("#close").click(function() {
 		 $( ".modal" ).hide();
 	});
+	 
+	 $(".addMember").click(function(){
+		 location.href="<c:url value='/login/client_addmember.do'/>"; 
+	 });
   });	
 </script>
 </head>
@@ -71,7 +75,7 @@
 				</ul>
 			</div>
 			<div>
-		      <button type="button" class="addMember">회원가입</button>
+				<button type="button" class="addMember">회원가입</button>
 			</div>		        
 	    </div>
 	</form>

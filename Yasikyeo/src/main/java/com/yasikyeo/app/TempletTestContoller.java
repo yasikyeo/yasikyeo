@@ -1,4 +1,4 @@
-package com.yasikyeo.app;
+/*package com.yasikyeo.app;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,3 +17,4 @@ public class TempletTestContoller {
 	public void client_findPwd(){
 	}
 }
+*/

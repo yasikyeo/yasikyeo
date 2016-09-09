@@ -15,7 +15,7 @@ public class MemberVO {
 	private Timestamp member_Rgedate;
 	private String member_Wtihdraw; 
 	private String address;
-	private String address_Detail;
+	private String addressDetail;
 	private int postcode;
 	public int getMember_No() {
 		return member_No;
@@ -89,11 +89,11 @@ public class MemberVO {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public String getAddress_Detail() {
-		return address_Detail;
+	public String getAddressDetail() {
+		return addressDetail;
 	}
-	public void setAddress_Detail(String address_Detail) {
-		this.address_Detail = address_Detail;
+	public void setAddressDetail(String addressDetail) {
+		this.addressDetail = addressDetail;
 	}
 	public int getPostcode() {
 		return postcode;
@@ -101,13 +101,12 @@ public class MemberVO {
 	public void setPostcode(int postcode) {
 		this.postcode = postcode;
 	}
-	
 	@Override
 	public String toString() {
 		return "MemberVO [member_No=" + member_No + ", member_Id=" + member_Id + ", member_Pwd=" + member_Pwd
 				+ ", member_Name=" + member_Name + ", member_Nickname=" + member_Nickname + ", member_Tel=" + member_Tel
 				+ ", member_Email=" + member_Email + ", member_Birth=" + member_Birth + ", member_Point=" + member_Point
 				+ ", member_Rgedate=" + member_Rgedate + ", member_Wtihdraw=" + member_Wtihdraw + ", address=" + address
-				+ ", address_Detail=" + address_Detail + ", postcode=" + postcode + "]";
+				+ ", addressDetail=" + addressDetail + ", postcode=" + postcode + "]";
 	}
 }
