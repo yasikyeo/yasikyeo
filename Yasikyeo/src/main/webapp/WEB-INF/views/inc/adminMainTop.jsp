@@ -6,16 +6,21 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>관리자입니다</title>
-<script type="text/javascript">
-	$(document).ready(function(){
-		$("#notice").click(function(){
-			
-		});
-	});
+<style type="text/css">
+#header2{
+	border: 1px solid black;
+	margin: 10px 0 10px 0;
+	height: 100px;
 	
-</script>
+	background-color: pink;
+	
+}
+#header2 ul{
+	margin: 0;
+	padding: 0;
+}
+</style>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/adminMain.css"/>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/clear.css"/>
 <script type="text/javascript" src="<c:url value='/jquery/jquery-3.1.0.min.js'/>"></script>
 
 <!--[if lt IE 9]>
@@ -79,9 +84,8 @@
 		<div id="topLine" class="top_Line" style="background:url(${pageContext.request.contextPath}/images/line6.jpg)  repeat-x;font-size:7px">
 			&nbsp;
 		</div>
-	
 		
-	
+		
 
  		
  	
