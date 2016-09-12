@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>주소로 장소 표시하기</title>
+<title>다음지도</title>
 </head>
 <body>
 <br>

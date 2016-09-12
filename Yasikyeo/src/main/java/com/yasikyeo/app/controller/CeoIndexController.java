@@ -14,4 +14,14 @@ public class CeoIndexController {
 	public void marketmember_reg4(){
 		logger.info("marketmember_reg4 페이지 로딩");
 	}
+	
+	@RequestMapping("ceo_templet/serviceintro.do")
+	public void serviceintro(){
+		logger.info("marketmember_reg4 페이지 로딩");
+	}
+	
+	@RequestMapping("ceo_templet/honeytip.do")
+	public void honeytip(){
+		logger.info("marketmember_reg4 페이지 로딩");
+	}
 }
