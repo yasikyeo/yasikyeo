@@ -1,0 +1,172 @@
+@CHARSET "UTF-8";
+@font-face{
+   font-family:'BMJUA';
+   src:url('../font/BMJUA_ttf.ttf') format('truetype');
+}
+
+#show1{
+	margin-top: 55px;
+	font-family: BMJUA;
+	font-size: 2em;
+	width: 100%;
+	height: 35px;
+}
+
+.show2{
+	width: 100%;
+	height: 35px;
+	border-bottom: 3px solid #000000;
+}
+
+.show2 #lsh{
+	margin-top: 10px;
+	font-family: BMJUA;
+	font-size: 16px;
+	float: left;
+}
+
+.show2 #rsh{
+	margin-top: 10px;
+	font-family: BMJUA;
+	font-size: 16px;
+	float: right;
+}
+
+#shop_reg{
+	width: 100%;
+	height: 50%;
+	font-family: BMJUA;
+}
+
+#a_2 pm{
+	font-family: BMJUA;
+	font-size: 36px;
+	color: #17db70;
+}
+
+#a_2 p{
+	font-family: BMJUA;
+}
+
+#a_2 table{
+	margin-top: 45px;
+	border-bottom: 3px solid #f7f7f7;
+}
+
+
+
+
+
+/*
+index.css 조절용
+*/
+
+@font-face{
+   font-family:'BMJUA';
+   src:url('../font/BMJUA_ttf.ttf') format('truetype');
+}
+
+#wrap {
+	width: 100%;
+	height: 100%
+}
+
+#top_1 {
+	width: 100%;
+	padding: 10px;
+	box-sizing: border-box;
+}
+
+#header {
+	width: 1200px;
+	height: 90px;
+	*width: 980px;
+	*height: 50px;
+	position: relative;
+	margin: 0 auto;
+	padding: 10px;
+	box-sizing: border-box;
+}
+
+#logo {
+	width: 203px;
+	height: 70px;
+	float: left;
+	margin-right: 10px;
+}
+
+#nav {
+	width: 630px;
+	height: 35px;
+	float: right;
+	margin-top: 25px;
+	text-align: center;
+}
+
+#main {
+	width: 100%;
+	height: 1150px;
+	box-sizing: border-box;
+}
+
+#main_box {
+	width: 1200px;
+	height: 1100px;
+	position: relative;
+	margin: 0 auto;
+}
+
+#box_1 {
+	width: 1200px;
+	height: 1150px;
+	*width: 460px;
+	*height: 430px;
+	float: left;
+	margin-right: 10px;
+	padding: 10px;
+	box-sizing: border-box;
+}
+
+.container{
+	<!-- 컨테이너 클래스는 slideimg에도있음-->
+}
+
+#a_1 {
+	width: 1180px;
+	height: 1160px;
+}
+
+#a_2 {
+	margin: 0 auto;
+	width: 1000px;
+	height: 960px;
+}
+
+
+#bottom_1 {
+	width: 100%;
+	height: 130px;
+	padding: 10px;
+	box-sizing: border-box;
+
+}
+
+#footer {
+	width: 1200px;
+	height: 90px;
+	position: relative;
+	margin: 0 auto;
+
+}
+
+#footer p{
+	font-family: BMJUA;
+}
+
+
+
+
+
+
+
+
