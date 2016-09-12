@@ -58,14 +58,14 @@
 		
 	});
 	
-  });	
+  });
 </script>
 </head>
 <body>
-<div class="modal" id="close">
+<div class="modal" >
 	<form class="modal-content animate" action="action_page.php">
 	    <div class="container">
-		    <span class="close" id="close" title="Close Modal">&times;</span>
+		    <span class="close" id="close">&times;</span>
 		    <div class="imgcontainer">
 		      <img src="${pageContext.request.contextPath}/images/mainLogo.png" alt="메인로고" class="avatar">
 		    </div>
