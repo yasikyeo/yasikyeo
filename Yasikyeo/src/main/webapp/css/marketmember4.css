@@ -48,7 +48,6 @@
 }
 
 .td_2{
-	
 	padding-left: 15px;
 	vertical-align: middle;
 	width: 15%;
@@ -67,6 +66,7 @@
 	box-shadow: outset 0px 1px 1px #c0c0c0;
 	font-family: BMJUA;
 	margin-right: 3px;
+
 }
 
 .formInput2 {
@@ -121,6 +121,57 @@
 	opacity: 0.8;
 }
 
+#formbutton{
+	width: 130px;
+	height: 35px;
+	color: #000000;
+	font-size: 13px;
+	font-family: BMJUA;
+	cursor: pointer;
+	background: #c9f8fe;
+	border: 1px solid #05d6b7;
+	display: block;
+}
+
+.file_input_textbox{
+	float: left;
+	font-family: BMJUA;
+	background: #f6f6f6;
+}
+
+.file_input_div{
+	position: relative;
+	width: 100px;
+	height: 23px;
+	overflow: hidden;
+}
+
+.file_input_button{
+	width: 100px;
+	height: 21px;
+	position: absolute;
+	top: 0px;
+	background-color: #c9f8fe;
+	border: 1px solid #05d6b7;
+	color: #000000;
+	font-size: 13px;
+	font-family: BMJUA;
+	border-style: solid;
+}
+
+.file_input_hidden{
+	font-size: 45px;
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	opacity: 0;
+
+	filter: alpha(opacity=0);
+	-ms-filter: "alpha(opacity=0)";
+	-khtml-opacity: 0;
+	-moz-opacity: 0;
+}
+
 /*
 index.css 조절용
 */
@@ -169,20 +220,20 @@ index.css 조절용
 
 #main {
 	width: 100%;
-	height: 1050px;
+	height: 1150px;
 	box-sizing: border-box;
 }
 
 #main_box {
 	width: 1200px;
-	height: 1000px;
+	height: 1100px;
 	position: relative;
 	margin: 0 auto;
 }
 
 #box_1 {
 	width: 1200px;
-	height: 1050px;
+	height: 1150px;
 	*width: 460px;
 	*height: 430px;
 	float: left;
