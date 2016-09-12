@@ -447,13 +447,22 @@ a.a1{
 	padding-bottom: 5px;
 }
 #tabs li{
-	display: inline-block;
 	width: 25%;
 	height:100%;
 	background-color: white;
 	border: 1px solid silver;
-	border-bottom: 5px solid #646464;
+	border-bottom: 5px solid #8b8b8b;
 	text-align: center;
+	float: left;
+}
+#tabs li.hovereff:hover{
+	border-bottom: 5px solid #1e1e1e;
+}
+#tabs li.noteff{
+	border-bottom: 5px solid #1e1e1e;
+}
+#tabs li.noteff span{
+	color: #1e1e1e;
 }
 span.tabMenu{
 	display: inline-block;
@@ -462,10 +471,10 @@ span.tabMenu{
 	font-style: inherit;
 	font-weight: bold;
 	font-size:1.2em;
-	color: #646464;
+	color: #8b8b8b
 }
 #tabs li~li{
-	margin-left: -6px;
+	margin-left: -3px;
 }
 
 /* 마이페이지 */
@@ -551,4 +560,30 @@ span.tabMenu{
 	margin: 0 6px 0 2px;
 	font-weight: bold;
 	
+}
+
+/* 테이블 */
+.fieldsetContain table{
+	border-top: 1px solid #8b8b8b;
+	width: 100%;
+}
+.fieldsetContain table td{
+	text-align: center;
+	padding: 8px;
+	border-bottom: 1px solid #8b8b8b;
+	font-size: 0.9em;
+}
+.fieldsetContain table th{
+	padding: 12px;
+	border-bottom:2px solid #8b8b8b;
+	font-size: 17px;
+}
+.fieldsetContain table th:NTH-OF-TYPE(3){
+	text-align: left;
+	padding-left: 23px;
+}
+.fieldsetContain table td:NTH-OF-TYPE(3){
+	text-align: left;
+	padding-left: 23px;
+	font-weight: bold;
 }
