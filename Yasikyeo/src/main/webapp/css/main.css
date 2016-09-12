@@ -467,3 +467,88 @@ span.tabMenu{
 #tabs li~li{
 	margin-left: -6px;
 }
+
+/* 마이페이지 */
+.mypage legend{
+	font-weight: bold;
+	font-size: 2.5em;
+}
+.mypageNav{
+	overflow: hidden;
+	margin-top: 20px;
+}
+.mypageNav ul{
+	list-style-type: none;
+    overflow: hidden;
+}
+.mypageNav li{
+	float: left;
+	width : 24.8%;
+	margin-right: 1px;
+}
+.mypageNav li img{
+	width: 100%;
+	height: auto;
+	text-align: center;
+}
+.mypageNav li a{
+	display: block;
+	text-align: center;
+	background-color: #212121;
+	color: #dddddd;
+	font-size: 1.2em;
+	font-weight: bold;
+	padding: 15px 0;
+}
+.mypageNav li a:hover{
+	background-color: #d65834;
+}
+.orderList{
+	margin: 35px 0;
+}
+.pageTitle span{
+	word-spacing: -4px;
+	font-size: 0.9em;
+	font-weight: bold;
+	vertical-align: middle;
+	color: #5e5e5e;
+	display: inline-block;
+	margin: 6px;
+}
+.pageTitle strong{
+	word-spacing: -4px;
+	font-size: 1.3em;
+}
+.bookmark{
+	position: relative;
+	border: 1px solid #808080;
+	width: 27.5%;
+	float: left;
+	margin: 10px 20px;
+	padding: 15px 0 15px 15px;
+	background-color: #eee;
+}
+.bookmark .close{
+	font-size: 25px;
+	height: 15px;
+	right: 10px;
+}
+.star{
+	float: left;
+	margin-top: 10px;
+}
+.star img{
+	width: 17px;
+	height: auto;
+}
+.description{
+	float: right;
+	font-size: 0.8em;
+	margin-top: 10px;
+}
+.description span{
+	color: #ef6816;
+	margin: 0 6px 0 2px;
+	font-weight: bold;
+	
+}
