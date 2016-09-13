@@ -3,87 +3,87 @@ package com.yasikyeo.app.member.model;
 import java.sql.Timestamp;
 
 public class MemberVO {
-	private int member_No;
-	private String member_Id; 
-	private String member_Pwd;
-	private String member_Name;
-	private String member_Nickname; 
-	private String member_Tel;
-	private String member_Email;
-	private int member_Birth; 
-	private int member_Point; 
-	private Timestamp member_Rgedate;
-	private String member_Wtihdraw; 
+	private int memberNo;
+	private String memberId; 
+	private String memberPwd;
+	private String memberName;
+	private String memberNickname; 
+	private String memberTel;
+	private String memberEmail;
+	private int memberBirth; 
+	private int memberPoint; 
+	private Timestamp memberRgedate;
+	private String memberWtihdraw; 
 	private String address;
 	private String addressDetail;
 	private int postcode;
 	private String authcode;
 	
-	public int getMember_No() {
-		return member_No;
+	public int getMemberNo() {
+		return memberNo;
 	}
-	public void setMember_No(int member_No) {
-		this.member_No = member_No;
+	public void setMemberNo(int memberNo) {
+		this.memberNo = memberNo;
 	}
-	public String getMember_Id() {
-		return member_Id;
+	public String getMemberId() {
+		return memberId;
 	}
-	public void setMember_Id(String member_Id) {
-		this.member_Id = member_Id;
+	public void setMemberId(String memberId) {
+		this.memberId = memberId;
 	}
-	public String getMember_Pwd() {
-		return member_Pwd;
+	public String getMemberPwd() {
+		return memberPwd;
 	}
-	public void setMember_Pwd(String member_Pwd) {
-		this.member_Pwd = member_Pwd;
+	public void setMemberPwd(String memberPwd) {
+		this.memberPwd = memberPwd;
 	}
-	public String getMember_Name() {
-		return member_Name;
+	public String getMemberName() {
+		return memberName;
 	}
-	public void setMember_Name(String member_Name) {
-		this.member_Name = member_Name;
+	public void setMemberName(String memberName) {
+		this.memberName = memberName;
 	}
-	public String getMember_Nickname() {
-		return member_Nickname;
+	public String getMemberNickname() {
+		return memberNickname;
 	}
-	public void setMember_Nickname(String member_Nickname) {
-		this.member_Nickname = member_Nickname;
+	public void setMemberNickname(String memberNickname) {
+		this.memberNickname = memberNickname;
 	}
-	public String getMember_Tel() {
-		return member_Tel;
+	public String getMemberTel() {
+		return memberTel;
 	}
-	public void setMember_Tel(String member_Tel) {
-		this.member_Tel = member_Tel;
+	public void setMemberTel(String memberTel) {
+		this.memberTel = memberTel;
 	}
-	public String getMember_Email() {
-		return member_Email;
+	public String getMemberEmail() {
+		return memberEmail;
 	}
-	public void setMember_Email(String member_Email) {
-		this.member_Email = member_Email;
+	public void setMemberEmail(String memberEmail) {
+		this.memberEmail = memberEmail;
 	}
-	public int getMember_Birth() {
-		return member_Birth;
+	public int getMemberBirth() {
+		return memberBirth;
 	}
-	public void setMember_Birth(int member_Birth) {
-		this.member_Birth = member_Birth;
+	public void setMemberBirth(int memberBirth) {
+		this.memberBirth = memberBirth;
 	}
-	public int getMember_Point() {
-		return member_Point;
+	public int getMemberPoint() {
+		return memberPoint;
 	}
-	public void setMember_Point(int member_Point) {
-		this.member_Point = member_Point;
+	public void setMemberPoint(int memberPoint) {
+		this.memberPoint = memberPoint;
 	}
-	public Timestamp getMember_Rgedate() {
-		return member_Rgedate;
+	public Timestamp getMemberRgedate() {
+		return memberRgedate;
 	}
-	public void setMember_Rgedate(Timestamp member_Rgedate) {
-		this.member_Rgedate = member_Rgedate;
+	public void setMemberRgedate(Timestamp memberRgedate) {
+		this.memberRgedate = memberRgedate;
 	}
-	public String getMember_Wtihdraw() {
-		return member_Wtihdraw;
+	public String getMemberWtihdraw() {
+		return memberWtihdraw;
 	}
-	public void setMember_Wtihdraw(String member_Wtihdraw) {
-		this.member_Wtihdraw = member_Wtihdraw;
+	public void setMemberWtihdraw(String memberWtihdraw) {
+		this.memberWtihdraw = memberWtihdraw;
 	}
 	public String getAddress() {
 		return address;
@@ -111,10 +111,10 @@ public class MemberVO {
 	}
 	@Override
 	public String toString() {
-		return "MemberVO [member_No=" + member_No + ", member_Id=" + member_Id + ", member_Pwd=" + member_Pwd
-				+ ", member_Name=" + member_Name + ", member_Nickname=" + member_Nickname + ", member_Tel=" + member_Tel
-				+ ", member_Email=" + member_Email + ", member_Birth=" + member_Birth + ", member_Point=" + member_Point
-				+ ", member_Rgedate=" + member_Rgedate + ", member_Wtihdraw=" + member_Wtihdraw + ", address=" + address
+		return "MemberVO [memberNo=" + memberNo + ", memberId=" + memberId + ", memberPwd=" + memberPwd
+				+ ", memberName=" + memberName + ", memberNickname=" + memberNickname + ", memberTel=" + memberTel
+				+ ", memberEmail=" + memberEmail + ", memberBirth=" + memberBirth + ", memberPoint=" + memberPoint
+				+ ", memberRgedate=" + memberRgedate + ", memberWtihdraw=" + memberWtihdraw + ", address=" + address
 				+ ", addressDetail=" + addressDetail + ", postcode=" + postcode + ", authcode=" + authcode + "]";
 	}
 }

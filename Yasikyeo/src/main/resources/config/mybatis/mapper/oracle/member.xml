@@ -8,35 +8,35 @@
 		select member_no_seq.nextval from dual
 	</selectKey>
 		insert into member(member_no,member_id,member_pwd,member_name,member_nickname,member_tel,member_email,member_birth,address,addressdetail,postcode)
-		values(#{member_No},#{member_Id},#{member_Pwd},#{member_Name},#{member_Nickname},#{member_Tel},#{member_Email},#{member_Birth},#{address},#{addressDetail},#{postcode})
+		values(#{memberNo},#{memberId},#{memberPwd},#{memberName},#{memberNickname},#{memberTel},#{memberEmail},#{memberBirth},#{address},#{addressDetail},#{postcode})
 	</insert>
 	
 	<select id="selectCountMemberId" parameterType="string" resultType="int">
 		select count(*)	from member 
-		where member_id=#{member_Id}
+		where member_id=#{memberId}
 	</select>
 	
 	<select id="selectPwd" parameterType="MemberVO"
 		resultType="string">
 		select member_pwd from member
-		where member_id=#{member_Id} and member_withdraw='N'
+		where member_id=#{memberId} and member_withdraw='N'
 	</select>
 	
 	<select id="selectMemberByMemberId" parameterType="string" resultType="MemberVO">
 		select * from member
-		where member_id=#{member_Id} and member_withdraw='N'
+		where member_id=#{memberId} and member_withdraw='N'
 	</select>
 	
 	<update id="updateMember" parameterType="MemberVO">
 		update member set
-			member_email=#{member_Email},member_tel=#{member_Tel},
+			member_email=#{memberEmail},member_tel=#{memberTel},
 			postcode=#{postcode},address=#{address}, addressDetail=#{addressDetail}
-		where member_id=#{member_Id} and member_withdraw='N'
+		where member_id=#{memberId} and member_withdraw='N'
 	</update>
 	
 	<update id="withdrawMember" parameterType="string">
 		update member
 			set member_withdraw='Y'
-		where member_id=#{member_Id} and member_withdraw='N'
+		where member_id=#{memberId} and member_withdraw='N'
 	</update>
 </mapper>

@@ -59,8 +59,8 @@
 		    </div>
 		    <div class="abc">
 		    	<div class="inputContainer">
-			      <input type="text" placeholder="아이디 또는 이메일" class="login" name="member_Id" required>
-			      <input type="password" placeholder="비밀번호" class="login" name="member_Pwd" required>
+			      <input type="text" placeholder="아이디 또는 이메일" class="login" name="memberId" required>
+			      <input type="password" placeholder="비밀번호" class="login" name="memberPwd" required>
 		    	</div>
 			    <button type="submit" class="btLogin">로그인</button>
 			</div>		
@@ -82,11 +82,11 @@
 </div>
 <div class="topNav">
 	<ul>
-		<c:if test="${empty sessionScope.member_Id }">
+		<c:if test="${empty sessionScope.memberId }">
 			<li><a href="#" id="mainlogin">로그인</a></li>
 			<li><a href="<c:url value='/login/client_addmember.do'/>">회원가입</a></li>	            
 		</c:if>
-		<c:if test="${!empty sessionScope.member_Id }">
+		<c:if test="${!empty sessionScope.memberId }">
 			<li><a href="<c:url value='/login/logout.do'/>">로그아웃</a></li>
 		</c:if>		
 		<li><a href="#">마이페이지</a></li>

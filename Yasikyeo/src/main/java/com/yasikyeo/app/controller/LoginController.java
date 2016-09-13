@@ -43,16 +43,16 @@ public class LoginController {
 		if(result==MemberService.LOGIN_OK){
 			//로그인 성공
 			//[1] 세션에 저장
-			MemberVO memVo = memberService.selectMemberByMemberId(memberVo.getMember_Id());
+			MemberVO memVo = memberService.selectMemberByMemberId(memberVo.getMemberId());
 			logger.info("memVo={}",memVo);
 			
 			HttpSession session = request.getSession();
-			session.setAttribute("member_Id", memberVo.getMember_Id());
-			session.setAttribute("member_Name", memVo.getMember_Name());
+			session.setAttribute("memberId", memberVo.getMemberId());
+			session.setAttribute("memberName", memVo.getMemberName());
 			session.setAttribute("authcode", memVo.getAuthcode());
 			
 			//[2] 쿠키에 저장
-			Cookie ck = new Cookie("ck_member_Id", memVo.getMember_Id());
+			Cookie ck = new Cookie("ck_member_Id", memVo.getMemberId());
 			if(chkSave!=null){
 				//아이디 저장을 체크한 경우 => 쿠키에 저장
 				ck.setMaxAge(1000*24*60*60);  //쿠키 유효기간-1000일
@@ -62,7 +62,7 @@ public class LoginController {
 				response.addCookie(ck);
 			}
 			
-			msg=memVo.getMember_Name() + "님 로그인되었습니다";
+			msg=memVo.getMemberName() + "님 로그인되었습니다";
 			url="/index.do";
 		}else if(result==MemberService.PWD_DISAGREE){
 			msg="비밀번호가 일치하지 않습니다";			
@@ -86,8 +86,8 @@ public class LoginController {
 		
 		//2.
 		//session.invalidate();
-		session.removeAttribute("member_Id");
-		session.removeAttribute("member_Name");
+		session.removeAttribute("memberId");
+		session.removeAttribute("memberName");
 		session.removeAttribute("authcode");
 		
 		//3.
