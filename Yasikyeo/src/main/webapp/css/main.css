@@ -447,13 +447,22 @@ a.a1{
 	padding-bottom: 5px;
 }
 #tabs li{
-	display: inline-block;
 	width: 25%;
 	height:100%;
 	background-color: white;
 	border: 1px solid silver;
-	border-bottom: 5px solid #646464;
+	border-bottom: 5px solid #8b8b8b;
 	text-align: center;
+	float: left;
+}
+#tabs li.hovereff:hover{
+	border-bottom: 5px solid #1e1e1e;
+}
+#tabs li.noteff{
+	border-bottom: 5px solid #1e1e1e;
+}
+#tabs li.noteff span{
+	color: #1e1e1e;
 }
 span.tabMenu{
 	display: inline-block;
@@ -462,8 +471,119 @@ span.tabMenu{
 	font-style: inherit;
 	font-weight: bold;
 	font-size:1.2em;
-	color: #646464;
+	color: #8b8b8b
 }
 #tabs li~li{
-	margin-left: -6px;
+	margin-left: -3px;
+}
+
+/* 마이페이지 */
+.mypage legend{
+	font-weight: bold;
+	font-size: 2.5em;
+}
+.mypageNav{
+	overflow: hidden;
+	margin-top: 20px;
+}
+.mypageNav ul{
+	list-style-type: none;
+    overflow: hidden;
+}
+.mypageNav li{
+	float: left;
+	width : 24.8%;
+	margin-right: 1px;
+}
+.mypageNav li img{
+	width: 100%;
+	height: auto;
+	text-align: center;
+}
+.mypageNav li a{
+	display: block;
+	text-align: center;
+	background-color: #212121;
+	color: #dddddd;
+	font-size: 1.2em;
+	font-weight: bold;
+	padding: 15px 0;
+}
+.mypageNav li a:hover{
+	background-color: #d65834;
+}
+.orderList{
+	margin: 35px 0;
+}
+.pageTitle span{
+	word-spacing: -4px;
+	font-size: 0.9em;
+	font-weight: bold;
+	vertical-align: middle;
+	color: #5e5e5e;
+	display: inline-block;
+	margin: 6px;
+}
+.pageTitle strong{
+	word-spacing: -4px;
+	font-size: 1.3em;
+}
+.bookmark{
+	position: relative;
+	border: 1px solid #808080;
+	width: 27.5%;
+	float: left;
+	margin: 10px 20px;
+	padding: 15px 0 15px 15px;
+	background-color: #eee;
+}
+.bookmark .close{
+	font-size: 25px;
+	height: 15px;
+	right: 10px;
+}
+.star{
+	float: left;
+	margin-top: 10px;
+}
+.star img{
+	width: 17px;
+	height: auto;
+}
+.description{
+	float: right;
+	font-size: 0.8em;
+	margin-top: 10px;
+}
+.description span{
+	color: #ef6816;
+	margin: 0 6px 0 2px;
+	font-weight: bold;
+	
+}
+
+/* 테이블 */
+.fieldsetContain table{
+	border-top: 1px solid #8b8b8b;
+	width: 100%;
+}
+.fieldsetContain table td{
+	text-align: center;
+	padding: 8px;
+	border-bottom: 1px solid #8b8b8b;
+	font-size: 0.9em;
+}
+.fieldsetContain table th{
+	padding: 12px;
+	border-bottom:2px solid #8b8b8b;
+	font-size: 17px;
+}
+.fieldsetContain table th:NTH-OF-TYPE(3){
+	text-align: left;
+	padding-left: 23px;
+}
+.fieldsetContain table td:NTH-OF-TYPE(3){
+	text-align: left;
+	padding-left: 23px;
+	font-weight: bold;
 }

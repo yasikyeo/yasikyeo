@@ -10,4 +10,8 @@ public class TempletTestContoller {
 	public String mypage(){
 		return "mypage/client_mypage";
 	}
+	@RequestMapping("/csuTest2.do")
+	public String paymentst(){
+		return "mypage/client_paymentList";
+	}
 }

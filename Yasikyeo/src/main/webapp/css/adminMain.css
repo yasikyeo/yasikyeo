@@ -57,9 +57,15 @@ body, td, th{
 				}		
 		
 /* 	header2 */
+
+
 #header2{
 	padding:0;
-
+	border: 1px solid black;
+	margin: 10px 0 10px 0;
+	height: 100px;
+	
+	background-color: #2a3954;
 }
 	#header2 .topNav{
 		background:black;
@@ -72,6 +78,8 @@ body, td, th{
 	#header2 .topNav ul{
 		text-align:center;
 		list-style: none;
+		margin: 0;
+		padding: 0;
 		
 	}
 	
@@ -96,17 +104,16 @@ body, td, th{
 	
 /* container */
 .container	{
-	/*clear: both;*/
-	width:15%;
-	
+/* 	clear: both; */
+	width:75%;
 	overflow: auto;
 	background: white;
-	
-
 	}
+	
 	.container .leftNavi	{		
+		
 		float: left; /*background:#FFCCCC;*/
-		width: 100%;
+		width: 35%;
 		padding: 35px 0 0 0;
 		}
 		.container .leftNavi dt	{
@@ -140,16 +147,16 @@ body, td, th{
 
 /* contents */
 
-.container #contents	{
+.container .contents	{
 	float: left;
 	background: #fff;
-	width: 78.0%;
+	width: 30.0%;
 	/*position: relative;*/
 	padding: 1% 0 5% 0; 
 	}
 	
 /* centerCon */
-.container #contents #centerCon	{
+.container .contents .centerCon	{
 	clear: both;
 	padding: 3% 2% 0 1%;
 	float: left;
@@ -159,16 +166,15 @@ body, td, th{
 	
 /* rightCon */
 
-.container #contents #rightCon	{
+.container .contents .rightCon	{
 	float: right;
 	padding: 0 0 0 1.5%;
 	width: 38.5%;
 	}
 
-.container #contents #listCon	{
+.container .contents .listCon	{
 	clear:both;
 	float:left;
 	padding: 1% 0 0 1%;
 	width: 78%;
 }
-	

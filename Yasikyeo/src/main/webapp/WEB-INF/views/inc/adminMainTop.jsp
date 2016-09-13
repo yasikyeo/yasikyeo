@@ -19,7 +19,6 @@
 	margin: 0;
 	padding: 0;
 }
-
 </style>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/adminMain.css"/>
 <script type="text/javascript" src="<c:url value='/jquery/jquery-3.1.0.min.js'/>"></script>
@@ -34,7 +33,7 @@
 		<!-- header -->		
 		<div id="header">
 			<h1><a href="<c:url value='/admintemplet/adminMain.do' />">
-			<img alt="로고 이미지" src="${pageContext.request.contextPath}/images/logo.png" 
+			<img alt="로고 이미지" src="${pageContext.request.contextPath}/images/admin/adminlogo.png" 
 			height="80px" /></a></h1>
 			<div id="headerRight">
 				<ul class="views">	
@@ -49,12 +48,12 @@
 				<ul>
 					<li id="notice">
 						<a href="<c:url value='/admintemplet/eventNotice.do'/>">
-						<img alt="이미지" src="${pageContext.request.contextPath}/images/admin/eventimg.png" width="100px">
+						<img alt="이미지" src="${pageContext.request.contextPath}/images/admin/eventnotice.png" width="100px">
 						</a>
 					</li>
 					<li id="memberManage">
 						<a href="<c:url value='/admintemplet/memberManage.do'/>">
-						<img alt="이미지" src="${pageContext.request.contextPath}/images/admin/eventnotice.png" width="100px">
+						<img alt="이미지" src="${pageContext.request.contextPath}/images/admin/adminmember.png" width="100px">
 						<br>
 						</a>
 					</li>
@@ -86,9 +85,7 @@
 			&nbsp;
 		</div>
 		
-		<section id="contents">
 		
-	
 
  		
  	
