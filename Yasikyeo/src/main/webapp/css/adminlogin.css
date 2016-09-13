@@ -1,0 +1,47 @@
+@CHARSET "UTF-8";
+/* 로그인, 회원탈퇴 등 */
+	.loginForm form{
+		width:400px;
+	}
+	.loginForm fieldset{
+		border:0;
+		padding:5px;
+	}
+	.loginForm legend{
+		color:#555555;
+		padding: 10px 0;
+		margin:10px 0;
+		font-size:1.3em;
+		font-weight: bold;
+	}
+	.loginForm .label{
+		width:20%;
+		float:left;		
+		text-align:right;
+		padding:5px 15px 0 0;	
+		font-size:0.9em;	
+		font-weight: bold;
+	}
+	.loginForm div{
+		padding: 5px 0;
+		margin: 0;
+	}	
+	.loginForm input[type="text"], .simpleForm input[type="password"]{
+		width:40%;
+	} 
+	.loginForm .p{
+		padding: 5px 15px 15px 0;		
+		font-size:1.0em;
+		/* font-weight:bold; */
+	}
+
+/* 정렬 */
+.align_left{
+	text-align: left;
+}
+.align_right{
+	text-align: right;
+}
+.align_center{
+	text-align: center;
+}
