@@ -53,13 +53,48 @@
 	border-bottom: 3px solid #f7f7f7;
 }
 
-
+<!--HONEYTIP.JSP에서 사용한 CSS-->
 #honeytips{
 	text-align: center;
 	height: 80%;
 	padding-top: 45px;
 	font-family:'BMJUA';
 }
+
+<!-- CEO_EVENT.JSP에서 사용한 CSS-->
+.event{
+	height: 80%;
+	text-align: center;
+	font-family:'BMJUA';
+	padding-top: 75px;
+}
+
+.event current{
+	
+}
+
+.event table{
+	margin: 0 auto;
+}
+
+.event table img{
+	border: 5px solid #ffeef7;
+}
+
+.event table tr{
+	border-bottom: 2px solid #cecece;
+}
+
+.event table td{
+	font-size: large;
+	width: 25%;
+	height: 150px;
+	margin-top: 10px;
+	vertical-align: middle;
+}
+
+<!-- -->
+
 
 
 /*
