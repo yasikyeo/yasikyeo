@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>이벤트</title>
+<title>고객센터</title>
 
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css" type="text/css" />
@@ -85,8 +85,65 @@ a[data-needpopup-show] {
 							<div id="lsh">사장님께 알려드리는 공지사항입니다. 꼭 확인해주세요~</div>
 						</div>
 							<div id="ceo_notice">
-								시불
-							</div>
+								<table>
+								<colgroup>
+									<col style="width: 5%;" />
+									<col style="width: 75%;" />
+									<col style="width: 20%;" />
+								</colgroup>
+
+									<tr>
+										<th scope="col">번호</th>
+										<th scope="col">제목</th>
+										<th scope="col">등록일</th>
+									</tr>
+									<tr>
+										<td id="t_cus1">9</td>
+										<td id="t_cus2">공지제목</td>
+										<td id="t_cus1">2016-09-13</td>
+									</tr>
+									<tr>
+										<td id="t_cus1">8</td>
+										<td id="t_cus2">공지제목</td>
+										<td id="t_cus1">2016-09-13</td>
+									</tr>
+									<tr>
+										<td id="t_cus1">7</td>
+										<td id="t_cus2">공지제목</td>
+										<td id="t_cus1">2016-09-13</td>
+									</tr>
+									<tr>
+										<td id="t_cus1">6</td>
+										<td id="t_cus2">공지제목</td>
+										<td id="t_cus1">2016-09-13</td>
+									</tr>
+									<tr>
+										<td id="t_cus1">5</td>
+										<td id="t_cus2">공지제목</td>
+										<td id="t_cus1">2016-09-13</td>
+									</tr>
+									<tr>
+										<td id="t_cus1">4</td>
+										<td id="t_cus2">공지제목</td>
+										<td id="t_cus1">2016-09-13</td>
+									</tr>
+									<tr>
+										<td id="t_cus1">3</td>
+										<td id="t_cus2">공지제목</td>
+										<td id="t_cus1">2016-09-13</td>
+									</tr>
+									<tr>
+										<td id="t_cus1">2</td>
+										<td id="t_cus2">공지제목</td>
+										<td id="t_cus1">2016-09-13</td>
+									</tr>
+									<tr>
+										<td id="t_cus1">1</td>
+										<td id="t_cus2">공지제목</td>
+										<td id="t_cus1">2016-09-13</td>
+									</tr>
+								</table>
+						</div>
 					</div>
 				</div>
 			</div>

@@ -93,8 +93,40 @@
 	vertical-align: middle;
 }
 
-<!-- -->
+<!-- CUSCENTER.JSP에서 사용한 CSS -->
 
+#ceo_notice{
+	background: red;
+	
+}
+
+#ceo_notice table{
+	background: red;
+	font-family:'BMJUA';
+	font-size: 2em;
+	margin: 0 auto;
+	margin-top: 25px;
+}
+
+#ceo_notice table th{
+	background: #cecece;
+	padding-bottom: 15px;
+	padding-top: 15px;
+}
+
+#ceo_notice table td{
+	padding-top: 12px;
+	border-bottom: 2px solid #cecece;
+}
+
+#ceo_notice #t_cus1{
+	text-align: center;
+}
+
+#ceo_notice #t_cus2:hover{
+	font-size: 0.9em;
+	opacity: 0.5;
+}
 
 
 /*
