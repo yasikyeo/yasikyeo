@@ -186,11 +186,20 @@
 	});
 	
 	function email(){
-			var check = document.frm;
-			window.open('', 'email');
-			check.action="<c:url value='/login/emailAuth.do'/>";
-			check.target='email';
-			check.submit();
+		
+		var email = document.getElementById("member_Email");
+	
+		if(email.value=="" || email.value==null){
+			alert("이메일 주소를 입력하세요");
+			email.focus();
+			return false;
+		}
+		
+		var check = document.frm;
+		window.open('', 'email',"width=450,height=250,left=50,top=50,resizable=yes,location=yes");
+		check.action="<c:url value='/login/emailAuth.do'/>";
+		check.target='email';
+		check.submit();
 	}
 </script>
 <%@ include file="../inc/bottom.jsp" %>
