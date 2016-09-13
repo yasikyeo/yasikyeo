@@ -68,8 +68,8 @@ public class MemberController {
 		String receiver=email;
 		String sender="yasikyeo@yasikyeo.com";
 		
-		String subject="메일 인증 코드 발송";
-		String content="메일 인증 코드 : " + authNum + "입니다.";
+		String subject="야시켜 이메일 인증 코드 발송";
+		String content="야시켜 이메일 인증 코드 : " + authNum + " 입니다.";
 		
 		try {
 			emailSender.sendEmail(subject, content, 
