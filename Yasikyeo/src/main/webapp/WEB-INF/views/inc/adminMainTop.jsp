@@ -21,6 +21,7 @@
 }
 </style>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/adminMain.css"/>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/adminlogin.css"/>
 <script type="text/javascript" src="<c:url value='/jquery/jquery-3.1.0.min.js'/>"></script>
 
 <!--[if lt IE 9]>

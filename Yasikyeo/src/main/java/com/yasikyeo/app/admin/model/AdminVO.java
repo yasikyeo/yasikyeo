@@ -3,47 +3,47 @@ package com.yasikyeo.app.admin.model;
 import java.sql.Timestamp;
 
 public class AdminVO {
-	private int manaterNo;
-	private String manaterId;
-	private String manaterPwd;
-	private String manaterName;
-	private String manterRegdate;
-	public int getManaterNo() {
-		return manaterNo;
+	private int adminNo;
+	private String adminId;
+	private String adminPwd;
+	private Timestamp adminRegdate;
+	private String authCode;
+	
+	public int getAdminNo() {
+		return adminNo;
 	}
-	public void setManaterNo(int manaterNo) {
-		this.manaterNo = manaterNo;
+	public void setAdminNo(int adminNo) {
+		this.adminNo = adminNo;
 	}
-	public String getManaterId() {
-		return manaterId;
+	public String getAdminId() {
+		return adminId;
 	}
-	public void setManaterId(String manaterId) {
-		this.manaterId = manaterId;
+	public void setAdminId(String adminId) {
+		this.adminId = adminId;
 	}
-	public String getManaterPwd() {
-		return manaterPwd;
+	public String getAdminPwd() {
+		return adminPwd;
 	}
-	public void setManaterPwd(String manaterPwd) {
-		this.manaterPwd = manaterPwd;
+	public void setAdminPwd(String adminPwd) {
+		this.adminPwd = adminPwd;
 	}
-	public String getManaterName() {
-		return manaterName;
+	public Timestamp getAdminRegdate() {
+		return adminRegdate;
 	}
-	public void setManaterName(String manaterName) {
-		this.manaterName = manaterName;
+	public void setAdminRegdate(Timestamp adminRegdate) {
+		this.adminRegdate = adminRegdate;
 	}
-	public String getManterRegdate() {
-		return manterRegdate;
+	public String getAuthCode() {
+		return authCode;
 	}
-	public void setManterRegdate(String manterRegdate) {
-		this.manterRegdate = manterRegdate;
+	public void setAuthCode(String authCode) {
+		this.authCode = authCode;
 	}
 	@Override
 	public String toString() {
-		return "AdminVO [manaterNo=" + manaterNo + ", manaterId=" + manaterId + ", manaterPwd=" + manaterPwd
-				+ ", manaterName=" + manaterName + ", manterRegdate=" + manterRegdate + "]";
+		return "AdminVO [adminNo=" + adminNo + ", adminId=" + adminId + ", adminPwd=" + adminPwd + ", adminRegdate="
+				+ adminRegdate + ", authCode=" + authCode + "]";
 	}
-	
 	
 	
 }

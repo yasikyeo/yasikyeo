@@ -17,11 +17,21 @@ public class CeoIndexController {
 	
 	@RequestMapping("ceo_templet/serviceintro.do")
 	public void serviceintro(){
-		logger.info("marketmember_reg4 페이지 로딩");
+		logger.info("serviceintro 페이지 로딩");
 	}
 	
 	@RequestMapping("ceo_templet/honeytip.do")
 	public void honeytip(){
-		logger.info("marketmember_reg4 페이지 로딩");
+		logger.info("honeytip 페이지 로딩");
+	}
+	
+	@RequestMapping("ceo_templet/ceo_event.do")
+	public void ceo_event(){
+		logger.info("ceo_event 페이지 로딩");
+	}
+	
+	@RequestMapping("ceo_templet/cuscenter.do")
+	public void cuscenter(){
+		logger.info("cuscenter 페이지 로딩");
 	}
 }
