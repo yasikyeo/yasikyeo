@@ -35,10 +35,21 @@ public class AdminController {
 	private static final Logger logger=
 			LoggerFactory.getLogger(AdminController.class);
 	
+	@RequestMapping("/adminIndex.do")
+	public String adminIndexView(){
+		//1.
+			logger.info("관리자 메인메뉴 보여주기");
+		//2.
+			
+		//3.
+			
+			return "admintemplet/adminIndex";
+	}
+	
 	@RequestMapping(value="/adminMain.do",method=RequestMethod.GET)
 	public String adminMainView(){
 		//1.
-			logger.info("관리자 메인 화면 보여주기");
+			logger.info("관리자 로그인화면 보여주기");
 		//2.
 		
 		//3.
@@ -66,11 +77,11 @@ public class AdminController {
 				AdminVO adVo = adminService.selectMemberByMemberId(adminVo.getAdminId());
 				
 				HttpSession session = request.getSession();
-				session.setAttribute("admin_Id", adminVo.getAdminId());
+				session.setAttribute("adminId", adminVo.getAdminId());
 				session.setAttribute("authcode", adVo.getAuthCode());
 				
 				//[2] 쿠키에 저장
-				Cookie ck = new Cookie("ck_member_Id", adminVo.getAdminId());
+				Cookie ck = new Cookie("ck_admin_Id", adminVo.getAdminId());
 				if(chkSave!=null){
 					//아이디 저장을 체크한 경우 => 쿠키에 저장
 					ck.setMaxAge(1000*24*60*60);  //쿠키 유효기간-1000일
@@ -81,7 +92,7 @@ public class AdminController {
 				}
 				
 				msg=adminVo.getAdminId() + "님 로그인되었습니다";
-				url="/admintemplet/adminMain.do";
+				url="/admintemplet/adminIndex.do";
 			}else if(result==MemberService.PWD_DISAGREE){
 				msg="비밀번호가 일치하지 않습니다";			
 			}else if(result==MemberService.ID_NONE){

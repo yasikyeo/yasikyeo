@@ -1,4 +1,4 @@
-package com.yasikyeo.app.admin.model;
+package com.yasikyeo.app.admin.controller;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;

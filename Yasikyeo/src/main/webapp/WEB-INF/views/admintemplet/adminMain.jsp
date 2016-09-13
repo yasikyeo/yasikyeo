@@ -1,6 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../inc/adminMainTop.jsp" %>
+<script type="text/javascript" src="<c:url value='/js/member.js'/>"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#adminId").focus();
+		
+		$("#frm").submit(function(){
+			if($("#adminId").val().length<1){
+				alert("아이디를 입력하세요");
+				$("#adminId").focus();
+				return false;
+			}else if($("#adminPwd").val().length<1){
+				alert("비밀번호를 입력하세요");
+				$("#adminPwd").focus();
+				return false;
+			}
+		});
+	});
+	
+</script>
 
 <div class="container" id="categoryMemberManage">
 		<nav>
