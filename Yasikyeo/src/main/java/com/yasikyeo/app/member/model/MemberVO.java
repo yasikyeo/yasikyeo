@@ -109,7 +109,6 @@ public class MemberVO {
 	public void setAuthcode(String authcode) {
 		this.authcode = authcode;
 	}
-	
 	@Override
 	public String toString() {
 		return "MemberVO [member_No=" + member_No + ", member_Id=" + member_Id + ", member_Pwd=" + member_Pwd

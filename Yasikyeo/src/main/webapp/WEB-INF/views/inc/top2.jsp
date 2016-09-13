@@ -63,7 +63,7 @@
 </head>
 <body>
 <div class="modal" >
-	<form class="modal-content animate" action="action_page.php">
+	<form class="modal-content animate" action="<c:url value='/login/login.do'/>" method="post">
 	    <div class="container">
 		    <span class="close" id="close" >&times;</span>
 		    <div class="imgcontainer">
@@ -71,8 +71,8 @@
 		    </div>
 		    <div class="abc">
 		    	<div class="inputContainer">
-			      <input type="text" placeholder="아이디 또는 이메일" class="login" name="userid" required>
-			      <input type="password" placeholder="비밀번호" class="login" name="pwd" required>
+			      <input type="text" placeholder="아이디 또는 이메일" class="login" name="member_Id" required>
+			      <input type="password" placeholder="비밀번호" class="login" name="member_Pwd" required>
 		    	</div>
 			    <button type="submit" class="btLogin">로그인</button>
 			</div>		

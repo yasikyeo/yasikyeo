@@ -51,7 +51,7 @@
 </head>
 <body>
 <div class="modal" >
-	<form class="modal-content animate" action="action_page.php">
+	<form class="modal-content animate" action="<c:url value='/login/login.do'/>" method="post">
 	    <div class="container">
 		    <span class="close" id="close" >&times;</span>
 		    <div class="imgcontainer">
@@ -59,8 +59,8 @@
 		    </div>
 		    <div class="abc">
 		    	<div class="inputContainer">
-			      <input type="text" placeholder="아이디 또는 이메일" class="login" name="userid" required>
-			      <input type="password" placeholder="비밀번호" class="login" name="pwd" required>
+			      <input type="text" placeholder="아이디 또는 이메일" class="login" name="member_Id" required>
+			      <input type="password" placeholder="비밀번호" class="login" name="member_Pwd" required>
 		    	</div>
 			    <button type="submit" class="btLogin">로그인</button>
 			</div>		
@@ -82,7 +82,13 @@
 </div>
 <div class="topNav">
 	<ul>
-		<li><a href="#" id="mainlogin">로그인</a></li>
+		<c:if test="${empty sessionScope.member_Id }">
+			<li><a href="#" id="mainlogin">로그인</a></li>
+			<li><a href="<c:url value='/login/client_addmember.do'/>">회원가입</a></li>	            
+		</c:if>
+		<c:if test="${!empty sessionScope.member_Id }">
+			<li><a href="<c:url value='/login/logout.do'/>">로그아웃</a></li>
+		</c:if>		
 		<li><a href="#">마이페이지</a></li>
 		<li><a href="#">회원가입</a></li>
 		<li><a href="#">고객센터</a></li>

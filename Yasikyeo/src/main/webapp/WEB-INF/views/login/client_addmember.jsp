@@ -15,7 +15,7 @@
 	<div class="fieldsetContain">
 		<fieldset>
 			<legend>회원가입</legend>
-			<form name="frm" method="post" action="<c:url value='/login/client_addmember.do'/>">
+			<form name="frm" method="post">
 				<input type="hidden" id="authNum">
 				<input type="hidden" id="chkId">
 				<div>
@@ -237,6 +237,7 @@
 		check.action="<c:url value='/login/emailAuth.do'/>";
 		check.target='email';
 		check.submit();
+		check.action="<c:url value='/login/client_addmember.do'/>";
 	}
 </script>
 <%@ include file="../inc/bottom.jsp" %>

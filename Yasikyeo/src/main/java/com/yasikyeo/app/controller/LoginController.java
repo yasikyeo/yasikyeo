@@ -39,12 +39,12 @@ public class LoginController {
 		int result = memberService.loginCheck(memberVo);
 		logger.info("로그인 처리 결과, result={}", result);
 		
-		String msg="", url="/login/login.do";
+		String msg="", url="/index.do";
 		if(result==MemberService.LOGIN_OK){
 			//로그인 성공
 			//[1] 세션에 저장
-			MemberVO memVo
-				= memberService.selectMemberByMemberId(memberVo.getMember_Id());
+			MemberVO memVo = memberService.selectMemberByMemberId(memberVo.getMember_Id());
+			logger.info("memVo={}",memVo);
 			
 			HttpSession session = request.getSession();
 			session.setAttribute("member_Id", memberVo.getMember_Id());
@@ -62,7 +62,7 @@ public class LoginController {
 				response.addCookie(ck);
 			}
 			
-			msg=memberVo.getMember_Name() + "님 로그인되었습니다";
+			msg=memVo.getMember_Name() + "님 로그인되었습니다";
 			url="/index.do";
 		}else if(result==MemberService.PWD_DISAGREE){
 			msg="비밀번호가 일치하지 않습니다";			

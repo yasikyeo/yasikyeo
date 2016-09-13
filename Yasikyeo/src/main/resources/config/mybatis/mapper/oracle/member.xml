@@ -11,20 +11,18 @@
 		values(#{member_No},#{member_Id},#{member_Pwd},#{member_Name},#{member_Nickname},#{member_Tel},#{member_Email},#{member_Birth},#{address},#{addressDetail},#{postcode})
 	</insert>
 	
-	<select id="selectCountMemberId" 
-		parameterType="string" resultType="int">
+	<select id="selectCountMemberId" parameterType="string" resultType="int">
 		select count(*)	from member 
 		where member_id=#{member_Id}
 	</select>
 	
 	<select id="selectPwd" parameterType="MemberVO"
 		resultType="string">
-		select pwd from member
+		select member_pwd from member
 		where member_id=#{member_Id} and member_withdraw='N'
 	</select>
 	
-	<select id="selectMemberByMemberId" parameterType="string" 
-		resultType="MemberVO">
+	<select id="selectMemberByMemberId" parameterType="string" resultType="MemberVO">
 		select * from member
 		where member_id=#{member_Id} and member_withdraw='N'
 	</select>
