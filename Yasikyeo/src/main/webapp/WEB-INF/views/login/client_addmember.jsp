@@ -15,24 +15,20 @@
 		<fieldset>
 			<legend>회원가입</legend>
 			<form name="frm" method="post" action="<c:url value='/login/client_addmember.do'/>">
+				<input type="hidden" id="authNum">
 				<div>
 					<label class="lb1">아이디</label>
 					<input type="text" style="width: 60.5%" name="member_Id" id="member_Id">
 					<input type="button" style="width: 12%" value="중복확인">
 				</div>
 				<div>
-					<label class="lb1">이메일</label>
-					<input type="text" style="width: 60.5%" name="member_Email" id="member_Email" placeholder="abcd@abcd.com">
-					<input type="button" style="width: 12%" value="메일인증">
-				</div>
-				<div>
-					<label class="lb1">&nbsp</label>
-					<input type="text" style="width: 60.55%" placeholder="인증번호를 입력해주세요.">
-					<input type="button" style="width: 12%" value="확인">
-				</div>
-				<div>
 					<label class="lb1">이름</label>
 					<input type="text" name="member_Name" id="member_Name">
+				</div>
+				<div>
+					<label class="lb1">이메일</label>
+					<input type="text" style="width: 60.5%" name="member_Email" id="member_Email" placeholder="abcd@abcd.com">
+					<input type="button" style="width: 12%" onclick="email()" value="메일인증">
 				</div>
 				<div>
 					<label class="lb1">닉네임</label>
@@ -57,7 +53,7 @@
 				<div>
 					<label class="lb1">우편번호</label>
 					<input type="text" ReadOnly name="postcode" id="postcode" title="우편번호" style="width: 15%">        
-					<input type="Button" value="우편번호 찾기" id="wrap" title="새창열림" onclick="execDaumPostcode()"><br>
+					<input type="Button" value="우편번호 찾기" title="새창열림" onclick="execDaumPostcode()"><br>
 					<label class="lb1">주소</label>
 					<input type="text" name="address" id="address"><br>
 					<label class="lb1">상세주소</label>
@@ -168,6 +164,10 @@
 				alert("이름을 입력하세요");
 				$("#member_Name").focus();
 				return false;
+			}else if($("#authNum").val()!="인증완료"){
+				alert("이메일 인증을 해주세요");
+				$("#member_Email").focus();
+				return false;
 			}else if($("#member_Nickname").val().lenght<1){
 				alert("닉네임을 입력하세요");
 				$("#member_Nickname").focus();
@@ -184,5 +184,13 @@
 			
 		});
 	});
+	
+	function email(){
+			var check = document.frm;
+			window.open('', 'email');
+			check.action="<c:url value='/login/emailAuth.do'/>";
+			check.target='email';
+			check.submit();
+	}
 </script>
 <%@ include file="../inc/bottom.jsp" %>
