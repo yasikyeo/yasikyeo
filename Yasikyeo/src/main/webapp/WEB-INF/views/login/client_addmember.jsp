@@ -6,7 +6,7 @@
 	<div class="location">
 		<ul>
 			<li>
-				<a href="">홈</a>
+				<a href="<c:url value='/index.do'/>">홈</a>
 			</li>
 			<li>&gt;</li>
 			<li style="font-weight: bold;">회원가입</li>
@@ -17,10 +17,10 @@
 			<legend>회원가입</legend>
 			<form name="frm" method="post" action="<c:url value='/login/client_addmember.do'/>">
 				<input type="hidden" id="authNum">
+				<input type="hidden" id="chkId">
 				<div>
 					<label class="lb1">아이디</label>
-					<input type="text" style="width: 60.5%" name="member_Id" id="member_Id">
-					<input type="button" style="width: 12%" value="중복확인">
+					<input type="text" style="width: 20%" name="member_Id" id="member_Id"><span id="message"></span>
 				</div>
 				<div>
 					<label class="lb1">이름</label>
@@ -159,7 +159,7 @@
         element_layer.style.top = (((window.innerHeight || document.documentElement.clientHeight) - height)/2 - borderWidth) + 'px';
     }
     
-	$(document).ready(function(){
+    $(document).ready(function(){
 		$("#mem_submit").click(function(event){
 			if($("#member_Name").val().length < 1){
 				alert("이름을 입력하세요");
@@ -182,9 +182,45 @@
 				$("#member_Pwd2").focus();
 				return false;
 			}
-			
+		});
+		
+		$("#member_Id").keyup(function(){
+			//1 <= 해당 아이디가 존재하는 경우
+			//2 <= 존재하지 않는 경우
+			if(validate_member_Id($("#member_Id").val()) && 
+				$("#member_Id").val().length>=2){
+				$.ajax({
+					url:"<c:url value='/login/ajaxCheckUserid.do'/>",
+					type:"GET",
+					data:"member_Id="+$("#member_Id").val(),
+					success:function(res){
+						var result="";
+						if(res==1){
+							result="이미 등록된 아이디입니다.";
+							$("#chkId").val("N");
+						}else if(res==2){
+							result = "사용가능한 아이디입니다.";
+							$("#chkId").val("Y");
+						}
+						$("#message").html(result);
+					},
+					error:function(xhr, status, error){
+						alert(status+":"+error);
+					}
+				});
+			}else{
+				//유효성 검사를 통과하지 못한 경우
+				$("#message").html("아이디 규칙에 맞지 않습니다");
+				$("#chkId").val("N");
+			}
 		});
 	});
+    
+	function validate_member_Id(member_Id){
+		var pattern = new RegExp(/^[a-zA-Z0-9_]+$/g);
+		
+		return pattern.test(member_Id);		
+	}
 	
 	function email(){
 		

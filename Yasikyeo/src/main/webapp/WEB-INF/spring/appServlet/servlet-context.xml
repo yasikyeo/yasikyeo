@@ -24,6 +24,9 @@
 		<beans:property name="order" value="1" />
 	</beans:bean>
 	
+	<beans:bean id="jsonView"
+	class="org.springframework.web.servlet.view.json.MappingJacksonJsonView" />
+	
 	<beans:bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
 	 <beans:property name="order" value="0" />
 	</beans:bean>

@@ -23,6 +23,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.yasikyeo.app.member.model.MemberDAO;
@@ -111,9 +113,22 @@ public class MemberController {
 		return "common/message";
 	}
 	
+	@RequestMapping("/ajaxCheckUserid.do")
+	@ResponseBody
+	public int ajaxCheckId(@RequestParam String member_Id){
+		logeer.info("ajax-아이디 중복확인, 파라미터 member_Id={}", member_Id);
+		
+		int result = memberService.checkMemberId(member_Id);
+		logeer.info("ajax 아이디 중복확인 결과, result={}",result);
+		//해당 아이디가 존재하면 1, 존재하지 않으면 2를 리턴
+		
+		return result;
+	}
+	
 	@RequestMapping("/client_findPwd.do")
 	public void client_findPwd(){
 	}
+	
 }
 
 
