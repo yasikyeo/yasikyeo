@@ -23,6 +23,24 @@
 		<beans:property name="suffix" value=".jsp" />
 		<beans:property name="order" value="1" />
 	</beans:bean>
+
+	<interceptors>
+		
+		<interceptor>
+			<!-- <mapping path="/shop/cart/*" />
+			<mapping path="/shop/order/*" />
+			<mapping path="/admin/*" />
+			<mapping path="/member/memberEdit.do" /> -->
+			<mapping path="/admintemplet/eventNotice.do" />
+			<mapping path="/admintemplet/fandA.do" />
+			<mapping path="/admintemplet/memberManage.do" />
+			<mapping path="/admintemplet/messageBoard.do" />
+			<mapping path="/admintemplet/register.do" />
+			<!-- <exclude-mapping path="/info/**"/> -->
+			<beans:ref bean="loginInterceptor" />
+			<!--<beans:bean class="com.herb.app.controller.LoginInterceptor" /> -->
+		</interceptor>
+	</interceptors>
 	
 	<beans:bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
 	 <beans:property name="order" value="0" />
