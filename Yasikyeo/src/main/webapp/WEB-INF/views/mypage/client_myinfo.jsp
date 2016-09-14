@@ -18,7 +18,7 @@ $(document).ready(function() {
 	<div class="location">
 		<ul>
 			<li>
-				<a href="">홈</a>
+				<a href="<c:url value='/index.do'/>">홈</a>
 			</li>
 			<li>&gt;</li>
 			<li>
