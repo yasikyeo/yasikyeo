@@ -20,45 +20,36 @@
 				<input type="hidden" id="chkId">
 				<div class="div1">
 					<label class="lb1">아이디</label>
-					<input type="text" class="inputText1 flex1" name="member_Id" id="member_Id"><span class="sp2" id="message"></span>
-					<input type="text" style="width: 20%" name="memberId" id="memberId"><span id="message"></span>
+					<input type="text" class="inputText1 flex1" name="memberId" id="memberId"><span class="sp2" id="message"></span>
 				</div>
 				<div class="div1">
 					<label class="lb1">이름</label>
-					<input type="text" class="inputText1 flex1" name="member_Name" id="member_Name">
-					<input type="text" name="memberName" id="memberName">
+					<input type="text" class="inputText1 flex1" name="memberName" id="memberName">
 				</div>
 				<div class="div1">
 					<label class="lb1">이메일</label>
 					<input type="text" class="inputText2 flex1"  style="width: 60.5%" name="member_Email" id="member_Email" placeholder="abcd@abcd.com">
 					<input type="button" class="bt1" style="width: 12%" onclick="email()" value="메일인증">
-					<input type="text" style="width: 60.5%" name="memberEmail" id="memberEmail" placeholder="abcd@abcd.com">
-					<input type="button" style="width: 12%" onclick="email()" value="메일인증">
 				</div>
 				<div class="div1">
 					<label class="lb1">닉네임</label>
-					<input type="text" class="inputText1 flex1"  name="member_Nickname" id="member_Nickname">
-					<input type="text" name="memberNickname" id="memberNickname">
+					<input type="text" class="inputText1 flex1"  name="memberNickname" id="memberNickname">
 				</div>
 				<div class="div1">
 					<label class="lb1">비밀번호</label>
-					<input type="text" class="inputText1 flex1"  name="member_Pwd" id="member_Pwd" placeholder="4~20자로 입력해주세요">
-					<input type="text" name="memberPwd" id="memberPwd" placeholder="4~20자로 입력해주세요">
+					<input type="text" class="inputText1 flex1"  name="memberPwd" id="memberPwd" placeholder="4~20자로 입력해주세요">
 				</div>
 				<div class="div1">
 					<label class="lb1">비밀번호확인</label>
-					<input type="text" class="inputText1 flex1"  id="member_Pwd2" placeholder="비밀번호를 재입력 해주세요.">
-					<input type="text" id="memberPwd2" placeholder="비밀번호를 재입력 해주세요.">
+					<input type="text" class="inputText1 flex1"  id="memberPwd2" placeholder="비밀번호를 재입력 해주세요.">
 				</div>
 				<div class="div1">
 					<label class="lb1">휴대폰</label>
-					<input type="text" class="inputText1 flex1"  name="member_Tel" id="member_Tel" placeholder="'-'를 제외하고 입력해주세요">
-					<input type="text" name="memberTel" id="memberTel" placeholder="'-'를 제외하고 입력해주세요">
+					<input type="text" class="inputText1 flex1"  name="memberTel" id="memberTel" placeholder="'-'를 제외하고 입력해주세요">
 				</div>
 				<div class="div1">
 					<label class="lb1">생년월일</label>
-					<input type="text" class="inputText1 flex1" name="member_Birth" id="member_Birth" placeholder="8자리 입력(예19850815)">
-					<input type="text" name="memberBirth" id="memberBirth" placeholder="8자리 입력(예19850815)">
+					<input type="text" class="inputText1 flex1" name="memberBirth" id="memberBirth" placeholder="8자리 입력(예19850815)">
 				</div>
 				<div class="div1">
 					<label class="lb1">우편번호</label>
@@ -88,13 +79,8 @@
 					<a href="#" class="a1">내용보기▶</a>
 					</div>
 				</div>
-<<<<<<< HEAD
 				<div class="div1 vertical-container">
-					<button type="submit" class="sub1 fullwidth" id="mem_submit">완료</button>
-=======
-				<div style="text-align: center;">
-					<button type="submit" id="memSubmit">완료</button>
->>>>>>> branch 'master' of https://github.com/yasikyeo/yasikyeo.git
+					<button type="submit" class="sub1 fullwidth" id="memSubmit">완료</button>
 				</div>
 			</form>
 		</fieldset>
