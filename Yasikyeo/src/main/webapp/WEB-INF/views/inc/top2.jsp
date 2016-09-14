@@ -71,8 +71,8 @@
 		    </div>
 		    <div class="abc">
 		    	<div class="inputContainer">
-			      <input type="text" placeholder="아이디 또는 이메일" class="login" name="member_Id" required>
-			      <input type="password" placeholder="비밀번호" class="login" name="member_Pwd" required>
+			      <input type="text" placeholder="아이디 또는 이메일" class="login" name="memberId" required>
+			      <input type="password" placeholder="비밀번호" class="login" name="memberPwd" required>
 		    	</div>
 			    <button type="submit" class="btLogin">로그인</button>
 			</div>		

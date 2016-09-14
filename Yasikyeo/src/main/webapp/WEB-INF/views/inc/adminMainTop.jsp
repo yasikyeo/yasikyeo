@@ -37,8 +37,13 @@
 			<img alt="로고 이미지" src="${pageContext.request.contextPath}/images/admin/adminlogo.png" 
 			height="80px" /></a></h1>
 			<div id="headerRight">
-				<ul class="views">	
-					<li><a href="#">로그인</a></li>
+				<ul class="views">
+				<c:if test="${!empty sessionScope.adminId}">	
+					<li><a href="<c:url value='/admintemplet/adminMain.do' />">로그인</a></li>
+				</c:if>
+				<c:if test="${empty sessionScope.adminId}">
+					<li><a href="#">로그아웃</a></li>
+				</c:if>
 					<li><a href="<c:url value='/index.do' />">메인홈페이지로</a></li>
 				</ul>
 			</div>

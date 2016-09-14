@@ -21,35 +21,44 @@
 				<div class="div1">
 					<label class="lb1">아이디</label>
 					<input type="text" class="inputText1 flex1" name="member_Id" id="member_Id"><span class="sp2" id="message"></span>
+					<input type="text" style="width: 20%" name="memberId" id="memberId"><span id="message"></span>
 				</div>
 				<div class="div1">
 					<label class="lb1">이름</label>
 					<input type="text" class="inputText1 flex1" name="member_Name" id="member_Name">
+					<input type="text" name="memberName" id="memberName">
 				</div>
 				<div class="div1">
 					<label class="lb1">이메일</label>
 					<input type="text" class="inputText2 flex1"  style="width: 60.5%" name="member_Email" id="member_Email" placeholder="abcd@abcd.com">
 					<input type="button" class="bt1" style="width: 12%" onclick="email()" value="메일인증">
+					<input type="text" style="width: 60.5%" name="memberEmail" id="memberEmail" placeholder="abcd@abcd.com">
+					<input type="button" style="width: 12%" onclick="email()" value="메일인증">
 				</div>
 				<div class="div1">
 					<label class="lb1">닉네임</label>
 					<input type="text" class="inputText1 flex1"  name="member_Nickname" id="member_Nickname">
+					<input type="text" name="memberNickname" id="memberNickname">
 				</div>
 				<div class="div1">
 					<label class="lb1">비밀번호</label>
 					<input type="text" class="inputText1 flex1"  name="member_Pwd" id="member_Pwd" placeholder="4~20자로 입력해주세요">
+					<input type="text" name="memberPwd" id="memberPwd" placeholder="4~20자로 입력해주세요">
 				</div>
 				<div class="div1">
 					<label class="lb1">비밀번호확인</label>
 					<input type="text" class="inputText1 flex1"  id="member_Pwd2" placeholder="비밀번호를 재입력 해주세요.">
+					<input type="text" id="memberPwd2" placeholder="비밀번호를 재입력 해주세요.">
 				</div>
 				<div class="div1">
 					<label class="lb1">휴대폰</label>
 					<input type="text" class="inputText1 flex1"  name="member_Tel" id="member_Tel" placeholder="'-'를 제외하고 입력해주세요">
+					<input type="text" name="memberTel" id="memberTel" placeholder="'-'를 제외하고 입력해주세요">
 				</div>
 				<div class="div1">
 					<label class="lb1">생년월일</label>
 					<input type="text" class="inputText1 flex1" name="member_Birth" id="member_Birth" placeholder="8자리 입력(예19850815)">
+					<input type="text" name="memberBirth" id="memberBirth" placeholder="8자리 입력(예19850815)">
 				</div>
 				<div class="div1">
 					<label class="lb1">우편번호</label>
@@ -79,8 +88,13 @@
 					<a href="#" class="a1">내용보기▶</a>
 					</div>
 				</div>
+<<<<<<< HEAD
 				<div class="div1 vertical-container">
 					<button type="submit" class="sub1 fullwidth" id="mem_submit">완료</button>
+=======
+				<div style="text-align: center;">
+					<button type="submit" id="memSubmit">완료</button>
+>>>>>>> branch 'master' of https://github.com/yasikyeo/yasikyeo.git
 				</div>
 			</form>
 		</fieldset>
@@ -164,39 +178,39 @@
     }
     
     $(document).ready(function(){
-		$("#mem_submit").click(function(event){
-			if($("#member_Name").val().length < 1){
+		$("#memSubmit").click(function(event){
+			if($("#memberName").val().length < 1){
 				alert("이름을 입력하세요");
-				$("#member_Name").focus();
+				$("#memberName").focus();
 				return false;
 			}else if($("#authNum").val()!="인증완료"){
 				alert("이메일 인증을 해주세요");
-				$("#member_Email").focus();
+				$("#memberEmail").focus();
 				return false;
-			}else if($("#member_Nickname").val().lenght<1){
+			}else if($("#memberNickname").val().lenght<1){
 				alert("닉네임을 입력하세요");
-				$("#member_Nickname").focus();
+				$("#memberNickname").focus();
 				return false;
-			}else if($("#member_Pwd").val().length<1){
+			}else if($("#memberPwd").val().length<1){
 				alert("비밀번호를 입력하세요");
-				$("#member_Pwd").focus();
+				$("#memberPwd").focus();
 				return false;
-			}else if($("#member_Pwd2").val()!=$("#member_Pwd2").val()){
+			}else if($("#memberPwd2").val()!=$("#memberPwd2").val()){
 				alert("비밀번호가 일치하지 않습니다.");
-				$("#member_Pwd2").focus();
+				$("#memberPwd2").focus();
 				return false;
 			}
 		});
 		
-		$("#member_Id").keyup(function(){
+		$("#memberId").keyup(function(){
 			//1 <= 해당 아이디가 존재하는 경우
 			//2 <= 존재하지 않는 경우
-			if(validate_member_Id($("#member_Id").val()) && 
-				$("#member_Id").val().length>=2){
+			if(validate_member_Id($("#memberId").val()) && 
+				$("#memberId").val().length>=2){
 				$.ajax({
 					url:"<c:url value='/login/ajaxCheckUserid.do'/>",
 					type:"GET",
-					data:"member_Id="+$("#member_Id").val(),
+					data:"member_Id="+$("#memberId").val(),
 					success:function(res){
 						var result="";
 						if(res==1){
@@ -228,7 +242,7 @@
 	
 	function email(){
 		
-		var email = document.getElementById("member_Email");
+		var email = document.getElementById("memberEmail");
 	
 		if(email.value=="" || email.value==null){
 			alert("이메일 주소를 입력하세요");

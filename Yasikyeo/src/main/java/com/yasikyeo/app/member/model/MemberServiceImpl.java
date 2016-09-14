@@ -15,11 +15,11 @@ public class MemberServiceImpl implements MemberService {
 	}
 	
 	@Override
-	public int checkMemberId(String member_Id){
+	public int checkMemberId(String memberId){
 		//아이디 중복확인
 		int result=0;
 		
-		int count = memberDao.checkMemberId(member_Id);
+		int count = memberDao.checkMemberId(memberId);
 		if(count>0){ //해당 아이디가 이미 존재하는 경우
 			result=EXIST_ID;
 		}else{ //해당 아이디가 없는 경우
@@ -38,7 +38,7 @@ public class MemberServiceImpl implements MemberService {
 			//해당 아이디가 없는 경우
 			result=ID_NONE;
 		}else{
-			if(dbPwd.equals(memberVo.getMember_Pwd())){
+			if(dbPwd.equals(memberVo.getMemberPwd())){
 				//비밀번호도 일치 => 로그인 성공
 				result=LOGIN_OK;
 			}else{
@@ -50,8 +50,8 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public MemberVO selectMemberByMemberId(String member_Id) {
-		return memberDao.selectMemberByMemberId(member_Id);
+	public MemberVO selectMemberByMemberId(String memberId) {
+		return memberDao.selectMemberByMemberId(memberId);
 	}
 
 	@Override
@@ -60,8 +60,8 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public int withdrawMember(String member_Id) {
-		return memberDao.withdrawMember(member_Id);
+	public int withdrawMember(String memberId) {
+		return memberDao.withdrawMember(memberId);
 	}
 	
 }
