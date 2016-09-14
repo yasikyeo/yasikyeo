@@ -41,19 +41,19 @@
 			<fieldset>
 				<legend>아이디찾기</legend>
 				<form name="frm" id="" action="">
-					<div>
+					<div class="div1">
 						<label class="lb1">휴대폰</label>
-						<input type="text" placeholder="'-'를 제외하고 입력해주세요">
+						<input type="text"  class="inputText1 flex1" placeholder="'-'를 제외하고 입력해주세요">
 					</div>
-					<div>
+					<div class="div1">
 						<label class="lb1">생년월일</label>
-						<input type="text" placeholder="8자리 입력(예19850815)">
+						<input type="text"  class="inputText1 flex1" placeholder="8자리 입력(예19850815)">
 					</div>
-					<div>
-						<span class="sp1">아이디or메일주소찍어주는곳</span>
+					<div class="div1 vertical-container">
+						<strong>아이디or메일주소찍어주는곳</strong>
 					</div>
-					<div style="text-align: center;">
-						<button type="submit">완료</button>
+					<div class="div1">
+						<button type="submit" class="sub1 fullwidth" >완료</button>
 					</div>
 				</form>
 			</fieldset>
@@ -62,19 +62,19 @@
 			<fieldset>
 				<legend>비밀번호찾기</legend>
 				<form name="frm" id="" action="">
-					<div>
+					<div class="div1">
 						<label class="lb1">이메일</label>
-						<input type="text" placeholder="abcd@abcd.com">
+						<input class="inputText1 flex1" type="text" placeholder="abcd@abcd.com">
 					</div>
-					<div>
+					<div class="div1">
 						<label class="lb1">생년월일</label>
-						<input type="text" placeholder="8자리 입력(예19850815)">
+						<input class="inputText1 flex1" type="text" placeholder="8자리 입력(예19850815)">
 					</div>
-					<div>
-						<span class="sp1">가입하신 이메일로 임시비밀번호를 보내드립니다.</span>
+					<div class="div1 vertical-container">
+						<strong>가입하신 이메일로 임시비밀번호를 보내드립니다.</strong>
 					</div>
-					<div style="text-align: center;">
-						<button type="submit">완료</button>
+					<div class="div1">
+						<button type="submit"  class="sub1 fullwidth" >완료</button>
 					</div>
 				</form>
 			</fieldset>

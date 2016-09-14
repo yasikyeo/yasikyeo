@@ -411,10 +411,6 @@ footer{
 	margin-right: 20px;
 }
 .fieldsetContain .sp1{
-	padding-left: 30%;
-	font-weight: bold;
-}
-.fieldsetContain .sp2{
 	margin-left: 20px;
 }
 .fieldsetContain .lb1{
@@ -693,15 +689,15 @@ span.tabMenu{
 .float-right{
 	float:right;
 }
-.flex1 {
+.flex1{
   -webkit-flex: 1;
           flex: 1;
 }
-.flex2 {
+.flex2{
   -webkit-flex: 2;
           flex: 2;
 }
-.vertical-container {
+.vertical-container{
   display: -webkit-flex;
   display:         flex;
   -webkit-align-items: center;

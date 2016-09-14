@@ -20,7 +20,7 @@
 				<input type="hidden" id="chkId">
 				<div class="div1">
 					<label class="lb1">아이디</label>
-					<input type="text" class="inputText1 flex1" name="memberId" id="memberId"><span class="sp2" id="message"></span>
+					<input type="text" class="inputText1 flex1" name="memberId" id="memberId"><span class="sp1" id="message"></span>
 				</div>
 				<div class="div1">
 					<label class="lb1">이름</label>
