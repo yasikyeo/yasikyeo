@@ -12,13 +12,14 @@ $(document).ready(function() {
 	    label_selected: "파일변경",  // Default: Change File
 	    no_label: false                 // Default: false
 	  });
+	  
 	});
 </script>
 <div class="mainSection">
 	<div class="location">
 		<ul>
 			<li>
-				<a href="<c:url value='/index.do'/>">홈</a>
+				<a href="">홈</a>
 			</li>
 			<li>&gt;</li>
 			<li>
@@ -41,10 +42,25 @@ $(document).ready(function() {
 				<form action="">
 					<fieldset class="information">
 						<legend>기본정보</legend>
-						<div class="fullwidth">
-							<label class="lb2">아이디</label>
-							<input type="button" value="버튼">
-							<input class="autowidth" type="text" name="member_Id" id="member_Id">
+						<div class="div1">
+							<label class="lb1">아이디</label>
+							<input class="inputText2 flex1" type="text">
+						</div>
+						<div class="div1">
+							<label class="lb1">이메일</label>
+							<input type="text" class="inputText2 flex1" name="memberEmail" id="memberEmail" placeholder="abcd@abcd.com">
+						</div>
+						<div class="div1">
+							<label class="lb1">휴대폰</label>
+							<input type="tel" class="inputText2 flex1"  name="memberTel" id="memberTel" placeholder="'-'를 제외하고 입력해주세요">
+						</div>
+						<div class="div2">
+							<label class="lb1"></label>
+							<span class="sp2">- 휴대폰 정보를 입력하시면, 바로결제 시 자동으로 연락처란에 입력됩니다. </span>
+						</div>
+						<div class="div1">
+							<label class="lb1">생년월일</label>
+							<input type="text" class="inputText2 flex1" name="memberBirth" id="memberBirth" placeholder="8자리 입력(예19850815)">
 						</div>
 					</fieldset>
 					<div class="profile">
@@ -52,6 +68,54 @@ $(document).ready(function() {
 							<input type="file" name="image" id="image-upload" />
 						</div>
 						<label for="image-upload" id="image-label">파일선택</label>
+					</div>
+					<fieldset class="pwdfield">
+						<legend>비밀번호변경</legend>
+						<div class="div1">
+							<label class="lb1">현재 비밀번호</label>
+							<input class="inputText2 flex1" type="password">
+							<input type="Button" class="btbrown bt2 deciwidth" value="확인" title="비번확인">
+						</div>
+						<div class="div1">
+							<label class="lb1">신규 비밀번호</label>
+							<input class="inputText2 flex1" type="password">
+						</div>
+						<div class="div1">
+							<label class="lb1">비밀번호 확인</label>
+							<input class="inputText2 flex1" type="password">
+						</div>
+					</fieldset>
+					<fieldset class="pwdfield">
+						<legend>추가정보</legend>
+						<div class="div1">
+							<label class="lb1">닉네임</label>
+							<input class="inputText2 flex1" type="text">
+						</div>
+						<div class="div2">
+							<label class="lb1"></label>
+							<span class="sp2">-닉네임을 설정하지 않으면 아이디가 닉네임으로 사용됩니다.</span>
+						</div>
+						<div class="div1">
+							<label class="lb1">우편번호</label>
+							<input type="text" class="inputText2 flex1"  ReadOnly name="postcode" id="postcode" title="우편번호" >        
+							<input type="Button" class="btbrown bt2" value="우편번호 찾기" title="새창열림" onclick="execDaumPostcode()">
+						</div>
+						<div class="div2">
+							<label class="lb1">주소</label>
+							<input type="text" class="inputText2 flex1"  name="address" id="address">
+						</div>
+						<div class="div2">
+							<label class="lb1">상세주소</label>
+							<input type="text" class="inputText2 flex1"  name="addressDetail" id="addressDetail">
+						</div>
+					</fieldset>
+					<div class="div1 vertical-container clear-both">
+						<button type="submit" class="btblack bt3 flex1" id="memSubmit">변경하기</button>
+						<input type="reset" class="btbrown bt4 quarterwidth" value="취소">
+					</div>
+					<br>
+					<div class="float-right">
+						<a href="#"><span class="sp2">회원탈퇴 하러가기</span></a>
 					</div>
 				</form>
 			</fieldset>
