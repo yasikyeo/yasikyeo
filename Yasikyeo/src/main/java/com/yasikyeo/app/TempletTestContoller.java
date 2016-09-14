@@ -14,4 +14,8 @@ public class TempletTestContoller {
 	public String paymentst(){
 		return "mypage/client_paymentList";
 	}
+	@RequestMapping("/csuTest3.do")
+	public String findpwd(){
+		return "mypage/client_myinfo";
+	}
 }

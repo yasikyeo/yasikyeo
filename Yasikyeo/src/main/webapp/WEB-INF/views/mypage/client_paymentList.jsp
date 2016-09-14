@@ -51,6 +51,7 @@
 							<td>1,6000원</td>
 							<td>배달완료</td>
 						</tr>
+						
 					</tbody>
 				</table>
 			</fieldset>

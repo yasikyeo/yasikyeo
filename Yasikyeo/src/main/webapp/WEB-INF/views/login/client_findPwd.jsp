@@ -50,7 +50,7 @@
 						<input type="text" placeholder="8자리 입력(예19850815)">
 					</div>
 					<div>
-						<span>아이디or메일주소찍어주는곳</span>
+						<span class="sp1">아이디or메일주소찍어주는곳</span>
 					</div>
 					<div style="text-align: center;">
 						<button type="submit">완료</button>
@@ -71,7 +71,7 @@
 						<input type="text" placeholder="8자리 입력(예19850815)">
 					</div>
 					<div>
-						<span>가입하신 이메일로 임시비밀번호를 보내드립니다.</span>
+						<span class="sp1">가입하신 이메일로 임시비밀번호를 보내드립니다.</span>
 					</div>
 					<div style="text-align: center;">
 						<button type="submit">완료</button>

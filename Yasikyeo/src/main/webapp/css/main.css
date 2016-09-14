@@ -387,26 +387,48 @@ footer{
 }
 .fieldsetContain form{
 	border-top: 2px solid #222;
-	padding-top: 20px;
+	padding-top: 10px;
 }
-.fieldsetContain form div{
+.fieldsetContain .div1{
 	padding: 10px 0;
 	vertical-align: middle;
+	display: -webkit-flex;
+	display: flex;
 }
-.fieldsetContain form input[type=text]{
+.fieldsetContain .div2{
+	vertical-align: middle;
+	display: -webkit-flex;
+	display: flex;
+	padding-bottom: 10px;
+}
+.fieldsetContain .inputText1{
 	height: 25px;
-	width: 73%;
 	padding-left: 20px;
 }
-.lb1{
-	width: 20%;
+.fieldsetContain .inputText2{
+	height: 25px;
+	padding-left: 20px;
+	margin-right: 20px;
+}
+.fieldsetContain .sp1{
+	padding-left: 30%;
 	font-weight: bold;
-	display: inline-block;
+}
+.fieldsetContain .sp2{
+	margin-left: 20px;
+}
+.fieldsetContain .lb1{
+	font-weight: bold;
 	text-align: right;
+	padding-top:5px;
 	padding-right: 30px;
 	vertical-align: middle;
+	-webkit-flex: lb1;
+	flex: lb1;
+	width: 130px;
+	min-width: 50px;
 }
-.fieldsetContain input[type=button]{
+.fieldsetContain .bt1{
 	height: 31px;
 	vertical-align: middle;
 	background-color: #222;
@@ -416,10 +438,9 @@ footer{
 	border: none;
 	cursor: pointer;
 }
-.fieldsetContain button[type=submit]{
+.fieldsetContain .sub1{
 	height: 41px;
 	vertical-align: middle;
-	width: 98%;
 	background-color: #222;
 	color: white;
 	font-weight: bold;
@@ -427,10 +448,7 @@ footer{
 	border: none;
 	cursor: pointer;
 }
-.fieldsetContain span{
-	padding-left: 30%;
-	font-weight: bold;
-}
+
 div.checkboxContainer{
 	display: inline-block;
 	font-size: 0.8em;
@@ -439,6 +457,7 @@ div.checkboxContainer{
 a.a1{
 	color: #808080;
 	font-size: 0.9em;
+	margin: 2px 0 0 2px;
 }
 
 /* 탭 메뉴버튼 */
@@ -563,27 +582,130 @@ span.tabMenu{
 }
 
 /* 테이블 */
-.fieldsetContain table{
+.fieldsetContain{
+	min-height: 200px;
+}
+.table1{
 	border-top: 1px solid #8b8b8b;
 	width: 100%;
 }
-.fieldsetContain table td{
+.table1 td{
 	text-align: center;
 	padding: 8px;
 	border-bottom: 1px solid #8b8b8b;
 	font-size: 0.9em;
 }
-.fieldsetContain table th{
+.table1 th{
 	padding: 12px;
 	border-bottom:2px solid #8b8b8b;
 	font-size: 17px;
 }
-.fieldsetContain table th:NTH-OF-TYPE(3){
+.table1 th:NTH-OF-TYPE(3){
 	text-align: left;
 	padding-left: 23px;
 }
-.fieldsetContain table td:NTH-OF-TYPE(3){
+.table1 td:NTH-OF-TYPE(3){
 	text-align: left;
 	padding-left: 23px;
 	font-weight: bold;
+}
+
+/* 내정보 입력양식 */
+.profile{
+	width: 15%;
+	border: 1px solid red;
+	float: left;
+	margin-left: 25px;
+}
+#image-preview {
+	width: 110px;
+	height: 110px;
+	position: relative;
+	overflow: hidden;
+	background-color: #212121;
+	border: 1px solid red;
+	margin: auto;
+	background-image: url("../images/profile.png");
+	background-repeat: no-repeat;
+}
+#image-upload{
+    font-size: 93px;
+    position: absolute;
+    opacity: 0;
+    z-index: 10;
+    border: 1px solid green;
+    top: 0;
+}
+#image-label{
+    z-index: 5;
+    cursor: pointer;
+    background-color: #393939;
+    color: #ecf0f1;
+    width: 110px;
+    font-size: 20px;
+    text-align: center;
+    display: block;
+    padding: 2px 0 8px 0;
+    margin: auto;
+}
+.information{
+	width: 80%;
+	border: 1px solid green;
+	float: left;
+}
+.information legend {
+	font-size: 22px;
+}
+.lb2{
+	width: 15%;
+	font-weight: bold;
+	display: inline-block;
+	text-align: right;
+	padding-right: 30px;
+	vertical-align: middle;
+}
+
+
+
+
+/* 유틸 클래스 */
+.align-middle{
+	vertical-align: middle;
+}
+.fullwidth{
+	width: 100%;
+}
+.autowidth{
+	width: auto;
+}
+.align-center{
+	text-align: center;
+}
+.align-left{
+	text-align: left;
+}
+.align-right{
+	text-align: right;
+}
+.float-left{
+	float: left;
+}
+.float-right{
+	float:right;
+}
+.flex1 {
+  -webkit-flex: 1;
+          flex: 1;
+}
+.flex2 {
+  -webkit-flex: 2;
+          flex: 2;
+}
+.vertical-container {
+  display: -webkit-flex;
+  display:         flex;
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-justify-content: center;
+          justify-content: center;
 }
