@@ -90,7 +90,6 @@
 			<li><a href="<c:url value='/login/logout.do'/>">로그아웃</a></li>
 		</c:if>		
 		<li><a href="#">마이페이지</a></li>
-		<li><a href="#">회원가입</a></li>
 		<li><a href="#">고객센터</a></li>
 		<li><a href="#">즐겨찾기</a></li>
 	</ul>
@@ -98,7 +97,7 @@
 <header>
 	<div class="header">
 		<div class="logo">
-			<img alt="메인로고" src="${pageContext.request.contextPath}/images/mainLogo.png">
+			<a href="<c:url value='/index.do'/>"><img alt="메인로고" src="${pageContext.request.contextPath}/images/mainLogo.png"></a>
 		</div>
 		<div class="searchInput">
 			<div class="address">
