@@ -399,7 +399,8 @@ footer{
 	vertical-align: middle;
 	display: -webkit-flex;
 	display: flex;
-	padding-bottom: 10px;
+	margin-bottom: 10px;
+	margin-top: -5px;
 }
 .fieldsetContain .inputText1{
 	height: 25px;
@@ -424,7 +425,7 @@ footer{
 	width: 130px;
 	min-width: 50px;
 }
-.fieldsetContain .bt1{
+.bt1{
 	height: 31px;
 	vertical-align: middle;
 	background-color: #222;
@@ -434,7 +435,38 @@ footer{
 	border: none;
 	cursor: pointer;
 }
-.fieldsetContain .sub1{
+.bt2{
+	height: 31px;
+	margin-right: 20px;
+}
+.bt3{
+	font-size: 1.3em;
+	height: 60px;
+}
+.bt4{
+	font-size: 1.3em;
+	height: 60px;
+	margin-left: 30px;
+}
+.btblack{
+	background-color: #222;
+	color: white;
+	font-weight: bold;
+	border: none;
+	cursor: pointer;
+	vertical-align: middle;
+	padding-bottom: 4px;
+}
+.btbrown{
+	padding-bottom: 4px;
+	background-color: #978371;
+	color: white;
+	font-weight: bold;
+	border: none;
+	cursor: pointer;
+	vertical-align: middle;
+}
+.sub1{
 	height: 41px;
 	vertical-align: middle;
 	background-color: #222;
@@ -609,9 +641,9 @@ span.tabMenu{
 /* 내정보 입력양식 */
 .profile{
 	width: 15%;
-	border: 1px solid red;
 	float: left;
 	margin-left: 25px;
+	margin-top: 24px;
 }
 #image-preview {
 	width: 110px;
@@ -619,7 +651,6 @@ span.tabMenu{
 	position: relative;
 	overflow: hidden;
 	background-color: #212121;
-	border: 1px solid red;
 	margin: auto;
 	background-image: url("../images/profile.png");
 	background-repeat: no-repeat;
@@ -629,7 +660,6 @@ span.tabMenu{
     position: absolute;
     opacity: 0;
     z-index: 10;
-    border: 1px solid green;
     top: 0;
 }
 #image-label{
@@ -646,27 +676,43 @@ span.tabMenu{
 }
 .information{
 	width: 80%;
-	border: 1px solid green;
 	float: left;
 }
 .information legend {
 	font-size: 22px;
 }
-.lb2{
-	width: 15%;
-	font-weight: bold;
-	display: inline-block;
-	text-align: right;
-	padding-right: 30px;
-	vertical-align: middle;
+.pwdfield{
+	width: 80%;
+	float: left;
+	margin-top: 20px;
+}
+.pwdfield legend {
+	font-size: 22px;
+}
+.sp2{
+	font-size: 0.8em;
+	color: #c0c0c0;
 }
 
 
 
 
+
 /* 유틸 클래스 */
+.height-40px{
+	height: 40px;
+}
 .align-middle{
 	vertical-align: middle;
+}
+.deciwidth{
+	width: 10%;
+}
+.quarterwidth{
+	width: 25%;
+}
+.halfwidth{
+	width: 50%;
 }
 .fullwidth{
 	width: 100%;
@@ -688,6 +734,9 @@ span.tabMenu{
 }
 .float-right{
 	float:right;
+}
+.clear-both{
+	clear: both;
 }
 .flex1{
   -webkit-flex: 1;
