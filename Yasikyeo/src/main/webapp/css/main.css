@@ -384,6 +384,7 @@ footer{
 	font-size: 2.5em;
 	font-weight: bold;
 	padding-bottom: 20px;
+	letter-spacing: -3px;
 }
 .fieldsetContain form{
 	border-top: 2px solid #222;
@@ -787,7 +788,55 @@ span.tabMenu{
 	color: white;
 	padding: 3px 8px;
 }
+/* 내가 작성한 리뷰보기 */
+.div3 li{
+	float: left;
+	padding: 0 5px;
+}
+.p2{
+	font-size: 2em;
+	font-weight: bold;
+}
+.table3{
+	width: 100%;
+}
+.table3 th{
+	padding: 10px;
+	padding-top: 0;
+}
+.table3 tbody tr{
+	cursor: pointer;
+}
+.table3 tbody tr:hover{
+	background: #d0d0d0;
+}
+.table3 td{
+	text-align: center;
+	padding: 10px;
+	border-bottom: 1px solid #8b8b8b;
+	border-top: 1px solid #8b8b8b;
+}
+.table3 td:NTH-OF-TYPE(3){
+	text-align: left;
+}
+.table3 th:NTH-OF-TYPE(3){
+	text-align: left;
+}
+.sp3{
+	font-size: 0.9em;
+	border: 1px solid #8b8b8b;
+	background: white;
+	padding: 1px 3px 4px 3px;
+}
+
+
 /* 유틸 클래스 */
+.color-orange{
+	color: #f75e02;
+}
+.cursor-pointer{
+	cursor: pointer;
+}
 .height-40px{
 	height: 40px;
 }

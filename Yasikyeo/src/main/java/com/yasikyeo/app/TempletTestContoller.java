@@ -30,4 +30,12 @@ public class TempletTestContoller {
 	public String mypointf(){
 		return "mypage/client_mypoint";
 	}
+	@RequestMapping("/csuTest6.do")
+	public String myre(){
+		return "mypage/client_myreview";
+	}
+	@RequestMapping("/csuTest7.do")
+	public String csuTest7(){
+		return "mypage/client_myreview_reg_possible";
+	}
 }
