@@ -24,6 +24,10 @@ public class TempletTestContoller {
 	@RequestMapping("/csuTest4.do")
 	public String deletm(){
 		//회원탈퇴 완성
-		return "/login/client_deleteMember";
+		return "login/client_deleteMember";
+	}
+	@RequestMapping("/csuTest5.do")
+	public String mypointf(){
+		return "mypage/client_mypoint";
 	}
 }

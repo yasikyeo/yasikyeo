@@ -719,8 +719,74 @@ span.tabMenu{
 	letter-spacing: -2px;
 }
 
-
-
+/* 내 포인트 페이지 */
+.pointinfo{
+	margin-top: -15px;
+}
+.pointinfo legend{
+	font-size: 22px;
+	letter-spacing: -2px;
+}
+.divpointview{
+	background-color: #dddddd;
+	padding: 20px 30px;
+	margin-top: 20px;
+}
+.padding3px{
+	padding: 3px;
+}
+.p1{
+	color: #f75e02;
+	font-size: 30px;
+	font-weight: bold;
+}
+.graycolor{
+	color:  #978371;
+}
+.div4{
+	margin: 15px 0 30px 0;
+}
+.div3{
+	padding: 5px 0;
+	font-size: 14px;
+}
+.poingList{
+	margin-top: 30px;
+}
+.poingList legend{
+	font-size: 22px;
+	letter-spacing: -2px;
+}
+.table2{
+	border-top: 1px solid #8b8b8b;
+	width: 100%;
+}
+.table2 td{
+	text-align: center;
+	padding: 8px;
+	border-bottom: 1px solid #8b8b8b;
+	font-size: 0.9em;
+}
+.table2 td:NTH-OF-TYPE(2){
+	text-align: left;
+}
+.table2 th{
+	padding: 12px;
+	border-bottom:2px solid #8b8b8b;
+	font-size: 17px;
+}
+.spgreenbox{
+	font-size: 0.8em;
+	background-color: #00a600;
+	color: white;
+	padding: 3px 8px;
+}
+.sporangebox{
+	font-size: 0.8em;
+	background-color: #f75e02;
+	color: white;
+	padding: 3px 8px;
+}
 /* 유틸 클래스 */
 .height-40px{
 	height: 40px;
