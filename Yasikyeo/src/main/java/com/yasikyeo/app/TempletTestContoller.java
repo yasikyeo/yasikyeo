@@ -28,14 +28,13 @@ public class TempletTestContoller {
 	}
 	@RequestMapping("/csuTest5.do")
 	public String mypointf(){
+		//완성
 		return "mypage/client_mypoint";
 	}
 	@RequestMapping("/csuTest6.do")
 	public String myre(){
+		//완성
 		return "mypage/client_myreview";
 	}
-	@RequestMapping("/csuTest7.do")
-	public String csuTest7(){
-		return "mypage/client_myreview_reg_possible";
-	}
+	
 }

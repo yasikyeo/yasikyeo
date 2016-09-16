@@ -390,32 +390,32 @@ footer{
 	border-top: 2px solid #222;
 	padding-top: 10px;
 }
-.fieldsetContain .div1{
+.div1{
 	padding: 10px 0;
 	vertical-align: middle;
 	display: -webkit-flex;
 	display: flex;
 }
-.fieldsetContain .div2{
+.div2{
 	vertical-align: middle;
 	display: -webkit-flex;
 	display: flex;
 	margin-bottom: 10px;
 	margin-top: -5px;
 }
-.fieldsetContain .inputText1{
+.inputText1{
 	height: 25px;
 	padding-left: 20px;
 }
-.fieldsetContain .inputText2{
+.inputText2{
 	height: 25px;
 	padding-left: 20px;
 	margin-right: 20px;
 }
-.fieldsetContain .sp1{
+.sp1{
 	margin-left: 20px;
 }
-.fieldsetContain .lb1{
+.lb1{
 	font-weight: bold;
 	text-align: right;
 	padding-top:5px;
@@ -834,7 +834,11 @@ span.tabMenu{
 	background: white;
 	padding: 1px 3px 4px 3px;
 }
-
+.sp3:hover{
+	background-color: #408080;
+	border: 1px solid #408080;
+	color: #400080;
+}
 
 /* 유틸 클래스 */
 .color-orange{

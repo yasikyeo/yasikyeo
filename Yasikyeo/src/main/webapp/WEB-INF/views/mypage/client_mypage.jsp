@@ -55,15 +55,43 @@ $(function () {
 				<div class="pageTitle">
 					<strong>최근 시켰던 음식점</strong> <span>최근 주문한 내역은 20개까지 저장됩니다.</span>
 				</div>
-				<div>
-					<!-- 주문내역 반복 조회 -->
+				<div class="bookmarkContain">
+					<!-- 음식점 조회 -->
+					<div class="bookmark">
+						<div>피자스토리 원플러스원</div>
+						<div class="star" data-score="3.6"></div>
+						<div class="description">리뷰<span>4</span>즐겨찾기<span>3</span></div>
+					</div>
+					<div class="bookmark">
+						<div>피자스토리 원플러스원</div>
+						<div class="star" data-score="3.6"></div>
+						<div class="description">리뷰<span>4</span>즐겨찾기<span>3</span></div>
+					</div>
+					<div class="bookmark">
+						<div>피자스토리 원플러스원</div>
+						<div class="star" data-score="3.6"></div>
+						<div class="description">리뷰<span>4</span>즐겨찾기<span>3</span></div>
+					</div>
+					<div class="bookmark">
+						<div>피자스토리 원플러스원</div>
+						<div class="star" data-score="3.6"></div>
+						<div class="description">리뷰<span>4</span>&nbsp;즐겨찾기<span>3</span></div>
+					</div>
+					
+					<!-- 음식점 조회끝 -->
 				</div>
 			</div>
+			<br class="clear-both">
 			<div class="bookmarkDiv">
 				<div class="pageTitle">
 					<strong>즐겨찾기</strong> <span>자주 이용하는 업소를 즐겨찾기에 등록해 보세요.</span>
 				</div>
 				<div class="bookmarkContain">
+					<!-- 북마크 없을때 -->
+					<div class="div1 vertical-container">
+						<img alt="" src="<c:url value='/images/temp/img-nofav.jpg'/>">
+					</div>
+					<!-- 북마크 있을때 -->
 					<!-- 북마크 반복시작 -->
 					<div class="bookmark">
 						<span class="close" id="close1" >&times;</span>

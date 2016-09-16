@@ -47,14 +47,14 @@
 			<br class="clear-both">
 			<hr>
 			<!-- 작성 가능 리뷰가 없을때 -->
-			<%-- <div class="align-center">
+			<div class="align-center">
 				<p>
-					<img alt="" src="<c:url value='/images/NotFound.jpg'/>">
+					<img alt="" src="<c:url value='/images/temp/NotFound.jpg'/>">
 				</p>
 				<p class="p2">작성 가능한 리뷰가 없습니다!!</p>
 				<br>
 				<hr>
-			</div> --%>
+			</div>
 			<!-- 작성 가능 리뷰가 있을때 -->
 			<div>
 				<table class="table3">
@@ -83,7 +83,6 @@
 						</tr>
 					</tbody>
 				</table>
-				
 			</div>
 		</fieldset>
 	</div>
