@@ -46,10 +46,10 @@
 						<!-- 반복시작 -->
 						<tr>
 							<td>2016.09.13 오후 7:58</td>
-							<td>BEGRC00434</td>
+							<td class="color-orange">BEGRC00434</td>
 							<td>피자나라치킨공주 신내점</td>
-							<td>1,6000원</td>
-							<td>배달완료</td>
+							<td class="color-orange"><b>1,6000원</b></td>
+							<td><span class="spgreenbox">배달완료</span></td>
 						</tr>
 						
 					</tbody>

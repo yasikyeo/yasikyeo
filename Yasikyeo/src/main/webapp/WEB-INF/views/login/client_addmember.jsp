@@ -28,8 +28,8 @@
 				</div>
 				<div class="div1">
 					<label class="lb1">이메일</label>
-					<input type="text" class="inputText2 flex1"  style="width: 60.5%" name="member_Email" id="member_Email" placeholder="abcd@abcd.com">
-					<input type="button" class="bt1" style="width: 12%" onclick="email()" value="메일인증">
+					<input type="text" class="inputText2 flex1" name="memberEmail" id="memberEmail" placeholder="abcd@abcd.com">
+					<input type="button" class="bt1 deciwidth" onclick="email()" value="메일인증">
 				</div>
 				<div class="div1">
 					<label class="lb1">닉네임</label>
@@ -37,11 +37,11 @@
 				</div>
 				<div class="div1">
 					<label class="lb1">비밀번호</label>
-					<input type="text" class="inputText1 flex1"  name="memberPwd" id="memberPwd" placeholder="4~20자로 입력해주세요">
+					<input type="password" class="inputText1 flex1"  name="memberPwd" id="memberPwd" placeholder="4~20자로 입력해주세요">
 				</div>
 				<div class="div1">
 					<label class="lb1">비밀번호확인</label>
-					<input type="text" class="inputText1 flex1"  id="memberPwd2" placeholder="비밀번호를 재입력 해주세요.">
+					<input type="password" class="inputText1 flex1"  id="memberPwd2" placeholder="비밀번호를 재입력 해주세요.">
 				</div>
 				<div class="div1">
 					<label class="lb1">휴대폰</label>
