@@ -466,6 +466,15 @@ footer{
 	cursor: pointer;
 	vertical-align: middle;
 }
+.btgray{
+	padding-bottom: 4px;
+	background-color: #808080;
+	color: white;
+	font-weight: bold;
+	border: none;
+	cursor: pointer;
+	vertical-align: middle;
+}
 .sub1{
 	height: 41px;
 	vertical-align: middle;
@@ -493,7 +502,7 @@ a.a1{
 	height: 70px;
 	padding-bottom: 5px;
 }
-#tabs li{
+#tabs ul>li{
 	width: 25%;
 	height:100%;
 	background-color: white;
@@ -502,13 +511,13 @@ a.a1{
 	text-align: center;
 	float: left;
 }
-#tabs li.hovereff:hover{
+#tabs ul>li.hovereff:hover{
 	border-bottom: 5px solid #1e1e1e;
 }
-#tabs li.noteff{
+#tabs ul>li.noteff{
 	border-bottom: 5px solid #1e1e1e;
 }
-#tabs li.noteff span{
+#tabs ul>li.noteff span{
 	color: #1e1e1e;
 }
 span.tabMenu{
@@ -520,7 +529,7 @@ span.tabMenu{
 	font-size:1.2em;
 	color: #8b8b8b
 }
-#tabs li~li{
+#tabs ul>li~li{
 	margin-left: -3px;
 }
 
@@ -694,7 +703,21 @@ span.tabMenu{
 	color: #c0c0c0;
 }
 
-
+/* 회원 탈퇴 페이지 */
+.divdelmem{
+	font-size: 14px;
+}
+.divdelmem li{
+	margin-left: 30px;
+	padding: 10px 0;
+}
+.pwdconfirm{
+	margin-top: 40px;
+}
+.pwdconfirm legend{
+	font-size: 22px;
+	letter-spacing: -2px;
+}
 
 
 

@@ -21,4 +21,9 @@ public class TempletTestContoller {
 		//완성
 		return "mypage/client_myinfo";
 	}
+	@RequestMapping("/csuTest4.do")
+	public String deletm(){
+		//회원탈퇴 완성
+		return "/login/client_deleteMember";
+	}
 }
