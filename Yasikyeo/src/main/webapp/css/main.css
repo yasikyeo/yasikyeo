@@ -4,6 +4,14 @@
 	font-family:'BMJUA';
 	src:url('../font/BMJUA_ttf.ttf') format('truetype');
 }
+@font-face{
+	font-family:'BMHAN';
+	src:url('../font/BMHANNA_11yrs_ttf.ttf') format('truetype');
+}
+@font-face{
+	font-family:'BMDO';
+	src:url('../font/BMDOHYEON_ttf.ttf') format('truetype');
+}
 /* 로그인 박스*/
 .modal {
 	display: none; /*Hidden by default */
@@ -1128,9 +1136,52 @@ div.searchdiv form{
     margin: auto;
 }
 
+/* 나의문의내역보기 */
+.div7{
+	display: inline-block;
+	margin: 0 5px;
+}
+.div8{
+	display: inline-block;
+	margin: 100px 0;
+}
+.div9{
+	border-top: 2px solid black;
+}
+
+.p3{
+	font-size: 2.4em;
+	font-family: bmhan;
+}
+.font1-1em{
+	font-size: 1.2em;
+}
+.bt6{
+	height: 38px;
+	font-size: 1.3em;
+}
+.inputText4{
+	height: 32px;
+	padding-left: 20px;
+}
+
+
+
+
+
+
 
 
 /* 유틸 클래스 */
+.han{
+	font-family: bmhan;
+}
+.jua{
+	font-family: bmjua;
+}
+.doh{
+	font-family: bmdoh;
+}
 .color-orange{
 	color: #f75e02;
 }

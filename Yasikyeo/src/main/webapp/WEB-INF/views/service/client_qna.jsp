@@ -130,6 +130,7 @@ $(document).ready(function() {
 					<label class="lb1">&nbsp;</label>
 					<label class="sp2">이미지 파일 (GIF,PNG,JPG)을 기준으로 최대 10MB이하, 최대 3개까지 등록가능 합니다.</label>
 				</div>
+				<!-- 비회원이나 로그인을 안했을때만 -->
 				<div class="div1">
 					<label class="lb1">비밀번호<span class="color-orange">&#186;</span></label>
 					<input class="inputText2 flex3" type="password">
@@ -138,6 +139,7 @@ $(document).ready(function() {
 					<label class="lb1">&nbsp;</label>
 					<label class="sp2">비회원은 비밀번호를 입력해야 나의 문의내역을 확인하실 수 있습니다.</label>
 				</div>
+				<!-- 비회원이나 로그인을 안했을때만 끝-->
 				<div class="div1">
 					<button type="submit" class="btblack bt3 flex1">문의하기</button>
 				</div>

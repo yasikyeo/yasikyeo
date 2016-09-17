@@ -30,7 +30,36 @@
 				</ul>
 				<br class="clear-both">
 			</div>
-			
+			<!-- 로그인을안했거나 비회원으로 조회할때 -->
+			<form class="vertical-container" action="">
+				<div class="div8 vertical-container">
+					<div class="div7">
+						<img alt="문의하기 이미지 " src="">
+					</div>
+					<div class="div7">
+						<p class="p3">이메일 주소를 입력하세요</p>
+						<p class="jua font1-1em">비회원은 이메일로 문의하기 내역조회가 가능합니다.</p>
+						<div class="div3 vertical-container">
+							<input class="inputText4 flex1" type="text" placeholder="아이디or이메일을 입력해주세요">
+						</div>
+						<div class="div3 vertical-container">
+							<input class="btblack bt6 flex1" type="submit" value="확인">
+						</div>
+					</div>
+				</div>
+			</form>
+			<!-- 로그인을안했거나 비회원으로 조회할때 끝 -->
+			<!-- 문의 내역이 없을때 -->
+			<div class="div9">
+				<div class="div8 vertical-container">
+						<div class="div7">
+							<img alt="문의하기 이미지 " src="">
+						</div>
+				</div>
+			</div>
+			<!-- 문의 내역이 없을때 끝-->
+			<hr>
+			<br>
 		</fieldset>
 	</div>
 </div>
