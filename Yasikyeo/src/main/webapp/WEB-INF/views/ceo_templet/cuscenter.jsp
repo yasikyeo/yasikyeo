@@ -98,50 +98,145 @@ a[data-needpopup-show] {
 									</tr>
 									<tr>
 										<td id="t_cus1">9</td>
-										<td id="t_cus2">공지제목</td>
-										<td id="t_cus1">2016-09-13</td>
+									<td id="t_cus2">
+										<div class="product clear">
+											<details>
+												<summary>[공지] 사장님사이트 개인정보취급방침 일부 변경에 관한 안내</summary>
+											<div id="content">
+												안녕하세요. 야시켜 사장님사이트 개인정보취급방침을 일부 변경하게 되어 이를 알려드리고자 합니다.<br>
+												<br> ■ 개인정보취급방침 일부 변경(시행일 : 2016년 9월 23일)<br> 이번
+												개인정보취급방침 개정의 주요한 부분은 아래와 같습니다.<br> <br> 정보통신망 이용촉진
+												및 정보보호에 관한 법률 개정이 2016년 9월 23일에 시행됨에 따라, 개인정보 관련 법령 용어와
+												개인정보처리방침의 용어를 통일하기 위해 아래와 같이 변경합니다.<br> <br> ①
+												“취급” -> “처리” <br> ② “누출” -> “유출”<br> ③ “개인정보관리책임자”
+												-> “개인정보보호책임자”<br> ④ “개인정보취급방침” -> “개인정보처리방침”<br>
+												<br> - 공고일자 : 2016년 09월 13일<br> - 시행일자 : 2016년 09월
+												23일<br> <br> 앞으로도 고객님의 개인정보를 안전하게 보호하는 야시켜가 되겠습니다.
+												<br> 감사합니다.
+											</div>
+											</details>
+										</div>
+									</td>
+									<td id="t_cus1">2016-09-13</td>
 									</tr>
 									<tr>
 										<td id="t_cus1">8</td>
-										<td id="t_cus2">공지제목</td>
+										<td id="t_cus2">
+											<div class="product clear">
+												<details>
+													<summary>[공지] 배달의민족 9월 시스템 정기점검 안내</summary>
+														<div id="content">안녕하세요. 야시켜입니다. 안정된 서비스 제공을 위하여 야시켜<br>
+												9월 시스템 정기점검이 진행될 예정입니다. 시스템 점검 중에는 바로결제 서비스, 사장님사이트,<br>
+												우리가게마케팅센터 이용이 제한되오니 많은 양해 부탁드립니다.<br><br> ■ 시스템 점검일시<br> - 2016년 9월 19일<br><br>
+												목요일 오전 04시 ~ 08시 30분 (4시간30분) 관련하여 궁금하신 사항은 배달의민족<br>
+												고객센터로 문의하시면 친절하게 답변드리도록 하겠습니다. 더 좋은 서비스 제공을 위해<br>
+												최선을 다하겠습니다. 감사합니다.</div>
+											</details>
+										</div>
+										</td>
 										<td id="t_cus1">2016-09-13</td>
 									</tr>
 									<tr>
 										<td id="t_cus1">7</td>
-										<td id="t_cus2">공지제목</td>
+										<td id="t_cus2">
+											<div class="product clear">
+												<details>
+													<summary>공지사항</summary>
+														<div id="content">공지내용 작성</div>
+											</details>
+										</div>
+										</td>
 										<td id="t_cus1">2016-09-13</td>
 									</tr>
 									<tr>
 										<td id="t_cus1">6</td>
-										<td id="t_cus2">공지제목</td>
+										<td id="t_cus2">
+											<div class="product clear">
+												<details>
+													<summary>공지사항</summary>
+														<div id="content">공지내용 작성</div>
+											</details>
+										</div>
+										</td>
 										<td id="t_cus1">2016-09-13</td>
 									</tr>
 									<tr>
 										<td id="t_cus1">5</td>
-										<td id="t_cus2">공지제목</td>
+										<td id="t_cus2">
+											<div class="product clear">
+												<details>
+													<summary>공지사항</summary>
+														<div id="content">공지내용 작성</div>
+											</details>
+										</div>
+										</td>
 										<td id="t_cus1">2016-09-13</td>
 									</tr>
 									<tr>
 										<td id="t_cus1">4</td>
-										<td id="t_cus2">공지제목</td>
+										<td id="t_cus2">
+											<div class="product clear">
+												<details>
+													<summary>공지사항</summary>
+														<div id="content">공지내용 작성</div>
+											</details>
+										</div>
+										</td>
 										<td id="t_cus1">2016-09-13</td>
 									</tr>
 									<tr>
 										<td id="t_cus1">3</td>
-										<td id="t_cus2">공지제목</td>
+										<td id="t_cus2">
+											<div class="product clear">
+												<details>
+													<summary>공지사항</summary>
+														<div id="content">공지내용 작성</div>
+											</details>
+										</div>
+										</td>
 										<td id="t_cus1">2016-09-13</td>
 									</tr>
 									<tr>
 										<td id="t_cus1">2</td>
-										<td id="t_cus2">공지제목</td>
+										<td id="t_cus2">
+											<div class="product clear">
+												<details>
+													<summary>공지사항</summary>
+														<div id="content">공지내용 작성</div>
+											</details>
+										</div>
+										</td>
 										<td id="t_cus1">2016-09-13</td>
 									</tr>
 									<tr>
 										<td id="t_cus1">1</td>
-										<td id="t_cus2">공지제목</td>
+										<td id="t_cus2">
+											<div class="product clear">
+												<details>
+													<summary>공지사항</summary>
+														<div id="content">공지내용 작성</div>
+											</details>
+										</div>
+										</td>
 										<td id="t_cus1">2016-09-13</td>
 									</tr>
-								</table>
+
+								<script>
+									if ($('html').hasClass('no-details')) {
+										var summary = $('details summary');
+										summary.siblings().wrapAll('<div class="slide"></div>');
+
+										$('details:not(.open) summary')
+												.siblings('div').hide();
+
+										summary.click(function() {
+											$(this).siblings('div').toggle();
+											$('details').toggleClass('open');
+										});
+									}
+								</script>
+
+							</table>
 								
 								
 						</div>

@@ -61,6 +61,10 @@
 	font-family:'BMJUA';
 }
 
+#honeytips .wrapper{
+	text-align: center;
+}
+
 <!-- CEO_EVENT.JSP에서 사용한 CSS-->
 .event{
 	height: 80%;
@@ -94,12 +98,12 @@
 <!-- CUSCENTER.JSP에서 사용한 CSS -->
 
 #ceo_notice{
-	background: red;
+	
 	
 }
 
 #ceo_notice table{
-	background: red;
+	
 	font-family:'BMJUA';
 	font-size: 2em;
 	margin: 0 auto;
@@ -124,6 +128,12 @@
 #ceo_notice #t_cus2:hover{
 	font-size: 0.9em;
 	opacity: 0.5;
+	cursor: pointer;
+}
+
+#ceo_notice #t_cus2 #content{
+	padding-top: 5px;
+	font-size: 0.6em;
 }
 
 
