@@ -112,7 +112,7 @@ a[data-needpopup-show] {
 										<td>2016/05/09 ~ 2016/05/10</td>
 									</tr>
 								</table>
-								<current>1 2 3 4 5 6</current>
+								
 						</div>
 					</div>
 				</div>

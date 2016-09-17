@@ -69,10 +69,6 @@
 	padding-top: 75px;
 }
 
-.event current{
-	
-}
-
 .event table{
 	margin: 0 auto;
 }
@@ -92,6 +88,8 @@
 	margin-top: 10px;
 	vertical-align: middle;
 }
+
+
 
 <!-- CUSCENTER.JSP에서 사용한 CSS -->
 
