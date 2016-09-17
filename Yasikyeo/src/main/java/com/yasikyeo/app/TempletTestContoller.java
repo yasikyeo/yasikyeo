@@ -9,7 +9,7 @@ public class TempletTestContoller {
 	@RequestMapping("/csuTest0.do")
 	public String mypage0(){
 		//완성
-		return "login/client_findPwd";
+		return "mypage/client_myinfo";
 	}
 	@RequestMapping("/csuTest1.do")
 	public String mypage(){
@@ -60,6 +60,11 @@ public class TempletTestContoller {
 	public String csuTest10(){
 		//완성
 		return "service/client_faq";
+	}
+	@RequestMapping("/csuTest11.do")
+	public String csuTest11(){
+		//완성
+		return "service/client_qna";
 	}
 	
 }

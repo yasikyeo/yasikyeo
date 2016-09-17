@@ -661,7 +661,7 @@ span.tabMenu{
 	margin-left: 25px;
 	margin-top: 24px;
 }
-#image-preview {
+.profile #image-preview {
 	width: 110px;
 	height: 110px;
 	position: relative;
@@ -671,14 +671,14 @@ span.tabMenu{
 	background-image: url("../images/profile.png");
 	background-repeat: no-repeat;
 }
-#image-upload{
+.profile #image-upload{
     font-size: 93px;
     position: absolute;
     opacity: 0;
     z-index: 10;
     top: 0;
 }
-#image-label{
+.profile #image-label{
     z-index: 5;
     cursor: pointer;
     background-color: #393939;
@@ -1036,7 +1036,11 @@ li.ui-state-hover{
 li.ui-state-hover a{
 	color: white;
 }
-
+.selectoption1{
+	height: 31px;
+	padding-left: 20px;
+	margin-right: 20px;
+}
 /* 필드셋 */
 .fieldset1{
 	margin-top: 40px;
@@ -1083,8 +1087,46 @@ div.searchdiv form{
 	width: 240px;
 }
 
-
-
+/* 문의하기 */
+.div6{
+	margin-top: -24px;
+}
+.profile1{
+	margin: 10px 20px 10px 0;
+	border: 1px solid silver;
+}
+.profile1 div{
+	width: 100%;
+	height: 150px;
+	position: relative;
+	overflow: hidden;
+	margin: auto;
+	background-image: url("../images/test-failed.png");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: inherit;
+}
+.profile1 input[type=file]{
+	width:100%;
+	height:100%;
+    position: absolute;
+    opacity: 0;
+    z-index: 10;
+    top: 0;
+    cursor: pointer;
+}
+.profile1 label{
+    z-index: 5;
+    cursor: pointer;
+    background-color: #978371;
+    color: #ecf0f1;
+    width: 100%;
+    font-size: 20px;
+    text-align: center;
+    display: block;
+    padding: 2px 0 8px 0;
+    margin: auto;
+}
 
 
 
