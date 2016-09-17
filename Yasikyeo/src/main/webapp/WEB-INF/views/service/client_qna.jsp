@@ -2,8 +2,17 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../inc/top2.jsp" %>
 <script type="text/javascript" src="<c:url value='/jquery/jquery.uploadPreview.min.js'/>"></script>
+<script type="text/javascript" src="<c:url value='/ckeditor/ckeditor.js'/>"></script>
 <script type="text/javascript">
 $(document).ready(function() {
+	CKEDITOR.replace('editor',{
+		customConfig: "/ckeditor/config.js"
+	});
+	CKEDITOR.editorConfig = function( config ) {
+		config.width = 755;     // 500 pixels wide.
+		config.enterMode = CKEDITOR.ENTER_BR;
+	};
+	
 	  $.uploadPreview({
 	    input_field: "#image-upload1",   // Default: .image-upload
 	    preview_box: ".image-preview1",  // Default: .image-preview
@@ -103,7 +112,7 @@ $(document).ready(function() {
 				</div>
 				<div class="div1">
 					<label class="lb1">문의내용<span class="color-orange">&#186;</span></label>
-					<textarea rows="20" cols="105"></textarea>
+					<textarea rows="20" cols="105" name="editor" id="editor"></textarea>
 				</div>
 				<div class="div1">
 					<label class="lb1">&nbsp;</label>
