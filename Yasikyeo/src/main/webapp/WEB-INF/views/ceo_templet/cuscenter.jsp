@@ -15,10 +15,9 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/needpopup.min.css" type="text/css" />
 
 <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-<script language="javascript">
-	
+<script type="text/javascript">
+
 </script>
-<!-- 모달윈도우 창 디자인 -->
 
 <style>
 a[data-needpopup-show] {
@@ -143,6 +142,8 @@ a[data-needpopup-show] {
 										<td id="t_cus1">2016-09-13</td>
 									</tr>
 								</table>
+								
+								
 						</div>
 					</div>
 				</div>
