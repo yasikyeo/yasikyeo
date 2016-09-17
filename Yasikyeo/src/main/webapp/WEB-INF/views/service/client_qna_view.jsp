@@ -31,11 +31,47 @@
 				<br class="clear-both">
 			</div>
 			<div class="div9">
-				<div>
-					<label>제목이 들어갈 영역</label>
-					<label>2016-09-13</label>
-					<label>처리중</label>
+				<div class="div1 border-bottom1 align-center">
+					<label class="flex6 align-left sp1"><b>제목이 들어갈 영역</b></label>
+					<label class="flex1">2016-09-13</label>
+					<div class="flex1">
+						<label class="sporangebox">처리중</label>
+					</div>
 				</div>
+				<div class="div10">
+					<div class="div1">
+						<ul class="div3 float-right">
+							<li>이름:</li>
+							<li>|</li>
+							<li>이메일:</li>
+							<li>|</li>
+							<li>상담분류:</li>
+						</ul>
+					</div>
+					<div class="div11">
+						<p>내용부분이 들어갈부분입니다.</p>
+					</div>
+					<div class="div1">
+						첨부파일 : 
+						<a href="#" class="color-orange">파일명</a>
+					</div>
+				</div>
+			</div>
+			<!-- 답변이 있을경우 -->
+			<div class="div9">
+				<div class="div1 border-bottom1 align-center">
+					<label class="flex6 align-left sp1"><b>제목이 들어갈 영역</b></label>
+					<label class="flex1">2016-09-13</label>
+				</div>
+			</div>
+			<div class="div10">
+				<div class="div11">
+					<p>내용부분이 들어갈부분입니다.</p>
+				</div>
+			</div>
+			<!-- 답변이 있을경우 끝 -->
+			<div class="div1 vertical-container">
+				<input class="btblack bt3 halfwidth" type="button" value="목록으로">
 			</div>	
 		</fieldset>
 	</div>

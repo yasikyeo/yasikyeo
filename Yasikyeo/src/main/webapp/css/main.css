@@ -1182,14 +1182,24 @@ div.searchdiv form{
 	border-bottom:1px solid #8b8b8b;
 	font-size: 17px;
 }
-
-
+.div10{
+	padding: 20px;
+}
+.div10 ul.div3{
+	font-size: 1em;
+}
+.div11{
+	min-height: 250px;
+}
 
 
 
 
 
 /* 유틸 클래스 */
+.border-bottom1{
+	border-bottom: 1px solid #8b8b8b;
+}
 .han{
 	font-family: bmhan;
 }
