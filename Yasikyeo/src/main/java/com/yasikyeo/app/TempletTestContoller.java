@@ -68,7 +68,12 @@ public class TempletTestContoller {
 	}
 	@RequestMapping("/csuTest12.do")
 	public String csuTest12(){
+		//완성
 		return "service/client_qna_list";
+	}
+	@RequestMapping("/csuTest13.do")
+	public String csuTest13(){
+		return "service/client_qna_view";
 	}
 	
 }

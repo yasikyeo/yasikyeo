@@ -31,7 +31,7 @@
 				<br class="clear-both">
 			</div>
 			<!-- 로그인을안했거나 비회원으로 조회할때 -->
-			<form class="vertical-container" action="">
+			<!-- <form class="vertical-container" action="">
 				<div class="div8 vertical-container">
 					<div class="div7">
 						<img alt="문의하기 이미지 " src="">
@@ -47,19 +47,48 @@
 						</div>
 					</div>
 				</div>
-			</form>
+			</form> -->
 			<!-- 로그인을안했거나 비회원으로 조회할때 끝 -->
 			<!-- 문의 내역이 없을때 -->
-			<div class="div9">
+			<!-- <div class="div9">
 				<div class="div8 vertical-container">
 						<div class="div7">
 							<img alt="문의하기 이미지 " src="">
 						</div>
 				</div>
 			</div>
-			<!-- 문의 내역이 없을때 끝-->
 			<hr>
-			<br>
+			<br> -->
+			<!-- 문의 내역이 없을때 끝-->
+			<!-- 문의내역이 있을때 -->
+			<div class="div9">
+				<table class="table6">
+					<colgroup>
+						<col style="width:12%;">
+						<col style="width:64%;">
+						<col style="width:12%;">
+						<col style="width:12%;">
+					</colgroup>
+					<thead>
+						<tr>
+							<th>번호</th>
+							<th class="align-left">제목</th>
+							<th>날짜</th>
+							<th>처리상황</th>
+						</tr>
+					</thead>
+					<tbody>
+						<!-- 반복시작 -->
+						<tr class="align-center">
+							<td>1</td>
+							<td class="align-left">제목에 들어갈내용</td>
+							<td>2016-09-13</td>
+							<td><span class="sporangebox">처리중</span></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<!-- 문의내역이 있을때 끝-->
 		</fieldset>
 	</div>
 </div>
