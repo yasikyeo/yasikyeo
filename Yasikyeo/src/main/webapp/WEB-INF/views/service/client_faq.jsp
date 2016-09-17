@@ -48,7 +48,8 @@
 	</div>
 	<div class="fieldsetContain">
 		<fieldset>
-			<legend>자주 묻는 질문</legend>
+			<legend>자주 묻는 질문
+			</legend>
 			<div id="tab1" >
 				<ul class="div5">
 					<li class="flex1 "><a class="vertical-container" href="#tab1-1">전체보기</a></li>
@@ -246,6 +247,13 @@
 						<!-- 반복끝 -->
 					</div>
 				</div>
+			</div>
+			<!-- 검색 폼 -->
+			<div class="searchdiv">
+				<form action="">
+					<input class="inputText3" type="text">
+					<input class="btgray bt5" type="submit" value="검색">
+				</form>
 			</div>
 			<!-- 자주묻는질문 기본 게피판끝 -->
 			<fieldset class="fieldset1">

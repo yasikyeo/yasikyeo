@@ -48,14 +48,17 @@ public class TempletTestContoller {
 	}
 	@RequestMapping("/csuTest8.do")
 	public String csuTest8(){
+		//완성
 		return "service/client_board";
 	}
 	@RequestMapping("/csuTest9.do")
 	public String csuTest9(){
+		//완성
 		return "service/client_board_detail";
 	}
 	@RequestMapping("/csuTest10.do")
 	public String csuTest10(){
+		//완성
 		return "service/client_faq";
 	}
 	
