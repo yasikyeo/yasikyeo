@@ -34,4 +34,10 @@ public class CeoIndexController {
 	public void cuscenter(){
 		logger.info("cuscenter 페이지 로딩");
 	}
+	
+	@RequestMapping("ceo_templet/event_popup.do")
+	public void event_popup(){
+		logger.info("event_popup 페이지 로딩");
+	}
+	
 }

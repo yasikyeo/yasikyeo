@@ -88,27 +88,27 @@ a[data-needpopup-show] {
 								<table>
 									<tr id="t_ev1">
 										<td><img src="${pageContext.request.contextPath}/images/sum/m5.jpg" width="240px" height="100px"></td>
-										<td>7월 배민아카데미 기본/고급과정</td>
+										<td><a href="javascript:void(0);" onclick="window.open('event_popup.do', '_blank', 'width=600px, height=480px')">7월 배민아카데미 기본/고급과정</a></td>
 										<td>2016/05/09 ~ 2016/05/10</td>
 									</tr>
 									<tr id="t_ev1">
 										<td><img src="${pageContext.request.contextPath}/images/sum/m5.jpg" width="240px" height="100px"></td>
-										<td>7월 배민아카데미 기본/고급과정</td>
+										<td><a href="javascript:void(0);" onclick="window.open('event_popup.do', '_blank', 'width=600px, height=480px')">7월 배민아카데미 기본/고급과정</a></td>
 										<td>2016/05/09 ~ 2016/05/10</td>
 									</tr>
 									<tr id="t_ev1">
 										<td><img src="${pageContext.request.contextPath}/images/sum/m5.jpg" width="240px" height="100px"></td>
-										<td>7월 배민아카데미 기본/고급과정</td>
+										<td><a href="javascript:void(0);" onclick="window.open('event_popup.do', '_blank', 'width=600px, height=480px')">7월 배민아카데미 기본/고급과정</a></td>
 										<td>2016/05/09 ~ 2016/05/10</td>
 									</tr>
 									<tr id="t_ev1">
 										<td><img src="${pageContext.request.contextPath}/images/sum/m5.jpg" width="240px" height="100px"></td>
-										<td>7월 배민아카데미 기본/고급과정</td>
+										<td><a href="javascript:void(0);" onclick="window.open('event_popup.do', '_blank', 'width=600px, height=480px')">7월 배민아카데미 기본/고급과정</a></td>
 										<td>2016/05/09 ~ 2016/05/10</td>
 									</tr>
 									<tr id="t_ev1">
 										<td><img src="${pageContext.request.contextPath}/images/sum/m5.jpg" width="240px" height="100px"></td>
-										<td>7월 배민아카데미 기본/고급과정</td>
+										<td><a href="javascript:void(0);" onclick="window.open('event_popup.do', '_blank', 'width=600px, height=480px')">7월 배민아카데미 기본/고급과정</a></td>
 										<td>2016/05/09 ~ 2016/05/10</td>
 									</tr>
 								</table>
