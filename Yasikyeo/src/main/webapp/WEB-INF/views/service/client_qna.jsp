@@ -59,7 +59,7 @@ $(document).ready(function() {
 				<ul class="div3 float-right">
 					<li class="color-orange"><b>1:1문의하기</b></li>
 					<li>|</li>
-					<li class="cursor-pointer">나의문의내역보기</li>
+					<li><a href="#">나의문의내역보기</a></li>
 				</ul>
 				<br class="clear-both">
 			</div>
