@@ -62,7 +62,7 @@
 				<div class="div1 border-bottom1 align-center">
 					<label class="flex6 align-left sp1"><b>제목이 들어갈 영역</b></label>
 					<label class="flex1">2016-09-13</label>
-				</div>
+				</div> 
 			</div>
 			<div class="div10">
 				<div class="div11">
