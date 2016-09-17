@@ -6841,7 +6841,7 @@ var widgetsAccordion = $.widget( "ui.accordion", {
 		if ( icons ) {
 			icon = $( "<span>" );
 			this._addClass( icon, "ui-accordion-header-icon", "ui-icon " + icons.header );
-			icon.prependTo( this.headers );
+			icon.appendTo( this.headers );
 			children = this.active.children( ".ui-accordion-header-icon" );
 			this._removeClass( children, icons.header )
 				._addClass( children, null, icons.activeHeader )

@@ -840,6 +840,227 @@ span.tabMenu{
 	color: #400080;
 }
 
+/* 공지사항/이벤트 */
+.table4{
+	width: 100%;
+	font-size: 0.9em;
+}
+.table4 th{
+	padding: 10px;
+	border-top: 1px solid #444444;
+}
+.table4 tbody tr{
+	cursor: pointer;
+}
+.table4 tbody tr:hover{
+	background: #e6e6e6;
+}
+.table4 td{
+	text-align: center;
+	padding: 10px;
+	border-bottom: 1px solid #c6c6c6;
+	border-top: 1px solid #c6c6c6;
+}
+.table4 td:FIRST-CHILD{
+	text-align: left;
+	padding-left: 30px;
+}
+.table4 th:FIRST-CHILD{
+	text-align: left;
+	padding-left: 30px;
+}
+ul.pagination li{
+	display: inline-block;
+}
+ul.pagination li a {
+	font-size: 0.9em;
+	border-radius: 10px;
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+}
+
+ul.pagination li a.active {
+    background-color: #408080;
+    color: #400080;
+}
+
+ul.pagination li a:hover:not(.active) {
+	background-color: #ddd;
+}
+
+
+/* 공지 디테일 */
+.sp4{
+	font-weight: normal;
+	padding-left: 10px;
+}
+.table5{
+	width: 100%;
+	font-size: 0.9em;
+}
+.table5 th{
+	padding: 10px;
+	border-top: 1px solid #444444;
+}
+.table5 td{
+	padding: 30px;
+	border-bottom: 1px solid #c6c6c6;
+	border-top: 1px solid #c6c6c6;
+}
+.table5 th:FIRST-CHILD{
+	text-align: left;
+	padding-left: 30px;
+}
+.sp5{
+	font-size: 0.8em;
+	border: 1px solid #8b8b8b;
+	background: white;
+	padding: 4px 10px 7px 10px;
+}
+.sp5:hover{
+	background-color: #808080;
+	border: 1px solid #808080;
+	color: white;
+}
+
+/* 자주 묻는 질문 */
+.div5{
+	display: -webkit-flex;
+	display: flex;
+	width: 100%;
+}
+.tabheader{
+	padding: .9em 2em;
+	border-bottom: 1px solid silver;
+	font-weight: bold;
+}
+.sp6{
+	margin-right: 2em;
+	font-weight: bold;
+}
+/* 아코디언 */
+div.ui-accordion-header {
+	border-bottom: 1px solid silver;
+    display: block;
+    cursor: pointer;
+    position: relative;
+    margin: 2px 0 0 0;
+    padding: .9em 2em;
+    font-size: 100%;
+    margin-top: -1px;
+}
+div.ui-accordion-header .sp7{
+	border: 1px solid #f75e02;
+	background-color: #f75e02;
+	color: white;
+}
+div.ui-state-active{
+	border-top:1px solid silver;
+	border-bottom:none;
+    background: #f7f7f7;
+    font-weight: bold;
+}
+div.ui-state-active .sp7{
+	background-color: #000066;
+	border: 1px solid #000066;
+}
+div.ui-accordion-content {
+    padding: 1em 2em 1em 8em;
+    border-top: 0;
+    overflow: auto;
+    border-bottom: 1px solid silver;
+}
+div.ui-accordion-content-active{
+	background: #f7f7f7;
+}
+.ui-helper-reset {
+    outline: 0;
+    line-height: 1.3;
+    text-decoration: none;
+    font-size: 100%;
+    list-style: none;
+}
+div.ui-state-hover{
+	border-top:1px solid silver;
+	border-bottom: 1px solid silver;
+	background: #d9d2d2;
+}
+span.ui-icon{
+	width: 16px;
+	height: 16px;
+	display: inline-block;
+    background-repeat: no-repeat;
+    float: right;
+    margin-top: .2em;
+}
+span.ui-icon-difult{
+	background-image: url("../images/sign-out-option.png");
+}
+span.ui-icon-active{
+	background-image: url("../images/upload-arrow.png");
+}
+/* 탭1 */
+#tab1 ul{
+	height: 50px;
+}
+#tab1 ul>li~li{
+	margin-left: -1px;
+}
+a.ui-tabs-anchor{
+	width:100%;
+	height:100%;
+}
+li.ui-tab {
+	color: #8b8b8b;
+	font-size:1em;
+	font-weight:bold;
+	margin-bottom: -1px;
+	border: 1px solid silver;
+	border-bottom : 2px solid #444444;
+    transition: background-color .3s;
+}
+li.ui-tabs-active{
+	background-color: #808080;
+	border: 1px solid #808080;
+}
+li.ui-tabs-active a{
+	color: white;
+}
+li.ui-state-hover{
+	background-color: #808080;
+	border: 1px solid #808080;
+}
+li.ui-state-hover a{
+	color: white;
+}
+
+/* 필드셋 */
+.fieldset1{
+	margin-top: 40px;
+}
+.fieldset1 legend{
+	font-size: 22px;
+	letter-spacing: -2px;
+}
+.hr1{
+	margin-bottom: -2px;
+}
+.sp7{
+	border-radius: 50%;
+	margin-right: 2em;
+	font-weight: bold;
+	display:inline-block;
+	width: 16px;
+	height: 16px;
+ 	text-align: center;
+ 	font-size: 12px;
+ 	font-weight: bold;
+}
+
+
 /* 유틸 클래스 */
 .color-orange{
 	color: #f75e02;
@@ -893,6 +1114,22 @@ span.tabMenu{
 .flex2{
   -webkit-flex: 2;
           flex: 2;
+}
+.flex3{
+  -webkit-flex: 3;
+          flex: 3;
+}
+.flex4{
+  -webkit-flex: 4;
+          flex: 4;
+}
+.flex5{
+  -webkit-flex: 5;
+          flex: 5;
+}
+.flex6{
+  -webkit-flex: 6;
+          flex: 6;
 }
 .vertical-container{
   display: -webkit-flex;
