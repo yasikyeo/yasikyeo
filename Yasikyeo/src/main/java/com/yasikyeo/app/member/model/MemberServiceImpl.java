@@ -33,7 +33,7 @@ public class MemberServiceImpl implements MemberService {
 	public int loginCheck(MemberVO memberVo){
 		int result=0;
 		
-		String dbPwd =memberDao.loginCheck(memberVo);
+		String dbPwd = memberDao.loginCheck(memberVo);
 		if(dbPwd==null || dbPwd.isEmpty()){
 			//해당 아이디가 없는 경우
 			result=ID_NONE;
@@ -46,6 +46,20 @@ public class MemberServiceImpl implements MemberService {
 				result=PWD_DISAGREE; 
 			}
 		}
+		return result;
+	}
+	
+	@Override
+	public int checkPwd(MemberVO memberVo) {
+		int result=0;
+		
+		String dbPwd = memberDao.loginCheck(memberVo);
+		if(dbPwd.equals(memberVo.getMemberPwd())){
+			result=CHANGE_PWD_AGREE;
+		}else{
+			result=CHANGE_PWD_DISAGREE; 
+		}
+				
 		return result;
 	}
 
@@ -63,5 +77,15 @@ public class MemberServiceImpl implements MemberService {
 	public int withdrawMember(String memberId) {
 		return memberDao.withdrawMember(memberId);
 	}
-	
+
+	@Override
+	public String selectMemberByMemberTel(MemberVO memberVo) {
+		return memberDao.selectMemberByMemberTel(memberVo);
+	}
+
+	@Override
+	public int findPwd(MemberVO memberVo) {
+		return memberDao.findPwd(memberVo);
+	}
+
 }

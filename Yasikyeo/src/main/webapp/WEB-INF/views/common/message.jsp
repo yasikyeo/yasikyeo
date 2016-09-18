@@ -17,7 +17,6 @@
 		
 		location.href="${pageContext.request.contextPath}${url}";
 		
-		//=>/springweb/pd/pdList.do
 	</script>
 </body>
 </html>

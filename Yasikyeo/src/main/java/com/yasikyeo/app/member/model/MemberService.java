@@ -20,10 +20,17 @@ public interface MemberService {
 	public static final String USER_AUTH_CODE="USER";
 	public static final String CEO_AUTH_CODE="CEO";
 	
+	//패스워드 변경 처리시 사용하는 상수
+	public static final int CHANGE_PWD_AGREE=1;
+	public static final int CHANGE_PWD_DISAGREE=2;
+	
 	public int insertMember(MemberVO vo);
 	public int checkMemberId(String memberId);
 	public int loginCheck(MemberVO memberVo);
+	public int checkPwd(MemberVO memberVo);
 	public MemberVO selectMemberByMemberId(String memberId);
+	public String selectMemberByMemberTel(MemberVO memberVo);
+	public int findPwd(MemberVO memberVo);
 	public int updateMember(MemberVO vo);
 	public int withdrawMember(String memberId);
 }

@@ -22,7 +22,7 @@ $(function () {
 	<div class="location">
 		<ul>
 			<li>
-				<a href="">홈</a>
+				<a href="<c:url value='/index.do'/>">홈</a>
 			</li>
 			<li>&gt;</li>
 			<li style="font-weight: bold;">마이페이지</li>
@@ -35,19 +35,19 @@ $(function () {
 				<ul>
 					<li>
 						<img alt="" src="<c:url value='/images/mypage/바로결제내역.png'/>">
-						<a href="#"><span>바로결제 내역</span></a>
+						<a href="<c:url value='/mypage/client_paymentList.do'/>"><span>바로결제 내역</span></a>
 					</li>
 					<li>
 						<img alt="" src="<c:url value='/images/mypage/내정보.png'/>">
-						<a href="#"><span>내정보</span></a>
+						<a href="<c:url value='/mypage/client_myinfo.do'/>"><span>내정보</span></a>
 					</li>
 					<li>
 						<img alt="" src="<c:url value='/images/mypage/포인트.png'/>">
-						<a href="#"><span>포인트</span></a>
+						<a href="<c:url value='/mypage/client_mypoint.do'/>"><span>포인트</span></a>
 					</li>
 					<li>
 						<img alt="" src="<c:url value='/images/mypage/리뷰관리.png'/>">
-						<a href="#"><span>리뷰관리</span></a>
+						<a href="<c:url value='/mypage/client_myreview.do'/>"><span>리뷰관리</span></a>
 					</li>
 				</ul>
 			</div>

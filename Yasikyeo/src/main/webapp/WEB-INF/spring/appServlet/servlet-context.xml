@@ -25,7 +25,7 @@
 	</beans:bean>
 
 	<interceptors>
-		
+	
 		<interceptor>
 			<!-- <mapping path="/shop/cart/*" />
 			<mapping path="/shop/order/*" />
@@ -40,7 +40,15 @@
 			<beans:ref bean="loginInterceptor" />
 			<!--<beans:bean class="com.herb.app.controller.LoginInterceptor" /> -->
 		</interceptor>
+				
+		<interceptor>
+			<mapping path="/mypage/*" />
+			<beans:ref bean="memberLoginInterceptor" />
+		</interceptor>
+
 	</interceptors>
+	
+
 	
 	<beans:bean id="jsonView"
 	class="org.springframework.web.servlet.view.json.MappingJacksonJsonView" />
