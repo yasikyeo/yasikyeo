@@ -134,6 +134,29 @@
 	font-size: 0.6em;
 }
 
+/*
+	별평점 부분 css
+*/
+
+.marketadmins{
+	
+}
+
+.marketadmins .star_rating{
+	
+}
+
+.star_rating,
+.star_rating span{
+	display: inline-block;
+	lverflow:hidden;
+	height: 15px;
+	height: 15px;
+	background: transparent;
+	url(../images/rating.gif) no-repeat}
+	
+}
+
 
 /*
 index.css 조절용
