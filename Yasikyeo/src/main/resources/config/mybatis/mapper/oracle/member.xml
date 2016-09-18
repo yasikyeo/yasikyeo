@@ -4,7 +4,7 @@
 
 <mapper namespace="config.mybatis.mapper.oracle.member">
 	<insert id="insertMember" parameterType="MemberVO">
-	<selectKey keyProperty="member_No" resultType="int" order="BEFORE">
+	<selectKey keyProperty="memberNo" resultType="int" order="BEFORE">
 		select member_no_seq.nextval from dual
 	</selectKey>
 		insert into member(member_no,member_id,member_pwd,member_name,member_nickname,member_tel,member_email,member_birth,address,addressdetail,postcode)

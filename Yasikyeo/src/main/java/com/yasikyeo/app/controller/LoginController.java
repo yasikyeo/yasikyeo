@@ -27,13 +27,13 @@ public class LoginController {
 	private MemberService memberService;
 		
 	@RequestMapping(value="/login.do", 	method=RequestMethod.POST)
-	public String login_post(@ModelAttribute MemberVO memberVo, @RequestParam(required=false) String chkSave, 
+	public String login_post(@ModelAttribute MemberVO memberVo, @RequestParam(required=false) String idSave, 
 			HttpServletRequest request,	HttpServletResponse response,Model model){
 		//1.
 		memberVo.setAuthcode(MemberService.USER_AUTH_CODE);
 		
 		logger.info("로그인 처리 , memberVo={}",memberVo);
-		logger.info("chkSave={}", chkSave);
+		logger.info("idSave={}", idSave);
 		
 		//2.
 		int result = memberService.loginCheck(memberVo);
@@ -52,13 +52,15 @@ public class LoginController {
 			session.setAttribute("authcode", memVo.getAuthcode());
 			
 			//[2] 쿠키에 저장
-			Cookie ck = new Cookie("ck_member_Id", memVo.getMemberId());
-			if(chkSave!=null){
+			Cookie ck = new Cookie("ck_memberId", memVo.getMemberId());
+			if(idSave!=null){
 				//아이디 저장을 체크한 경우 => 쿠키에 저장
 				ck.setMaxAge(1000*24*60*60);  //쿠키 유효기간-1000일
-				response.addCookie(ck);				
+				ck.setPath("/");
+				response.addCookie(ck);
 			}else{
 				ck.setMaxAge(0);
+				ck.setPath("/");
 				response.addCookie(ck);
 			}
 			

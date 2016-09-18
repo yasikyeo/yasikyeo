@@ -220,10 +220,10 @@
 		});
 	});
     
-	function validate_member_Id(member_Id){
+	function validate_member_Id(memberId){
 		var pattern = new RegExp(/^[a-zA-Z0-9_]+$/g);
 		
-		return pattern.test(member_Id);		
+		return pattern.test(memberId);		
 	}
 	
 	function email(){

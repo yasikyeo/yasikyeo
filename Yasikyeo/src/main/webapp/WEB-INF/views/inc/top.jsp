@@ -59,7 +59,7 @@
 		    </div>
 		    <div class="abc">
 		    	<div class="inputContainer">
-			      <input type="text" placeholder="아이디 또는 이메일" class="login" name="memberId" required>
+			      <input type="text" placeholder="아이디 또는 이메일" class="login" name="memberId" required value="${cookie.ck_memberId.value }">
 			      <input type="password" placeholder="비밀번호" class="login" name="memberPwd" required>
 		    	</div>
 			    <button type="submit" class="btLogin">로그인</button>
@@ -67,7 +67,10 @@
 			<div>
 				<ul>
 					<li>
-				    	<input type="checkbox" id="idSave">
+				    	<input type="checkbox" name="idSave" id="idSave"
+				    		<c:if test="${!empty cookie.ck_memberId}">
+				    		checked
+				    		</c:if>>
 				    	<label for="idSave">아이디저장</label> 
 					</li>
 					<li>|</li>

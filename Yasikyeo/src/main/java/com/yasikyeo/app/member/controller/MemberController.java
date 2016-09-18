@@ -58,16 +58,15 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value="/emailAuth.do")
-	public ModelAndView emailAuth_post(HttpServletResponse response, HttpServletRequest request){
+	public ModelAndView emailAuth_post(@RequestParam String memberEmail){
 		
-		String email = request.getParameter("member_Email");
 		String authNum = "";
 		
 		authNum = RandomNum();
 		
-		logeer.info("파라미터 email={} authNum={}",email,authNum);
+		logeer.info("파라미터 email={} authNum={}",memberEmail,authNum);
 		
-		String receiver=email;
+		String receiver=memberEmail;
 		String sender="yasikyeo@yasikyeo.com";
 		
 		String subject="야시켜 이메일 인증 코드 발송";
@@ -84,7 +83,7 @@ public class MemberController {
 		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("/login/emailAuth");
-		mv.addObject("email",email);
+		mv.addObject("email",memberEmail);
 		mv.addObject("authNum",authNum);
 		
 		return mv;

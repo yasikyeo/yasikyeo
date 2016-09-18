@@ -29,7 +29,7 @@
 </script>
 </head>
 <body>
-	<h5>인증 번호 7자리를 입력하세요</h5>
+	<h5>인증 번호 6자리를 입력하세요</h5>
 	<div>
 		<form method="post" name="authenform" onsubmit="return check()">
 			<input type="text" id="authnum"><br/><br/>
