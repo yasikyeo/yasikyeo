@@ -56,19 +56,25 @@
 					<div id="a_1">
 						<div id="show1">내 업소관리</div>
 						<div class="show2">
-							<div id="lsh">사장님께서 등록하신 업소를 변경할 수 있는 메뉴입니다.</div>
+							<div id="lsh">사장님 업소에 대한 내용을 확인 및 수정할수 있는 메뉴입니다.</div>
 						</div>
 							<div class="marketadmins">
-								<p><span class="star_rating"> <span style="width:10%">1점</span></span></p>
-								<p><span class="star_rating"> <span style="width:20%">2점</span></span></p>
-								<p><span class="star_rating"> <span style="width:30%">3점</span></span></p>
-								<p><span class="star_rating"> <span style="width:40%">4점</span></span></p>
-								<p><span class="star_rating"> <span style="width:50%">5점</span></span></p>
-								<p><span class="star_rating"> <span style="width:60%">6점</span></span></p>
-								<p><span class="star_rating"> <span style="width:70%">7점</span></span></p>
-								<p><span class="star_rating"> <span style="width:80%">8점</span></span></p>
-								<p><span class="star_rating"> <span style="width:90%">9점</span></span></p>
-								<p><span class="star_rating"> <span style="width:100%">10점</span></span></p>
+								
+								<p>가게 별점 평균 <span class="star-rating"> <span style="width:50%"></span></span></p>
+								<p>주문건 수 - 전체 : 0건, 일별 : 0건</p>
+								<p>등록된 즐겨찾기 수 - 0건</p>
+								<p>등록된 리뷰 수 - 0건</p>
+								<br><br>	
+								<table>
+									<tr>
+										<th>카테고리 등록 및 수정</th>
+									</tr>
+									
+									<tr>
+										<td><br><input type="file" value="이미지 등록"></td>
+									</tr>
+								</table>
+							
 							</div>
 					</div>
 				</div>

@@ -142,26 +142,44 @@
 	
 }
 
-.marketadmins .star_rating{
-	
+.marketadmins p{
+	font-family:'BMJUA';
+	padding-top: 7px;
 }
 
-.star_rating,
-.star_rating span{
+.marketadmins table{
+	width: 100%;
+}
+
+.marketadmins table th{
+	font-family:'BMJUA';
+	font-size: 1.7em;
+	background: #000000;
+	text-align: left;
+	padding-left: 2px;
+	color: white;
+}
+
+.star-rating {
+	width: 79px;
+}
+
+.star-rating, .star-rating span {
 	display: inline-block;
-	lverflow:hidden;
 	height: 15px;
-	height: 15px;
-	background: transparent;
-	url(../images/rating.gif) no-repeat}
-	
+	overflow: hidden;
+	background: url(../images/rating.gif) no-repeat;
 }
 
+.star-rating span {
+	background-position: left bottom;
+	line-height: 0;
+	vertical-align: top;
+}
 
 /*
 index.css 조절용
 */
-
 @font-face{
    font-family:'BMJUA';
    src:url('../font/BMJUA_ttf.ttf') format('truetype');
