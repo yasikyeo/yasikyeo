@@ -1,14 +1,16 @@
-<!DOCTYPE HTML>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta charset="utf-8">
 <title>야시켜, 사장님 회원가입</title>
 
 
-<link rel="stylesheet" href="../../../css/reset.css" type="text/css"/>
-<link rel="stylesheet" href="../../../css/dropmenu.css" type="text/css" />
-<link rel="stylesheet" href="../../../css/login.css" type="text/css"/>
-<link rel="stylesheet" href="../../../css/marketmember3.css" type="text/css"/>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css" type="text/css"/>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/dropmenu.css" type="text/css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/login.css" type="text/css"/>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/marketmember3.css" type="text/css"/>
 
 <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 <script language="javascript">
@@ -23,7 +25,7 @@
 	<div id="wrap">
 		<div id="top_1">
 			<div id="header">
-				<div id="logo"> <img src="../../../images/logo_p.png" width="188" height="90"> </div>
+				<div id="logo"> <img src="${pageContext.request.contextPath}/images/logo_p.png" width="188" height="90"> </div>
 				<div id="nav">
 					<div class="menu_test">
 						<ul>
@@ -160,7 +162,7 @@
 								</table>
 							</form>
 							<div id="buttonset">	
-								<input type="submit" value="계속 진행하기" name="next" class="next_button">
+								<a href="marketmember_reg4.do"><input type="submit" value="계속 진행하기" name="next" class="next_button"></a>
 							</div>
 						</div>
 					</div>

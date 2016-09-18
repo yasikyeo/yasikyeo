@@ -1,14 +1,16 @@
-<!DOCTYPE HTML>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta charset="utf-8">
 <title>야시켜, 사장님 회원가입</title>
 
 
-<link rel="stylesheet" href="../../../css/reset.css" type="text/css"/>
-<link rel="stylesheet" href="../../../css/dropmenu.css" type="text/css" />
-<link rel="stylesheet" href="../../../css/login.css" type="text/css"/>
-<link rel="stylesheet" href="../../../css/marketmember2.css" type="text/css"/>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css" type="text/css"/>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/dropmenu.css" type="text/css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/login.css" type="text/css"/>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/marketmember2.css" type="text/css"/>
 
 <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 
@@ -18,7 +20,7 @@
 	<div id="wrap">
 		<div id="top_1">
 			<div id="header">
-				<div id="logo"> <img src="../../../images/logo_p.png" width="188" height="90"> </div>
+				<div id="logo"> <img src="${pageContext.request.contextPath}/images/logo_p.png" width="188" height="90"> </div>
 				<div id="nav">
 					<div class="menu_test">
 						<ul>
@@ -63,21 +65,21 @@
 						</div>
 						<div class="checkarticle1">
 							<b>야시켜 사장님사이트 이용약관</b><br>
-							<iframe src="provision1.html" width="100%" height="300px" name="ㅇㅇ"></iframe>
+							<iframe src="provision1.do" width="100%" height="300px" name="ㅇㅇ"></iframe>
 							<div id="checkb1">
 								<p>위 야시켜 사장님사이트 이용약관에 동의합니다. <input type="checkbox"> 동의함 </p> 
 							</div>
 						</div>
 						<div class="checkarticle2">
 							<b>개인정보 수집·이용 동의</b><br><br>
-							<iframe src="provision2.html" width="100%" height="300px"></iframe>
+							<iframe src="provision2.do" width="100%" height="300px"></iframe>
 							<div id="checkb2">
 								<p>위 개인정보 수집 및 이용에 동의 합니다. <input type="checkbox"> 동의함</p> 
 							</div>
 						</div>
 							<div id="buttonset">							
-								<input type="submit" value="동의 후 다음 단계로" name="next" class="next_button">
-								<input type="button" value="이전 단계로" name="back" class="back_button">
+								<a href="marketmember_reg3.do"><input type="submit" value="동의 후 다음 단계로" name="next" class="next_button"></a>
+								<a href="javascript:history.back();"><input type="button" value="이전 단계로" name="back" class="back_button"></a>
 							</div>
 						</div>
 						

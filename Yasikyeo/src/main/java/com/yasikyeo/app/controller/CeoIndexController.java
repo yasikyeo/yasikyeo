@@ -10,6 +10,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class CeoIndexController {
 	private static final Logger logger = LoggerFactory.getLogger(CustomerIndexController.class);
 	
+	@RequestMapping("ceo_templet/test.do")
+	public void test(){
+		logger.info("test 페이지 로딩");
+	}
+	
+	@RequestMapping("ceo_templet/marketmember_reg.do")
+	public void marketmember_reg(){
+		logger.info("marketmember_reg 페이지 로딩");
+	}
+	
+	@RequestMapping("ceo_templet/marketmember_reg2.do")
+	public void marketmember_reg2(){
+		logger.info("marketmember_reg2 페이지 로딩");
+	}
+	
+	@RequestMapping("ceo_templet/marketmember_reg3.do")
+	public void marketmember_reg3(){
+		logger.info("marketmember_reg3 페이지 로딩");
+	}
+	
 	@RequestMapping("ceo_templet/marketmember_reg4.do")
 	public void marketmember_reg4(){
 		logger.info("marketmember_reg4 페이지 로딩");

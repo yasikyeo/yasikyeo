@@ -14,4 +14,14 @@ public class daummapController {
 	public void daummap(){
 		logger.info("daummap 페이지 로딩");
 	}
+	
+	@RequestMapping("ceo_templet/provision1.do")
+	public void provision1(){
+		logger.info("provision1 페이지 로딩");
+	}
+	
+	@RequestMapping("ceo_templet/provision2.do")
+	public void provision2(){
+		logger.info("provision2 페이지 로딩");
+	}
 }

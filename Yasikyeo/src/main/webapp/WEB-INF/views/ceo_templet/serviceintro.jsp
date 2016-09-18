@@ -24,7 +24,7 @@
 		<div id="top_1">
 			<div id="header">
 				<div id="logo">
-					<img src="${pageContext.request.contextPath}/images/logo_p.png"	width="188" height="90">
+					<a href="test.html"><img src="${pageContext.request.contextPath}/images/logo_p.png"	width="188" height="90"></a>
 				</div>
 				<div id="nav">
 					<div class="menu_test">
@@ -38,10 +38,10 @@
 										<li><a href="">menu_4</li>
 									</ul>
 								</div></li>
-							<li class="float_leftmenu"><a href="">서비스 소개</a></li>
-							<li class="float_leftmenu"><a href="">사장님 꿀팁</a></li>
-							<li class="float_leftmenu"><a href="">이벤트</a></li>
-							<li class="float_leftmenu"><a href="">고객센터</a></li>
+							<li class="float_leftmenu"><a href="serviceintro.do">서비스 소개</a></li>
+							<li class="float_leftmenu"><a href="honeytip.do">사장님 꿀팁</a></li>
+							<li class="float_leftmenu"><a href="ceo_event.do">이벤트</a></li>
+							<li class="float_leftmenu"><a href="cuscenter.do">고객센터</a></li>
 					</div>
 				</div>
 			</div>

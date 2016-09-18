@@ -74,10 +74,10 @@ a[data-needpopup-show] {
 										<li><a href="">menu_4</li>
 									</ul>
 								</div></li>
-							<li class="float_leftmenu"><a href="">서비스 소개</a></li>
-							<li class="float_leftmenu"><a href="">사장님 꿀팁</a></li>
-							<li class="float_leftmenu"><a href="">이벤트</a></li>
-							<li class="float_leftmenu"><a href="">고객센터</a></li>
+							<li class="float_leftmenu"><a href="serviceintro.do">서비스 소개</a></li>
+							<li class="float_leftmenu"><a href="honeytip.do">사장님 꿀팁</a></li>
+							<li class="float_leftmenu"><a href="ceo_event.do">이벤트</a></li>
+							<li class="float_leftmenu"><a href="cuscenter.do">고객센터</a></li>
 					</div>
 				</div>
 			</div>

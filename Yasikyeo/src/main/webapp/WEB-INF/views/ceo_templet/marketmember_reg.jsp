@@ -1,14 +1,16 @@
-<!DOCTYPE HTML>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta charset="utf-8">
 <title>야시켜, 사장님 회원가입</title>
 
 
-<link rel="stylesheet" href="../../../css/reset.css" type="text/css"/>
-<link rel="stylesheet" href="../../../css/dropmenu.css" type="text/css" />
-<link rel="stylesheet" href="../../../css/login.css" type="text/css"/>
-<link rel="stylesheet" href="../../../css/marketmember.css" type="text/css"/>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css" type="text/css"/>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/dropmenu.css" type="text/css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/login.css" type="text/css"/>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/marketmember.css" type="text/css"/>
 
 <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 
@@ -18,7 +20,7 @@
 	<div id="wrap">
 		<div id="top_1">
 			<div id="header">
-				<div id="logo"> <img src="../../../images/logo_p.png" width="188" height="90"> </div>
+				<div id="logo"> <a href="test.do"><img src="${pageContext.request.contextPath}/images/logo_p.png" width="188" height="90"></a> </div>
 				<div id="nav">
 					<div class="menu_test">
 						<ul>
@@ -66,20 +68,20 @@
 						
 						<div class="show4">
 							<div id="it1">
-								<img src="../../../images/intro1_1.png" width="120" height="110">
+								<img src="${pageContext.request.contextPath}/images/intro1_1.png" width="120" height="110">
 								<p>고객 리뷰를 빠르게 관리해요</p>
 								<p1>1등 업소를 만드는 가장 빠르고 확실한 방법<br>
 								고객들의 리뷰를 손쉽게 관리하세요!</p1>
 							</div>
 							<div id="it2">
-								<img src="../../../images/intro1_2.png" width="120" height="110">
+								<img src="${pageContext.request.contextPath}/images/intro1_2.png" width="120" height="110">
 								<p>업소 운영 정보를 확인해요</p>
 								<p1>한 주간의 정산 금액을 한눈에 확인하고,<br>
 								휴무일도 직접 설정하세요!
 								</p1>
 							</div>
 							<div id="it3">
-								<img src="../../../images/intro1_3.png" width="120" height="110">
+								<img src="${pageContext.request.contextPath}/images/intro1_3.png" width="120" height="110">
 								<p>다양한 이벤트에 참여해요</p>
 								<p1>사장님들을 위해 준비한 이벤트와<br>
 								다양한 프로모션에 참여하세요!
@@ -87,7 +89,7 @@
 							</div>
 						</div>
 						<div id="regbutton">
-							<input type="submit" value="회원가입" name="marketmemberreg" class="reg_button" />
+							<a href="marketmember_reg2.do"><input type="submit" value="회원가입" name="marketmemberreg" class="reg_button" /></a>
 						</div>
 						<div id="warning">
 							<ul>

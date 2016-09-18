@@ -1,25 +1,25 @@
-<!DOCTYPE HTML>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta charset="utf-8">
-<title>야시켜, 사장님사이트</title>
-
-
-<link rel="stylesheet" href="../../../css/reset.css" type="text/css"/>
-<link rel="stylesheet" href="../../../css/index.css" type="text/css"/>
-<link rel="stylesheet" href="../../../css/dropmenu.css" type="text/css" />
-<link rel="stylesheet" href="../../../css/login.css" type="text/css" />
+<title>야시켜 사장님사이트</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css" type="text/css"/>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/index.css" type="text/css"/>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/dropmenu.css" type="text/css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/login.css" type="text/css" />
 
 <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 <!-- 슬라이드 자바 스크립트 불러옴-->
-<script src="../../../js/jquery.slides.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/jquery.slides.min.js"></script>
 
 </head>
 <body>
 	<div id="wrap">
 		<div id="top_1">
 			<div id="header">
-				<div id="logo"> <a href="test.html"><img src="../../../images/logo_p.png" width="188" height="90"></a> </div>
+				<div id="logo"> <a href="test.do"><img src="${pageContext.request.contextPath}/images/logo_p.png" width="188" height="90"></a> </div>
 				<div id="nav">
 					<div class="menu_test">
 						<ul>
@@ -50,16 +50,16 @@
 					<div id="a_1">
 						<div class="container">
     						<div id="slides">
-      							<img src="../../../images/test1.png" alt="이미지1" width="800" height="470">
-							    <img src="../../../images/test2.png" alt="이미지2" width="800" height="470">
-							    <img src="../../../images/test3.png"alt="이미지3" width="800" height="470">
+      							<img src="${pageContext.request.contextPath}/images/test1.png" alt="이미지1" width="800" height="470">
+							    <img src="${pageContext.request.contextPath}/images/test2.png" alt="이미지2" width="800" height="470">
+							    <img src="${pageContext.request.contextPath}/images/test3.png"alt="이미지3" width="800" height="470">
     						</div>
     						
     						<div id="conlogin">
     							<div id="alignlogin">
 	    							<input type="text" maxlength="100" value="ID 입력" name="username" onclick="textClear(this);" class="input">
 	    							<br><input type="password" maxlength="100" value="비밀번호 입력" name="password" onclick="textClear(this);" class="input">
-	    							<br><p><input type="checkbox"> 아이디 저장 ID/PW찾기 | 회원가입</p>
+	    							<br><p><input type="checkbox"> <a href="">아이디 저장 ID/PW찾기 |</a> <a href="marketmember_reg.do">회원가입</a></p>
 									<br><input type="submit" value="로그인" name="login" class="login_button" />
 								</div>
 							</div>
@@ -119,15 +119,15 @@
 								
 								</div>
 								<div id="info_5">
-								<img src="../../../images/info5testimg.jpg" width="377.60" height="325" onclick="link4()">
+								<img src="${pageContext.request.contextPath}/images/info5testimg.jpg" width="377.60" height="325" onclick="link4()">
 								</div>
 								
 								<div class="info_group">
 									<div id="info_6">
-									<img src="../../../images/info6testimg.jpg" width="377.60" height="160" onclick="link5()">
+									<img src="${pageContext.request.contextPath}/images/info6testimg.jpg" width="377.60" height="160" onclick="link5()">
 									</div>
 									<div id="info_7">
-									<img src="../../../images/info7testimg.jpg" width="377.60" height="160" onclick="link6()">
+									<img src="${pageContext.request.contextPath}/images/info7testimg.jpg" width="377.60" height="160" onclick="link6()">
 									</div>
 								</div>
 							</div>
