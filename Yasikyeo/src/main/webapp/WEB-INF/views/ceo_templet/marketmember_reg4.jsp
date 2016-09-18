@@ -34,6 +34,7 @@
 						width="188" height="90">
 				</div>
 				<div id="nav">
+					
 					<div class="menu_test">
 						<ul>
 							<li class="float_leftmenu"><a href="">내 업소관리</a>

@@ -126,8 +126,6 @@
 }
 
 #ceo_notice #t_cus2:hover{
-	font-size: 0.9em;
-	opacity: 0.5;
 	cursor: pointer;
 }
 
@@ -168,6 +166,14 @@ index.css 조절용
 	box-sizing: border-box;
 }
 
+#loginbut{
+	width: 600px;
+	height: 40px;
+	font-size: 2px;
+	text-align: right;
+
+}
+
 #logo {
 	width: 203px;
 	height: 70px;
@@ -181,6 +187,7 @@ index.css 조절용
 	float: right;
 	margin-top: 25px;
 	text-align: center;
+
 }
 
 #main {
