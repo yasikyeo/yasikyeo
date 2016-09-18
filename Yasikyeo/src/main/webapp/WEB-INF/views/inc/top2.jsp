@@ -15,6 +15,12 @@
 <script type="text/javascript" src="<c:url value='/jquery/jquery-ui.js'/>"></script>
 <script type="text/javascript">
  $(function() {
+	 var windowWidth = $( window ).width();
+
+	 $( window ).resize(function(){
+		 windowWidth = $( window ).width();
+	 });
+	 
 	 $(".dongBT").click(function() {
 		 if($(".addressfrm").css("display")=="none"){
 			 var options = {};
@@ -44,7 +50,11 @@
 	 
 	 $(".mainNav").mouseenter(function() {
 		 $(".mainNav").stop();
-		 $(".mainNav").animate({height:'200'}, 300);
+		 if(windowWidth < 737){
+			 $(".mainNav").animate({height:'273'}, 300);
+		 }else{
+			 $(".mainNav").animate({height:'182'}, 300);
+		 }
 	 });
 	 $(".mainNav").mouseleave(function() {
 		 $(".mainNav").stop();

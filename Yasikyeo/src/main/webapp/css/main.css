@@ -255,12 +255,12 @@ header{
 	height: 100px;
 }
 .navContain{
-	width: 1020px;
+	max-width: 1020px;
 	margin: 0 auto;
 }
 .categoriContain{
 	padding-top: 10px;
-	width: 110px;
+	min-width: 110px;
 	margin: 5px;
 	float: left;
 }
@@ -286,7 +286,7 @@ section{
 	/* background-color: #f4ebdd; */
 }
 .mainSection{
-	width: 1020px;
+	max-width: 1020px;
 	margin: 0 auto;
 	position: relative;
 }
@@ -381,6 +381,9 @@ footer{
     padding: 30px 10px 10px 0;
 	float: left;
 	font-size: 0.8em;
+}
+.location li:NTH-OF-TYPE(6){
+	float: right;
 }
 /* 필드셋 */
 .fieldsetContain{
@@ -790,6 +793,12 @@ span.tabMenu{
 	border-bottom:2px solid #8b8b8b;
 	font-size: 17px;
 }
+.spaquabox{
+	font-size: 12px;
+	background-color: #34b6af;
+	color: white;
+	padding: 0 3px 2px 3px;
+}
 .spgreenbox{
 	font-size: 0.8em;
 	background-color: #00a600;
@@ -1191,12 +1200,77 @@ div.searchdiv form{
 .div11{
 	min-height: 250px;
 }
+/* 메인 상점 리스트 */
+.selectoption2{
+	height: 30px;
+	padding-left: 10px;	
+}
+.div12{
+	position: relative;
+	overflow: hidden;
+}
+@media (min-width: 400px){
+	.shopcontain3{
+		position:relative;
+		width: 96%;
+		margin-bottom: 10px;
+		padding: 0 10px;
+	}
+}
+@media (min-width: 680px){
+	.shopcontain2{
+		width: 47%;
+		float: left;
+		margin-bottom: 20px;
+		padding: 0 10px;
+	}
+}
+@media (min-width: 1010px){
+	.shopcontain1{
+		width: 31.33333%;
+		float: left;
+		margin-bottom: 20px;
+		padding: 0 10px;
+	}
+}
+.divshop{
+	border: 1px solid #808080;
+	background-color: #eee;
+	padding: 15px;
+}
+.div13{
+	width: 100px;
+	height: 100px;
+	border: 1px solid #dfdfdf;
+	border-radius: 50%;
+	display: inline-block;
+}
+.div13 img{
+	width: 100%;
+	height: auto;
+}
+.divshop .star1 img{
+	width: 17px;
+	height: auto;
+}
+.divshop .description1{
+	font-size: 0.8em;
+}
+.divshop .description1 span{
+	color: #ef6816;
+	margin: 0 6px 0 2px;
+	font-weight: bold;
+}
+
 
 
 
 
 
 /* 유틸 클래스 */
+.inline-block{
+	display: inline-block;
+}
 .border-bottom1{
 	border-bottom: 1px solid #8b8b8b;
 }

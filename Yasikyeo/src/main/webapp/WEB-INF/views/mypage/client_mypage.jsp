@@ -122,7 +122,6 @@ $(function () {
 				</div>
 			</div>
 		</fieldset>
-		
 	</div>
 </div>
 <br>
