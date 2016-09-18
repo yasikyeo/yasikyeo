@@ -11,6 +11,7 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeUtility;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -69,7 +70,7 @@ public class MemberController {
 		String receiver=memberEmail;
 		String sender="yasikyeo@yasikyeo.com";
 		
-		String subject="야시켜 이메일 인증 코드 발송";
+		String subject="[야시켜] 이메일 인증 코드";
 		String content="야시켜 이메일 인증 코드 : " + authNum + " 입니다.";
 		
 		try {
@@ -114,20 +115,75 @@ public class MemberController {
 	
 	@RequestMapping("/ajaxCheckUserid.do")
 	@ResponseBody
-	public int ajaxCheckId(@RequestParam String member_Id){
-		logeer.info("ajax-아이디 중복확인, 파라미터 member_Id={}", member_Id);
+	public int ajaxCheckId(@RequestParam String memberId){
+		logeer.info("ajax-아이디 중복확인, 파라미터 member_Id={}", memberId);
 		
-		int result = memberService.checkMemberId(member_Id);
+		int result = memberService.checkMemberId(memberId);
 		logeer.info("ajax 아이디 중복확인 결과, result={}",result);
 		//해당 아이디가 존재하면 1, 존재하지 않으면 2를 리턴
 		
 		return result;
 	}
 	
-	@RequestMapping("/client_findPwd.do")
+	@RequestMapping(value="/client_findPwd.do", method=RequestMethod.GET)
 	public void client_findPwd(){
 	}
 	
+	@RequestMapping(value="/client_findPwd.do", method=RequestMethod.POST)
+	public String client_findPwd_post(@ModelAttribute MemberVO memberVo,HttpServletResponse response,Model model){
+		logeer.info("파라미터 memberVo={}", memberVo);
+		
+		
+		String msg="",url="/login/client_findPwd.do";
+		String memberId="";
+		
+		if(memberVo.getMemberTel()!=null && !memberVo.getMemberTel().isEmpty()){
+			
+			 memberId = memberService.selectMemberByMemberTel(memberVo);
+		
+			if(memberId!=null && !memberId.isEmpty()){
+				Cookie ck = new Cookie("find_memberId", memberId);
+				ck.setMaxAge(10);  
+				ck.setPath("/");
+				response.addCookie(ck);
+				
+				msg="아이디 찾기 성공";
+				
+			}else{
+				msg="아이디 찾기 실패";
+			}
+			
+		}else if(memberVo.getMemberEmail()!=null && !memberVo.getMemberEmail().isEmpty()){
+			memberVo.setMemberPwd(RandomNum());
+			int res = memberService.findPwd(memberVo);
+			
+			if(res>0){
+				String receiver=memberVo.getMemberEmail();
+				String sender="yasikyeo@yasikyeo.com";
+				
+				String subject="[야시켜] 임시비밀번호";
+				String content="야시켜 임시비밀번호 : " + memberVo.getMemberPwd() + " 입니다.";
+				
+				try {
+					emailSender.sendEmail(subject, content,
+							receiver, sender);
+					logeer.info("이메일 발송 성공!!");
+				} catch (MessagingException e) {
+					logeer.info("이메일 발송 실패!!");
+					e.printStackTrace();
+				}
+				
+				msg="임시비밀번호가 이메일로 발송되었습니다.";
+			}else{
+				msg="비밀번호 찾기 실패";
+			}
+		}
+		
+		model.addAttribute("msg",msg);
+		model.addAttribute("url",url);
+		
+		return "common/message";
+	}
 }
 
 

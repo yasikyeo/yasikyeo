@@ -5,11 +5,11 @@
 	<div class="location">
 		<ul>
 			<li>
-				<a href="">홈</a>
+				<a href="<c:url value='/index.do'/>">홈</a>
 			</li>
 			<li>&gt;</li>
 			<li>
-				<a href="">마이페이지</a>
+				<a href="<c:url value='/mypage/client_mypage.do'/>">마이페이지</a>
 			</li>
 			<li>&gt;</li>
 			<li>
@@ -21,10 +21,10 @@
 	</div>
 	<div id="tabs">
 		<ul>
-			<li class="hovereff"><a href="#"><span class="tabMenu">바로결제 내역</span></a></li>
-			<li class="hovereff"><a href="#"><span class="tabMenu">내 정보</span></a></li>
-			<li class="hovereff"><a href="#"><span class="tabMenu">포인트</span></a></li>
-			<li class="noteff"><a href="#"><span class="tabMenu">리뷰관리</span></a></li>
+			<li class="hovereff"><a href="<c:url value='/mypage/client_paymentList.do'/>"><span class="tabMenu">바로결제 내역</span></a></li>
+			<li class="hovereff"><a href="<c:url value='/mypage/client_myinfo.do'/>"><span class="tabMenu">내 정보</span></a></li>
+			<li class="hovereff"><a href="<c:url value='/mypage/client_mypoint.do'/>"><span class="tabMenu">포인트</span></a></li>
+			<li class="noteff"><a href="<c:url value='/mypage/client_myreview.do'/>"><span class="tabMenu">리뷰관리</span></a></li>
 		</ul>
 	</div>
 	<div class="fieldsetContain">
@@ -38,9 +38,9 @@
 				<div class="div3 float-right">
 					<br>
 					<ul>
-						<li class="color-orange"><b>내가 작성한 리뷰보기</b></li>
+						<a href="<c:url value='/mypage/client_myreview.do'/>"><li class="color-orange"><b>내가 작성한 리뷰보기</b></li></a>
 						<li>|</li>
-						<li class="cursor-pointer">작성가능한 리뷰보기</li>
+						<a href="<c:url value='/mypage/client_myreview_reg_possible.do'/>"><li class="cursor-pointer">작성가능한 리뷰보기</li></a>
 					</ul>
 				</div>
 			</div>

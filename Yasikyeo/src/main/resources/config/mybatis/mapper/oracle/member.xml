@@ -16,8 +16,7 @@
 		where member_id=#{memberId}
 	</select>
 	
-	<select id="selectPwd" parameterType="MemberVO"
-		resultType="string">
+	<select id="selectPwd" parameterType="MemberVO"	resultType="string">
 		select member_pwd from member
 		where member_id=#{memberId} and member_withdraw='N'
 	</select>
@@ -26,6 +25,23 @@
 		select * from member
 		where member_id=#{memberId} and member_withdraw='N'
 	</select>
+	
+	<select id="selectMemberByMemberTel" parameterType="MemberVO" resultType="string">
+		select member_Id from member
+		where member_Tel=#{memberTel} and member_Birth=#{memberBirth}
+	</select>
+	
+	<update id="findPwd" parameterType="MemberVO">
+		update member set
+			member_pwd=#{memberPwd}
+		where member_Email=#{memberEmail} and member_Birth=#{memberBirth}
+	</update>
+	
+	<update id="changePwd" parameterType="MemberVO">
+		update member set
+			member_pwd=#{memberPwd}
+		where member_id=#{memberId} and member_withdraw='N'
+	</update>
 	
 	<update id="updateMember" parameterType="MemberVO">
 		update member set
@@ -39,4 +55,6 @@
 			set member_withdraw='Y'
 		where member_id=#{memberId} and member_withdraw='N'
 	</update>
+	
+	
 </mapper>

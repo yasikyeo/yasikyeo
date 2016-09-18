@@ -100,7 +100,7 @@
 				    	<label for="idSave">아이디저장</label> 
 					</li>
 					<li>|</li>
-					<li>비밀번호 찾기</li>
+					<li><a href="<c:url value='/login/client_findPwd.do'/>">비밀번호 찾기</a></li>
 				</ul>
 			</div>
 			<div>
@@ -118,7 +118,7 @@
 		<c:if test="${!empty sessionScope.memberId }">
 			<li><a href="<c:url value='/login/logout.do'/>">로그아웃</a></li>
 		</c:if>		
-		<li><a href="#">마이페이지</a></li>
+		<li><a href="<c:url value='/mypage/client_mypage.do'/>">마이페이지</a></li>
 		<li><a href="#">고객센터</a></li>
 		<li><a href="#">즐겨찾기</a></li>
 	</ul>

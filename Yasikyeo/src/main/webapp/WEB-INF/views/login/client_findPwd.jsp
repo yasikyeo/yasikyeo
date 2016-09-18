@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../inc/top2.jsp" %>
+
 <script type="text/javascript">
 	$(function() {
 	    $( "#tabs" ).tabs();
@@ -40,17 +41,21 @@
 		<div class="fieldsetContain" id="tabs-1">
 			<fieldset>
 				<legend>아이디찾기</legend>
-				<form name="frm" id="" action="">
+				<form name="frm" id="" method="post" action="<c:url value='/login/client_findPwd.do'/>">
 					<div class="div1">
 						<label class="lb1">휴대폰</label>
-						<input type="text"  class="inputText1 flex1" placeholder="'-'를 제외하고 입력해주세요">
+						<input type="text" name="memberTel" class="inputText1 flex1" placeholder="'-'를 제외하고 입력해주세요">
 					</div>
 					<div class="div1">
 						<label class="lb1">생년월일</label>
-						<input type="text"  class="inputText1 flex1" placeholder="8자리 입력(예19850815)">
+						<input type="text" name="memberBirth" class="inputText1 flex1" placeholder="8자리 입력(예19850815)">
 					</div>
 					<div class="div1 vertical-container">
-						<strong>아이디or메일주소찍어주는곳</strong>
+						<strong>
+							<c:if test="${!empty cookie.find_memberId.value}">
+								회원님의 아이디는 ${cookie.find_memberId.value } 입니다.
+							</c:if>
+						</strong>
 					</div>
 					<div class="div1">
 						<button type="submit" class="sub1 fullwidth" >완료</button>
@@ -61,14 +66,14 @@
 		<div class="fieldsetContain" id="tabs-2">
 			<fieldset>
 				<legend>비밀번호찾기</legend>
-				<form name="frm" id="" action="">
+				<form name="frm" id="" method="post" action="<c:url value='/login/client_findPwd.do'/>">
 					<div class="div1">
 						<label class="lb1">이메일</label>
-						<input class="inputText1 flex1" type="text" placeholder="abcd@abcd.com">
+						<input class="inputText1 flex1" name="memberEmail" type="text" placeholder="abcd@abcd.com">
 					</div>
 					<div class="div1">
 						<label class="lb1">생년월일</label>
-						<input class="inputText1 flex1" type="text" placeholder="8자리 입력(예19850815)">
+						<input class="inputText1 flex1" name="memberBirth" type="text" placeholder="8자리 입력(예19850815)">
 					</div>
 					<div class="div1 vertical-container">
 						<strong>가입하신 이메일로 임시비밀번호를 보내드립니다.</strong>
