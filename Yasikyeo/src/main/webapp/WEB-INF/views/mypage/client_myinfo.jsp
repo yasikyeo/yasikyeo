@@ -13,6 +13,35 @@ $(document).ready(function() {
 	    no_label: false                 // Default: false
 	  });
 	  
+	  $("#memSubmit").click(function(event){
+			if($("#memberTel").val().length < 1){
+				alert("휴대폰 번호를 입력하세요");
+				$("#memberTel").focus();
+				return false;
+			}else if($("#memberBirth").val().length < 8){
+				alert("생년월일을 입력하세요");
+				$("#memberBirth").focus();
+				return false;
+			}else if($("#memberNickname").val().length<1){
+				alert("닉네임을 입력하세요");
+				$("#memberNickname").focus();
+				return false;
+			}else if($("#addressDetail").val().length < 1){
+				alert("상세주소를 입력하세요");
+				$("#addressDetail").focus();
+				return false;
+			}else if($("#checkPwd").val()=="인증완료" &&
+					$("#memberPwd").val().length<1){
+				alert("비밀번호를 입력하세요");
+				$("#memberPwd").focus();
+				return false;
+			}else if($("#memberPwd").val()!=$("#memberPwd2").val()){
+				alert("비밀번호가 일치하지 않습니다.");
+				$("#memberPwd2").focus();
+				return false;
+			}
+		});
+	  
 	});
 </script>
 <div class="mainSection">
@@ -45,12 +74,12 @@ $(document).ready(function() {
 						<legend>기본정보</legend>
 						<div class="div1">
 							<label class="lb1">아이디</label>
-							<input class="inputText2 flex1" type="text" name="memberId" disabled="disabled"
+							<input class="inputText2 flex1" type="text" name="memberId" ReadOnly
 								value="${memberVo.memberId }">
 						</div>
 						<div class="div1">
 							<label class="lb1">이메일</label>
-							<input type="text" class="inputText2 flex1" name="memberEmail" id="memberEmail" disabled="disabled"
+							<input type="text" class="inputText2 flex1" name="memberEmail" id="memberEmail" ReadOnly
 								value="${memberVo.memberEmail }" placeholder="abcd@abcd.com">
 						</div>
 						<div class="div1">
@@ -84,18 +113,19 @@ $(document).ready(function() {
 						</div>
 						<div class="div1">
 							<label class="lb1">신규 비밀번호</label>
-							<input class="inputText2 flex1" type="password">
+							<input class="inputText2 flex1" name="memberPwd" id="memberPwd" type="password">
 						</div>
 						<div class="div1">
 							<label class="lb1">비밀번호 확인</label>
-							<input class="inputText2 flex1" type="password">
+							<input class="inputText2 flex1" id="memberPwd2" type="password">
 						</div>
 					</fieldset>
 					<fieldset class="pwdfield">
 						<legend>추가정보</legend>
 						<div class="div1">
 							<label class="lb1">닉네임</label>
-							<input class="inputText2 flex1" type="text" name="memberNickname" value="${memberVo.memberNickname }">
+							<input class="inputText2 flex1" type="text" name="memberNickname" 
+								id="memberNickname" value="${memberVo.memberNickname }">
 						</div>
 						<div class="div2">
 							<label class="lb1"></label>

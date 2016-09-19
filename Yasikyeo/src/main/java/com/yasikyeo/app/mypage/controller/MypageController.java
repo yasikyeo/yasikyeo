@@ -42,7 +42,7 @@ public class MypageController {
 	public void MyReview_reg(){
 	}
 	
-	@RequestMapping("/client_myinfo.do")
+	@RequestMapping(value="/client_myinfo.do",method=RequestMethod.GET)
 	public void MyInfo(HttpSession session,Model model){
 		
 		String memberId = (String) session.getAttribute("memberId");
@@ -51,8 +51,26 @@ public class MypageController {
 		
 		model.addAttribute("memberVo",memberVo);
 	}
-	
 
+	@RequestMapping(value="/client_myinfo.do",method=RequestMethod.POST)
+	public String MyInfo(@ModelAttribute MemberVO memberVo,Model model){
+		
+		logger.info("파라미터 memberVo={}",memberVo);
+		
+		int res = memberService.updateMember(memberVo);
+		
+		String msg="",url="/mypage/client_myinfo.do";
+		if(res>0){
+			msg="회원정보 수정 완료";
+		}else{
+			msg="회원정보 수정 실패";
+		}
+		
+		model.addAttribute("msg",msg);
+		model.addAttribute("url",url);
+		
+		return "common/message";
+	}
 	
 	@RequestMapping("/checkPwd.do")
 	public ModelAndView checkPwd_post(HttpSession session,@RequestParam String oPwd,Model model){

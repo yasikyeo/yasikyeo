@@ -163,7 +163,32 @@
         element_layer.style.top = (((window.innerHeight || document.documentElement.clientHeight) - height)/2 - borderWidth) + 'px';
     }
     
-    $(document).ready(function(){
+    $("#memberId").keyup(function(){
+		if(validate_member_Id($("#memberId").val()) && $("#memberId").val().length>=2){
+			$.ajax({
+				url:"<c:url value='/login/ajaxCheckUserid.do'/>",
+				type:"GET",
+				data:"memberId="+$("#memberId").val(),
+				success:function(res){
+					var result="";
+					if(res==1){
+						result="이미 등록된 아이디입니다.";
+						$("#chkId").val("N");
+					}else if(res==2){
+						result = "사용가능한 아이디입니다.";
+						$("#chkId").val("Y");
+					}
+					$("#message").html(result);
+				},
+				error:function(xhr, status, error){
+					alert(status+":"+error);
+				}
+			});
+		}else{
+			$("#message").html("아이디 규칙에 맞지 않습니다");
+			$("#chkId").val("N");
+		}
+    	
 		$("#memSubmit").click(function(event){
 			if($("#memberName").val().length < 1){
 				alert("이름을 입력하세요");
@@ -185,37 +210,6 @@
 				alert("비밀번호가 일치하지 않습니다.");
 				$("#memberPwd2").focus();
 				return false;
-			}
-		});
-		
-		$("#memberId").keyup(function(){
-			//1 <= 해당 아이디가 존재하는 경우
-			//2 <= 존재하지 않는 경우
-			if(validate_member_Id($("#memberId").val()) && 
-				$("#memberId").val().length>=2){
-				$.ajax({
-					url:"<c:url value='/login/ajaxCheckUserid.do'/>",
-					type:"GET",
-					data:"member_Id="+$("#memberId").val(),
-					success:function(res){
-						var result="";
-						if(res==1){
-							result="이미 등록된 아이디입니다.";
-							$("#chkId").val("N");
-						}else if(res==2){
-							result = "사용가능한 아이디입니다.";
-							$("#chkId").val("Y");
-						}
-						$("#message").html(result);
-					},
-					error:function(xhr, status, error){
-						alert(status+":"+error);
-					}
-				});
-			}else{
-				//유효성 검사를 통과하지 못한 경우
-				$("#message").html("아이디 규칙에 맞지 않습니다");
-				$("#chkId").val("N");
 			}
 		});
 	});

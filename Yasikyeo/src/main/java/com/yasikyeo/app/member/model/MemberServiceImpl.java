@@ -10,8 +10,8 @@ public class MemberServiceImpl implements MemberService {
 	private MemberDAO memberDao;
 	
 	@Override
-	public int insertMember(MemberVO vo) {
-		return memberDao.insertMember(vo);
+	public int insertMember(MemberVO memberVo) {
+		return memberDao.insertMember(memberVo);
 	}
 	
 	@Override
@@ -69,8 +69,13 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public int updateMember(MemberVO vo) {
-		return memberDao.updateMember(vo);
+	public int updateMember(MemberVO memberVo) {
+				
+		if(memberVo.getMemberPwd()!=null && !memberVo.getMemberPwd().isEmpty()){
+			memberDao.changePwd(memberVo);
+		}
+		
+		return memberDao.updateMember(memberVo);
 	}
 
 	@Override

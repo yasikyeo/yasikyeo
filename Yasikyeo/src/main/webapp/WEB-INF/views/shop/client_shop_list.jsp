@@ -26,7 +26,7 @@ $(function () {
 				<a href="">홈</a>
 			</li>
 			<li>&gt;</li>
-			<li><b>메뉴</b></li>
+			<li><b>마이페이지</b></li>
 			<li>|</li>
 			<li><b>주소</b>를 중심으로 총 <span class="color-orange"><b>xx</b></span>곳을 찾았습니다.</li>
 			<li>
@@ -55,9 +55,6 @@ $(function () {
 						<span class="spaquabox">바로결제</span>
 						<span class="spaquabox">만나서결제</span>
 					</div>
-				</div>
-				<div class="modal1">
-					<div class="modal-content1">현재 운영시간이 아닙니다</div>
 				</div>
 			</div>
 		</div>
@@ -113,20 +110,7 @@ $(function () {
 				</div>
 			</div>
 		</div>
-		<br class="clear-both">
-		<div class="vertical-container">
-			<ul class="pagination">
-				<li><a href="#">&laquo;</a></li>
-				<li><a href="#">1</a></li>
-				<li><a class="active" href="#">2</a></li>
-				<li><a href="#">3</a></li>
-				<li><a href="#">4</a></li>
-				<li><a href="#">5</a></li>
-				<li><a href="#">6</a></li>
-				<li><a href="#">&raquo;</a></li>
-			</ul>
-		</div>
-		<br>
+		
 	</div>
 </div>
 <%@ include file="../inc/bottom.jsp" %>

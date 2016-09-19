@@ -24,13 +24,13 @@ public interface MemberService {
 	public static final int CHANGE_PWD_AGREE=1;
 	public static final int CHANGE_PWD_DISAGREE=2;
 	
-	public int insertMember(MemberVO vo);
+	public int insertMember(MemberVO memberVo);
 	public int checkMemberId(String memberId);
 	public int loginCheck(MemberVO memberVo);
 	public int checkPwd(MemberVO memberVo);
 	public MemberVO selectMemberByMemberId(String memberId);
 	public String selectMemberByMemberTel(MemberVO memberVo);
 	public int findPwd(MemberVO memberVo);
-	public int updateMember(MemberVO vo);
+	public int updateMember(MemberVO memberVo);
 	public int withdrawMember(String memberId);
 }

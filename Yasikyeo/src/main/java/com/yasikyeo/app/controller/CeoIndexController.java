@@ -60,10 +60,4 @@ public class CeoIndexController {
 		logger.info("event_popup 페이지 로딩");
 	}
 	
-	@RequestMapping("ceo_templet/marketadmin.do")
-	public void marketadmin(){
-		logger.info("marketadmin 페이지 로딩");
-	}
-	
-	
 }

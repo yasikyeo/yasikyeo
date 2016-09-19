@@ -12,7 +12,7 @@
 	</insert>
 	
 	<select id="selectCountMemberId" parameterType="string" resultType="int">
-		select count(*)	from member 
+		select count(*)	from member
 		where member_id=#{memberId}
 	</select>
 	
@@ -45,7 +45,7 @@
 	
 	<update id="updateMember" parameterType="MemberVO">
 		update member set
-			member_email=#{memberEmail},member_tel=#{memberTel},
+			member_birth=#{memberBirth},member_tel=#{memberTel},member_nickname=#{memberNickname},
 			postcode=#{postcode},address=#{address}, addressDetail=#{addressDetail}
 		where member_id=#{memberId} and member_withdraw='N'
 	</update>
@@ -55,6 +55,5 @@
 			set member_withdraw='Y'
 		where member_id=#{memberId} and member_withdraw='N'
 	</update>
-	
 	
 </mapper>

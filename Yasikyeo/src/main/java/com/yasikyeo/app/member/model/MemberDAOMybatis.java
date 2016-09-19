@@ -9,8 +9,8 @@ public class MemberDAOMybatis extends SqlSessionDaoSupport implements MemberDAO{
 	private String namespace="config.mybatis.mapper.oracle.member";
 	
 	@Override
-	public int insertMember(MemberVO vo) {
-		return getSqlSession().insert(namespace+".insertMember", vo);
+	public int insertMember(MemberVO memberVo) {
+		return getSqlSession().insert(namespace+".insertMember", memberVo);
 	}
 	
 	@Override
@@ -34,8 +34,8 @@ public class MemberDAOMybatis extends SqlSessionDaoSupport implements MemberDAO{
 	}
 	
 	@Override
-	public int updateMember(MemberVO vo){
-		return getSqlSession().update(namespace+".updateMember", vo); 
+	public int updateMember(MemberVO memberVo){
+		return getSqlSession().update(namespace+".updateMember", memberVo); 
 	}
 	
 	@Override
@@ -46,5 +46,10 @@ public class MemberDAOMybatis extends SqlSessionDaoSupport implements MemberDAO{
 	@Override
 	public int findPwd(MemberVO memberVo) {
 		return getSqlSession().update(namespace+".findPwd", memberVo);
+	}
+
+	@Override
+	public int changePwd(MemberVO memberVo) {
+		return getSqlSession().update(namespace+".changePwd", memberVo);
 	}
 }
