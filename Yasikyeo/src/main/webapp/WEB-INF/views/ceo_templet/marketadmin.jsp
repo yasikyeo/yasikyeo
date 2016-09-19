@@ -23,7 +23,7 @@
 	<div id="wrap">
 		<div id="top_1">
 			<div id="header">
-				<div id="logo">
+				<div id="logo ">
 					<a href="test.do"><img src="${pageContext.request.contextPath}/images/logo_p.png"	width="188" height="90"></a>
 				</div>
 				<div id="nav">
