@@ -79,5 +79,9 @@ public class TempletTestContoller {
 	public String csuTest14(){
 		return "shop/client_shop_list";
 	}
+	@RequestMapping("/csuTest15.do")
+	public String csuTest15(){
+		return "shop/client_shop_det";
+	}
 	
 }
