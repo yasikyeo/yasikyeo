@@ -6,6 +6,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.xml.ws.RequestWrapper;
 
 import org.apache.commons.io.filefilter.FalseFileFilter;
 import org.omg.PortableInterceptor.USER_EXCEPTION;
@@ -27,6 +28,8 @@ import com.yasikyeo.app.ceo.model.CeoVO;
 
 import com.yasikyeo.app.member.model.MemberService;
 import com.yasikyeo.app.member.model.MemberVO;
+
+import oracle.net.aso.l;
 
 @Controller
 @RequestMapping("/admintemplet")
@@ -112,20 +115,24 @@ public class AdminController {
 			model.addAttribute("url", url);
 			
 			return "common/message";
-			
-	
-			
-		
-		
 	}
 	
+	@RequestMapping(value="/adminInsertNotice.do", method=RequestMethod.GET)
+	public String adminNoticeWrite_view(){
+		//1.
+			logger.info("공지사항 등록 보여주기");
+		//2.
+		
+		//3.
+			return "admintemplet/adminInsertNotice";
+	}
 	
 	@RequestMapping(value="/eventNotice.do", method=RequestMethod.GET)
 	public String admineventNoticeView(){
 		//1.
 			logger.info("공지사항/이벤트 화면 보여주기");
 		//2.
-		
+			
 		//3.
 			return "admintemplet/eventNotice";
 	}
@@ -160,17 +167,6 @@ public class AdminController {
 		//3.
 			return "admintemplet/messageBoard";
 	}
-	
-	@RequestMapping(value="/register.do", method=RequestMethod.GET)
-	public String registerView(){
-		//1.
-			logger.info("회원 등록보여주기");
-		//2.	
-			
-		//3.
-			return "admintemplet/register";
-	}	
-	
 	
 	@RequestMapping(value="/fandA.do", method=RequestMethod.GET)
 	public String fandAView(){

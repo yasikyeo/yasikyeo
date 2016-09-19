@@ -11,7 +11,7 @@
  			
  			<section class="contents">
 					<article class="centerCon">
-						관리자 로그인입니다
+						관리자 메인페이지입니다
 					</article>
 			</section>
  			

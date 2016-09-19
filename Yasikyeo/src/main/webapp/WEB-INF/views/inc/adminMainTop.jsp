@@ -33,7 +33,7 @@
 	<div id="wrap">
 		<!-- header -->		
 		<div id="header">
-			<h1><a href="<c:url value='/admintemplet/adminMain.do' />">
+			<h1><a href="<c:url value='/admintemplet/adminIndex.do' />">
 			<img alt="로고 이미지" src="${pageContext.request.contextPath}/images/admin/adminlogo.png" 
 			height="80px" /></a></h1>
 			<div id="headerRight">
@@ -66,12 +66,6 @@
 					<li id="messageBoard">
 						<a href="<c:url value='/admintemplet/messageBoard.do'/>">
 						<img alt="이미지" src="${pageContext.request.contextPath}/images/admin/board.png" width="100px">
-						</a>
-					</li>
-					<li id="register">
-						<a href="<c:url value='/admintemplet/register.do'/>">
-						<img alt="이미지" src="${pageContext.request.contextPath}/images/admin/store.png" width="100px">
-						<br>
 						</a>
 					</li>
 					<li id="fandA">
