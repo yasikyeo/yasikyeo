@@ -61,7 +61,7 @@ public class CeoIndexController {
 	
 	@RequestMapping("ceo_templet/marketadmin.do")
 	public void marketadmin(){
-		logger.info("marketadmin 페이지 로딩");
+		logger.info("marketadmin 페이지 로딩.");
 	}
 	
 }
