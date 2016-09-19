@@ -49,7 +49,6 @@
 	</interceptors>
 	
 
-	
 	<beans:bean id="jsonView"
 	class="org.springframework.web.servlet.view.json.MappingJacksonJsonView" />
 	
