@@ -28,8 +28,6 @@ import com.yasikyeo.app.ceo.model.CeoVO;
 import com.yasikyeo.app.member.model.MemberService;
 import com.yasikyeo.app.member.model.MemberVO;
 
-import oracle.net.aso.l;
-
 @Controller
 @RequestMapping("/admintemplet")
 public class AdminController {

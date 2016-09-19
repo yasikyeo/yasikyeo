@@ -152,7 +152,7 @@ $(document).ready(function() {
 					</div>
 					<br>
 					<div class="float-right">
-						<a href="#"><span class="sp2">회원탈퇴 하러가기</span></a>
+						<a href="<c:url value='/login/client_deleteMember.do'/>"><span class="sp2">회원탈퇴 하러가기</span></a>
 					</div>
 				</form>
 			</fieldset>

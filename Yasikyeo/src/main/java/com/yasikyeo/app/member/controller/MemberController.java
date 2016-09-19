@@ -14,6 +14,7 @@ import javax.mail.internet.MimeUtility;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -113,7 +114,7 @@ public class MemberController {
 		return "common/message";
 	}
 	
-	@RequestMapping("/ajaxCheckUserid.do")
+	@RequestMapping("/ajaxCheckMemberId")
 	@ResponseBody
 	public int ajaxCheckId(@RequestParam String memberId){
 		logeer.info("ajax-아이디 중복확인, 파라미터 memberId={}", memberId);
@@ -177,6 +178,37 @@ public class MemberController {
 			}else{
 				msg="비밀번호 찾기 실패";
 			}
+		}
+		
+		model.addAttribute("msg",msg);
+		model.addAttribute("url",url);
+		
+		return "common/message";
+	}
+	
+	@RequestMapping(value="/client_deleteMember.do",method=RequestMethod.GET)
+	public void client_deleteMember_get(){
+	}
+	
+	@RequestMapping(value="/client_deleteMember.do",method=RequestMethod.POST)
+	public String client_deleteMember_post(HttpSession session,@RequestParam String delconfirm,Model model){
+		
+		logeer.info("탈퇴사유 파라미터 delconfirm={}", delconfirm);
+		
+		String memberId = (String) session.getAttribute("memberId");
+		
+		int res = memberService.withdrawMember(memberId);
+		
+		String msg="", url="/index.do";
+		if(res>0){
+			msg="회원탈퇴가 완료되었습니다.";
+			
+			session.removeAttribute("memberId");
+			session.removeAttribute("memberName");
+			session.removeAttribute("authcode");
+			
+		}else{
+			msg="회원탈퇴 실패";
 		}
 		
 		model.addAttribute("msg",msg);
