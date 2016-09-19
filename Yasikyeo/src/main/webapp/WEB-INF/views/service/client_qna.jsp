@@ -5,12 +5,12 @@
 <script type="text/javascript" src="<c:url value='/ckeditor/ckeditor.js'/>"></script>
 <script type="text/javascript">
 $(document).ready(function() {
-	CKEDITOR.editorConfig = function( config ) {
-		config.width = 755;     // 500 pixels wide.
-	};
 	CKEDITOR.replace('editor',{
 		customConfig: ' '
 	});
+	CKEDITOR.editorConfig = function( config ) {
+		config.width = 755;     // 500 pixels wide.
+	};
 	
 	  $.uploadPreview({
 	    input_field: "#image-upload1",   // Default: .image-upload

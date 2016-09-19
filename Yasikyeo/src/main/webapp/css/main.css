@@ -1394,28 +1394,32 @@ ul.ul1{
       position: fixed;
       width: 215px;
 }
+.img1{
+	width: 207px;
+	height: 146px;
+}
 /* 
 	아코디언1 
 */
-.accordion1 .ui-accordion-header {
+.group1 > .ui-accordion-header {
     display: block;
     cursor: pointer;
     position: relative;
-    padding: .3em 2em;
+    padding: 1em 2em;
     font-size: 100%;
     background: #808080;
     color: white;
     margin-top: 20px;
 }
-.accordion1 .ui-state-active{ 
+.group1 > .ui-state-active{ 
     background: #3d3d3d;
     color: white;
 }
-.accordion1 .ui-accordion-content {
-    padding-bottom: 3em;
+.group1 > .ui-accordion-content {
+    padding-bottom: 2em;
     overflow: auto;
 }
-.accordion1 span.ui-icon{
+.btAccodion1 > span.ui-icon{
 	width: 16px;
 	height: 16px;
     background-repeat: no-repeat;
@@ -1423,28 +1427,34 @@ ul.ul1{
     right: 20px;
     top: 35%; 
 }
-.accordion1 span.ui-icon-difult{
+.btAccodion1 > span.ui-icon-difult{
 	background-image: url("../images/sort-down.png");
 }
-.accordion1 span.ui-icon-active{
+.btAccodion1 > span.ui-icon-active{
 	background-image: url("../images/up-arrow.png");
 }
 /* 
 	아코디언2 
 */
-.accordion2 .ui-accordion-header {
-    display: inline-block;
-    cursor: pointer;
+.group2 > .ui-accordion-header {
+    display: block;
     position: relative;
-    padding: .3em 2em;
+    padding: .8em 2em;
     font-size: 100%;
-    background: #808080;
     border: 1px solid silver;
+    border-top: none;
+    cursor: pointer;
 }
-.accordion2 .ui-accordion-content {
+.group2 > .ui-state-active{ 
+    border-bottom: none;
+}
+.group2 > .ui-accordion-content {
 	background: #f3f3f3;
+	padding: 1.3em 1em;
+	border: 1px solid silver;
+	border-top: none;
 }
-.accordion2 span.ui-icon{
+.btAccodion2 > span.ui-icon{
 	width: 16px;
 	height: 16px;
     background-repeat: no-repeat;
@@ -1452,18 +1462,54 @@ ul.ul1{
     right: 20px;
     top: 35%; 
 }
-.accordion2 span.ui-icon-difult{
+.btAccodion2 > span.ui-icon-difult{
 	background-image: url("../images/sort-down-b.png");
 }
-.accordion2 span.ui-icon-active{
+.btAccodion2 > span.ui-icon-active{
 	background-image: url("../images/up-arrow-gr.png");
 }
+
+/*
+	이미지섬네일(상점디테일)
+*/
+.sumnail1{
+	width: 30%;
+	height: 193px;
+	float: left;
+	padding: 10px;
+}
+.card{
+	border-radius: 5px;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+.card img{
+	width: 100%;
+	background: red;
+	border-radius: 5px 5px 0 0;
+}
+.contain3{
+	padding: 2px 5px;
+	font-size: 14px;
+}
+.contain4{
+	padding: 10px;
+	font-size: 14px;
+	background: #f3f3f3;
+	border-top: 1px solid silver;
+}
+
+
 
 
 
 /*
  	유틸 클래스 
 */
+
 .overflow-hidden{
 	overflow: hidden;
 }
@@ -1480,6 +1526,10 @@ ul.ul1{
 .bord-1sg{
 	border: 1px solid green;
 }
+.bord-1ss{
+	border: 1px solid silver;
+}
+
 .ma-t-20px{
 	margin-top: 20px;
 }
@@ -1488,6 +1538,12 @@ ul.ul1{
 }
 .ma-l-60px{
 	margin-left: 60px;
+}
+.paddingCol3px{
+	padding: 3px;
+}
+.paddingCol20px{
+	padding: 20px 0 10px 0;
 }
 .padding3px{
 	padding: 3px;
@@ -1522,6 +1578,10 @@ ul.ul1{
 	color: white;
 	padding: 3px 8px;
 }
+
+.font1-2em{
+	font-size: 1.2em;
+}
 .font17px{
 	font-size: 17px;
 }
@@ -1530,6 +1590,12 @@ ul.ul1{
 }
 .font16px{
 	font-size: 16px;
+}
+.font0-8em{
+	font-size: 0.8em;
+}
+.font0-9em{
+	font-size: 0.9em;
 }
 .inline-block{
 	display: inline-block;

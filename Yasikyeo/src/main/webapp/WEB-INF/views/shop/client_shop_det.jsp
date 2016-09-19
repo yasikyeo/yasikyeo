@@ -22,34 +22,44 @@ $(function () {
     		activeHeader: "ui-icon-active"
     };
 	$( ".accordion1" ).accordion({
-    	header: "> div > .btAccodion",
+    	header: "> div > .btAccodion1",
     	collapsible: true,
     	heightStyle: "content",
-    	active: false,
+    	active: 0,
     	icons: icons
 	    }).sortable({
 	        axis: "y",
-	        handle: ".btAccodion",
+	        handle: ".btAccodion1",
 	        stop: function( event, ui ) {
-	          ui.item.children( ".btAccodion" ).triggerHandler( "focusout" );
+	          ui.item.children( ".btAccodion1" ).triggerHandler( "focusout" );
 	          $( this ).accordion( "refresh" );
 	        }
 	});
 	$( ".accordion2" ).accordion({
-    	header: "> div > .btAccodion",
+    	header: "> div .btAccodion2",
     	collapsible: true,
     	heightStyle: "content",
-    	active: false,
+    	active: true,
     	icons: icons
 	    }).sortable({
 	        axis: "y",
-	        handle: ".btAccodion",
+	        handle: ".btAccodion2",
 	        stop: function( event, ui ) {
-	          ui.item.children( ".btAccodion" ).triggerHandler( "focusout" );
+	          ui.item.children( ".btAccodion2" ).triggerHandler( "focusout" );
 	          $( this ).accordion( "refresh" );
 	        }
 	});
+	$("input[type=reset]").click(function() {
+		$(this).parents(".group2").find(".btAccodion2").click();
+	});
 	
+	$(".sumnail1").click(function(){
+		var selector=$(this).find("img").attr("alt");
+		selector="#"+selector;
+		
+		$(selector).parents(".group1").find(".btAccodion1").click();
+		$(selector).click();
+	});
 });
 </script>
 <div class="mainSection">
@@ -91,21 +101,161 @@ $(function () {
 				<div class="flex">
 					<div class="flex flex1 align-center" id="menu">
 						<a class="padding15px flex1">
-							<img alt="" src="<c:url value='/images/menu.png'/>">
+							<img alt="메뉴" src="<c:url value='/images/menu.png'/>">
 							<span class="font1-1em"><b>메뉴</b></span>
 						</a>
 					</div>
 					<div class="flex flex1 align-center bgbrown ">
 						<a class="padding15px flex1" href="#review">
-							<img alt="" src="<c:url value='/images/edit.png'/>">
+							<img alt="리뷰" src="<c:url value='/images/edit.png'/>">
 							<span class="font1-1em"><b>리뷰</b></span>
 						</a>
 					</div>
 				</div>
 				<div class="accordion1 contain3">
+					<!-- 추천메뉴 -->
+					<div class="group1">
+						<div class="btAccodion1">
+							<div class="inline-block">
+								<b>추천메뉴</b>
+							</div>
+						</div>
+					    <div>
+					    	<!-- 섬네일반복 -->
+							<div class="sumnail1">
+								<div class="card">
+									<img alt="m2" src="">
+									<div class="contain3">
+										<p>리치골드피자</p>
+										<p><b>15,000원</b></p>
+									</div>
+								</div>
+							</div>
+					    	<!-- /섬네일반복 -->
+					    	<!-- 섬네일반복 -->
+							<div class="sumnail1">
+								<div class="card">
+									<img alt="m2" src="">
+									<div class="contain3">
+										<p>리치골드피자</p>
+										<p><b>15,000원</b></p>
+									</div>
+								</div>
+							</div>
+					    	<!-- /섬네일반복 -->
+					    	<!-- 섬네일반복 -->
+							<div class="sumnail1">
+								<div class="card">
+									<img alt="m2" src="">
+									<div class="contain3">
+										<p>리치골드피자</p>
+										<p><b>15,000원</b></p>
+									</div>
+								</div>
+							</div>
+					    	<!-- /섬네일반복 -->
+					    	<!-- 섬네일반복 -->
+							<div class="sumnail1">
+								<div class="card">
+									<img alt="m2" src="">
+									<div class="contain3">
+										<p>리치골드피자</p>
+										<p><b>15,000원</b></p>
+									</div>
+								</div>
+							</div>
+					    	<!-- /섬네일반복 -->
+					    </div>
+					</div>
+					<!-- /추천메뉴 -->
 					<!-- 카테고리반복 -->
 					<div class="group1">
-						<div class="btAccodion">
+						<div class="btAccodion1">
+							<div class="inline-block">
+								<b>모밀 Set</b>
+								<p class="sp2">- 곱배기 추가시 2,000원</p>
+							</div>
+						</div>
+					    <div class="accordion2">
+							<!-- 메뉴반복 -->
+					    	<div class="group2">
+								<div class="btAccodion2" id="m1">
+									<span>1.만두+냉모밀1</span>
+									<p class="sp2">설명1</p>
+								</div>
+							    <div>
+							    	  <!-- 컨텐츠내용 -->
+								      <p>
+								      	<img class="img1" alt="메뉴" src="">
+								      	<span class="font0-8em">설명1</span>
+								      </p>
+								      <!-- 옵션반복 -->
+								      <div class="paddingCol20px font0-9em">
+									      <p><b>가격<span class="color-orange">(필수선택)</span></b></p>
+									      <p>
+									      	<label><input type="radio" name="op1">15,000원</label>
+									      	<label><input type="radio" name="op1">17,000원</label>
+									      </p>
+								      </div>
+								      <!-- /옵션반복 -->
+								      <!-- 추가선택 -->
+								      <div class="paddingCol20px font0-9em">
+									      <p><b>추가선택<span class="color-orange">(1개이상 선택가능)</span></b></p>
+									      <p>
+									      	<label><input type="checkbox" name="op2">공기밥1,000원</label>
+									      	<label><input type="checkbox" name="op3">사리추가2,000원</label>
+									      </p>
+								      </div>
+							      	  <!-- 추가선택 -->
+							      	  <div class="paddingCol20px flex">
+							      	  	<input class="flex3 btblack padding15px font1-2em" type="button" value="장바구니 담기">
+							      	  	<input class="flex1 btgray padding15px font1-2em" type="reset" value="취소">
+							      	  </div>
+							    </div>
+							</div>
+					    	<!-- /메뉴반복 -->
+					    	<!-- 메뉴반복 -->
+					    	<div class="group2">
+								<div class="btAccodion2"  id="m2">
+									<span>1.만두+냉모밀1</span>
+									<p class="sp2">설명1</p>
+								</div>
+							    <div>
+							    	  <!-- 컨텐츠내용 -->
+								      <p>
+								      	<img class="img1" alt="메뉴" src="">
+								      	<span class="font0-8em">설명1</span>
+								      </p>
+								      <!-- 옵션반복 -->
+								      <div class="paddingCol20px font0-9em">
+									      <p><b>가격<span class="color-orange">(필수선택)</span></b></p>
+									      <p>
+									      	<label><input type="radio" name="op1">15,000원</label>
+									      	<label><input type="radio" name="op1">17,000원</label>
+									      </p>
+								      </div>
+								      <!-- /옵션반복 -->
+								      <!-- 추가선택 -->
+								      <div class="paddingCol20px font0-9em">
+									      <p><b>추가선택<span class="color-orange">(1개이상 선택가능)</span></b></p>
+									      <p>
+									      	<label><input type="checkbox" name="op2">공기밥1,000원</label>
+									      	<label><input type="checkbox" name="op3">사리추가2,000원</label>
+									      </p>
+								      </div>
+							      	  <!-- 추가선택 -->
+							      	  <div class="paddingCol20px flex">
+							      	  	<input class="flex3 btblack padding15px font1-2em" type="button" value="장바구니 담기">
+							      	  	<input class="flex1 btgray padding15px font1-2em" type="reset" value="취소">
+							      	  </div>
+							    </div>
+							</div>
+					    	<!-- /메뉴반복 -->
+					    </div>
+					</div>
+					<!-- /카테고리반복 -->
+					<div class="group1">
+						<div class="btAccodion1">
 							<div class="inline-block">
 								<b>모밀 Set</b>
 								<p class="sp2">- 곱배기 추가시 2,000원</p>
@@ -113,10 +263,8 @@ $(function () {
 						</div>
 					    <div class="accordion2">
 					    	<div class="group2">
-								<div class="btAccodion">
+								<div class="btAccodion2"  id="m3">
 									<span>1.만두+냉모밀1</span>
-									<b>11,000원</b>
-									<img alt="카트" src="">
 								</div>
 							    <div>
 							      <p>컨텐츠</p>
@@ -125,20 +273,14 @@ $(function () {
 					    </div>
 					</div>
 					<!-- 카테고리반복 -->
-					<div class="group">
-						<div class="btAccodion">
-							<div class="inline-block">
-								<b>모밀 Set</b>
-								<p class="sp2">- 곱배기 추가시 2,000원</p>
-							</div>
-						</div>
-					    <div>
-					      <p>컨텐츠</p>
-					    </div>
-					</div>
-					<!-- 카테고리반복 -->
 					<br>
 				</div>				
+				<!-- 원산지영역 -->
+				<div class="contain4">
+					<p class="paddingCol3px"><b>원산지</b></p>
+					<p class="paddingCol3px">도우(국내산),불고기(국내산)</p>
+				</div>
+				<!-- 원산지영역 -->
 			</div>
 			<!-- 리뷰영역 -->
 			<div class="contain2 ma-t-20px">
