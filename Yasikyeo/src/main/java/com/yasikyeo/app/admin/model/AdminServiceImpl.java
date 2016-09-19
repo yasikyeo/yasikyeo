@@ -1,7 +1,12 @@
 package com.yasikyeo.app.admin.model;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.yasikyeo.app.ceo.model.CeoVO;
+import com.yasikyeo.app.member.model.MemberVO;
 
 @Service
 public class AdminServiceImpl implements AdminService{
@@ -32,5 +37,45 @@ public class AdminServiceImpl implements AdminService{
 	@Override
 	public AdminVO selectMemberByMemberId(String adminId) {
 		return adminDao.selectMemberByMemberId(adminId);
+	}
+
+	@Override
+	public List<MemberVO> selectMember() {
+		return adminDao.selectMember();
+	}
+
+	@Override
+	public List<CeoVO> selectCeo() {
+		return adminDao.selectCeo();
+	}
+
+	@Override
+	public MemberVO selectByNoMember(int memberNo) {
+		return adminDao.selectByNoMember(memberNo);
+	}
+
+	@Override
+	public CeoVO selectByNoCeoMember(int ceoNo) {
+		return adminDao.selectByNoCeoMember(ceoNo);
+	}
+
+	@Override
+	public int updateStop(int memberNo) {
+		return adminDao.updateStop(memberNo);
+	}
+
+	@Override
+	public int updateUser(int memberNo) {
+		return adminDao.updateUser(memberNo);
+	}
+
+	@Override
+	public int updateCeoStop(int ceoNo) {
+		return adminDao.updateCeoStop(ceoNo);
+	}
+
+	@Override
+	public int updateCeo(int ceoNo) {
+		return adminDao.updateCeo(ceoNo);
 	}
 }

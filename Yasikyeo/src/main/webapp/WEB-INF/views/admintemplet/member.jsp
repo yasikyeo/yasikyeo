@@ -12,7 +12,8 @@
  				</dl>
 				
  			</nav>
- 				<div>
+ 			
+ 			<div>
  					<table class="box2">
  						<caption>회원</caption>
 			<colgroup>
@@ -40,7 +41,7 @@
 								<c:if test="${!empty usermember }">
 								<c:forEach var="userVO" items="${usermember}">
 									<tr align="center">
-										<td>${userVO.memberId}</td>
+										<td><a href="<c:url value='/admintemplet/memberDetail.do?memberNo=${userVO.memberNo }'/>">${userVO.memberId}</a></td>
 										<td>${userVO.memberName}</td>
 										<td>${userVO.memberNickname}</td>
 										<td>${userVO.memberBirth}</td>
@@ -51,49 +52,5 @@
 							</tbody>
 						</table>
 					</div>
-						<br><br>
-					<div>
-						<table class="box2">
-										<caption>ceo회원</caption>
-			<colgroup>
-				<col style="width:30%;" />
-				<col style="width:20%;" />
-				<col style="width:30%;" />
-				<col style="width:20%;" />
-			</colgroup>
-							<thead>
-								<tr>
-									<th>아이디</th>
-									<th>이름</th>
-									<th>주소</th>
-									<th>전화번호</th>
-								</tr>
-							</thead>
-							<tbody>
-								<c:if test="${empty ceomember}">
-									<tr>
-										<td colspan="4" align="center">데이터가 없습니다</td>
-									</tr>
-								</c:if>
-							
-								<c:if test="${!empty ceomember}">
-								<c:forEach var="ceoVO" items="${ceomember}">
-									<tr>
-									<td>${ceoVO.ceoId}</td>
-									<td>${ceoVO.ceoName}</td>
-									<td>${ceoVO.address}</td>
-									<td>${ceoVO.ceoTel}</td>
-									</tr>
-								</c:forEach>
-								</c:if>	
-							</tbody>
-						</table>
-				</div>
-					
-				
-		
  			
- 		</div>
- 				 	
-			
-		
+ 			</div>

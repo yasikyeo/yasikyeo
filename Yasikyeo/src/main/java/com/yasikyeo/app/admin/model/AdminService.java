@@ -1,6 +1,11 @@
 package com.yasikyeo.app.admin.model;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
+
+import com.yasikyeo.app.ceo.model.CeoVO;
+import com.yasikyeo.app.member.model.MemberVO;
 
 
 public interface AdminService {
@@ -10,6 +15,15 @@ public interface AdminService {
 	public static final int PWD_DISAGREE=2;//비밀번호 불일치
 	public static final int ID_NONE=3; //해당아이디가 없는 경우
 	
+	
 	public int loginCheck(AdminVO adminVo);
 	public AdminVO selectMemberByMemberId(String adminId);
+	public List<MemberVO> selectMember();
+	public List<CeoVO> selectCeo();
+	public MemberVO selectByNoMember(int memberNo);
+	public CeoVO selectByNoCeoMember(int ceoNo);
+	public int updateStop(int memberNo);
+	public int updateUser(int memberNo);
+	public int updateCeoStop(int ceoNo);
+	public int updateCeo(int ceoNo);
 }

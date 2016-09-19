@@ -178,3 +178,90 @@ body, td, th{
 	padding: 1% 0 0 1%;
 	width: 78%;
 }
+/* 테이블 */
+
+body, td, th, span, p{
+	font-family: 'nanum gothic', 맑은 고딕, 한컴돋움, 돋움;
+	font-size: 0.9em;
+	color:#555555;
+}
+	
+td, th{
+	padding:4px;
+}
+
+table{
+	margin: 0;
+	padding: 0;
+	border-collapse: collapse;
+}
+
+table.box, table.box2{
+	margin: 0;
+	padding: 0;
+	border: solid silver 1px;
+	border-collapse: collapse;
+}
+
+table.box2 th{
+	background-color: #eeeeee;
+	border: solid silver 1px;
+}
+
+table.box2 td{
+	border: solid silver 1px;	
+}
+
+td.line
+{
+	border-bottom:solid 1px silver;
+}
+
+caption{
+		visibility:hidden;
+		font-size:0.1em;
+	}	
+	
+/* 상세보기	 */
+.divForm div, .divForm label, .divForm .sp1{
+		font-size:1.0em; 
+	}
+	.divForm form, .divForm{
+		width: 650px;
+		}
+	.divForm fieldset	{
+		width: 90%;
+		padding: 0;
+		margin: 0 auto;
+		border: 0;
+		border-bottom: 2px solid #e2e2e2;
+		}
+	.divForm legend	{
+		font-weight: bold;
+		color: #555555; /* #7AA3EB; */
+		padding: 10px 0;
+		margin:10px 0;
+		font-size: 1.3em;
+		}	
+	.divForm div{
+		clear: both;
+		border-bottom: 1px solid #eee;
+		padding: 5px 0;
+		margin: 0;
+		overflow: auto;
+		}	
+	.divForm .firstDiv	{
+		border-top: 2px solid #e2e2e2/* #aacc00 */;
+	}
+	.divForm .lastDiv	{
+		border-bottom: 1px solid silver;
+	}
+		
+	.divForm label, .divForm .sp1	{
+		width: 20%;
+		float: left;
+		text-align: right;
+		padding: 3px 15px 0 0;
+		clear: left;		
+		font-weight: bold;
+		}

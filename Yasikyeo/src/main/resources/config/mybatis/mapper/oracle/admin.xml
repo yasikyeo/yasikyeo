@@ -13,4 +13,38 @@
 		select * from admin
 		where admin_id=#{adminId}
 	</select>
+	<select id="selectUserMember" resultType="MemberVO">
+		select * from member
+	</select>
+	<select id="selectCeoMember" resultType="CeoVO">
+		select * from ceo
+	</select>
+	<select id="selectByNoMember" parameterType="int" resultType="MemberVO">
+		select * from member
+		where member_no=#{memberNo}
+	</select>
+	<select id="selectByNoCeoMember" parameterType="int" resultType="CeoVO">
+		select * from ceo
+		where ceo_no=#{ceoNo}
+	</select>
+	<update id="updatestop" parameterType="int">
+		update member
+		set authcode='STOP'
+		where member_no=#{memberNo}
+	</update>
+	<update id="updateuser" parameterType="int">
+		update member
+		set authcode='USER'
+		where member_no=#{memberNo}
+	</update>
+	<update id="updateceostop" parameterType="int">
+		update ceo
+		set authcode='STOP'
+		where member_no=#{memberNo}
+	</update>
+	<update id="updateceo" parameterType="int">
+		update ceo
+		set authcode='USER'
+		where member_no=#{memberNo}
+	</update>
 </mapper>
