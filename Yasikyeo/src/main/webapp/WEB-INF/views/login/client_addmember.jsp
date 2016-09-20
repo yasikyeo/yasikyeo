@@ -164,7 +164,7 @@
     }
     
     $("#memberId").keyup(function(){
-		if(validate_member_Id($("#memberId").val()) && $("#memberId").val().length>=2){
+		if(validate_member_Id($("#memberId").val()) && $("#memberId").val().length>=4){
 			$.ajax({
 				url:"<c:url value='/login/ajaxCheckMemberId.do'/>",
 				type:"GET",
@@ -191,19 +191,19 @@
     	
 		$("#memSubmit").click(function(event){
 			if($("#memberName").val().length < 1){
-				alert("이름을 입력하세요");
+				alert("이름을 입력하세요.");
 				$("#memberName").focus();
 				return false;
 			}else if($("#authNum").val()!="인증완료"){
-				alert("이메일 인증을 해주세요");
+				alert("이메일 인증을 하세요.");
 				$("#memberEmail").focus();
 				return false;
 			}else if($("#memberNickname").val().lenght<1){
-				alert("닉네임을 입력하세요");
+				alert("닉네임을 입력하세요.");
 				$("#memberNickname").focus();
 				return false;
 			}else if($("#memberPwd").val().length<1){
-				alert("비밀번호를 입력하세요");
+				alert("비밀번호를 입력하세요.");
 				$("#memberPwd").focus();
 				return false;
 			}else if($("#memberPwd2").val()!=$("#memberPwd2").val()){
@@ -215,7 +215,7 @@
 	});
     
 	function validate_member_Id(memberId){
-		var pattern = new RegExp(/^[a-zA-Z0-9_]+$/g);
+		var pattern = new RegExp(/^[a-z0-9_]+$/g);
 		
 		return pattern.test(memberId);		
 	}

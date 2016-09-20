@@ -21,7 +21,7 @@
 				<div id="nav">
 					<div class="menu_test">
 						<ul>
-							<li class="float_leftmenu"><a href="<c:url value='/ceo/index.do'/>">내 업소관리</a>
+							<li class="float_leftmenu"><a href="<c:url value='/ceo/marketadmin/marketadmin.do'/>">내 업소관리</a>
 								<div class="open_menu">
 									<ul>
 										<li><a href="">통화 수 통계 조회</a></li>
