@@ -107,10 +107,7 @@ a[data-needpopup-show] {
 									<div id='custom-popup12' class="needpopup" data-needpopup-options="custom">
 										<p><img src="${pageContext.request.contextPath}/images/sum/m12_context.png"></p>
 									</div>
-	
-
 								</div>
-	
 								
 								<script src="${pageContext.request.contextPath}/jquery/needpopup.min.js"></script>
 								<script>

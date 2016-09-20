@@ -2,6 +2,31 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../inc/ceo/top.jsp" %>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/index.css" type="text/css"/>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/needpopup.min.css" type="text/css" />
+<script src="${pageContext.request.contextPath}/jquery/needpopup.min.js"></script>
+<script>
+	needPopup.config.custom = {
+		'removerPlace' : 'outside',
+		'closeOnOutside' : false,
+		onShow : function() {
+			console.log('needPopup is shown');
+		},
+		onHide : function() {
+			console.log('needPopup is hidden');
+		}
+	};
+	needPopup.init();
+</script>
+<style>
+.needpopup {
+	border-radius: 6px;
+	box-shadow: 0 1px 5px 1px rgba(0, 0, 0, 1);
+}
+
+.needpopup p {
+	margin: 0;
+}
+</style>
 <title>야시켜 사장님사이트</title>
 
 		<div id="main">
@@ -50,51 +75,52 @@
 								</div>
 								
 								<div class="info_group">
-									<div id="info_6">
-									<img src="${pageContext.request.contextPath}/images/info6testimg.jpg" width="377.60" height="160" onclick="link5()">
+									<div id="info_6"><a href="#" data-needpopup-show="#custom-popup1">
+									<img src="${pageContext.request.contextPath}/images/info6testimg.jpg" width="377.60" height="160"></a>
 									</div>
-									<div id="info_7">
-									<img src="${pageContext.request.contextPath}/images/info7testimg.jpg" width="377.60" height="160" onclick="link6()">
+									<div id="info_7"><a href="#" data-needpopup-show="#custom-popup2">
+									<img src="${pageContext.request.contextPath}/images/info7testimg.jpg" width="377.60" height="160"></a>
 									</div>
 								</div>
+							<div id='custom-popup1' class="needpopup" data-needpopup-options="custom">
+								<p><img src="${pageContext.request.contextPath}/images/sum/m6_context.png"></p>
+							</div>	
+							<div id='custom-popup2' class="needpopup" data-needpopup-options="custom">
+								<p><img src="${pageContext.request.contextPath}/images/sum/m2_context.png"></p>
 							</div>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+	
 <script src="${pageContext.request.contextPath}/js/jquery.slides.min.js"></script>
 <script>
-							$(function() {
-								$('#slides').slidesjs({
-									width: 940, height: 528, play: {active: true, auto: true, interval: 4000, swap: true}
-								});
-							});
-							</script>
-							<script type="text/javascript">
-								function textClear(element){
-									if(element.value !='')
-									{
-										element.value = '';
-									}
-								}
-								
-								function link1(){
-									location.href="http://www.naver.com";
-								}
-								function link2(){
-									location.href="http://www.naver.com";
-								}
-								function link3(){
-									location.href="http://www.naver.com";
-								}
-								function link4(){
-									location.href="http://www.naver.com";
-								}
-								function link5(){
-									location.href="http://www.naver.com";
-								}
-								function link6(){
-									location.href="http://www.naver.com";
-								}
-							</script>
+		$(function() {
+			$('#slides').slidesjs({
+				width: 940, height: 528, play: {active: true, auto: true, interval: 4000, swap: true}
+			});
+		});
+</script>
+<script type="text/javascript">
+		function textClear(element){
+			if(element.value !='')
+			{
+				element.value = '';
+			}
+		}
+		
+		function link1(){
+			location.href="http://www.naver.com";
+		}
+		function link2(){
+			location.href="http://www.naver.com";
+		}
+		function link3(){
+			location.href="http://www.naver.com";
+		}
+		function link4(){
+			location.href="http://www.naver.com";
+		}
+</script>
 <%@ include file="../inc/ceo/bottom.jsp" %>
