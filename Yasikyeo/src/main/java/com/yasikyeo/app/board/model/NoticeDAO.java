@@ -8,5 +8,5 @@ public interface NoticeDAO {
 	public int insertNotice(NoticeVO noticeVo);
 	public List<NoticeVO> selectAllNotice(SearchVO searchVO);
 	public int selectTotalCount(SearchVO searchVo);
-	
+	public NoticeVO selectByNoNotice(int noticeNo);
 }

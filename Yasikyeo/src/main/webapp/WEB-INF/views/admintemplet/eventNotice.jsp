@@ -27,13 +27,7 @@
 	 }	
 </style>
 <div class="container" id="categoryMemberManage">
-		<nav>
-				<dl class="leftNavi">
-				
-				</dl>
-				
- 			</nav>
- 				<section class="contents">
+		<section class="contents">
 					<article class="centerCon">
 						<form name="frmPage" method="post" 
 	action="<c:url value='/reBoard/list.do'/>">
@@ -77,7 +71,8 @@
 		<c:forEach var="vo" items="${alist }">
 			<tr style="text-align: center">
 				<td>${vo.noticeNo}</td>
-				<td>${vo.noticeSuffix}</td>
+				<td><a href="<c:url value='/admintemplet/adminnoticeDetail.do?noticeNo=${vo.noticeNo }'/>">
+				${vo.noticeSuffix}</a></td>
 				<td style="text-align: left;">
 				<!-- 파일이 첨부된 경우 파일 이미지 보여주기 -->
 				<c:if test="${!empty vo.noticeUpfileName }">
@@ -160,11 +155,9 @@
 		<input type="submit" value="검색">
     </form>
 </div>
-					
-					
-				
-					
+					<div class="align_right">
 						<a href="<c:url value='/admintemplet/adminInsertNotice.do'/>">공지사항등록</a>
+					</div>
 					</article>
 				</section>
 			</div>

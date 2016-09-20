@@ -265,3 +265,32 @@ caption{
 		clear: left;		
 		font-weight: bold;
 		}
+.divList, .divPage, .divSearch, .divRight, .divList table{
+		width:700px;
+	}	
+	.divList{
+		margin:10px 0;
+	}
+	caption{
+		visibility:hidden;
+		font-size:0.1em;
+	}	
+	.divPage{
+		text-align:center;		
+		padding:5px 0;
+	}	
+	.divSearch{
+		text-align:center;		
+		padding:5px 0 2px 0;
+	}	
+	.divBtn{
+		text-align:right;	
+		width:700px;
+	}
+	.divBtn a{
+		font-size:1.0em;
+	}
+	.divRight{
+		text-align:right;	
+		width:700px;
+	}

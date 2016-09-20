@@ -45,5 +45,9 @@
 		<include refid="searchWhere"></include>
 	</select>
 	
+	<select id="selectByNoNotice" parameterType="int" resultType="noticeVo">
+		select * from notice
+		where notice_no=#{noticeNo}
+	</select>
 	
 </mapper>

@@ -113,11 +113,14 @@ public class AdminController {
 				msg=adminVo.getAdminId()+ "님 로그인되었습니다";
 				url="/admintemplet/adminIndex.do";
 			}else if(result==MemberService.PWD_DISAGREE){
-				msg="비밀번호가 일치하지 않습니다";			
+				msg="비밀번호가 일치하지 않습니다";
+				url="/admintemplet/adminMain.do";
 			}else if(result==MemberService.ID_NONE){
-				msg="해당 아이디가 존재하지 않습니다";			
+				msg="해당 아이디가 존재하지 않습니다";		
+				url="/admintemplet/adminMain.do";
 			}else{
 				msg="로그인 처리 실패";
+				url="/admintemplet/adminMain.do";
 			}
 				
 			//3.
@@ -146,7 +149,7 @@ public class AdminController {
 		//2.
 			
 			//파일 업로드 처리
-			int uploadType = com.yasikyeo.app.common.FileUploadWebUtil.IMAGE_UPLOAD;
+			int uploadType = FileUploadWebUtil.IMAGE_UPLOAD;
 			List<Map<String, Object>> fileList=fileUtil.fileUpload(request, uploadType);
 			
 			//업로드된 파일명 구해오기
@@ -197,6 +200,23 @@ public class AdminController {
 			model.addAttribute("pagingInfo", pagingInfo);
 		//3.
 			return "admintemplet/eventNotice";
+	}
+	
+	@RequestMapping("/eventNoticeDetail.do")
+	public String admineventNoticeDetail(@RequestParam (defaultValue="0")int noticeNo,
+			HttpServletRequest request,
+			Model model){
+		//1.
+			logger.info("공지사항 상세보기 파라미터 noticeNo={}",noticeNo);
+		//2.
+			NoticeVO alist = noticeService.selectByNoNotice(noticeNo);
+			logger.info("공지사항 상세보기 결과 파라미터 noticeVo={}",alist);
+			
+			
+			model.addAttribute("alist", alist);
+		//3.
+			return "admintemplet/eventNoticeDetail";
+		
 	}
 	
 	

@@ -31,6 +31,11 @@ public class NoticeDAOMyBatis extends SqlSessionDaoSupport implements NoticeDAO{
 	public int selectTotalCount(SearchVO searchVo) {
 		return getSqlSession().selectOne(namespace+".selectTotalCount",searchVo);
 	}
+
+	@Override
+	public NoticeVO selectByNoNotice(int noticeNo) {
+		return getSqlSession().selectOne(namespace+".selectByNoNotice",noticeNo);
+	}
 	
 	
 }
