@@ -175,6 +175,43 @@
 }
 
 /*
+	메뉴등록안 css
+*/
+
+.needpopup {
+	
+	font-family: BMJUA;
+}
+
+.needpopup .formInput{
+	
+	border: 1px solid #c0c0c0;
+	border-bottom: 1px solid #c0c0c0;
+	color: black;
+	font-size: 14.5px;
+	width: 100px;
+	height: 28px;
+	background: #f6f6f6;
+	box-shadow: outset 0px 1px 1px #c0c0c0;
+	font-family: BMJUA;
+	margin-right: 3px;
+}
+
+.needpopup .formInput1{
+	
+	border: 1px solid #c0c0c0;
+	border-bottom: 1px solid #c0c0c0;
+	color: black;
+	font-size: 14.5px;
+	width: 220px;
+	height: 28px;
+	background: #f6f6f6;
+	box-shadow: outset 0px 1px 1px #c0c0c0;
+	font-family: BMJUA;
+	margin-right: 3px;
+}
+
+/*
 	이미지 파일 업로드 버튼
 */
 

@@ -28,15 +28,15 @@
 										<div id="content">
 											<div class="needpopup">
 												<form id="write">
-													<input type="file" id="up_files[0]" name="up_files" onchange="handleFileSelect()"/>
+													<input type="file" id="up_files[0]" name="up_files" onchange="handleFileSelect(0)" class="formInput1"/>
 													<div id="list[0]"></div>
-													메뉴 이름<input type="text" id="qwe"><br>										
+													메뉴 이름 <input type="text" id="qwe" class="formInput"><br>										
 													<select name="opt" class="formInput">
 														<option>선택구분</option>												
 														<option value="choice">선택</option>
 														<option value="indispensable" >필수</option>
 													</select>
-													음식명 : <input type="text" id="food"> 가격 : <input type="text" id="price"><input type='button'  value="추가" id="additem"/><br>
+													음식명 : <input type="text" id="food" class="formInput"> 가격 : <input type="text" id="price" class="formInput"><input type='button'  value="추가" class="additem"/><br>
 												</form>
 											</div>
 										</div>
@@ -87,10 +87,10 @@
 								<script type="text/javascript">
 								
 								
-    							function handleFileSelect() {
-    									var fileselectobj = "up_files["+menustep+"]";
-    									var previmageobj ="list["+menustep+"]";
-										files = document.getElementById(fileselectobj).files[0]; //파일 객체
+    							function handleFileSelect(i) {
+    									var fileselectobj = "up_files["+i+"]";
+    									var previmageobj ="list["+i+"]";
+										var files = document.getElementById(fileselectobj).files[0]; //파일 객체
 
 										var reader = new FileReader();
 
@@ -98,7 +98,7 @@
 										reader.onload = (function(theFile) {
 											return function(e) {
 												//이미지 뷰
-												img_view = [ '<img src="',e.target.result,'" title="',escape(theFile.name),'"width=200px height=120px"/>' ].join('');
+												var img_view = [ '<img src="',e.target.result,'" title="',escape(theFile.name),'"width=200px height=120px"/>' ].join('');
 												document.getElementById(previmageobj).innerHTML = img_view;
 											};
 
@@ -108,36 +108,30 @@
 								}
     							
     							var menustep=0;
-    							var selectItem="";
-    							var img_view;
-    							var files;
-    							function temp(img,step,item) {
+    							
+    							function temp(step) {
 									var str = "";
-									alert(menustep);
 									
-									str+="<br><input type='file' id='up_files["+menustep+"]' name='up_files' value='"+img+"' onchange='handleFileSelect()'/>";
+									
+									str+="<br><br><input type='file' id='up_files["+menustep+"]' name='up_files["+menustep+"]' onchange='handleFileSelect("+menustep+")' class='formInput1'/>";
 									str+="<br><div id='list["+menustep+"]'></div>";
-									str+="메뉴 이름<input type='text><br>";										
-									str+="<select name='opt["+menustep+"]' class='formInput'>";
-									str+="<option selected='selected'>선택구분</option>";
+									str+="메뉴 이름 <input type='text' class='formInput'><br>";										
+									str+="<select name='opt["+menustep+"]' class='formInput' >";
+									str+="<option>선택구분</option>";
 									str+="<option value='choice'>선택</option>";	
 									str+="<option value='indispensable'>필수</option>";
 									str+="</select>";
-									str+="음식명 : <input type='text'> 가격 : <input type='text'>";
-									str+="<input type='button'  value='추가' id='additem'/><br>";
+									str+="음식명 : <input type='text' class='formInput'> 가격 : <input type='text' class='formInput'>";
+									//str+="<input type='button'  value='추가' class='additem'/><br>";
 									
 									return str;
 								} 
-    							$("#additem").click(function() {    	
+    							
+	    						$(document).on("click",".additem",function() {    	
     								menustep++;
-    								
-    								var file=document.getElementById("up_files[0]").value;
     																	
-    								$(".needpopup").append(temp($("#up_files[0]").val(),menustep,selectItem));
-									
-    								if(img_view!=null){
-	    								document.getElementById(previmageobj).innerHTML = img_view;
-    								}
+    								$(".needpopup").append(temp(menustep));
+    								$(".needpopup").append($(".additem"));
     								
 								});
     							
