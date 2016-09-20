@@ -55,7 +55,7 @@
 </p>
 <div id="map" style="width:100%;height:350px;"></div>
 <script type="text/javascript" src="http://jsgetip.appspot.com"></script>
-<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=6f995e4b8ec39bdf0eea2ce1adc5a2e7&libraries=services"></script>
+<script type="text/javascript" src="http://apis.daum.net/maps/maps3.js?apikey=6f995e4b8ec39bdf0eea2ce1adc5a2e7&libraries=services"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/jquery/jquery-3.1.0.min.js"></script>
 <script type="text/javascript">
 

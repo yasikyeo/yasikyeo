@@ -32,14 +32,14 @@
 	</select>
 	
 	<update id="findPwd" parameterType="MemberVO">
-		update member set
-			member_pwd=#{memberPwd}
+		update member 
+		set	member_pwd=#{memberPwd}
 		where member_Email=#{memberEmail} and member_Birth=#{memberBirth}
 	</update>
 	
 	<update id="changePwd" parameterType="MemberVO">
-		update member set
-			member_pwd=#{memberPwd}
+		update member
+		set	member_pwd=#{memberPwd}
 		where member_id=#{memberId} and member_withdraw='N'
 	</update>
 	

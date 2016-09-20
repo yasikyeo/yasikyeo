@@ -4,7 +4,7 @@
 <script type="text/javascript">
 
 	$(document).ready(function(){
-		$("#memSubmit").click(function(event){
+		$("#memSubmit2").click(function(event){
 			if($("#checkPwd").val()!="인증완료"){
 				alert("비밀번호를 입력하세요");
 				$("#memberPwd").focus();
@@ -109,7 +109,7 @@
 						</div>
 					</fieldset>
 					<div class="div1 vertical-container">
-						<button type="submit" class="btgray bt3 flex1" id="memSubmit">탈퇴하기</button>
+						<button type="submit" class="btgray bt3 flex1" id="memSubmit2">탈퇴하기</button>
 						<input type="reset" class="btbrown bt4 quarterwidth" value="취소">
 					</div>
 				</form>
