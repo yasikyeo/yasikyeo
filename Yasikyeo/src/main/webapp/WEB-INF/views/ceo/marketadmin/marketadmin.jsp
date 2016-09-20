@@ -24,27 +24,20 @@
 								<table>
 									<tr>
 									<div class="product clear">
-										<details> <summary>메뉴 등록 및 수정</summary>
+										<details> <summary>메뉴 등록</summary>
 										<div id="content">
 											<div class="needpopup">
-												
-												메뉴 카테고리
-												<select name="shop_categori" class="formInput">
-													<option value="koreafood">한식</option>
-													<option value="japanfood">일식</option>
-													<option value="chinafood">중식</option>
-													<option value="yangkifood">양식</option>
-												</select>
-												<br>
-												가격<input type="text"><br>
-												
-												<select name="step" class="formInput">
-													<option value="choice">선택</option>
-													<option value="indispensable">필수</option>
-												</select>
-												<input type="text" value="이름"> <input type="text" value="가격 입력"><input type='button' onclick="Answer_Add('Answer')" value="추가" />
-												
-
+												<form id="write">
+													<input type="file" id="up_files[0]" name="up_files" onchange="handleFileSelect()"/>
+													<div id="list[0]"></div>
+													메뉴 이름<input type="text" id="qwe"><br>										
+													<select name="opt" class="formInput">
+														<option>선택구분</option>												
+														<option value="choice">선택</option>
+														<option value="indispensable" >필수</option>
+													</select>
+													음식명 : <input type="text" id="food"> 가격 : <input type="text" id="price"><input type='button'  value="추가" id="additem"/><br>
+												</form>
 											</div>
 										</div>
 										</details>
@@ -55,7 +48,7 @@
 									<div class="product clear">
 										<details> <summary>리뷰 관리</summary>
 										<div id="content">
-											<div class="needpopup">
+											<div class="needpopup1">
 												(리뷰내용을list형식으로보기,리플달기)
 											</div>
 										</div>
@@ -67,7 +60,7 @@
 									<div class="product clear">
 										<details> <summary>주문관리</summary>
 										<div id="content">
-											<div class="needpopup">
+											<div class="needpopup2">
 												({주문내용보기(주문일시,주문번호,메뉴,주문금액,상태변경버튼(배달중,배달완료)})
 											</div>
 										</div>
@@ -75,27 +68,81 @@
 									</div>
 									</tr>
 									
-									
+									<!-- 메뉴버튼 클릭 시 내용이 나옴 -->
 									<script>
 										if ($('html').hasClass('no-details')) {
 											var summary = $('details summary');
-											summary
-													.siblings()
-													.wrapAll(
-															'<div class="slide"></div>');
+											summary.siblings().wrapAll('<div class="slide"></div>');
 
-											$('details:not(.open) summary')
-													.siblings('div').hide();
+											$('details:not(.open) summary').siblings('div').hide();
 
 											summary.click(function() {
-												$(this).siblings('div')
-														.toggle();
-												$('details')
-														.toggleClass('open');
+												$(this).siblings('div').toggle();
+												$('details').toggleClass('open');
 											});
 										}
 									</script>
 
+								<!-- 이미지 등록시 미리보기를 보여주는 DHTML -->
+								<script type="text/javascript">
+								
+								
+    							function handleFileSelect() {
+    									var fileselectobj = "up_files["+menustep+"]";
+    									var previmageobj ="list["+menustep+"]";
+										files = document.getElementById(fileselectobj).files[0]; //파일 객체
+
+										var reader = new FileReader();
+
+										//파일정보 수집        
+										reader.onload = (function(theFile) {
+											return function(e) {
+												//이미지 뷰
+												img_view = [ '<img src="',e.target.result,'" title="',escape(theFile.name),'"width=200px height=120px"/>' ].join('');
+												document.getElementById(previmageobj).innerHTML = img_view;
+											};
+
+										})(files);
+
+										reader.readAsDataURL(files);
+								}
+    							
+    							var menustep=0;
+    							var selectItem="";
+    							var img_view;
+    							var files;
+    							function temp(img,step,item) {
+									var str = "";
+									alert(menustep);
+									
+									str+="<br><input type='file' id='up_files["+menustep+"]' name='up_files' value='"+img+"' onchange='handleFileSelect()'/>";
+									str+="<br><div id='list["+menustep+"]'></div>";
+									str+="메뉴 이름<input type='text><br>";										
+									str+="<select name='opt["+menustep+"]' class='formInput'>";
+									str+="<option selected='selected'>선택구분</option>";
+									str+="<option value='choice'>선택</option>";	
+									str+="<option value='indispensable'>필수</option>";
+									str+="</select>";
+									str+="음식명 : <input type='text'> 가격 : <input type='text'>";
+									str+="<input type='button'  value='추가' id='additem'/><br>";
+									
+									return str;
+								} 
+    							$("#additem").click(function() {    	
+    								menustep++;
+    								
+    								var file=document.getElementById("up_files[0]").value;
+    																	
+    								$(".needpopup").append(temp($("#up_files[0]").val(),menustep,selectItem));
+									
+    								if(img_view!=null){
+	    								document.getElementById(previmageobj).innerHTML = img_view;
+    								}
+    								
+								});
+    							
+    							
+								</script>
 
 							</table>
 							
@@ -104,6 +151,5 @@
 						<br><br><br>
 
 
-
-	</div>
 <%@ include file="../../inc/ceo/bottom.jsp" %>
+	</div>
