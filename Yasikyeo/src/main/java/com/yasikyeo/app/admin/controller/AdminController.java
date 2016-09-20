@@ -1,6 +1,7 @@
 package com.yasikyeo.app.admin.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -24,8 +25,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.yasikyeo.app.admin.model.AdminService;
 import com.yasikyeo.app.admin.model.AdminVO;
+import com.yasikyeo.app.board.model.NoticeService;
+import com.yasikyeo.app.board.model.NoticeVO;
 import com.yasikyeo.app.ceo.model.CeoVO;
-
+import com.yasikyeo.app.common.FileUploadWebUtil;
 import com.yasikyeo.app.member.model.MemberService;
 import com.yasikyeo.app.member.model.MemberVO;
 
@@ -34,10 +37,16 @@ import com.yasikyeo.app.member.model.MemberVO;
 public class AdminController {
 	
 	@Autowired
+	private NoticeService noticeService;
+	
+	@Autowired
 	private MemberService memberService;
 	
 	@Autowired
 	private AdminService adminService;
+	
+	@Autowired
+	private FileUploadWebUtil fileUtil;
 	
 	private static final Logger logger=
 			LoggerFactory.getLogger(AdminController.class);
@@ -70,7 +79,7 @@ public class AdminController {
 			HttpServletResponse response,
 			Model model){
 		//1.
-			adminVo.setAuthCode(MemberService.ADMIN_AUTH_CODE);
+			adminVo.setAuthcode(MemberService.ADMIN_AUTH_CODE);
 			logger.info("관리자 로그인 파라미터 adminVO={}", adminVo);
 			
 		//2.	
@@ -85,7 +94,8 @@ public class AdminController {
 				
 				HttpSession session = request.getSession();
 				session.setAttribute("adminId", adminVo.getAdminId());
-				session.setAttribute("authcode", adVo.getAuthCode());
+				session.setAttribute("adminNo", adminVo.getAdminNo());
+				session.setAttribute("authcode", adVo.getAuthcode());
 				
 				//[2] 쿠키에 저장
 				Cookie ck = new Cookie("ck_admin_Id", adminVo.getAdminId());
@@ -98,7 +108,7 @@ public class AdminController {
 					response.addCookie(ck);
 				}
 				
-				msg=adminVo.getAdminId() + "님 로그인되었습니다";
+				msg=adminVo.getAdminId()+ "님 로그인되었습니다";
 				url="/admintemplet/adminIndex.do";
 			}else if(result==MemberService.PWD_DISAGREE){
 				msg="비밀번호가 일치하지 않습니다";			
@@ -123,6 +133,34 @@ public class AdminController {
 		
 		//3.
 			return "admintemplet/adminInsertNotice";
+	}
+	
+	@RequestMapping(value="/adminInsertNotice.do",method=RequestMethod.POST)
+	public String adminNoticeWrite_post(HttpServletRequest request,
+			@ModelAttribute NoticeVO noticeVo,
+			Model model){
+		//1.
+			logger.info("공지사항 글쓰기 처리, 파라미터 noticeVo={}", noticeVo);
+		//2.
+			
+			//파일 업로드 처리
+			int uploadType = com.yasikyeo.app.common.FileUploadWebUtil.IMAGE_UPLOAD;
+			List<Map<String, Object>> fileList=fileUtil.fileUpload(request, uploadType);
+			
+			//업로드된 파일명 구해오기
+			String fileName="";
+			long fileSize=0;
+			for( Map<String, Object> mymap : fileList){
+				fileName = (String) mymap.get("fileName");
+				fileSize = (Long) mymap.get("fileSize");
+			}
+			
+			noticeVo.setNoticeUpfileName(fileName);
+		
+			int cnt = noticeService.insertNotice(noticeVo);
+			logger.info("공지사항 글등록 완료 cnt={}",cnt);
+		//3.
+			return "redirect:/admintemplet/eventNotice.do";
 	}
 	
 	@RequestMapping(value="/eventNotice.do", method=RequestMethod.GET)

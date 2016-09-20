@@ -5,9 +5,8 @@ public class NoticeVO {
 	private String noticeTitle;
 	private String noticeContent;
 	private String noticeUpfileName;
-	private String noticeSufflx;
+	private String noticeSuffix;
 	private String managerNo;
-	
 	public int getNoticeNo() {
 		return noticeNo;
 	}
@@ -32,11 +31,11 @@ public class NoticeVO {
 	public void setNoticeUpfileName(String noticeUpfileName) {
 		this.noticeUpfileName = noticeUpfileName;
 	}
-	public String getNoticeSufflx() {
-		return noticeSufflx;
+	public String getNoticeSuffix() {
+		return noticeSuffix;
 	}
-	public void setNoticeSufflx(String noticeSufflx) {
-		this.noticeSufflx = noticeSufflx;
+	public void setNoticeSuffix(String noticeSuffix) {
+		this.noticeSuffix = noticeSuffix;
 	}
 	public String getManagerNo() {
 		return managerNo;
@@ -47,9 +46,10 @@ public class NoticeVO {
 	@Override
 	public String toString() {
 		return "NoticeVO [noticeNo=" + noticeNo + ", noticeTitle=" + noticeTitle + ", noticeContent=" + noticeContent
-				+ ", noticeUpfileName=" + noticeUpfileName + ", noticeSufflx=" + noticeSufflx + ", managerNo="
+				+ ", noticeUpfileName=" + noticeUpfileName + ", noticeSuffix=" + noticeSuffix + ", managerNo="
 				+ managerNo + "]";
 	}
+	
 	
 	
 }

@@ -10,7 +10,10 @@
  			</nav>
  				<section class="contents">
 					<article class="centerCon">
-					<a href="<c:url value='/admintemplet/adminInsertNotice.do'/>">회원등록</a>
+					
+					
+					
+					<a href="<c:url value='/admintemplet/adminInsertNotice.do'/>">공지사항등록</a>
 					
 					</article>
 				</section>

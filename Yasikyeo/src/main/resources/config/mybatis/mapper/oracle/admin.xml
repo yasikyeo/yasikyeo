@@ -6,7 +6,7 @@
 	<select id="selectPwd" parameterType="AdminVO"
 		resultType="string">
 		select admin_pwd from admin
-		where admin_Id = #{adminId}
+		where admin_id = #{adminId}
 	</select>
 	<select id="selectMemberByMemberId" parameterType="string" 
 		resultType="AdminVO">
