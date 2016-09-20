@@ -40,10 +40,10 @@
 	<!-- 자주묻는질문 기본 게피판시작 -->
 	<div id="tabs">
 		<ul>
-			<li class="hovereff"><a href="#"><span class="tabMenu">서비스소개</span></a></li>
-			<li class="hovereff"><a href="#"><span class="tabMenu">공지사항/이벤트</span></a></li>
-			<li class="noteff"><a href="#"><span class="tabMenu">자주묻는질문</span></a></li>
-			<li class="hovereff"><a href="#"><span class="tabMenu">문의하기</span></a></li>
+			<li class="hovereff"><a href="<c:url value='/service/client_service.do'/>"><span class="tabMenu">서비스소개</span></a></li>
+			<li class="hovereff"><a href="<c:url value='/service/client_board.do'/>"><span class="tabMenu">공지사항/이벤트</span></a></li>
+			<li class="noteff"><a href="<c:url value='/service/client_faq.do'/>"><span class="tabMenu">자주묻는질문</span></a></li>
+			<li class="hovereff"><a href="<c:url value='/service/client_qna.do'/>"><span class="tabMenu">문의하기</span></a></li>
 		</ul>
 	</div>
 	<div class="fieldsetContain">
@@ -134,7 +134,7 @@
 					<div class="accordion">
 						<!-- 반복시작 -->
 						<div class="group">
-							<div class="btAccodion"><span class="sp6">머릿말부분1</span>제목쓰는곳1</div>
+							<div class="btAccodion"><span class="sp6">머릿말부분2</span>제목쓰는곳2</div>
 						    <div>
 						      <p>컨텐츠1</p>
 						    </div>
@@ -164,7 +164,7 @@
 					<div class="accordion">
 						<!-- 반복시작 -->
 						<div class="group">
-							<div class="btAccodion"><span class="sp6">머릿말부분1</span>제목쓰는곳1</div>
+							<div class="btAccodion"><span class="sp6">머릿말부분3</span>제목쓰는곳3</div>
 						    <div>
 						      <p>컨텐츠1</p>
 						    </div>
@@ -194,7 +194,7 @@
 					<div class="accordion">
 						<!-- 반복시작 -->
 						<div class="group">
-							<div class="btAccodion"><span class="sp6">머릿말부분1</span>제목쓰는곳1</div>
+							<div class="btAccodion"><span class="sp6">머릿말부분4</span>제목쓰는곳4</div>
 						    <div>
 						      <p>컨텐츠1</p>
 						    </div>
@@ -224,7 +224,7 @@
 					<div class="accordion">
 						<!-- 반복시작 -->
 						<div class="group">
-							<div class="btAccodion"><span class="sp6">머릿말부분1</span>제목쓰는곳1</div>
+							<div class="btAccodion"><span class="sp6">머릿말부분5</span>제목쓰는곳5</div>
 						    <div>
 						      <p>컨텐츠1</p>
 						    </div>
@@ -262,7 +262,7 @@
 				<div class="accordion">
 					<!-- 반복시작 -->
 					<div class="group">
-						<div class="btAccodion"><span class="sp7">1</span>제목쓰는곳1</div>
+						<div class="btAccodion"><span class="sp7">1</span>자주하는질문제목쓰는곳</div>
 					    <div>
 					      <p>컨텐츠1</p>
 					    </div>

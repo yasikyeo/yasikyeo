@@ -1,6 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../inc/top2.jsp" %>
+<script type="text/javascript">
+	$(function() {
+		$(".writeReview").click(function() {
+			$(location).attr("href","<c:url value='/shop/client_shop_det.do#review'/>");
+		});
+	});
+</script>
 <div class="mainSection">
 	<div class="location">
 		<ul>
@@ -80,7 +87,7 @@
 							<td>향원</td>
 							<td>자장면 외 1개</td>
 							<td class="color-orange"><b>21,000원</b></td>
-							<td><span class="sp3">리뷰작성하기</span></td>
+							<td><span class="sp3 writeReview">리뷰작성하기</span></td>
 						</tr>
 					</tbody>
 				</table>

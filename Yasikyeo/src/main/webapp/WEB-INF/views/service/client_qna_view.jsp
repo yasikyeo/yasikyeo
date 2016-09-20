@@ -13,10 +13,10 @@
 	</div>
 	<div id="tabs">
 		<ul>
-			<li class="hovereff"><a href="#"><span class="tabMenu">서비스소개</span></a></li>
-			<li class="hovereff"><a href="#"><span class="tabMenu">공지사항/이벤트</span></a></li>
-			<li class="hovereff"><a href="#"><span class="tabMenu">자주묻는질문</span></a></li>
-			<li class="noteff"><a href="#"><span class="tabMenu">문의하기</span></a></li>
+			<li class="hovereff"><a href="<c:url value='/service/client_service.do'/>"><span class="tabMenu">서비스소개</span></a></li>
+			<li class="hovereff"><a href="<c:url value='/service/client_board.do'/>"><span class="tabMenu">공지사항/이벤트</span></a></li>
+			<li class="hovereff"><a href="<c:url value='/service/client_faq.do'/>"><span class="tabMenu">자주묻는질문</span></a></li>
+			<li class="noteff"><a href="<c:url value='/service/client_qna.do'/>"><span class="tabMenu">문의하기</span></a></li>
 		</ul>
 	</div>
 	<div class="fieldsetContain">
@@ -24,9 +24,9 @@
 			<legend>문의하기</legend>
 			<div class="div6">
 				<ul class="div3 float-right">
-					<li><a href="#">1:1문의하기</a></li>
+					<li><a href="<c:url value='/service/client_qna.do'/>">1:1문의하기</a></li>
 					<li>|</li>
-					<li class="color-orange"><b>나의문의내역보기</b></li>
+					<li class="color-orange"><a href="<c:url value='/service/client_qna_list.do'/>"><b>나의문의내역보기</b></a></li>
 				</ul>
 				<br class="clear-both">
 			</div>

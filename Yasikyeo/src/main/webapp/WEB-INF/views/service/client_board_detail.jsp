@@ -13,10 +13,10 @@
 	</div>
 	<div id="tabs">
 		<ul>
-			<li class="hovereff"><a href="#"><span class="tabMenu">서비스소개</span></a></li>
-			<li class="noteff"><a href="#"><span class="tabMenu">공지사항/이벤트</span></a></li>
-			<li class="hovereff"><a href="#"><span class="tabMenu">자주묻는질문</span></a></li>
-			<li class="hovereff"><a href="#"><span class="tabMenu">문의하기</span></a></li>
+			<li class="hovereff"><a href="<c:url value='/service/client_service.do'/>"><span class="tabMenu">서비스소개</span></a></li>
+			<li class="noteff"><a href="<c:url value='/service/client_board.do'/>"><span class="tabMenu">공지사항/이벤트</span></a></li>
+			<li class="hovereff"><a href="<c:url value='/service/client_faq.do'/>"><span class="tabMenu">자주묻는질문</span></a></li>
+			<li class="hovereff"><a href="<c:url value='/service/client_qna.do'/>"><span class="tabMenu">문의하기</span></a></li>
 		</ul>
 	</div>
 	<div class="fieldsetContain">
@@ -60,7 +60,7 @@
 				</tbody>
 			</table>
 			<div class="div4">
-				<a href="#"><span class="sp5 float-left">목록</span></a>
+				<a href="<c:url value='/service/client_board.do'/>"><span class="sp5 float-left">목록</span></a>
 				<a href="#"><span class="sp5 float-right">다음&rang;</span></a>
 			</div>
 		</fieldset>

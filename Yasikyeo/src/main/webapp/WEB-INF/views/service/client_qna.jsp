@@ -54,10 +54,10 @@ $(document).ready(function() {
 	</div>
 	<div id="tabs">
 		<ul>
-			<li class="hovereff"><a href="#"><span class="tabMenu">서비스소개</span></a></li>
-			<li class="hovereff"><a href="#"><span class="tabMenu">공지사항/이벤트</span></a></li>
-			<li class="hovereff"><a href="#"><span class="tabMenu">자주묻는질문</span></a></li>
-			<li class="noteff"><a href="#"><span class="tabMenu">문의하기</span></a></li>
+			<li class="hovereff"><a href="<c:url value='/service/client_service.do'/>"><span class="tabMenu">서비스소개</span></a></li>
+			<li class="hovereff"><a href="<c:url value='/service/client_board.do'/>"><span class="tabMenu">공지사항/이벤트</span></a></li>
+			<li class="hovereff"><a href="<c:url value='/service/client_faq.do'/>"><span class="tabMenu">자주묻는질문</span></a></li>
+			<li class="noteff"><a href="<c:url value='/service/client_qna.do'/>"><span class="tabMenu">문의하기</span></a></li>
 		</ul>
 	</div>
 	<div class="fieldsetContain">
@@ -67,7 +67,7 @@ $(document).ready(function() {
 				<ul class="div3 float-right">
 					<li class="color-orange"><b>1:1문의하기</b></li>
 					<li>|</li>
-					<li><a href="#">나의문의내역보기</a></li>
+					<li><a href="<c:url value='/service/client_qna_list.do'/>">나의문의내역보기</a></li>
 				</ul>
 				<br class="clear-both">
 			</div>

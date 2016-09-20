@@ -6,6 +6,7 @@
 $.fn.raty.defaults.path = "<c:url value='/images'/>";
 $(function () {
 	$('div.star').raty({
+		readOnly: true,
 		  score: function() {
 		    return $(this).attr('data-score');
 		  },

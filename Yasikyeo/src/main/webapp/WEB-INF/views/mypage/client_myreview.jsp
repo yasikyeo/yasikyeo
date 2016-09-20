@@ -1,6 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../inc/top2.jsp" %>
+<script type="text/javascript">
+	$(function() {
+		$(".update").click(function() {
+			$(location).attr("href","<c:url value='/shop/client_shop_det.do#review'/>");
+		});
+	});
+</script>
 <div class="mainSection">
 	<div class="location">
 		<ul>
@@ -79,7 +86,7 @@
 							<td>2016-09-13</td>
 							<td>향원</td>
 							<td>자장면 외 1개</td>
-							<td><a href="#"><span class="sp3">수정</span></a></td>
+							<td><a href="#"><span class="sp3 update">수정</span></a></td>
 							<td><a href="#"><span class="sp3">삭제</span></a></td>
 						</tr>
 					</tbody>
