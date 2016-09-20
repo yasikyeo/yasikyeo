@@ -4,7 +4,7 @@
 <script type="text/javascript" src="<c:url value='/jquery/jquery.raty.js'/>"></script>
 <script type="text/javascript">
 $.fn.raty.defaults.path = "<c:url value='/images'/>";
-$(function () {
+$(function () { 
 	$('div.star').raty({
 		readOnly: true,
 		  score: function() {
