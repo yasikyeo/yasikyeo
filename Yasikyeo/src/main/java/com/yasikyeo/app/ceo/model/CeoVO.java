@@ -11,6 +11,7 @@ public class CeoVO {
 	private Timestamp ceoRegdate;
 	private String ceoWithdraw;
 	private String authCode;
+	
 	public int getCeoNo() {
 		return ceoNo;
 	}

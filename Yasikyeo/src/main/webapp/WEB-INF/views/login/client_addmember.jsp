@@ -166,7 +166,7 @@
     $("#memberId").keyup(function(){
 		if(validate_member_Id($("#memberId").val()) && $("#memberId").val().length>=2){
 			$.ajax({
-				url:"<c:url value='/login/ajaxCheckUserid.do'/>",
+				url:"<c:url value='/login/ajaxCheckMemberId.do'/>",
 				type:"GET",
 				data:"memberId="+$("#memberId").val(),
 				success:function(res){
