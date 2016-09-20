@@ -71,6 +71,10 @@
 	 $(".addMember").click(function(){
 		 location.href="<c:url value='/login/client_addmember.do'/>"; 
 	 });
+	 
+	 $(".categoriContain").click(function() {
+		 $(location).attr("href","<c:url value='/shop/client_shop_list.do'/>");
+	});
 	
   });
 </script>
@@ -119,7 +123,7 @@
 			<li><a href="<c:url value='/login/logout.do'/>">로그아웃</a></li>
 		</c:if>		
 		<li><a href="<c:url value='/mypage/client_mypage.do'/>">마이페이지</a></li>
-		<li><a href="#">고객센터</a></li>
+		<li><a href="<c:url value='/service/client_faq.do'/>">고객센터</a></li>
 		<li><a href="#">즐겨찾기</a></li>
 	</ul>
 </div>

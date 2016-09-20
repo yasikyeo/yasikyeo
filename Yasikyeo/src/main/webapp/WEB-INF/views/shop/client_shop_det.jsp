@@ -3,6 +3,7 @@
 <%@ include file="../inc/top2.jsp" %>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="<c:url value='/jquery/jquery.raty.js'/>"></script>
+<script type="text/javascript" src="<c:url value='/jquery/jquery.uploadPreview.min.js'/>"></script>
 <script type="text/javascript">
 $.fn.raty.defaults.path = "<c:url value='/images'/>";
 $(function () {
@@ -15,6 +16,18 @@ $(function () {
 	 	 /*   target : '#hint', 
 	 	  targetType : 'score',
 	 	  targetFormat : 'Rating: {score}', */
+	 	  targetScore: '#hint'
+	});
+	$('span.star3').raty({
+		  score: function() {
+		    return $(this).attr('data-score');
+		  },
+	 	  targetScore: '#hint'
+	});
+	$('p.star2').raty({
+		  score: function() {
+		    return $(this).attr('data-score');
+		  },
 	 	  targetScore: '#hint'
 	});
 	var icons = {
@@ -60,6 +73,33 @@ $(function () {
 		$(selector).parents(".group1").find(".btAccodion1").click();
 		$(selector).click();
 	});
+	$.uploadPreview({
+	    input_field: "#image-upload1",   // Default: .image-upload
+	    preview_box: ".image-preview1",  // Default: .image-preview
+	    label_field: "#image-label1",    // Default: .image-label
+	    label_default: "파일첨부",   // Default: Choose File
+	    label_selected: "파일변경",  // Default: Change File
+	    no_label: false,                 // Default: false
+	    preview_default:"test-failed.png"
+	  });
+	  $.uploadPreview({
+	    input_field: "#image-upload2",   // Default: .image-upload
+	    preview_box: ".image-preview2",  // Default: .image-preview
+	    label_field: "#image-label2",    // Default: .image-label
+	    label_default: "파일첨부",   // Default: Choose File
+	    label_selected: "파일변경",  // Default: Change File
+	    no_label: false,                 // Default: false
+	    preview_default:"test-failed.png"
+	  });
+	  $.uploadPreview({
+	    input_field: "#image-upload3",   // Default: .image-upload
+	    preview_box: ".image-preview3",  // Default: .image-preview
+	    label_field: "#image-label3",    // Default: .image-label
+	    label_default: "파일첨부",   // Default: Choose File
+	    label_selected: "파일변경",  // Default: Change File
+	    no_label: false,                 // Default: false
+	    preview_default:"test-failed.png"
+	  });
 });
 </script>
 <div class="mainSection">
@@ -277,8 +317,8 @@ $(function () {
 				</div>				
 				<!-- 원산지영역 -->
 				<div class="contain4">
-					<p class="paddingCol3px"><b>원산지</b></p>
-					<p class="paddingCol3px">도우(국내산),불고기(국내산)</p>
+					<p class="paddingCol5px"><b>원산지</b></p>
+					<p class="paddingCol5px">도우(국내산),불고기(국내산)</p>
 				</div>
 				<!-- 원산지영역 -->
 			</div>
@@ -298,6 +338,94 @@ $(function () {
 						</a>
 					</div>
 				</div>
+				<!-- 리뷰작성하기 -->
+				<div class="border-bottom1">
+					<fieldset class="fieldset2">
+						<legend class="font1-4em"><b>리뷰작성하기</b></legend>
+						<span class="sp8">다음에할게요<img class="cursor-pointer" alt="버튼" src="<c:url value='/images/caret-arrow-up.png'/>"></span>
+						<form class="form1" action="">
+							<p class="p4">
+								<span class="align-middle">별점</span>
+								<span class="star3" data-score="5"></span>
+							</p>
+							<p class="p4">닉네임 <b>csu1190</b></p>
+							<textarea class="ta1" wrap="virtual" placeholder="솔직한 의견도 좋지만 무조건적인 비방글은 삼가주세요
+(한글 15자 이상 최대 400자 까지 작성 가능합니다.)"></textarea>
+							<p class="overflow-hidden"><span class="float-right sp2">0/400</span></p>
+							<p class="p4">
+								<b class="align-middle">사진첨부</b>
+								<span class="sp2 align-middle">이미지 파일 (GIF,PNG,JPG)을 기준으로 최대 10MB이하, 최대 3개까지 등록가능 합니다.</span>
+							</p>
+							<div class="div1">
+								<div class="profile2 flex1">
+									<div class="image-preview1">
+										<input type="file" name="image" id="image-upload1" />
+									</div>
+									<label for="image-upload1" id="image-label1">파일첨부</label>
+								</div>
+								<div class="profile2 flex1">
+									<div class="image-preview2">
+										<input type="file" name="image" id="image-upload2" />
+									</div>
+									<label for="image-upload2" id="image-label2">파일첨부</label>
+								</div>
+								<div class="profile2 flex1">
+									<div class="image-preview3">
+										<input type="file" name="image" id="image-upload3" />
+									</div>
+									<label for="image-upload3" id="image-label3">파일첨부</label>
+								</div>
+							</div>
+							<div class="flex">
+								<input class="flex3 btblack bt3" type="submit" value="리뷰 작성 완료">
+								<input class="flex1 btbrown bt3" type="button" value="취소">
+							</div>
+						</form>
+					</fieldset>
+				</div>
+				<!-- /리뷰작성하기 -->
+				<div class="contain3">
+					<!-- 리뷰내용 -->
+					<div class="contain3 font16px ma-b-15px">
+						<div class="flex">
+							<div class="flex1 img2">
+								<img class="fullwidth" alt="profil" src="">
+							</div>
+							<div class="flex5 paddingCol5px">
+								<ul class="ul2">
+									<li><b class="font16px">아이디4글자이후**</b></li>
+									<li>|</li>
+									<li>2016-01-01</li>
+								</ul>
+								<p class="star2" data-score="3.6"></p>
+								<p>리뷰내용<br>
+								리뷰내용<br>
+								리뷰내용<br>
+								리뷰내용<br>
+								</p>
+								<!-- 리뷰이미지 -->
+								<p class="p5">
+									<img alt="리뷰 이미지" src="">
+								</p>
+							</div>
+						</div>
+						<!-- 리플내용 -->
+						<div class="flex">
+							<div class="flex1">
+							</div>
+							<div class="flex5 bgbrown padding10px ma-l-10px">
+								<ul class="ul2">
+									<li><b class="font16px">사장님</b></li>
+									<li>|</li>
+									<li>2016-01-01</li>
+								</ul>
+								<p>아이디4글자이후**님,감사합니다.</p>
+							</div>
+						</div>
+						<!-- 리플내용 -->
+					</div>
+					<!-- 리뷰내용 -->
+				</div>
 			</div>
 		</div>
 		<div class="flex1">
@@ -316,7 +444,7 @@ $(function () {
 				</dl>
 			</div>
 			<!-- 장바구니영역 -->
-			<div class="contain2 ma-t-20px"  data-spy="affix" data-offset-top="784">
+			<div class="contain2 ma-t-20px"  data-spy="affix" data-offset-top="772">
 				<div class="border-bottom1 font16px padding10px"><b>장바구니</b></div>
 			</div>
 		</div>

@@ -1,6 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="inc/top.jsp" %>
+<script type="text/javascript">
+$(function() {
+	$(".foodItem").click(function() {
+		$(location).attr("href","<c:url value='/shop/client_shop_list.do'/>");
+	});
+});
+</script>
 <style type="text/css">
 section{
 	background-color: white;

@@ -1322,9 +1322,9 @@ div.searchdiv form{
 .modal1 {
 	position: absolute;
     z-index: 10; /* Sit on top */
-    left: 0;
+    left: 3%;
     top: 0;
-    width: 100%; /* Full width */
+    width: 94%; /* Full width */
     height: 100%; /* Full height */
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
@@ -1392,7 +1392,7 @@ ul.ul1{
 .affix {
       top: 30px;
       position: fixed;
-      width: 215px;
+      width: 224px;
 }
 .img1{
 	width: 207px;
@@ -1501,8 +1501,110 @@ ul.ul1{
 	background: #f3f3f3;
 	border-top: 1px solid silver;
 }
-
-
+ul.ul2{
+	list-style-type: none;
+    overflow: hidden;
+	font-size: 0.8em;
+}
+.ul2 li{
+	float: left;
+	padding:5px 0;
+	padding-right: 10px;
+}
+.ul2 li~li{
+	margin-top: 3px;	
+}
+.img2{
+	padding: 10px 10px 10px 0;
+}
+.fieldset2{
+	padding: 10px 10px 30px 10px;
+	margin-top: 20px;
+	position: relative;
+}
+.sp8{
+	position: absolute;
+	right: 10px;
+	top: 10px;
+}
+.sp8 img{
+	margin-top: 5px;
+	margin-left: 5px;
+}
+.form1{
+	border-top: 1px solid silver;
+	padding-top: 10px;
+}
+.star3{
+	margin-left: 20px;
+}
+.star3 img{
+	width: 50px;
+	height: auto;
+	vertical-align: middle;
+}
+.sp9{
+	height: 100%;
+}
+.p4{
+	padding: 5px 0;
+}
+.ta1{
+	width: 720px;
+	height: 100px;
+	resize: none;
+    overflow: auto;
+    padding: 10px;
+    line-height: 19px;
+}
+.profile2{
+	border: 1px solid silver;
+}
+.profile2:NTH-CHILD(even){
+	margin: 0 20px;
+}
+.profile2 div{
+	width: 100%;
+	height: 150px;
+	position: relative;
+	overflow: hidden;
+	margin: auto;
+	background-image: url("../images/test-failed.png");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: inherit;
+}
+.profile2 input[type=file]{
+	width:100%;
+	height:100%;
+    position: absolute;
+    opacity: 0;
+    z-index: 10;
+    top: 0;
+    cursor: pointer;
+}
+.profile2 label{
+    z-index: 5;
+    cursor: pointer;
+    background-color: #978371;
+    color: #ecf0f1;
+    width: 100%;
+    font-size: 20px;
+    text-align: center;
+    display: block;
+    padding: 2px 0 8px 0;
+    margin: auto;
+}
+.bt3:FOCUS{
+	outline: none;
+}
+.p5{
+	padding: 5px 0;
+}
+.p5 img{
+	width: 100%;
+	background-color: yellow;
+}
 
 
 
@@ -1513,7 +1615,6 @@ ul.ul1{
 .overflow-hidden{
 	overflow: hidden;
 }
-
 .bgbrown{
 	background-color: #c2b5ab; 
 }
@@ -1529,7 +1630,9 @@ ul.ul1{
 .bord-1ss{
 	border: 1px solid silver;
 }
-
+.ma-b-15px{
+	margin-bottom: 15px;
+}
 .ma-t-20px{
 	margin-top: 20px;
 }
@@ -1539,8 +1642,11 @@ ul.ul1{
 .ma-l-60px{
 	margin-left: 60px;
 }
-.paddingCol3px{
-	padding: 3px;
+.ma-l-10px{
+	margin-left: 10px;
+}
+.paddingCol5px{
+	padding: 5px 0;
 }
 .paddingCol20px{
 	padding: 20px 0 10px 0;
@@ -1553,6 +1659,9 @@ ul.ul1{
 }
 .padding15px{
 	padding: 15px;
+}
+.padding5px{
+	padding:5px;
 }
 .spbrownbox{
 	font-size: 12px;
@@ -1579,6 +1688,9 @@ ul.ul1{
 	padding: 3px 8px;
 }
 
+.font1-4em{
+	font-size: 1.4em;
+}
 .font1-2em{
 	font-size: 1.2em;
 }

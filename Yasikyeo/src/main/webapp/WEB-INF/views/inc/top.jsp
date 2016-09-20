@@ -93,7 +93,7 @@
 			<li><a href="<c:url value='/login/logout.do'/>">로그아웃</a></li>
 		</c:if>		
 		<li><a href="<c:url value='/mypage/client_mypage.do'/>">마이페이지</a></li>
-		<li><a href="#">고객센터</a></li>
+		<li><a href="<c:url value='/service/client_faq.do'/>">고객센터</a></li>
 		<li><a href="#">즐겨찾기</a></li>
 	</ul>
 </div>

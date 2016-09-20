@@ -6,15 +6,19 @@
 $.fn.raty.defaults.path = "<c:url value='/images'/>";
 $(function () {
 	$('div.star1').raty({
-		  score: function() {
+		readOnly: true,
+		score: function() {
 		    return $(this).attr('data-score');
-		  },
+		},
 	 	 /*  half: true, */
 	 	 /*  hints: ['a', null, '', undefined, '*_*'], */
 	 	 /*   target : '#hint', 
 	 	  targetType : 'score',
 	 	  targetFormat : 'Rating: {score}', */
 	 	  targetScore: '#hint'
+	});
+	$(".divshop").click(function() {
+		$(location).attr("href","<c:url value='/shop/client_shop_det.do'/>")
 	});
 	
 });
@@ -57,6 +61,9 @@ $(function () {
 					</div>
 				</div>
 			</div>
+				<div class="modal1">
+ 					<div class="modal-content1">현재 운영시간이 아닙니다</div>
+ 				</div>
 		</div>
 		<!-- 반복끝 -->
 		<div class="shopcontain1 shopcontain2 shopcontain3">
@@ -110,7 +117,20 @@ $(function () {
 				</div>
 			</div>
 		</div>
-		
+		<br class="clear-both">
+ 		<div class="vertical-container">
+ 			<ul class="pagination">
+ 				<li><a href="#">&laquo;</a></li>
+ 				<li><a href="#">1</a></li>
+ 				<li><a class="active" href="#">2</a></li>
+ 				<li><a href="#">3</a></li>
+				<li><a href="#">4</a></li>
+ 				<li><a href="#">5</a></li>
+				<li><a href="#">6</a></li>
+				<li><a href="#">&raquo;</a></li>
+			</ul>
+		</div>
+		<br>
 	</div>
 </div>
 <%@ include file="../inc/bottom.jsp" %>
