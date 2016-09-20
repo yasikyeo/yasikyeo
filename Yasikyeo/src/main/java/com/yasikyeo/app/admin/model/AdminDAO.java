@@ -2,7 +2,9 @@ package com.yasikyeo.app.admin.model;
 
 import java.util.List;
 
+import com.yasikyeo.app.board.model.NoticeVO;
 import com.yasikyeo.app.ceo.model.CeoVO;
+import com.yasikyeo.app.common.SearchVO;
 import com.yasikyeo.app.member.model.MemberVO;
 
 public interface AdminDAO {
@@ -16,5 +18,6 @@ public interface AdminDAO {
 	public int updateUser(int memberNo);
 	public int updateCeoStop(int ceoNo);
 	public int updateCeo(int ceoNo);
+	
 }
  

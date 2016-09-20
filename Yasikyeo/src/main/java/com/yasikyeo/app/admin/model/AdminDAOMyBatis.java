@@ -5,7 +5,9 @@ import java.util.List;
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.springframework.stereotype.Repository;
 
+import com.yasikyeo.app.board.model.NoticeVO;
 import com.yasikyeo.app.ceo.model.CeoVO;
+import com.yasikyeo.app.common.SearchVO;
 import com.yasikyeo.app.member.model.MemberVO;
 
 @Repository
@@ -61,5 +63,8 @@ public class AdminDAOMyBatis extends SqlSessionDaoSupport implements AdminDAO{
 	public int updateCeo(int ceoNo) {
 		return getSqlSession().update(namespace+".updateceo",ceoNo);
 	}
+
+	
+	
 
 }

@@ -4,7 +4,9 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.yasikyeo.app.board.model.NoticeVO;
 import com.yasikyeo.app.ceo.model.CeoVO;
+import com.yasikyeo.app.common.SearchVO;
 import com.yasikyeo.app.member.model.MemberVO;
 
 
@@ -26,4 +28,5 @@ public interface AdminService {
 	public int updateUser(int memberNo);
 	public int updateCeoStop(int ceoNo);
 	public int updateCeo(int ceoNo);
+	
 }

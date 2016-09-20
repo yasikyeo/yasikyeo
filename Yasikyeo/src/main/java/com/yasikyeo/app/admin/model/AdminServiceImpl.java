@@ -5,7 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.yasikyeo.app.board.model.NoticeVO;
 import com.yasikyeo.app.ceo.model.CeoVO;
+import com.yasikyeo.app.common.SearchVO;
 import com.yasikyeo.app.member.model.MemberVO;
 
 @Service
@@ -78,4 +80,6 @@ public class AdminServiceImpl implements AdminService{
 	public int updateCeo(int ceoNo) {
 		return adminDao.updateCeo(ceoNo);
 	}
+
+	
 }

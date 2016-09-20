@@ -22,13 +22,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
 import com.yasikyeo.app.admin.model.AdminService;
 import com.yasikyeo.app.admin.model.AdminVO;
 import com.yasikyeo.app.board.model.NoticeService;
 import com.yasikyeo.app.board.model.NoticeVO;
 import com.yasikyeo.app.ceo.model.CeoVO;
 import com.yasikyeo.app.common.FileUploadWebUtil;
+import com.yasikyeo.app.common.PaginationInfo;
+import com.yasikyeo.app.common.SearchVO;
+import com.yasikyeo.app.common.Utility;
 import com.yasikyeo.app.member.model.MemberService;
 import com.yasikyeo.app.member.model.MemberVO;
 
@@ -163,12 +165,36 @@ public class AdminController {
 			return "redirect:/admintemplet/eventNotice.do";
 	}
 	
-	@RequestMapping(value="/eventNotice.do", method=RequestMethod.GET)
-	public String admineventNoticeView(){
+	@RequestMapping("/eventNotice.do")
+	public String admineventNoticeView(@ModelAttribute SearchVO searchVo,
+			Model model){
 		//1.
-			logger.info("공지사항/이벤트 화면 보여주기");
+			logger.info("공지사항 화면 보여주기");
 		//2.
+			logger.info("글목록 조회, 파라미터 searchVo={}",
+					searchVo);
 			
+			PaginationInfo pagingInfo = new PaginationInfo();
+			pagingInfo.setBlockSize(Utility.BLOCK_SIZE);
+			pagingInfo.setRecordCountPerPage(Utility.RECORD_COUNT_PER_PAGE);
+			pagingInfo.setCurrentPage(searchVo.getCurrentPage());
+			
+			searchVo.setBlockSize(Utility.BLOCK_SIZE);
+			searchVo.setRecordCountPerPage(Utility.RECORD_COUNT_PER_PAGE);
+			searchVo.setFirstRecordIndex(pagingInfo.getFirstRecordIndex());
+					
+			//2. db작업 - select
+			List<NoticeVO> alist = noticeService.selectAllNoitce(searchVo);
+			logger.info("글목록 조회 결과 alist.size()={}", alist.size());
+			
+			//전체 레코드 개수 조회하기
+			int totalRecord 
+				= noticeService.selectTotalCount(searchVo);
+			pagingInfo.setTotalRecord(totalRecord);
+					
+			//3. 결과 저장, 뷰페이지 리턴
+			model.addAttribute("alist", alist);
+			model.addAttribute("pagingInfo", pagingInfo);
 		//3.
 			return "admintemplet/eventNotice";
 	}

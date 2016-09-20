@@ -7,6 +7,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
+import com.yasikyeo.app.common.SearchVO;
+
 @Repository
 public class NoticeDAOMyBatis extends SqlSessionDaoSupport implements NoticeDAO{
 	
@@ -18,6 +20,16 @@ public class NoticeDAOMyBatis extends SqlSessionDaoSupport implements NoticeDAO{
 	@Override
 	public int insertNotice(NoticeVO noticeVo) {
 		return getSqlSession().insert(namespace+".insertNotice", noticeVo);
+	}
+
+	@Override
+	public List<NoticeVO> selectAllNotice(SearchVO searchVO) {
+		return getSqlSession().selectList(namespace+".selectAllNotice",searchVO);
+	}
+
+	@Override
+	public int selectTotalCount(SearchVO searchVo) {
+		return getSqlSession().selectOne(namespace+".selectTotalCount",searchVo);
 	}
 	
 	
