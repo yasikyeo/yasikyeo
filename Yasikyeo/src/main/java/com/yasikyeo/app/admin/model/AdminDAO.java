@@ -19,5 +19,6 @@ public interface AdminDAO {
 	public int updateCeoStop(int ceoNo);
 	public int updateCeo(int ceoNo);
 	
+	
 }
  

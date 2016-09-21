@@ -2,12 +2,24 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../inc/adminMainTop.jsp" %>
 <div class="container1" id="categoryMemberManage">
-
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#bt2").click(function(event){
+			if(!confirm("삭제하시겠습니까?")){
+				event.preventDefault();
+			}else{
+				submit();
+			}
+		});
+	});
+</script>
  			
  			<section class="contents">
 					<article class="centerCon">
 						
-<form id="frm1">
+<form id="frm1" action="<c:url value='/admintemplet/noticedelete.do'/>">
+<input type="hidden" name="noticeNo" value="${alist.noticeNo }">
+<input type="hidden" name="noticeUpfileName" value="${alist.noticeUpfileName }">
 	<div class="divForm">
 		<div class="firstDiv">
 			<span class="sp1">번호</span> 
@@ -24,14 +36,19 @@
 		<div>
 			<span class="sp1">내용</span> 
 			<a>${alist.noticeContent}
-			<img src="<c:url value='/board_Image/${alist.noticeUpfileName}'/>"alt="이미지" ></a>
+			<c:if test="${!empty alist.noticeUpfileName}">
+				<img src="<c:url value='/board_Image/${alist.noticeUpfileName}'/>"alt="이미지" ></a>
+			</c:if>
 		</div>
-		<div>
+		<div class="align_center">
 			<input type="button" id="bt1" value="수정" onclick="location.href='<c:url value="/admintemplet/noticeUpdate.do?noticeNo=${alist.noticeNo}"/>'">
+			||
+			<input type="submit" id="bt2" value="삭제" >			
+<%-- onclick="location.href='<c:url value="/admintemplet/noticedelete.do?noticeNo=${alist.noticeNo}&noticeUpfileName=${alist.noticeUpfileName}"/>'" --%>
 		</div>
-		<div>
-			<input type="button" id="bt2" value="삭제" onclick="location.href='<c:url value="/admintemplet/noticedelete.do?noticeNo=${alist.noticeNo}"/>'"> >
-		</div>
+		
+			
+		
 	</div>
 	</form>
 					</article>

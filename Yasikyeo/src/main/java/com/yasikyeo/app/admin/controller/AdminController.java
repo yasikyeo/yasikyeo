@@ -277,6 +277,28 @@ public class AdminController {
 		return "redirect:/admintemplet/eventNoticeDetail.do?noticeNo="+noticeVo.getNoticeNo();
 	}
 	
+	@RequestMapping("/noticedelete.do")
+	public String deleteNotice(@RequestParam (defaultValue="0")int noticeNo,
+			@RequestParam String noticeUpfileName,
+			HttpServletRequest request){
+		//1.
+			logger.info("공지사항 삭제 파라미터 noticeNo={},noticeUpfileName={}",noticeNo,noticeUpfileName);
+		//2.
+			
+			int cnt = noticeService.deleteNotice(noticeNo);
+			logger.info("공지사항 삭제 결과 cnt={}", cnt);
+			
+			//파일 삭제
+			String upPath = fileUtil.getUploadPath(request,fileUtil.IMAGE_UPLOAD);
+			File oldFile = new File(upPath, noticeUpfileName); 
+			if(oldFile.exists()){
+				boolean bool =oldFile.delete();
+				logger.info("기존 파일 삭제 여부={}", bool);
+			}
+		//3.
+			return "redirect:/admintemplet/eventNotice.do";
+	}
+	
 	@RequestMapping(value="/memberManage.do", method=RequestMethod.GET)
 	public String memberManagerView(Model model){
 		//1.

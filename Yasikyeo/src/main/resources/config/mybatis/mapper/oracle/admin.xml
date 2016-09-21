@@ -47,4 +47,5 @@
 		set authcode='USER'
 		where member_no=#{memberNo}
 	</update>
+	
 </mapper>
