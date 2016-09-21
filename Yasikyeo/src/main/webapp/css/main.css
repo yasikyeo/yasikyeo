@@ -1778,7 +1778,7 @@ p.btAccodion2 > span.ui-icon-active{
 }
 .div17{
 	border: 1px solid silver;
-	background: #dccbc0;
+	background: #eae4e3;
 }
 .div17 p{
 	padding: 5px 10px;
@@ -1803,15 +1803,43 @@ p.btAccodion2 > span.ui-icon-active{
 .div18{
 	padding: 10px;
 	position: relative;
-	background: #dccbc0;
+	background: #eae4e3;
 }
 .pointinput{
-	margin-left: 43px;
+	margin-left: 20%;
+	width: 100px;
 }
+.div19{
+	border: 1px solid #676767;
+	background: #eae4e3;
+	font-size: 15px;
+}
+.div20{
+	padding: 10px;
+}
+.div20~.div20{
+	border-top: 1px dotted #676767; 
+}
+.div21{
+	padding: 10px;
+	border-top: 1px solid #676767;
+	overflow: hidden;
+}
+.div21:LAST-CHILD{
+	border-top: 1px solid #f75e02;
+}
+.tp{
+	font-size: 2em;
+}
+.p6{
+	padding: 1px 0;
+}
+
 
 /*
  	유틸 클래스 
 */
+
 .relative{
 	position: relative;
 }
@@ -2090,8 +2118,8 @@ input.cmn-toggle-yes-no + label:after {
   font-weight: bold;
   text-align: center;
   width: 80px;
-  height: 21px;
-  padding: 5px;
+  height: 19px; 
+  padding: 2px 5px 7px 5px;
 }
 input.cmn-toggle-yes-no + label:before {
   background-color: #b9b9b9;

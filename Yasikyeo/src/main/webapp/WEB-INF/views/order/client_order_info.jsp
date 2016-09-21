@@ -18,7 +18,7 @@
 			</ul>
 			<form class="flex" action="">
 				 <!-- 좌측 -->
-				 <div class="flex3 pad-right15px bord-1sr ">
+				 <div class="flex3 pad-right15px ">
 				 	<fieldset class="fieldset3">
 				 		<legend>01.배달정보</legend>
 				 		<div class="div16">
@@ -80,9 +80,33 @@
 				 	</fieldset>
 				 </div>
 				 <!-- 우측 -->
-				 <div class="flex2 pad-left15px bord-1sr">
+				 <div class="flex2 pad-left15px ">
 				 	<fieldset class="fieldset3">
 				 		<legend>03.결제방법선택</legend>
+				 		<div class="div19">
+				 			<div class="div20">
+				 				<p class="relative p6">오마이립<b class="float-right">22,000원</b></p>
+				 				<p class="relative p6">가격 : 일반 M<b class="float-right">22,000원 x 1</b></p>
+				 			</div>
+				 			<div class="div20">
+				 				<p class="relative p6">오마이립<b class="float-right">22,000원</b></p>
+				 				<p class="relative p6">가격 : 일반 M<b class="float-right">22,000원 x 1</b></p>
+				 			</div>
+				 			<div class="div20">
+				 				<p class="relative p6">오마이립<b class="float-right">22,000원</b></p>
+				 				<p class="relative p6">가격 : 일반 M<b class="float-right">22,000원 x 1</b></p>
+				 			</div>
+				 			<div class="div21">
+				 				<p class="relative p6">수량<b class="float-right">2개</b></p>
+				 				<p class="relative p6">총 상품금액<b class="float-right color-orange">44,000원</b></p>
+				 				<p class="relative p6">포인트 결제<b class="float-right ">-0원</b></p>
+				 			</div>
+				 			<div class="div21">
+				 				<p class="relative clear-both p6"><b class="float-right">최종결제금액</b></p>
+				 				<p class="relative clear-both p6"><b class="float-right color-orange tp">44,000원 </b></p>
+				 			</div>
+				 		</div>
+				 		<input class="btbrown fullwidth bt8 ma-t-20px" type="submit" value="결제하기">
 				 	</fieldset>
 				 </div>			
 			</form>
