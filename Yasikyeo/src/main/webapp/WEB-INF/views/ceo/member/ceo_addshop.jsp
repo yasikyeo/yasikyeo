@@ -16,17 +16,16 @@
 						<div class="shop_info">
 							<form id="shop_reg">
 								<table border="3" ; width="100%" ; height="100%";>
-
 									<tr>
 										<td class="td_1">업소 카테고리</td>
-										<td class="td_2"><select name="shop_categori"
-											class="formInput">
+										<td class="td_2"><select name="shopCategori" class="formInput">
 												<option value="koreafood">한식</option>
 												<option value="japanfood">일식</option>
 												<option value="chinafood">중식</option>
 												<option value="yangkifood">양식</option>
 												<option value="etcfood">기타</option>
-										</select></td>
+										</select>
+										</td>
 									</tr>
 
 									<tr>
@@ -61,8 +60,7 @@
 
 									<tr>
 										<td class="td_1">오픈 & 마감시간</td>
-										<td class="td_2"><select name="shop_opentime"
-											class="formInput3">
+										<td class="td_2"><select name="shop_opentime" class="formInput3">
 												<option value="am">오전</option>
 												<option value="pm">오후</option>
 										</select> <select name="shop_opentime" class="formInput3">
@@ -79,7 +77,7 @@
 												<option value="11h">11</option>
 												<option value="12h">12</option>
 										</select> <select name="shop_opentime" class="formInput3">
-											<%for(int i=1; i<=60; i++){ %>
+											<%for(int i=0; i<=60; i+=10){ %>
 												<option value="<%=i%>m"><%=i %></option> 
 											<%} %>
 										</select> & <select name="shop_closetime" class="formInput3">
@@ -99,7 +97,7 @@
 												<option value="11h">11</option>
 												<option value="12h">12</option>
 										</select> <select name="shop_opentime" class="formInput3">
-											<%for(int i=1; i<=60; i++){ %>
+											<%for(int i=0; i<=60; i+=10){ %>
 												<option value="<%=i%>m"><%=i %></option> 
 											<%} %>
 										</select>
@@ -112,24 +110,28 @@
 									</tr>
 
 									<tr>
-										<td class="td_1">배달여부</td>
-										<td class="td_2"><input type="radio" class="formInput"
-											name="shop_delivery" value="true">가능 <input
-											type="radio" class="formInput" name="shop_delivery"
-											value="false">불가</td>
-									</tr>
-
-									<tr>
-										<td class="td_1">원산지내용</td>
+										<td class="td_1">원산지정보</td>
 										<td class="td_2"><input type="text" class="formInput"
 											name="shop_origin"></td>
 									</tr>
 
 									<tr>
-										<td class="td_1">지도좌표</td>
+										<td class="td_1">우편번호</td>
 										<td class="td_2">
-											<a href="javascript:void(0);" onclick="window.open('daummap.do', '_blank', 'width=1080px, height=680px')">
-											<input type="button" value="지도창 띄우기" id="formbutton"></a>
+											<input type="text" ReadOnly id="postcode" name="postcode" class="formInput">
+											<input type="Button" class="formButton" value="우편번호 찾기" title="새창열림" onclick="execDaumPostcode()">
+										</td>
+									</tr>
+									<tr>
+										<td class="td_1">주소</td>
+										<td class="td_2">
+											<input type="text" ReadOnly id="address" name="address" class="formInput4">
+										</td>
+									</tr>
+									<tr>
+										<td class="td_1">상세주소</td>
+										<td class="td_2">
+											<input type="text" id="addressDetail" name="addressDetail" class="formInput4">
 										</td>
 									</tr>
 
