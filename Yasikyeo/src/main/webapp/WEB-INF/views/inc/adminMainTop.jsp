@@ -25,6 +25,7 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/adminMain.css"/>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/adminlogin.css"/>
 <script type="text/javascript" src="<c:url value='/jquery/jquery-3.1.0.min.js'/>"></script>
+<script src="<c:url value='/ckeditor/ckeditor.js'/>" type="text/javascript"></script>
 
 <!--[if lt IE 9]>
       <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>      
