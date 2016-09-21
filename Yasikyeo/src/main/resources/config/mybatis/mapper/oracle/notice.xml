@@ -27,7 +27,7 @@
 		    select rownum as RNUM, LIST_ALL.*
 		    from
 		        (select notice_no, notice_title, notice_content,
-		        notice_upfilename,notice_suffix,manager_no
+		        notice_upfilename,notice_suffix,admin_no
 		        from notice 
 		        <include refid="searchWhere"></include>
 		        ) LIST_ALL    
@@ -49,5 +49,12 @@
 		select * from notice
 		where notice_no=#{noticeNo}
 	</select>
+	
+	<update id="noticeUpdate" parameterType="noticeVO">
+		update notice
+		set notice_title=#{noticeTitle},notice_content=#{noticeContent},
+		notice_upfilename=#{noticeUpfileName},notice_suffix=#{noticeSuffix}
+		where notice_no=#{noticeNo}
+	</update>
 	
 </mapper>

@@ -45,10 +45,9 @@
 	<caption>공지사항</caption>
 	<colgroup>
 		<col style="width:10%;" />
+		<col style="width:20%;" />
 		<col style="width:30%;" />
-		<col style="width:30%;" />
-		<col style="width:15%;" />
-		<col style="width:15%;" />
+		<col style="width:40%;" />
 	</colgroup>
 	<thead>
 	  <tr>
@@ -61,7 +60,7 @@
 	<tbody>  
 	<c:if test="${empty alist}">
 		<tr>
-			<td colspan="5" class="align_center">
+			<td colspan="4" class="align_center">
 			해당 데이터가 없습니다
 			</td>
 		</tr>
@@ -71,7 +70,7 @@
 		<c:forEach var="vo" items="${alist }">
 			<tr style="text-align: center">
 				<td>${vo.noticeNo}</td>
-				<td><a href="<c:url value='/admintemplet/adminnoticeDetail.do?noticeNo=${vo.noticeNo }'/>">
+				<td><a href="<c:url value='/admintemplet/eventNoticeDetail.do?noticeNo=${vo.noticeNo }'/>">
 				${vo.noticeSuffix}</a></td>
 				<td style="text-align: left;">
 				<!-- 파일이 첨부된 경우 파일 이미지 보여주기 -->

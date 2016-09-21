@@ -6,7 +6,7 @@ public class NoticeVO {
 	private String noticeContent;
 	private String noticeUpfileName;
 	private String noticeSuffix;
-	private String managerNo;
+	private String adminNo;
 	public int getNoticeNo() {
 		return noticeNo;
 	}
@@ -37,18 +37,19 @@ public class NoticeVO {
 	public void setNoticeSuffix(String noticeSuffix) {
 		this.noticeSuffix = noticeSuffix;
 	}
-	public String getManagerNo() {
-		return managerNo;
+	public String getAdminNo() {
+		return adminNo;
 	}
-	public void setManagerNo(String managerNo) {
-		this.managerNo = managerNo;
+	public void setAdminNo(String adminNo) {
+		this.adminNo = adminNo;
 	}
 	@Override
 	public String toString() {
 		return "NoticeVO [noticeNo=" + noticeNo + ", noticeTitle=" + noticeTitle + ", noticeContent=" + noticeContent
-				+ ", noticeUpfileName=" + noticeUpfileName + ", noticeSuffix=" + noticeSuffix + ", managerNo="
-				+ managerNo + "]";
+				+ ", noticeUpfileName=" + noticeUpfileName + ", noticeSuffix=" + noticeSuffix + ", adminNo=" + adminNo
+				+ "]";
 	}
+
 	
 	
 	

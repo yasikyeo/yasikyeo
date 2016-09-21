@@ -1,5 +1,6 @@
 package com.yasikyeo.app.admin.controller;
 
+import java.io.File;
 import java.util.List;
 import java.util.Map;
 
@@ -154,14 +155,15 @@ public class AdminController {
 			
 			//업로드된 파일명 구해오기
 			String fileName="";
-			long fileSize=0;
 			for( Map<String, Object> mymap : fileList){
 				fileName = (String) mymap.get("fileName");
-				fileSize = (Long) mymap.get("fileSize");
+				
 			}
 			
 			noticeVo.setNoticeUpfileName(fileName);
-		
+			logger.info("파일등록 결과 파라미터 noticeVo={}",noticeVo);
+			
+			
 			int cnt = noticeService.insertNotice(noticeVo);
 			logger.info("공지사항 글등록 완료 cnt={}",cnt);
 		//3.
@@ -219,6 +221,61 @@ public class AdminController {
 		
 	}
 	
+	@RequestMapping(value="/noticeUpdate.do", method=RequestMethod.GET)
+	public String noticeUpdate_view(@RequestParam (defaultValue="0")int noticeNo,
+			Model model){
+		//1.
+			
+			logger.info("공지사항 수정 페이지 보여주기 파라미터 noticeNo={}",noticeNo);
+		//2.
+			NoticeVO alist=noticeService.selectByNoNotice(noticeNo);
+			logger.info("공지사항 수정 보여주기 파라미터 noticeVo={}",alist);
+			model.addAttribute("alist", alist);
+		
+		//3.
+			return "admintemplet/noticeUpdate";
+	}
+	
+	@RequestMapping(value="/noticeUpdate.do", method=RequestMethod.POST)
+	public String noticeUpdate_post(@ModelAttribute NoticeVO noticeVo,
+			@RequestParam String oldNoticefileName,
+			HttpServletRequest request){
+		//1.
+			logger.info("글 수정 처리, 파라미터 noticeVO={}", noticeVo);
+			logger.info("글 수정 처리 파일 파라미터 oldeNoticefileName={}",oldNoticefileName);
+		//2.
+			
+			int uploadType = FileUploadWebUtil.IMAGE_UPLOAD;
+			List<Map<String, Object>> fileList=fileUtil.fileUpload(request, uploadType);
+			
+			//업로드된 파일명 구해오기
+			if(fileList!=null && !fileList.isEmpty()){
+				String fileName="";
+				for( Map<String, Object> mymap : fileList){
+				fileName = (String) mymap.get("fileName");
+				
+				}//for
+				
+				noticeVo.setNoticeUpfileName(fileName);
+				
+				//기존 파일 삭제
+				String upPath = fileUtil.getUploadPath(request,fileUtil.IMAGE_UPLOAD);
+				File oldFile = new File(upPath, oldNoticefileName); 
+				if(oldFile.exists()){
+					boolean bool =oldFile.delete();
+					logger.info("기존 파일 삭제 여부={}", bool);
+				}
+			}else{
+				//기존파일 세팅
+				noticeVo.setNoticeUpfileName(oldNoticefileName);
+			}
+			int cnt = noticeService.noticeUpdate(noticeVo);
+			
+			logger.info("파일 업로드 후 cnt={},noticeVo={}",cnt,noticeVo);
+		//3.
+		
+		return "redirect:/admintemplet/noticeUpdate.do?noticeNo="+noticeVo.getNoticeNo();
+	}
 	
 	@RequestMapping(value="/memberManage.do", method=RequestMethod.GET)
 	public String memberManagerView(Model model){
