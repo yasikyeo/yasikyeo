@@ -2,11 +2,32 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../../inc/ceo/top.jsp" %>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/ceoallmenu.css" type="text/css" />
-<title>야시켜, 사장님 업소관리</title>
+<title>야시켜, 사장님 업소관리 페이지</title>
 
 
 
 		<div id="main">
+			<div id="navigator">
+						
+						<table>
+							<tr>
+								<th>내 업소관리</th>
+							</tr>
+							<tr>
+								<td><a href="#">메뉴 등록</a></td>
+							</tr>
+							<tr>
+								<td><a href="#">메뉴 수정</a></td>
+							</tr>
+							<tr>
+								<td><a href="#">리뷰 관리</a></td>
+							</tr>
+							<tr>
+								<td><a href="#">주문 관리</a></td>
+							</tr>
+						</table>
+			</div>
+		
 			<div id="main_box">
 				<div id="box_1">
 					<div id="a_1">
