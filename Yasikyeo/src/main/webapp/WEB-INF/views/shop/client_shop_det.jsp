@@ -6,9 +6,23 @@
 <script type="text/javascript" src="<c:url value='/jquery/jquery.uploadPreview.min.js'/>"></script>
 <script type="text/javascript">
 $.fn.raty.defaults.path = "<c:url value='/images'/>";
-$(function () {
+function inputFileStr(i) {
+	var str='';
+	str+='<div class="inputimgcon1 paddingtype1 align-middle">';
+		str+='<div class="profile2">';
+			str+='<div class="image-preview'+(i+3)+'">';
+				str+='<input type="file" name="image" id="image-upload'+(i+3)+'" />';
+			str+='</div>';
+			str+='<label for="image-upload'+(i+3)+'" id="image-label'+(i+3)+'">파일첨부</label>';
+		str+='</div>';
+	str+='</div>';
+	return str;
+};
+var sp11clickcount=0;
+$(document).ready(function () {
 	$('span.star2').raty({
-		  score: function() {
+		readOnly: true,  
+		score: function() {
 		    return $(this).attr('data-score');
 		  },
 	 	 /*  half: true, */
@@ -25,6 +39,7 @@ $(function () {
 	 	  targetScore: '#hint'
 	});
 	$('p.star2').raty({
+		readOnly: true,
 		  score: function() {
 		    return $(this).attr('data-score');
 		  },
@@ -49,7 +64,7 @@ $(function () {
 	        }
 	});
 	$( ".accordion2" ).accordion({
-    	header: "> div .btAccodion2",
+    	header: "> div > .btAccodion2",
     	collapsible: true,
     	heightStyle: "content",
     	active: true,
@@ -62,6 +77,21 @@ $(function () {
 	          $( this ).accordion( "refresh" );
 	        }
 	});
+	$( ".accordion3" ).accordion({
+    	header: "> .btAccodion3",
+    	collapsible: true,
+    	heightStyle: "content",
+    	active: true,
+    	icons: icons
+	    }).sortable({
+	        axis: "y",
+	        handle: ".btAccodion3",
+	        stop: function( event, ui ) {
+	          ui.item.children( ".btAccodion3" ).triggerHandler( "focusout" );
+	          $( this ).accordion( "refresh" );
+	        }
+	});
+	
 	$("input[type=reset]").click(function() {
 		$(this).parents(".group2").find(".btAccodion2").click();
 	});
@@ -100,6 +130,48 @@ $(function () {
 	    no_label: false,                 // Default: false
 	    preview_default:"test-failed.png"
 	  });
+
+	  $(".sp11").click(function() {
+		$(this).parents(".div14").remove();
+		sp11clickcount++;
+		alert(sp11clickcount);
+		$(".addimagecon").append(inputFileStr(sp11clickcount));
+	});
+	
+	$(document).on("click","#image-upload4",function(){
+		$.uploadPreview({
+		    input_field: "#image-upload4",   // Default: .image-upload
+		    preview_box: ".image-preview4",  // Default: .image-preview
+		    label_field: "#image-label4",    // Default: .image-label
+		    label_default: "파일첨부",   // Default: Choose File
+		    label_selected: "파일변경",  // Default: Change File
+		    no_label: false,                 // Default: false
+		    preview_default:"test-failed.png"
+		  });
+	});
+	$(document).on("click","#image-upload5",function(){
+		$.uploadPreview({
+		    input_field: "#image-upload5",   // Default: .image-upload
+		    preview_box: ".image-preview5",  // Default: .image-preview
+		    label_field: "#image-label5",    // Default: .image-label
+		    label_default: "파일첨부",   // Default: Choose File
+		    label_selected: "파일변경",  // Default: Change File
+		    no_label: false,                 // Default: false
+		    preview_default:"test-failed.png"
+		  });
+	});
+	$(document).on("click","#image-upload6",function(){
+		$.uploadPreview({
+		    input_field: "#image-upload6",   // Default: .image-upload
+		    preview_box: ".image-preview6",  // Default: .image-preview
+		    label_field: "#image-label6",    // Default: .image-label
+		    label_default: "파일첨부",   // Default: Choose File
+		    label_selected: "파일변경",  // Default: Change File
+		    no_label: false,                 // Default: false
+		    preview_default:"test-failed.png"
+		  });
+	});
+
 });
 </script>
 <div class="mainSection">
@@ -340,9 +412,9 @@ $(function () {
 				</div>
 				<!-- 리뷰작성하기 -->
 				<div class="border-bottom1">
-					<fieldset class="fieldset2">
+					<fieldset class="fieldset2 accordion3">
 						<legend class="font1-4em"><b>리뷰작성하기</b></legend>
-						<span class="sp8">다음에할게요<img class="cursor-pointer" alt="버튼" src="<c:url value='/images/caret-arrow-up.png'/>"></span>
+						<span class="sp8 btAccodion3"></span>
 						<form class="form1" action="">
 							<p class="p4">
 								<span class="align-middle">별점</span>
@@ -425,6 +497,127 @@ $(function () {
 						<!-- 리플내용 -->
 					</div>
 					<!-- 리뷰내용 -->
+					<!-- 리뷰내용 -->
+					<div class="contain3 font16px ma-b-15px">
+						<div class="flex">
+							<div class="flex1 img2">
+								<img class="fullwidth" alt="profil" src="">
+							</div>
+							<div class="flex5 paddingCol5px">
+								<ul class="ul2">
+									<li><b class="font16px">아이디4글자이후**</b></li>
+									<li>|</li>
+									<li>2016-01-01</li>
+								</ul>
+								<p class="star2" data-score="3.6"></p>
+								<p>리뷰내용<br>
+								리뷰내용<br>
+								리뷰내용<br>
+								리뷰내용<br>
+								</p>
+								<!-- 리뷰이미지 -->
+								<p class="p5">
+									<img alt="리뷰 이미지" src="">
+								</p>
+							</div>
+						</div>
+						<!-- 리플내용 -->
+						<div class="flex">
+							<div class="flex1">
+							</div>
+							<div class="flex5 bgbrown padding10px ma-l-10px">
+								<ul class="ul2">
+									<li><b class="font16px">사장님</b></li>
+									<li>|</li>
+									<li>2016-01-01</li>
+								</ul>
+								<p>아이디4글자이후**님,감사합니다.</p>
+							</div>
+						</div>
+						<!-- 리플내용 -->
+					</div>
+					<!-- 리뷰내용 -->
+					<!-- 리뷰내용 -->
+					<div class="contain3 font16px ma-b-15px">
+						<div class="flex">
+							<div class="flex1 img2">
+								<img class="fullwidth" alt="profil" src="">
+							</div>
+							<div class="flex5 paddingCol5px">
+								<ul class="ul2">
+									<li><b class="font16px">아이디4글자이후**</b></li>
+									<li>|</li>
+									<li>2016-01-01</li>
+									<li><span class="btbrown1">삭제</span></li>
+									<li><span class="btbrown1">수정</span></li>
+								</ul>
+								<div class="review">
+									<p class="star2" data-score="3.6"></p>
+									<p>리뷰내용<br>
+									리뷰내용<br>
+									리뷰내용<br>
+									리뷰내용<br>
+									</p>
+									<!-- 리뷰이미지 -->
+									<p class="p5">
+										<img alt="리뷰 이미지" src="">
+									</p>
+								</div>
+								<form class="form1" action="">
+									<p class="p4">
+										<span class="align-middle">별점</span>
+										<span class="star3" data-score="5"></span>
+									</p>
+									<p class="p4">닉네임 <b>csu1190</b></p>
+									<textarea class="ta2" wrap="virtual"></textarea>
+									<p class="overflow-hidden"><span class="float-right sp2">0/400</span></p>
+									<p class="p4">
+										<b class="align-middle">사진첨부</b>
+										<span class="sp2 align-middle">이미지 파일 (GIF,PNG,JPG)을 기준으로 최대 10MB이하, 최대 3개까지 등록가능 합니다.</span>
+									</p>
+									<div class="fullwidth addimagecon">
+										<!-- 이미지 -->
+										<div class="div14 paddingtype1 align-middle">
+											<span class="sp11">&times;</span>
+											<img alt="" src="<c:url value='/images/temp/a.jpg'/>">
+										</div>
+										<!-- 이미지 -->
+										<!-- 이미지 -->
+										<div class="div14 paddingtype1 align-middle">
+											<span class="sp11">&times;</span>
+											<img alt="" src="<c:url value='/images/temp/a.jpg'/>">
+										</div>
+										<!-- 이미지 -->
+										<!-- 이미지 -->
+										<div class="div14 paddingtype1 align-middle">
+											<span class="sp11">&times;</span>
+											<img alt="" src="<c:url value='/images/temp/a.jpg'/>">
+										</div>
+										<!-- 이미지 -->
+									</div>
+									<div class="flex clear-both">
+										<input class="flex3 btblack bt3" type="submit" value="리뷰 작성 완료">
+										<input class="flex1 btbrown bt3" type="button" value="취소">
+									</div>
+								</form>
+							</div>
+						</div>
+						<!-- 리플내용 -->
+						<div class="flex">
+							<div class="flex1">
+							</div>
+							<div class="flex5 bgbrown padding10px ma-l-10px">
+								<ul class="ul2">
+									<li><b class="font16px">사장님</b></li>
+									<li>|</li>
+									<li>2016-01-01</li>
+								</ul>
+								<p>아이디4글자이후**님,감사합니다.</p>
+							</div>
+						</div>
+						<!-- 리플내용 -->
+					</div>
+					<!-- 리뷰내용 -->
 				</div>
 			</div>
 		</div>
@@ -445,7 +638,41 @@ $(function () {
 			</div>
 			<!-- 장바구니영역 -->
 			<div class="contain2 ma-t-20px"  data-spy="affix" data-offset-top="772">
-				<div class="border-bottom1 font16px padding10px"><b>장바구니</b></div>
+				<div class="border-bottom1 font16px padding10px">
+					<b>장바구니 <span class="color-orange">X개</span></b>
+				</div>
+				
+				<!-- 장바구니메뉴추가부분 -->
+				<form class="font14px" action="<c:url value='/order/client_order_info.do'/> ">
+					<!-- 각 메뉴 -->
+					<div class="accordion2">
+						<div class="padding10px">
+							<span class="sp12">탕수육+짬뽕</span>
+							<input class="textsize1 " type="text">개
+							<input class="align-middle bt7" type="button" value="X">
+						</div>
+						<div class="border-bottom1">
+							<p class="btAccodion2"><b class="sp13">14,000원</b></p>
+							<div class="padding10px div15">
+								<span class="float-left"><b>가격:</b></span>
+								<span class="float-right">+ 14,000원</span>
+							</div>
+						</div>
+					</div>
+					<!-- 각 메뉴 -->
+					<!-- 주문합계부분 -->
+					<div>
+						<div class="padding10px align-right">
+							<p><b class="font15px">주문합계</b></p>
+							<p class="color-orange font18px"><b>54,000</b>원</p>
+							<p class="color-silver font13px">[최소주문금액:10,000원]</p>
+						</div>
+						<!-- 주문합계부분 -->
+						<input class="btbrown bt8" type="submit" value="주문하기">
+					</div>
+				</form>
+				<!-- 장바구니메뉴추가부분 -->
+				
 			</div>
 		</div>
 	</div>
