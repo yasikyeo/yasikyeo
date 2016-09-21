@@ -1,6 +1,10 @@
 package com.yasikyeo.app.ceo.member.controller;
 
+import java.util.List;
+import java.util.Map;
+
 import javax.mail.MessagingException;
+import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -117,9 +121,6 @@ public class CeoMemberController {
 		return mv;
 	}
 	
-	@RequestMapping("/ceo_addshop.do")
-	public void ceo_addshop(){
-	}
 	@RequestMapping("/daummap.do")
 	public void daummap(){
 	}

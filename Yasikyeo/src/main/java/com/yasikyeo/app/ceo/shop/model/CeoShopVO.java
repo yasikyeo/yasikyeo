@@ -5,6 +5,7 @@ public class CeoShopVO {
 	private int shopNo;
 	private String shopCategori;
 	private String shopName;
+	private String shopImage;
 	private String shopExplain;
 	private int shopMinprice;
 	private String shopOpentime;
@@ -16,11 +17,12 @@ public class CeoShopVO {
 	private String postcode;
 	private String shopAccountname;
 	private String shopAccount;
-	private String shopLicensee;
+	private String shopLicense;
 	private int shopHit;
 	private int shopAvgreview;
 	private int shopReviewcnt;
 	private int shopCeoreplycnt;
+	private int ceoNo;
 	
 	public int getShopNo() {
 		return shopNo;
@@ -106,11 +108,11 @@ public class CeoShopVO {
 	public void setShopAccount(String shopAccount) {
 		this.shopAccount = shopAccount;
 	}
-	public String getShopLicensee() {
-		return shopLicensee;
+	public String getShopLicense() {
+		return shopLicense;
 	}
-	public void setShopLicensee(String shopLicensee) {
-		this.shopLicensee = shopLicensee;
+	public void setShopLicense(String shopLicensee) {
+		this.shopLicense = shopLicensee;
 	}
 	public int getShopHit() {
 		return shopHit;
@@ -136,15 +138,28 @@ public class CeoShopVO {
 	public void setShopCeoreplycnt(int shopCeoreplycnt) {
 		this.shopCeoreplycnt = shopCeoreplycnt;
 	}
+	public String getShopImage() {
+		return shopImage;
+	}
+	public void setShopImage(String shopImage) {
+		this.shopImage = shopImage;
+	}
+	public int getCeoNo() {
+		return ceoNo;
+	}
+	public void setCeoNo(int ceoNo) {
+		this.ceoNo = ceoNo;
+	}
 	
 	@Override
 	public String toString() {
 		return "CeoShopVO [shopNo=" + shopNo + ", shopCategori=" + shopCategori + ", shopName=" + shopName
-				+ ", shopExplain=" + shopExplain + ", shopMinprice=" + shopMinprice + ", shopOpentime=" + shopOpentime
-				+ ", shopClosetime=" + shopClosetime + ", shopTel=" + shopTel + ", shopOrigin=" + shopOrigin
-				+ ", address=" + address + ", adressDetail=" + adressDetail + ", postcode=" + postcode
-				+ ", shopAccountname=" + shopAccountname + ", shopAccount=" + shopAccount + ", shopLicensee="
-				+ shopLicensee + ", shopHit=" + shopHit + ", shopAvgreview=" + shopAvgreview + ", shopReviewcnt="
-				+ shopReviewcnt + ", shopCeoreplycnt=" + shopCeoreplycnt + "]";
+				+ ", shopImage=" + shopImage + ", shopExplain=" + shopExplain + ", shopMinprice=" + shopMinprice
+				+ ", shopOpentime=" + shopOpentime + ", shopClosetime=" + shopClosetime + ", shopTel=" + shopTel
+				+ ", shopOrigin=" + shopOrigin + ", address=" + address + ", adressDetail=" + adressDetail
+				+ ", postcode=" + postcode + ", shopAccountname=" + shopAccountname + ", shopAccount=" + shopAccount
+				+ ", shopLicense=" + shopLicense + ", shopHit=" + shopHit + ", shopAvgreview=" + shopAvgreview
+				+ ", shopReviewcnt=" + shopReviewcnt + ", shopCeoreplycnt=" + shopCeoreplycnt + ", ceoNo=" + ceoNo
+				+ "]";
 	}
 }

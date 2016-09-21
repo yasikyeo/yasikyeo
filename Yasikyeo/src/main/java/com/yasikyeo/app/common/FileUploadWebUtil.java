@@ -26,6 +26,7 @@ public class FileUploadWebUtil {
 	 //자료실에서 업로드인지, 상품등록에서 이미지 등록인지 구분해주는 상수
      public static final int PDS_UPLOAD=1;//자료실 파일 업로드
 	 public static final int IMAGE_UPLOAD=2;//상품이미지 업로드
+	 public static final int SHOP_IMAGE_UPLOAD=3;
 	
 	 public static final Logger logger 
 	 =LoggerFactory.getLogger(FileUploadWebUtil.class);
@@ -114,7 +115,7 @@ public class FileUploadWebUtil {
 		
 	}
 	
-	public String getUploadPath(HttpServletRequest request,int uploadTpye
+	public String getUploadPath(HttpServletRequest request,int uploadType
 			){
 		//업로드 경로를 구하는 메서드
 		String realPath="";
@@ -122,33 +123,36 @@ public class FileUploadWebUtil {
 		
 		if(type.equals("test")){
 			//테스트인 경우 => 테스트 경로를 구한다
-			if(uploadTpye==PDS_UPLOAD){
+			if(uploadType==PDS_UPLOAD){
 				//자료실 파일 업로드
 				realPath
 				=fileUploadProps.getProperty("file.upload.path.test");
-			}else{	
+			}else if(uploadType==IMAGE_UPLOAD){	
 					//상품 등록시 파일 이미지 업로드
 					realPath=fileUploadProps.getProperty("imageFile.upload.path.test");
-			}	
+			}else if(uploadType==SHOP_IMAGE_UPLOAD){
+				realPath=fileUploadProps.getProperty("shopImageFile.upload.path.test");
+			}
 				logger.info("테스트 경로={}",realPath);
 		}else{
 			//실제 배포하는 경우 => 실제 경로를 구한다
-			if(uploadTpye==PDS_UPLOAD){
+			if(uploadType==PDS_UPLOAD){
 				//파일 업로드
 				realPath
 				=fileUploadProps.getProperty("file.upload.path");
-			logger.info("실제 배포시 경로={}", realPath);
-			
-			//물리적인 경로 구하기
-			realPath =
-			request.getSession().getServletContext().getRealPath(realPath);
-			}else{
+			}else if(uploadType==IMAGE_UPLOAD){
 				//상품이미지
 				realPath
 				=fileUploadProps.getProperty("imageFile.upload.path");
 				
+			}else if(uploadType==SHOP_IMAGE_UPLOAD){
+				realPath = fileUploadProps.getProperty("shopImageFile.upload.path");
 			}
-			logger.info("실제 배포기 물리적 경로={}", realPath);
+			
+			logger.info("실제 배포시 경로={}", realPath);
+			//물리적인 경로 구하기
+			realPath = request.getSession().getServletContext().getRealPath(realPath);
+			logger.info("실제 배포시 물리적 경로={}", realPath);
 		}//if
 		
 		
