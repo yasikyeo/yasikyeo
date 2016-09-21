@@ -68,10 +68,10 @@ public class CeoVO {
 	public void setCeoWithdraw(String ceoWithdraw) {
 		this.ceoWithdraw = ceoWithdraw;
 	}
-	public String getAuthCode() {
+	public String getAuthcode() {
 		return authcode;
 	}
-	public void setAuthCode(String authcode) {
+	public void setAuthcode(String authcode) {
 		this.authcode = authcode;
 	}
 	

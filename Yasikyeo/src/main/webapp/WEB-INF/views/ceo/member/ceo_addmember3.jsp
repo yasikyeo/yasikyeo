@@ -30,7 +30,7 @@
 										아이디
 										</td>
 										<td class="td_3">
-											<input type="text" class="formInput" id="ceoId" name="ceoId"> <input type="button" class="formInput" id="idcheck" name="idcheck" value="중복확인"><div id="message"></div>
+											<input type="text" class="formInput" id="ceoId" name="ceoId"><div id="message"></div>
 										</td>
 									</tr>
 									<tr>
@@ -63,20 +63,20 @@
 									<tr>
 										<td class="td_1" rowspan="3">사장님 정보</td>
 										<td class="td_2"><labe>이름</labe></td>
-										<td class="td_3"><input type="text" class="formInput" name="ceoName"></td>
+										<td class="td_3"><input type="text" class="formInput" id="ceoName" name="ceoName"></td>
 									</tr>
 									
 									<tr>
 										<td class="td_2"><label>휴대폰 번호</label></td>
 										<td class="td_3">
-											<input type="text" class="formInput" name="ceoTel"> 
+											<input type="text" class="formInput" id="ceoTel" name="ceoTel"> 
 										</td>
 									</tr>
 									
 									<tr>
 										<td class="td_2">생년월일</td>
 										<td class="td_3">
-											<input type="text" class="formInput" name="ceoBirth">
+											<input type="text" class="formInput" id="ceoBirth" name="ceoBirth">
 										</td>
 									</tr>
 									
@@ -101,10 +101,6 @@
 				return false;
 				event.stopPropagation();
 				event.preventDefault();
-			}else if($("#ceoName").val().length < 1){
-				alert("이름을 입력하세요.");
-				$("#ceoName").focus();
-				return false;
 			}else if($("#authNum").val()!="인증완료"){
 				alert("이메일 인증을 하세요.");
 				$("#ceoEmail").focus();
@@ -113,9 +109,21 @@
 				alert("비밀번호를 입력하세요.");
 				$("#ceoPwd").focus();
 				return false;
-			}else if($("#ceoPwd2").val()!=$("#ceoPwd2").val()){
+			}else if($("#ceoPwd").val()!=$("#ceoPwd2").val()){
 				alert("비밀번호가 일치하지 않습니다.");
 				$("#ceoPwd2").focus();
+				return false;
+			}else if($("#ceoName").val().length < 2){
+				alert("이름을 입력하세요.");
+				$("#ceoName").focus();
+				return false;
+			}else if($("#ceoTel").val().length < 2){
+				alert("전화번호를 입력하세요.");
+				$("#ceoName").focus();
+				return false;
+			}else if($("#ceoBirth").val().length < 2){
+				alert("생일을 입력하세요.");
+				$("#ceoName").focus();
 				return false;
 			}
 		});

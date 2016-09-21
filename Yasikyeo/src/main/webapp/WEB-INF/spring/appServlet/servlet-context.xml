@@ -57,7 +57,11 @@
 			<mapping path="/mypage/*" />
 			<beans:ref bean="memberLoginInterceptor" />
 		</interceptor>
-
+		
+		<interceptor>
+			<mapping path="/marketadmin/*" />
+			<beans:ref bean="ceoLoginInterceptor" />
+		</interceptor>
 	</interceptors>
 	
 </beans:beans>

@@ -41,12 +41,28 @@
     						</div>
     						
     						<div id="conlogin">
+    							<c:if test="${empty sessionScope.ceoId }">
     							<div id="alignlogin">
-	    							<input type="text" maxlength="100" value="ID 입력" name="username" onclick="textClear(this);" class="input">
-	    							<br><input type="password" maxlength="100" value="비밀번호 입력" name="password" onclick="textClear(this);" class="input">
-	    							<br><p><input type="checkbox"> <a href="">아이디 저장 ID/PW찾기 |</a> <a href="<c:url value='/ceo/member/ceo_addmember.do'/>">회원가입</a></p>
+    							<form name="frm" method="post" action="<c:url value='/ceo/login.do'/>">
+	    							<input type="text" placeholder="ID 입력" name="ceoId" class="input" value="${cookie.ck_ceoId.value }" >
+	    							<br><input type="password" required placeholder="비밀번호 입력" name="ceoPwd" class="input">
+	    							<br><p><input type="checkbox" id="idSave" name="idSave" <c:if test="${!empty cookie.ck_ceoId}">
+					    				checked</c:if>>
+				    				<label for="idSave">아이디 저장 |</label>
+				    				<a href="<c:url value='/ceo/index.do'/>"> ID/PW찾기 </a>
+				    				<a href="<c:url value='/ceo/member/ceo_addmember.do'/>">| 회원가입</a></p>
 									<br><input type="submit" value="로그인" name="login" class="login_button" />
+								</form>
 								</div>
+								</c:if>
+								<c:if test="${!empty sessionScope.ceoId }">
+								<div id="logout"><br><br><br><br><br><br><br>
+								<form name="logout" mehtod="post" action="<c:url value='/ceo/logout.do'/>">
+									<p>${sessionScope.ceoId } 님 환영합니다.</p><br>
+									<input type="submit" value="로그아웃" name="login" class="login_button" />
+								</form>
+								</div>
+								</c:if>
 							</div>
 							
     						
