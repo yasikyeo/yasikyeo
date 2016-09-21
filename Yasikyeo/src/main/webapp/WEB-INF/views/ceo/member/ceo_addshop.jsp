@@ -11,7 +11,7 @@
 						<div id="show1">정보입력</div>
 						<div class="show2">
 							<div id="lsh">사장님께서 등록하실 업소의 상세 내용을 기재해주세요.</div>
-							<div id="rsh">04 업소등록</div>
+							<div id="rsh">업소등록</div>
 						</div>
 						<div class="shop_info">
 							<form id="shop_reg">
@@ -25,6 +25,7 @@
 												<option value="japanfood">일식</option>
 												<option value="chinafood">중식</option>
 												<option value="yangkifood">양식</option>
+												<option value="etcfood">기타</option>
 										</select></td>
 									</tr>
 
@@ -78,7 +79,9 @@
 												<option value="11h">11</option>
 												<option value="12h">12</option>
 										</select> <select name="shop_opentime" class="formInput3">
-
+											<%for(int i=1; i<=60; i++){ %>
+												<option value="<%=i%>m"><%=i %></option> 
+											<%} %>
 										</select> & <select name="shop_closetime" class="formInput3">
 												<option value="am">오전</option>
 												<option value="pm">오후</option>
@@ -96,7 +99,9 @@
 												<option value="11h">11</option>
 												<option value="12h">12</option>
 										</select> <select name="shop_opentime" class="formInput3">
-
+											<%for(int i=1; i<=60; i++){ %>
+												<option value="<%=i%>m"><%=i %></option> 
+											<%} %>
 										</select>
 									</tr>
 

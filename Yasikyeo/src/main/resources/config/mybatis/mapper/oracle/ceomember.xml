@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="config.mybatis.mapper.oracle.ceomember">
+	<insert id="insertMember" parameterType="CeoVO">
+	<selectKey keyProperty="ceoNo" resultType="int" order="BEFORE">
+		select ceo_no_seq.currval from dual
+	</selectKey>
+		insert into ceo(ceo_no,ceo_id,ceo_pwd,ceo_name,ceo_tel,ceo_email,ceo_birth)
+		values(#{ceoNo},#{ceoId},#{ceoPwd},#{ceoName},#{ceoTel},#{ceoEmail},#{ceoBirth})
+	</insert>
+	
+	<select id="selectCountMemberId" parameterType="string" resultType="int">
+		select count(*)	from ceo
+		where ceo_id=#{ceoId}
+	</select>
+	
+	<select id="selectPwd" parameterType="CeoVO" resultType="string">
+		select ceo_pwd from ceo
+		where ceo_id=#{ceoId} and ceo_withdraw='N'
+	</select>
+	
+	<select id="selectMemberByMemberId" parameterType="string" resultType="CeoVO">
+		select * from ceo
+		where ceo_id=#{ceoId} and ceo_withdraw='N'
+	</select>
+	
+	<select id="selectMemberByMemberTel" parameterType="CeoVO" resultType="string">
+		select member_Id from member
+		where member_Tel=#{memberTel} and member_Birth=#{memberBirth}
+	</select>
+	
+	<update id="findPwd" parameterType="CeoVO">
+		update ceo 
+		set	ceo_pwd=#{ceoPwd}
+		where ceo_Email=#{ceoEmail} and ceo_Birth=#{ceoBirth}
+	</update>
+	
+	<update id="changePwd" parameterType="CeoVO">
+		update ceo
+		set	ceo_pwd=#{ceoPwd}
+		where ceo_id=#{ceoId} and ceo_withdraw='N'
+	</update>
+	
+	<update id="updateMember" parameterType="CeoVO">
+		update ceo set
+		ceo_birth=#{ceoBirth},ceo_tel=#{ceoTel}
+		where ceo_id=#{ceoId} and ceo_withdraw='N'
+	</update>
+	
+	<update id="withdrawMember" parameterType="string">
+		update ceo
+		set ceo_withdraw='Y'
+		where ceo_id=#{ceoId} and ceo_withdraw='N'
+	</update>
+	
+</mapper>

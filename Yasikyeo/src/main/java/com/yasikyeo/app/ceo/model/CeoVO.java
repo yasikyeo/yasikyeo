@@ -5,12 +5,14 @@ import java.sql.Timestamp;
 public class CeoVO {
 	private int ceoNo;
 	private String ceoId;
+	private String ceoPwd;
 	private String ceoName;
 	private String ceoEmail;
 	private String ceoTel;
+	private String ceoBirth;
 	private Timestamp ceoRegdate;
 	private String ceoWithdraw;
-	private String authCode;
+	private String authcode;
 	
 	public int getCeoNo() {
 		return ceoNo;
@@ -23,6 +25,12 @@ public class CeoVO {
 	}
 	public void setCeoId(String ceoId) {
 		this.ceoId = ceoId;
+	}
+	public String getCeoPwd() {
+		return ceoPwd;
+	}
+	public void setCeoPwd(String ceoPwd) {
+		this.ceoPwd = ceoPwd;
 	}
 	public String getCeoName() {
 		return ceoName;
@@ -42,6 +50,12 @@ public class CeoVO {
 	public void setCeoTel(String ceoTel) {
 		this.ceoTel = ceoTel;
 	}
+	public String getCeoBirth() {
+		return ceoBirth;
+	}
+	public void setCeoBirth(String ceoBirth) {
+		this.ceoBirth = ceoBirth;
+	}
 	public Timestamp getCeoRegdate() {
 		return ceoRegdate;
 	}
@@ -55,17 +69,16 @@ public class CeoVO {
 		this.ceoWithdraw = ceoWithdraw;
 	}
 	public String getAuthCode() {
-		return authCode;
+		return authcode;
 	}
-	public void setAuthCode(String authCode) {
-		this.authCode = authCode;
+	public void setAuthCode(String authcode) {
+		this.authcode = authcode;
 	}
+	
 	@Override
 	public String toString() {
-		return "CeoVO [ceoNo=" + ceoNo + ", ceoId=" + ceoId + ", ceoName=" + ceoName + ", ceoEmail=" + ceoEmail
-				+ ", ceoTel=" + ceoTel + ", ceoRegdate=" + ceoRegdate + ", ceoWithdraw=" + ceoWithdraw + ", authCode="
-				+ authCode + "]";
+		return "CeoVO [ceoNo=" + ceoNo + ", ceoId=" + ceoId + ", ceoPwd=" + ceoPwd + ", ceoName=" + ceoName
+				+ ", ceoEmail=" + ceoEmail + ", ceoTel=" + ceoTel + ", ceoBirth=" + ceoBirth + ", ceoRegdate="
+				+ ceoRegdate + ", ceoWithdraw=" + ceoWithdraw + ", authcode=" + authcode + "]";
 	}
-	
-	
 }

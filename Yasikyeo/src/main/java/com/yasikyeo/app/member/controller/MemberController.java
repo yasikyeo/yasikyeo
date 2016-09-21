@@ -101,7 +101,7 @@ public class MemberController {
 		return "common/message";
 	}
 	
-	@RequestMapping("/ajaxCheckMemberId")
+	@RequestMapping("/ajaxCheckMemberId.do")
 	@ResponseBody
 	public int ajaxCheckId(@RequestParam String memberId){
 		logeer.info("ajax-아이디 중복확인, 파라미터 memberId={}", memberId);
