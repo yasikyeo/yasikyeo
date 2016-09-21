@@ -335,13 +335,37 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value="/faQ.do", method=RequestMethod.GET)
-	public String faQView(){
+	public String faQView(@ModelAttribute SearchVO searchVo,
+			Model model){
 		//1.
-			logger.info("FaQ보여주기");
-		//2.
+		logger.info("공지사항 화면 보여주기");
+	//2.
+		logger.info("글목록 조회, 파라미터 searchVo={}",
+				searchVo);
 		
-		//3.
-			return "admintemplet/faQ";
+		PaginationInfo pagingInfo = new PaginationInfo();
+		pagingInfo.setBlockSize(Utility.BLOCK_SIZE);
+		pagingInfo.setRecordCountPerPage(Utility.RECORD_COUNT_PER_PAGE);
+		pagingInfo.setCurrentPage(searchVo.getCurrentPage());
+		
+		searchVo.setBlockSize(Utility.BLOCK_SIZE);
+		searchVo.setRecordCountPerPage(Utility.RECORD_COUNT_PER_PAGE);
+		searchVo.setFirstRecordIndex(pagingInfo.getFirstRecordIndex());
+				
+		//2. db작업 - select
+		List<FaQVO> alist = faqService.selectAllFaQ(searchVo);
+		logger.info("글목록 조회 결과 alist.size()={}", alist.size());
+		
+		//전체 레코드 개수 조회하기
+		int totalRecord 
+			= faqService.selectfaqTotalCount(searchVo);
+		pagingInfo.setTotalRecord(totalRecord);
+				
+		//3. 결과 저장, 뷰페이지 리턴
+		model.addAttribute("alist", alist);
+		model.addAttribute("pagingInfo", pagingInfo);
+	//3.
+		return "admintemplet/faQ";
 	}
 	
 	@RequestMapping(value="/faQInsert.do", method=RequestMethod.GET)
@@ -356,8 +380,7 @@ public class AdminController {
 	
 	@RequestMapping(value="/faQInsert.do", method=RequestMethod.POST)
 	public String faQWrite_post(@ModelAttribute FaQVO faqVo,
-			HttpServletRequest request,
-			Model model){
+			HttpServletRequest request){
 		//1.
 		logger.info("공지사항 글쓰기 처리, 파라미터 FaQVO={}", faqVo);
 	//2.

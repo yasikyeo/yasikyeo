@@ -30,7 +30,7 @@
 		<section class="contents">
 					<article class="centerCon">
 						<form name="frmPage" method="post" 
-	action="<c:url value='/reBoard/list.do'/>">
+	action="<c:url value='/admintemplet/faQ.do'/>">
 	<input type="hidden" name="currentPage">
 	<input type="hidden" name="searchCondition" 
 		value="${param.searchCondition }">
@@ -46,19 +46,19 @@
 	<colgroup>
 		<col style="width:10%;" />
 		<col style="width:30%;" />
-		<col style="width:50%;" />
+		<col style="width:60%;" />
 	</colgroup>
 	<thead>
 	  <tr>
 	    <th scope="col">번호</th>
-	  	<th scope="col">제목</th>
+	  	 <th scope="col">제목</th>
 	    <th scope="col">내용</th>
 	 </tr>
 	</thead> 
 	<tbody>  
 	<c:if test="${empty alist}">
 		<tr>
-			<td colspan="4" class="align_center">
+			<td colspan="3" class="align_center">
 			해당 데이터가 없습니다
 			</td>
 		</tr>
@@ -67,26 +67,28 @@
 		<!--게시판 내용 반복문 시작  -->		
 		<c:forEach var="vo" items="${alist }">
 			<tr style="text-align: center">
-				<td>${vo.noticeNo}</td>
-				<td><a href="<c:url value='/admintemplet/eventNoticeDetail.do?noticeNo=${vo.noticeNo }'/>">
-				${vo.noticeSuffix}</a></td>
+				<td>${vo.faqNo}</td>
 				<td style="text-align: left;">
 				<!-- 파일이 첨부된 경우 파일 이미지 보여주기 -->
-				<c:if test="${!empty vo.noticeUpfileName }">
+				<c:if test="${!empty vo.faqUpfilename }">
 					<img src="<c:url value='/images/file.gif'/>" 
 					alt="파일 이미지">
 				</c:if>
 					<!-- 제목이 긴 경우 일부만 보여주기 -->
-						<c:if test="${fn:length(vo.noticeTitle)>30}">
-							${fn:substring(vo.noticeTitle, 0,30)}...
+						<c:if test="${fn:length(vo.faqTitle)>30}">
+							<a href="<c:url value='/admintemplet/faqDetail.do?faqNo=${vo.faqNo }'/>">
+							${fn:substring(vo.faqTitle, 0,30)}...
+							</a>
 						</c:if>
-						<c:if test="${fn:length(vo.noticeTitle)<=30}">
-							${vo.noticeTitle}
+						<c:if test="${fn:length(vo.faqTitle)<=30}">
+						<a href="<c:url value='/admintemplet/faqDetail.do?faqNo=${vo.faqNo }'/>">
+							${vo.faqTitle}
+						</a>
 						</c:if>
 					
 					<!-- 24시간 이내의 글인 경우 new 이미지 보여주기 -->
 				</td>
-				<td>${vo.noticeContent }</td>				
+				<td>${vo.faqContent }</td>				
 			</tr>				
 		</c:forEach>
 		<!--반복처리 끝  -->
@@ -127,7 +129,7 @@
 		</a>
 	</c:if>
 </div>
-<div class="divSearch">
+<%-- <div class="divSearch">
    	<form name="frmSearch" method="post" 
    	action="<c:url value='/reBoard/list.do' />" >
         <select name="searchCondition">
@@ -151,9 +153,9 @@
         	title="검색어 입력" value="${param.searchKeyword}" >   
 		<input type="submit" value="검색">
     </form>
-</div>
+</div> --%>
 					<div class="align_right">
-						<a href="<c:url value='/admintemplet/faQInsert.do'/>">공지사항등록</a>
+						<a href="<c:url value='/admintemplet/faqInsert.do'/>">F&Q등록</a>
 					</div>
 					</article>
 				</section>

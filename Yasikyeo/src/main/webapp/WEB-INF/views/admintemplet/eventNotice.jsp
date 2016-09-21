@@ -30,7 +30,7 @@
 		<section class="contents">
 					<article class="centerCon">
 						<form name="frmPage" method="post" 
-	action="<c:url value='/reBoard/list.do'/>">
+	action="<c:url value='/admintemplet/event.do'/>">
 	<input type="hidden" name="currentPage">
 	<input type="hidden" name="searchCondition" 
 		value="${param.searchCondition }">
@@ -129,7 +129,7 @@
 		</a>
 	</c:if>
 </div>
-<div class="divSearch">
+<%-- <div class="divSearch">
    	<form name="frmSearch" method="post" 
    	action="<c:url value='/reBoard/list.do' />" >
         <select name="searchCondition">
@@ -153,7 +153,7 @@
         	title="검색어 입력" value="${param.searchKeyword}" >   
 		<input type="submit" value="검색">
     </form>
-</div>
+</div> --%>
 					<div class="align_right">
 						<a href="<c:url value='/admintemplet/adminInsertNotice.do'/>">공지사항등록</a>
 					</div>
