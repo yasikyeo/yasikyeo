@@ -238,11 +238,11 @@ public class AdminController {
 	
 	@RequestMapping(value="/noticeUpdate.do", method=RequestMethod.POST)
 	public String noticeUpdate_post(@ModelAttribute NoticeVO noticeVo,
-			@RequestParam String oldNoticefileName,
+			@RequestParam String oldNoticeUpfileName,
 			HttpServletRequest request){
 		//1.
 			logger.info("글 수정 처리, 파라미터 noticeVO={}", noticeVo);
-			logger.info("글 수정 처리 파일 파라미터 oldeNoticefileName={}",oldNoticefileName);
+			logger.info("글 수정 처리 파일 파라미터 oldeNoticefileName={}",oldNoticeUpfileName);
 		//2.
 			
 			int uploadType = FileUploadWebUtil.IMAGE_UPLOAD;
@@ -260,21 +260,21 @@ public class AdminController {
 				
 				//기존 파일 삭제
 				String upPath = fileUtil.getUploadPath(request,fileUtil.IMAGE_UPLOAD);
-				File oldFile = new File(upPath, oldNoticefileName); 
+				File oldFile = new File(upPath, oldNoticeUpfileName); 
 				if(oldFile.exists()){
 					boolean bool =oldFile.delete();
 					logger.info("기존 파일 삭제 여부={}", bool);
 				}
 			}else{
 				//기존파일 세팅
-				noticeVo.setNoticeUpfileName(oldNoticefileName);
+				noticeVo.setNoticeUpfileName(oldNoticeUpfileName);
 			}
 			int cnt = noticeService.noticeUpdate(noticeVo);
 			
 			logger.info("파일 업로드 후 cnt={},noticeVo={}",cnt,noticeVo);
 		//3.
 		
-		return "redirect:/admintemplet/noticeUpdate.do?noticeNo="+noticeVo.getNoticeNo();
+		return "redirect:/admintemplet/eventNoticeDetail.do?noticeNo="+noticeVo.getNoticeNo();
 	}
 	
 	@RequestMapping(value="/memberManage.do", method=RequestMethod.GET)
