@@ -88,6 +88,7 @@ public class AdminController {
 			Model model){
 		//1.
 			adminVo.setAuthcode(MemberService.ADMIN_AUTH_CODE);
+			adminVo.setAdminNo(adminService.ADMIN_NO);
 			logger.info("관리자 로그인 파라미터 adminVO={}", adminVo);
 			
 		//2.	

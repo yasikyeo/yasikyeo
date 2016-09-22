@@ -34,13 +34,23 @@
             <input type="text" id="faqTitle" name="faqTitle"  />
         </div>
         <div>
-        	<label>카테고리</label>
-        	<input type="checkbox" id="faqcategori" name="faqcategori">
+        	<label for="faqCategori">카테고리</label>
+        	<select name="faqCategori" id="faqCategori">
+            	<option value="Member">회원가입</option>
+            	<option value="pay">바로결제</option>
+            	<option value="review">리뷰관리</option>
+            	<option value="play">이용문의</option>
+            	<option value="advertise">광고문의</option>
+            	<option value="discomform">불편문의</option>
+            	<option value="etc">기타</option>
+           </select>
         </div>
        	<div>
             <label for="upfile">이미지 파일</label>
             <input type="file" id="upfile" name="upfile" />
-            
+        </div>
+        <div>
+        	
         </div>
         <div>  
         	<label for="faqContent">내용</label>

@@ -17,6 +17,9 @@ public interface AdminService {
 	public static final int PWD_DISAGREE=2;//비밀번호 불일치
 	public static final int ID_NONE=3; //해당아이디가 없는 경우
 	
+	//관리자 상수
+	public static final int ADMIN_NO=1;
+	
 	
 	public int loginCheck(AdminVO adminVo);
 	public AdminVO selectMemberByMemberId(String adminId);
