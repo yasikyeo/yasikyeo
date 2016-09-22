@@ -22,18 +22,10 @@ $(document).ready(function() {
 				alert("생년월일을 입력하세요");
 				$("#memberBirth").focus();
 				return false;
-			}else if($("#memberNickname").val().length<1){
-				alert("닉네임을 입력하세요");
-				$("#memberNickname").focus();
-				return false;
-			}else if($("#addressDetail").val().length < 1){
-				alert("상세주소를 입력하세요");
-				$("#addressDetail").focus();
-				return false;
-			}else if($("#checkPwd").val()=="인증완료" &&
-					$("#memberPwd").val().length<1){
-				alert("비밀번호를 입력하세요");
-				$("#memberPwd").focus();
+			}else if($("#checkPwd").val()!="인증완료" &&
+					$("#oPwd").val().length<1){
+				alert("현재 비밀번호를 확인해주세요");
+				$("#oPwd").focus();
 				return false;
 			}else if($("#memberPwd").val()!=$("#memberPwd2").val()){
 				alert("비밀번호가 일치하지 않습니다.");
@@ -43,7 +35,18 @@ $(document).ready(function() {
 		});
 	  $(document).on("change","#image-upload",function(){
 		  $("#profilimg").hide();
+		  reviewUploadImg();
 	  });
+	//프로필 사진에 이미지가 아닌 사진을 선택할경우 파일 셀렉트 클리어
+	function reviewUploadImg(fileObj){
+		var filename = document.getElementById("image-upload").value;
+		var fileKind = filename.split(".")[1];
+		if(fileKind != "jpg" && fileKind != "gif" && fileKind != "png"){
+			document.getElementById("image-upload").value = "";
+			document.getElementById("image-upload").select();
+			document.selection.clear();
+		}
+	}
 	});
 </script>
 <div class="mainSection">
@@ -70,7 +73,7 @@ $(document).ready(function() {
 		<div class="fieldsetContain">
 			<fieldset>
 				<legend>내 정보</legend>
-				<form name="frm" method="post">
+				<form name="frm" method="post" enctype="multipart/form-data">
 				<input type="hidden" name="checkPwd" id="checkPwd">
 					<fieldset class="information">
 						<legend>기본정보</legend>
@@ -102,25 +105,28 @@ $(document).ready(function() {
 					</fieldset>
 					<div class="profile">
 						<div id="image-preview">
-							<input type="file" name="image" id="image-upload" accept=".gif, .jpg, .png"/>
-							<img alt="" src="<c:url value='/images/mypage/리뷰관리.png'/>" id="profilimg">
+							<input type="file" name="upfile" id="image-upload" accept=".gif, .jpg, .png"/>
+							<c:if test="${!empty memberVo.memberImage}">
+							<img alt="${memberVo.memberImage}" src="<c:url value='/profile_Image/${memberVo.memberImage}'/>" id="profilimg">
+							</c:if>
 						</div>
 						<label for="image-upload" id="image-label">파일선택</label>
+						<input type="hidden" value="${memberVo.memberImage}" name="oldfilename">
 					</div>
 					<fieldset class="pwdfield">
 						<legend>비밀번호변경</legend>
 						<div class="div1">
 							<label class="lb1">현재 비밀번호</label>
-							<input class="inputText2 flex1" name="oPwd" id="oPwd" type="password">
-							<input type="Button" class="btbrown bt2 deciwidth" value="확인" title="비번확인" onclick="pwd()">
+							<input class="inputText2 flex1" name="oPwd" id="oPwd" type="password" placeholder="- 내 정보를 수정하시려면 비밀번호를 입력하셔야 합니다.">
+							<input type="Button" class="btbrown bt2 deciwidth" value="확인" title="비번확인" onclick="pwd()" >
 						</div>
 						<div class="div1">
 							<label class="lb1">신규 비밀번호</label>
-							<input class="inputText2 flex1" name="memberPwd" id="memberPwd" type="password">
+							<input class="inputText2 flex1" name="memberPwd" id="memberPwd" type="password" placeholder="- 비밀번호를 변경하시려면 입력해주세요">
 						</div>
 						<div class="div1">
 							<label class="lb1">비밀번호 확인</label>
-							<input class="inputText2 flex1" id="memberPwd2" type="password">
+							<input class="inputText2 flex1" id="memberPwd2" type="password" placeholder="- 신규 비밀번호를 한번더 확인합니다">
 						</div>
 					</fieldset>
 					<fieldset class="pwdfield">

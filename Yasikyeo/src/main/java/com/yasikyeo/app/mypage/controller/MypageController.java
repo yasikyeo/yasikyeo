@@ -1,5 +1,10 @@
 package com.yasikyeo.app.mypage.controller;
 
+import java.io.File;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -13,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.yasikyeo.app.common.FileUploadWebUtil;
 import com.yasikyeo.app.member.model.MemberService;
 import com.yasikyeo.app.member.model.MemberVO;
 
@@ -24,6 +30,9 @@ public class MypageController {
 	
 	@Autowired
 	private MemberService memberService;
+	
+	@Autowired
+	private FileUploadWebUtil fileUploadWebUil;
 	
 	@RequestMapping("/client_mypage.do")
 	public void MyPage(){
@@ -53,9 +62,38 @@ public class MypageController {
 	}
 
 	@RequestMapping(value="/client_myinfo.do",method=RequestMethod.POST)
-	public String MyInfo(@ModelAttribute MemberVO memberVo,Model model){
+	public String MyInfo(@ModelAttribute MemberVO memberVo,
+			@RequestParam String oldfilename,
+			HttpServletRequest request,Model model){
 		
-		logger.info("파라미터 memberVo={}",memberVo);
+		if(memberVo.getMemberNickname()==null||memberVo.getMemberNickname().isEmpty()){
+			memberVo.setMemberNickname(memberVo.getMemberId());
+		}
+		logger.info("파라미터 memberVo={},oldfilename={}",memberVo,oldfilename);
+		
+		List<Map<String, Object>> fileList = fileUploadWebUil.fileUpload(request, fileUploadWebUil.PROFILE_IMAGE_UPLOAD);
+		//새로 파일을 업로드하는 경우
+		if(fileList!=null && !fileList.isEmpty()){
+			String fileName="";
+			for(Map<String, Object> fileMap: fileList){
+				 fileName=(String) fileMap.get("fileName");
+			}//for
+			memberVo.setMemberImage(fileName);
+			
+			//기존 파일이 존재하면, 기존 파일 삭제
+			if(!oldfilename.equals("profile.png")){//디폴트 이미지가 아니면서
+				String upPath = fileUploadWebUil.getUploadPath(request, fileUploadWebUil.PROFILE_IMAGE_UPLOAD);
+				File oldFile = new File(upPath, oldfilename);
+				if(oldFile.exists()){
+					boolean bool =oldFile.delete();
+					logger.info("기존 파일 삭제 여부={}", bool);
+				}
+			}
+		}else{
+			//업로드하지 않는 경우
+			//=> 기존 파일 정보를 다시 셋팅해준다
+			memberVo.setMemberImage(oldfilename);
+		}//if
 		
 		int res = memberService.updateMember(memberVo);
 		

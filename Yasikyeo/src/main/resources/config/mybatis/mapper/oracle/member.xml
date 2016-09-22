@@ -46,7 +46,7 @@
 	<update id="updateMember" parameterType="MemberVO">
 		update member set
 			member_birth=#{memberBirth},member_tel=#{memberTel},member_nickname=#{memberNickname},
-			postcode=#{postcode},address=#{address}, addressDetail=#{addressDetail}
+			postcode=#{postcode},address=#{address}, addressDetail=#{addressDetail}, member_Image=#{memberImage}
 		where member_id=#{memberId} and member_withdraw='N'
 	</update>
 	

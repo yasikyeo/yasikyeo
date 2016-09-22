@@ -761,8 +761,6 @@ span.tabMenu{
 	overflow: hidden;
 	background-color: #212121;
 	margin: auto;
-	background-image: url("../images/profile.png");
-	background-repeat: no-repeat;
 }
 .profile #image-upload{
     font-size: 93px;
@@ -773,7 +771,7 @@ span.tabMenu{
 }
 .profile #image-preview img{
 	height: 100%;
-	width: auto;
+	width: 100%;
 	background: black;
 }
 .profile #image-label{
