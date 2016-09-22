@@ -20,4 +20,8 @@
 		,#{shopAccount},#{shopLicense},#{ceoNo})
 	</insert>
 	
+	<select id="selectShop" parameterType="string" resultType="int">
+		select count(*) from shop where ceo_no=#{ceoNo}
+	</select>
+	
 </mapper>

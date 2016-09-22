@@ -22,6 +22,15 @@ public class CeoShopServiceImpl implements CeoShopService{
 		return ceoShopDao.insertCeoShop(ceoShopVo);
 	}
 
+	@Override
+	public int selectCeoNo(String ceoId) {
+		return ceoShopDao.selectCeoNo(ceoId);
+	}
+
+	@Override
+	public int selectShop(int ceoNo) {
+		return ceoShopDao.selectShop(ceoNo);
+	}
 }
 
 

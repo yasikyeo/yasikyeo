@@ -5,6 +5,7 @@ import java.util.List;
 public interface CeoShopDAO {
 	public int insertCeoShop(CeoShopVO ceoShopVo);
 	public int selectCeoNo(String ceoId);
+	public int selectShop(int ceoNo);
 }
 
 

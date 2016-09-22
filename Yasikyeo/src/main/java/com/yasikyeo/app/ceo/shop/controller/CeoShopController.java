@@ -31,7 +31,26 @@ public class CeoShopController {
 	private CeoShopService ceoShopService;
 	
 	@RequestMapping(value="ceo/member/ceo_addshop.do",method=RequestMethod.GET)
-	public void ceo_addshop_get(){
+	public String ceo_addshop_get(HttpSession session,Model model){
+		
+		String ceoId = (String) session.getAttribute("ceoId");
+		
+		int ceoNo = ceoShopService.selectCeoNo(ceoId);
+		int res = ceoShopService.selectShop(ceoNo);
+		
+		String msg="",url="";
+		if(res>0){
+			msg="이미 업소등록을 하셨습니다.";
+			url="/ceo/index.do";
+		}else{
+			return "/ceo/member/ceo_addshop.do";
+		}
+		
+		model.addAttribute("msg",msg);
+		model.addAttribute("url",url);
+		
+		
+		return "common/message";
 	}
 	
 	@RequestMapping(value="ceo/member/ceo_addshop.do",method=RequestMethod.POST)
@@ -57,9 +76,18 @@ public class CeoShopController {
 		
 		ceoShopVo.setShopImage(fileName);
 		
-		//2.
 		int cnt = ceoShopService.insertCeoShop(ceoShopVo,ceoId);
-		logger.info("상품 등록 결과 cnt={}", cnt);
+		String msg="",url="/ceo/index.do";
+		if(cnt>0){
+			msg="업소 등록이 완료되었습니다.";
+		}else{
+			msg="업소 등록 실패";
+		}
+		
+		logger.info("업소 등록 결과 cnt={}", cnt);
+		
+		model.addAttribute("msg",msg);
+		model.addAttribute("url",url);
 		
 		return "common/message";
 	}
