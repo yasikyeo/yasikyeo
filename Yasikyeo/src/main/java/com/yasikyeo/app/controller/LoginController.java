@@ -28,7 +28,7 @@ public class LoginController {
 		
 	@RequestMapping(value="/login.do", 	method=RequestMethod.POST)
 	public String login_post(@ModelAttribute MemberVO memberVo, @RequestParam(required=false) String idSave, 
-			HttpServletRequest request,	HttpServletResponse response,Model model){
+			HttpServletRequest request,	HttpServletResponse response,@RequestParam String prev,Model model){
 		//1.
 		memberVo.setAuthcode(MemberService.USER_AUTH_CODE);
 		
@@ -39,7 +39,11 @@ public class LoginController {
 		int result = memberService.loginCheck(memberVo);
 		logger.info("로그인 처리 결과, result={}", result);
 		
-		String msg="", url="/index.do";
+		
+		String url = prev.replace("http://localhost:9090/yasikyeo", "");
+	
+		
+		String msg="";
 		if(result==MemberService.LOGIN_OK){
 			//로그인 성공
 			//[1] 세션에 저장
@@ -65,7 +69,6 @@ public class LoginController {
 			}
 			
 			msg=memVo.getMemberName() + "님 로그인되었습니다";
-			url="/index.do";
 		}else if(result==MemberService.PWD_DISAGREE){
 			msg="비밀번호가 일치하지 않습니다";			
 		}else if(result==MemberService.ID_NONE){

@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
- 
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -47,6 +47,13 @@
 		 location.href="<c:url value='/login/client_addmember.do'/>"; 
 	 });
   });	
+ 
+ window.onload = function(){
+	 var url = window.location.href;
+	 
+	 document.getElementById("prev").value = url;
+ }
+ 
 </script>
 </head>
 <body>
@@ -59,6 +66,7 @@
 		    </div>
 		    <div class="abc">
 		    	<div class="inputContainer">
+		    	  <input type="hidden" name="prev" id="prev">
 			      <input type="text" placeholder="아이디 또는 이메일" class="login" name="memberId" required value="${cookie.ck_memberId.value }">
 			      <input type="password" placeholder="비밀번호" class="login" name="memberPwd" required>
 		    	</div>

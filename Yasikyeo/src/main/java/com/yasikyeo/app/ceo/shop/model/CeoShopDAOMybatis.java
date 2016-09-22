@@ -6,8 +6,7 @@ import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class CeoShopDAOMybatis extends SqlSessionDaoSupport
-	implements CeoShopDAO{
+public class CeoShopDAOMybatis extends SqlSessionDaoSupport	implements CeoShopDAO{
 
 	private String namespace="config.mybatis.mapper.oracle.ceoshop";
 
