@@ -41,7 +41,9 @@ $(document).ready(function() {
 				return false;
 			}
 		});
-	  
+	  $(document).on("change","#image-upload",function(){
+		  $("#profilimg").hide();
+	  });
 	});
 </script>
 <div class="mainSection">
@@ -100,7 +102,8 @@ $(document).ready(function() {
 					</fieldset>
 					<div class="profile">
 						<div id="image-preview">
-							<input type="file" name="image" id="image-upload" />
+							<input type="file" name="image" id="image-upload" accept=".gif, .jpg, .png"/>
+							<img alt="" src="<c:url value='/images/mypage/리뷰관리.png'/>" id="profilimg">
 						</div>
 						<label for="image-upload" id="image-label">파일선택</label>
 					</div>

@@ -771,6 +771,11 @@ span.tabMenu{
     z-index: 10;
     top: 0;
 }
+.profile #image-preview img{
+	height: 100%;
+	width: auto;
+	background: black;
+}
 .profile #image-label{
     z-index: 5;
     cursor: pointer;
