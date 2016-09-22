@@ -53,6 +53,8 @@ public class CeoShopController {
 			fileSize=(Long) mymap.get("fileSize");			
 		}
 		
+		logger.info("파일명={}",fileName);
+		
 		ceoShopVo.setShopImage(fileName);
 		
 		//2.

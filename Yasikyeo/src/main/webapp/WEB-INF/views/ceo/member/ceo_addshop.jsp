@@ -14,7 +14,7 @@
 							<div id="rsh">업소등록</div>
 						</div>
 						<div class="shop_info">
-							<form id="shop_reg" method="post" action="<c:url value='/ceo/member/ceo_addshop.do'/>" >
+							<form id="shop_reg" method="post" action="<c:url value='/ceo/member/ceo_addshop.do'/>"  enctype="multipart/form-data">
 								<table border="3" ; width="100%" ; height="100%";>
 									<tr>
 										<td class="td_1">업소 카테고리</td>
@@ -36,10 +36,10 @@
 									<tr>
 										<td class="td_1">업소이미지</td>
 										<td class="td_2">
-											<input type="text" name="shopImage" id="shopImage" class="file_input_textbox" readonly="readonly">
+											<input type="text" id="shopImage" class="file_input_textbox" readonly="readonly">
 											<div class="file_input_div">
 												<input type="button" value="이미지 업로드" class="file_input_button" /> <input type="file"
-													class="file_input_hidden"
+													class="file_input_hidden" name="imageUpload" id="imageUpload"
 													onchange="javascript: document.getElementById('shopImage').value = this.value" />
 											</div>
 											</tr>

@@ -44,6 +44,12 @@ public class CeoShopVO {
 	public void setShopName(String shopName) {
 		this.shopName = shopName;
 	}
+	public String getShopImage() {
+		return shopImage;
+	}
+	public void setShopImage(String shopImage) {
+		this.shopImage = shopImage;
+	}
 	public String getShopExplain() {
 		return shopExplain;
 	}
@@ -55,6 +61,18 @@ public class CeoShopVO {
 	}
 	public void setShopMinprice(int shopMinprice) {
 		this.shopMinprice = shopMinprice;
+	}
+	public String getShopOpentime() {
+		return shopOpentime;
+	}
+	public void setShopOpentime(String shopOpentime) {
+		this.shopOpentime = shopOpentime;
+	}
+	public String getShopClosetime() {
+		return shopClosetime;
+	}
+	public void setShopClosetime(String shopClosetime) {
+		this.shopClosetime = shopClosetime;
 	}
 	public String getShopTel() {
 		return shopTel;
@@ -74,11 +92,11 @@ public class CeoShopVO {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public String getAdrdessDetail() {
+	public String getAddressDetail() {
 		return addressDetail;
 	}
-	public void setAdressDetail(String adressDetail) {
-		this.addressDetail = adressDetail;
+	public void setAddressDetail(String addressDetail) {
+		this.addressDetail = addressDetail;
 	}
 	public String getPostcode() {
 		return postcode;
@@ -101,8 +119,8 @@ public class CeoShopVO {
 	public String getShopLicense() {
 		return shopLicense;
 	}
-	public void setShopLicense(String shopLicensee) {
-		this.shopLicense = shopLicensee;
+	public void setShopLicense(String shopLicense) {
+		this.shopLicense = shopLicense;
 	}
 	public int getShopHit() {
 		return shopHit;
@@ -127,12 +145,6 @@ public class CeoShopVO {
 	}
 	public void setShopCeoreplycnt(int shopCeoreplycnt) {
 		this.shopCeoreplycnt = shopCeoreplycnt;
-	}
-	public String getShopImage() {
-		return shopImage;
-	}
-	public void setShopImage(String shopImage) {
-		this.shopImage = shopImage;
 	}
 	public int getCeoNo() {
 		return ceoNo;
