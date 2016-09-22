@@ -14,7 +14,7 @@
 							<div id="rsh">업소등록</div>
 						</div>
 						<div class="shop_info">
-							<form id="shop_reg">
+							<form id="shop_reg" method="post" action="<c:url value='/ceo/member/ceo_addshop.do'/>" >
 								<table border="3" ; width="100%" ; height="100%";>
 									<tr>
 										<td class="td_1">업소 카테고리</td>
@@ -57,47 +57,9 @@
 
 									<tr>
 										<td class="td_1">오픈 & 마감시간</td>
-										<td class="td_2"><select name="openAmpm" class="formInput3">
-												<option value="am">오전</option>
-												<option value="pm">오후</option>
-										</select> <select name="shopOpentime" class="formInput3">
-												<option value="1h">1</option>
-												<option value="2h">2</option>
-												<option value="3h">3</option>
-												<option value="4h">4</option>
-												<option value="5h">5</option>
-												<option value="6h">6</option>
-												<option value="7h">7</option>
-												<option value="8h">8</option>
-												<option value="9h">9</option>
-												<option value="10h">10</option>
-												<option value="11h">11</option>
-												<option value="12h">12</option>
-										</select> <select name="shopOpentime2" class="formInput3">
-											<%for(int i=0; i<=60; i+=10){ %>
-												<option value="<%=i%>m"><%=i %></option> 
-											<%} %>
-										</select> & <select name="closeAmpm" class="formInput3">
-												<option value="am">오전</option>
-												<option value="pm">오후</option>
-										</select> <select name="shopClosetime2" class="formInput3">
-												<option value="1h">1</option>
-												<option value="2h">2</option>
-												<option value="3h">3</option>
-												<option value="4h">4</option>
-												<option value="5h">5</option>
-												<option value="6h">6</option>
-												<option value="7h">7</option>
-												<option value="8h">8</option>
-												<option value="9h">9</option>
-												<option value="10h">10</option>
-												<option value="11h">11</option>
-												<option value="12h">12</option>
-										</select> <select name="shopClosetime2" class="formInput3">
-											<%for(int i=0; i<=60; i+=10){ %>
-												<option value="<%=i%>m"><%=i %></option> 
-											<%} %>
-										</select>
+										<td class="td_2"><input type="time" class="formInput" name="shopOpentime">
+										<input type="time" class="formInput" name="shopClosetime">
+										</td>
 									</tr>
 
 									<tr>
@@ -146,10 +108,10 @@
 										</select> <input type="text" class="formInput" name="shopAccount"></td>
 									</tr>
 								</table>
-							</form>
 							<div id="buttonset">
-								<input type="submit" value="업소등록" name="next" class="next_button">
+								<input type="submit" value="업소등록" class="next_button">
 							</div>
+							</form>
 							<div id="post" style="display:none;position:fixed;overflow:hidden;z-index:1;-webkit-overflow-scrolling:touch;"></div>
 							<img src="//i1.daumcdn.net/localimg/localimages/07/postcode/320/close.png" id="btnCloseLayer" style="cursor:pointer;position:absolute;right:-3px;top:-3px;z-index:1" onclick="closeDaumPostcode()" alt="닫기 버튼">
 						</div>
@@ -227,6 +189,8 @@
         element_layer.style.top = (((window.innerHeight || document.documentElement.clientHeight) - height)/2 - borderWidth) + 'px';
     }
     
+    
+    
     $(document).ready(function(){
 		$("#memSubmit").click(function(event){
 			if($("#memberId").val().length < 1){
@@ -256,6 +220,39 @@
 				$("#memberPwd2").focus();
 				return false;
 			}
+			
+			var am = "am";
+			var pm = "pm";
+			
+			var openAmpm = 0;
+			var closeAmpm = 0;
+			var shopOpentime = 0;
+			var shopOpentime2 = 0;
+			var shopClosetime = 0;
+			var shopClosetime2 = 0;
+			
+			if($("#openAmpm").val()==am){
+				openAmpm = 0;
+			}else{
+				openAmpm = 12;
+			}
+			if($("#closeAmpm").val()==am){
+				closeAmpm = 0;
+			}else{
+				closeAmpm = 12;
+			}
+			
+			var shopOpentime = $("#shopOpentime").val();
+			var shopOpentime2 = $("#shopOpentime2").val();
+			var shopClosetime = $("#shopClosetime").val();
+			var shopClosetime2 = $("#shopClosetime2").val();
+			
+			var totalOpentime = openAmpm + shopOpentime + "-" + shopOpentime2; 
+			var totalClosetime = closeAmpm + shopClosetime + "-" + shopClosetime2;
+			
+			$("#shopOpentime").val(totalOpentime);
+			$("#shopClosetime").val(totalClosetime);
+			
 		});
 		
 		 $("#memberId").keyup(function(){
@@ -290,24 +287,6 @@
 		var pattern = new RegExp(/^[a-z0-9_]+$/g);
 		
 		return pattern.test(memberId);		
-	}
-	
-	function email(){
-		
-		var email = document.getElementById("memberEmail");
-	
-		if(email.value=="" || email.value==null){
-			alert("이메일 주소를 입력하세요");
-			email.focus();
-			return false;
-		}
-		
-		var check = document.frm;
-		window.open('', 'email',"width=450,height=250,left=50,top=50,resizable=yes,location=yes");
-		check.action="<c:url value='/login/emailAuth.do'/>";
-		check.target='email';
-		check.submit();
-		check.action="<c:url value='/login/client_addmember.do'/>";
 	}
 </script>
 

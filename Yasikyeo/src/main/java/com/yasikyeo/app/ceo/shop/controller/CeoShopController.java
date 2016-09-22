@@ -30,11 +30,11 @@ public class CeoShopController {
 	@Autowired
 	private CeoShopService ceoShopService;
 	
-	@RequestMapping(value="/ceo_addshop.do",method=RequestMethod.GET)
+	@RequestMapping(value="ceo/member/ceo_addshop.do",method=RequestMethod.GET)
 	public void ceo_addshop_get(){
 	}
 	
-	@RequestMapping(value="/ceo_addshop.do",method=RequestMethod.POST)
+	@RequestMapping(value="ceo/member/ceo_addshop.do",method=RequestMethod.POST)
 	public String ceo_addshop_post(@ModelAttribute CeoShopVO ceoShopVo,HttpSession session,HttpServletRequest request,Model model){
 		logger.info("업소등록 파라미터 ceoShopVo={}", ceoShopVo);
 		

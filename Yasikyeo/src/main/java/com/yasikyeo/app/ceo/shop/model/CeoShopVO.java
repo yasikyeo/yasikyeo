@@ -1,5 +1,7 @@
 package com.yasikyeo.app.ceo.shop.model;
 
+import java.sql.Timestamp;
+
 public class CeoShopVO {
 	
 	private int shopNo;
@@ -13,7 +15,7 @@ public class CeoShopVO {
 	private String shopTel;
 	private String shopOrigin;
 	private String address;
-	private String adressDetail;
+	private String addressDetail;
 	private String postcode;
 	private String shopAccountname;
 	private String shopAccount;
@@ -54,18 +56,6 @@ public class CeoShopVO {
 	public void setShopMinprice(int shopMinprice) {
 		this.shopMinprice = shopMinprice;
 	}
-	public String getShopOpentime() {
-		return shopOpentime;
-	}
-	public void setShopOpentime(String shopOpentime) {
-		this.shopOpentime = shopOpentime;
-	}
-	public String getShopClosetime() {
-		return shopClosetime;
-	}
-	public void setShopClosetime(String shopClosetime) {
-		this.shopClosetime = shopClosetime;
-	}
 	public String getShopTel() {
 		return shopTel;
 	}
@@ -84,11 +74,11 @@ public class CeoShopVO {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public String getAdressDetail() {
-		return adressDetail;
+	public String getAdrdessDetail() {
+		return addressDetail;
 	}
 	public void setAdressDetail(String adressDetail) {
-		this.adressDetail = adressDetail;
+		this.addressDetail = adressDetail;
 	}
 	public String getPostcode() {
 		return postcode;
@@ -156,10 +146,11 @@ public class CeoShopVO {
 		return "CeoShopVO [shopNo=" + shopNo + ", shopCategori=" + shopCategori + ", shopName=" + shopName
 				+ ", shopImage=" + shopImage + ", shopExplain=" + shopExplain + ", shopMinprice=" + shopMinprice
 				+ ", shopOpentime=" + shopOpentime + ", shopClosetime=" + shopClosetime + ", shopTel=" + shopTel
-				+ ", shopOrigin=" + shopOrigin + ", address=" + address + ", adressDetail=" + adressDetail
+				+ ", shopOrigin=" + shopOrigin + ", address=" + address + ", addressDetail=" + addressDetail
 				+ ", postcode=" + postcode + ", shopAccountname=" + shopAccountname + ", shopAccount=" + shopAccount
 				+ ", shopLicense=" + shopLicense + ", shopHit=" + shopHit + ", shopAvgreview=" + shopAvgreview
 				+ ", shopReviewcnt=" + shopReviewcnt + ", shopCeoreplycnt=" + shopCeoreplycnt + ", ceoNo=" + ceoNo
 				+ "]";
 	}
+	
 }

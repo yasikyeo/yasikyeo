@@ -36,11 +36,9 @@ public class FileUploadWebUtil {
 	 
 	public List<Map<String, Object>> fileUpload(HttpServletRequest request,int uploadType){
 		//업로드 처리가 가능한 클래스로 다운 캐스팅
-		MultipartHttpServletRequest multipartRequest =
-				(MultipartHttpServletRequest) request;
+		MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
 		
-		Map<String, MultipartFile> fileMap =
-		multipartRequest.getFileMap();
+		Map<String, MultipartFile> fileMap = multipartRequest.getFileMap();
 		
 		//결과를 저장할 List컬렉션
 		//=>파일명과 파일크기를 여러개 저장해야 함

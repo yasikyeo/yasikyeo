@@ -59,14 +59,14 @@ CREATE TABLE MEMBER (
 	MEMBER_NO NUMBER NOT NULL, /* 회원코드 */
 	MEMBER_ID VARCHAR2(30) NOT NULL, /* 회원아이디 */
 	MEMBER_PWD VARCHAR2(30) NOT NULL, /* 회원비밀번호 */
-	MEMBER_NAME VARCHAR2(30) NOT NULL, /* 새 컬럼 */
-	MEMBER_NICKNAME VARCHAR2(50) NOT NULL, /* 회원닉네임 */
+	MEMBER_NICKNAME VARCHAR2(50), /* 회원닉네임 */
 	MEMBER_TEL VARCHAR2(30) NOT NULL, /* 회원전화번호 */
 	MEMBER_EMAIL VARCHAR2(40) NOT NULL, /* 회원이메일 */
 	MEMBER_BIRTH NUMBER(8) NOT NULL, /* 회원생년월일 */
 	MEMBER_POINT NUMBER, /* 회원포인트 */
 	MEMBER_REGDATE DATE DEFAULT SYSDATE, /* 회원가입일 */
 	MEMBER_WITHDRAW CHAR DEFAULT 'N', /* 탈퇴여부 */
+	MEMBER_IMAGE VARCHAR2(100) DEFAULT 'profile.png', /* 프로필사진 */
 	ADDRESS VARCHAR2(100), /* 주소 */
 	ADDRESSDETAIL VARCHAR2(100), /* 상세주소 */
 	POSTCODE VARCHAR2(20), /* 우편번호 */
@@ -695,5 +695,5 @@ nocache;
 insert into admin(admin_no,admin_id,admin_pwd,admin_name)
 values(1,'admin','admin123','ADMIN');
 
-insert into member(member_no,member_id,member_pwd,member_name,member_nickname,member_tel,member_email,member_birth)
-values(1,'abc','1234','성욱','음','010-1234-5678','abc@naver.com',12345678);
+insert into member(member_no,member_id,member_pwd,member_nickname,member_tel,member_email,member_birth)
+values(1,'abc','1234','음','010-1234-5678','abc@naver.com',12345678);
