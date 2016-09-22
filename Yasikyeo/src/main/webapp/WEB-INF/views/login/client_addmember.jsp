@@ -2,6 +2,34 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../inc/top2.jsp" %>
 <!-- http://localhost:9090/yasikyeo/login/client_addmember.do -->
+<script type="text/javascript">
+$(function() {
+	$("#ifram1").click(function() {
+		alert("눌림");
+		$(".fieldsetContain:LAST-CHILD").after(iframstr("이용약관",3));
+	});
+	$("#ifram2").click(function() {
+		alert("눌림");
+		$(".fieldsetContain:LAST-CHILD").after(iframstr("이용약관",4));
+	});
+	$("#ifram3").click(function() {
+		alert("눌림");
+		$(".fieldsetContain:LAST-CHILD").after(iframstr("이용약관",5));
+	});
+	
+	
+});
+function iframstr(typestr,i) {
+	var str = "";
+	var i="'/etc/provision"+i+".html'";
+	alert(i);
+	str+='<div class="fieldsetContain">';
+	str+='<h2 class="paddingCol10px">'+typestr+'<input class="bt7 float-right" type="button" value="X"></h2>';
+	str+='<iframe class="bord-1ss" src="<c:url value='+i+'/>"width="950px" height="200px"></iframe>';
+	str+='</div>';
+	return str;
+}
+</script>
 <div class="mainSection">
 	<div class="location">
 		<ul>
@@ -15,68 +43,67 @@
 	<div class="fieldsetContain">
 		<fieldset>
 			<legend>회원가입</legend>
+			<ul class="ul3">
+				<li class="color-orange">#은 필수 항목입니다.</li>
+			</ul>
 			<form name="frm" method="post">
 				<input type="hidden" id="authNum">
 				<input type="hidden" id="chkId">
 				<div class="div1">
-					<label class="lb1">아이디</label>
-					<input type="text" class="inputText1 flex1" name="memberId" id="memberId"><span class="sp1" id="message"></span>
+					<label class="lb1">아이디 <span class="color-orange">#</span></label>
+					<input type="text" class="inputText1 flex1" name="memberId" id="memberId" placeholder="4글자이상 입력해주세요"><span class="sp1" id="message"></span>
 				</div>
 				<div class="div1">
-					<label class="lb1">이름</label>
-					<input type="text" class="inputText1 flex1" name="memberName" id="memberName">
-				</div>
-				<div class="div1">
-					<label class="lb1">이메일</label>
+					<label class="lb1">이메일 <span class="color-orange">#</span></label>
 					<input type="text" class="inputText2 flex1" name="memberEmail" id="memberEmail" placeholder="abcd@abcd.com">
 					<input type="button" class="bt1 deciwidth" onclick="email()" value="메일인증">
 				</div>
 				<div class="div1">
-					<label class="lb1">닉네임</label>
-					<input type="text" class="inputText1 flex1"  name="memberNickname" id="memberNickname">
-				</div>
-				<div class="div1">
-					<label class="lb1">비밀번호</label>
+					<label class="lb1">비밀번호 <span class="color-orange">#</span></label>
 					<input type="password" class="inputText1 flex1"  name="memberPwd" id="memberPwd" placeholder="4~20자로 입력해주세요">
 				</div>
 				<div class="div1">
-					<label class="lb1">비밀번호확인</label>
+					<label class="lb1">비밀번호확인 <span class="color-orange">#</span></label>
 					<input type="password" class="inputText1 flex1"  id="memberPwd2" placeholder="비밀번호를 재입력 해주세요.">
 				</div>
 				<div class="div1">
-					<label class="lb1">휴대폰</label>
+					<label class="lb1">휴대폰 <span class="color-orange">#</span></label>
 					<input type="text" class="inputText1 flex1"  name="memberTel" id="memberTel" placeholder="'-'를 제외하고 입력해주세요">
 				</div>
 				<div class="div1">
-					<label class="lb1">생년월일</label>
+					<label class="lb1">생년월일 <span class="color-orange">#</span></label>
 					<input type="text" class="inputText1 flex1" name="memberBirth" id="memberBirth" placeholder="8자리 입력(예19850815)">
 				</div>
 				<div class="div1">
-					<label class="lb1">우편번호</label>
+					<label class="lb1">닉네임 </label>
+					<input type="text" class="inputText1 flex1"  name="memberNickname" id="memberNickname" placeholder="-닉네임을 설정하지 않으면 아이디가 닉네임으로 사용됩니다.">
+				</div>
+				<div class="div1">
+					<label class="lb1">우편번호 </label>
 					<input type="text" class="inputText2 flex1"  ReadOnly name="postcode" id="postcode" title="우편번호" >        
 					<input type="Button" class="bt1" value="우편번호 찾기" title="새창열림" onclick="execDaumPostcode()"><br>
 				</div>
 				<div class="div2">
-					<label class="lb1">주소</label>
+					<label class="lb1">주소 </label>
 					<input type="text" class="inputText1 flex1"  name="address" id="address"><br>
 				</div>
 				<div class="div2">
-					<label class="lb1">상세주소</label>
+					<label class="lb1">상세주소 </label>
 					<input type="text" class="inputText1 flex1"  name="addressDetail" id="addressDetail">
 				</div>
 				<div class="div1">
 					<label class="lb1">약관동의</label>
 					<div class="div1 checkboxContainer">
-					<label class="align-middle"><input type="checkbox"> 이용약관동의</label>
-					<a href="#" class="a1">내용보기▶</a>
+					<label class="align-middle"><input type="checkbox" class="align-middle"> 이용약관동의</label>
+					<a class="a1 align-middle cursor-pointer" id="ifram1">내용보기▶</a>
 					</div>
 					<div class="div1 checkboxContainer">
-					<label class="align-middle"><input type="checkbox"> 전자금융거래 이용약관</label>
-					<a href="#" class="a1">내용보기▶</a>
+					<label class="align-middle"><input type="checkbox" class="align-middle"> 전자금융거래 이용약관</label>
+					<a class="a1 align-middle cursor-pointer" id="ifram2">내용보기▶</a>
 					</div>
 					<div class="div1 checkboxContainer">
-					<label class="align-middle"><input type="checkbox"> 개인정보 수집·이용동의</label>
-					<a href="#" class="a1">내용보기▶</a>
+					<label class="align-middle"><input type="checkbox" class="align-middle"> 개인정보 수집·이용동의</label>
+					<a class="a1 align-middle cursor-pointer" id="ifram3">내용보기▶</a>
 					</div>
 				</div>
 				<div class="div1 vertical-container">
@@ -85,6 +112,19 @@
 			</form>
 		</fieldset>
 	</div>
+	<div class="fieldsetContain">
+		<h2 class="paddingCol10px">이용약관<input class="bt7 float-right" type="button" value="X"></h2>
+		<iframe class="bord-1ss" src="<c:url value='/etc/provision3.html'/>"width="950px" height="200px"></iframe>
+	</div>
+	<div class="fieldsetContain">
+		<h2 class="paddingCol10px">개인정보수집 및 이용<input class="bt7 float-right" type="button" value="X"></h2>
+		<iframe class="bord-1ss" src="<c:url value='/etc/provision4.html'/>"width="950px" height="200px"></iframe>
+	</div>
+	<div class="fieldsetContain">
+		<h2 class="paddingCol10px">전자금융거래 이용약관<input class="bt7 float-right" type="button" value="X"></h2>
+		<iframe class="bord-1ss" src="<c:url value='/etc/provision5.html'/>"width="950px" height="200px"></iframe>
+	</div>
+	
 </div>
 <br>
 <br>
@@ -171,17 +211,9 @@
 				return false;
 				event.stopPropagation();
 				event.preventDefault();
-			}else if($("#memberName").val().length < 1){
-				alert("이름을 입력하세요.");
-				$("#memberName").focus();
-				return false;
 			}else if($("#authNum").val()!="인증완료"){
 				alert("이메일 인증을 하세요.");
 				$("#memberEmail").focus();
-				return false;
-			}else if($("#memberNickname").val().lenght<1){
-				alert("닉네임을 입력하세요.");
-				$("#memberNickname").focus();
 				return false;
 			}else if($("#memberPwd").val().length<1){
 				alert("비밀번호를 입력하세요.");

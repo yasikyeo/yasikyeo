@@ -583,6 +583,9 @@ a.a1{
 	margin: 2px 0 0 2px;
 }
 
+
+
+
 /* 
 	탭 메뉴버튼 
 */
@@ -2018,6 +2021,9 @@ p.btAccodion2 > span.ui-icon-active{
 }
 .paddingCol5px{
 	padding: 5px 0;
+}
+.paddingCol10px{
+	padding: 10px 0;
 }
 .paddingCol20px{
 	padding: 20px 0 10px 0;

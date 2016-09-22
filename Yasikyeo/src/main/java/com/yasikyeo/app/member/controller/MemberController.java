@@ -80,6 +80,11 @@ public class MemberController {
 	
 	@RequestMapping(value="/client_addmember.do", method=RequestMethod.POST)
 	public String client_addmember_post(@ModelAttribute MemberVO memberVo,Model model){
+		
+		if(memberVo.getMemberNickname()==null||memberVo.getMemberNickname().isEmpty()){
+			memberVo.setMemberNickname(memberVo.getMemberId());
+		}
+		
 		logeer.info("회원가입 파라미터 MemberVO={}",memberVo);
 		
 		int cnt = memberService.insertMember(memberVo);
