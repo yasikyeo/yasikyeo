@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 
 <!DOCTYPE html>
@@ -66,8 +66,8 @@
 						<br>
 						</a>
 					</li>
-					<li id="messageBoard">
-						<a href="<c:url value='/admintemplet/messageBoard.do'/>">
+					<li id="reply">
+						<a href="<c:url value='/admintemplet/reply.do'/>">
 						<img alt="이미지" src="${pageContext.request.contextPath}/images/admin/board.png" width="100px">
 						</a>
 					</li>
