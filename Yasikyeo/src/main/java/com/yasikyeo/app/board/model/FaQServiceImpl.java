@@ -27,6 +27,21 @@ public class FaQServiceImpl implements FaQService{
 	public int selectfaqTotalCount(SearchVO searchVO) {
 		return faqDao.selectfaqTotalCount(searchVO);
 	}
+
+	@Override
+	public FaQVO selectByNoFaq(int faqNo) {
+		return faqDao.selectByNoFaq(faqNo);
+	}
+
+	@Override
+	public int faqUpdate(FaQVO faqVo) {
+		return faqDao.faqUpdate(faqVo);
+	}
+
+	@Override
+	public int faqDelete(int faqNo) {
+		return faqDao.faqDelete(faqNo);
+	}
 	
 	
 }

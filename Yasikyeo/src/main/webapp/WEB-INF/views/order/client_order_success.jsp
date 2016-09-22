@@ -1,6 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../inc/top2.jsp" %>
+<script type="text/javascript">
+$(function() {
+	$("#showPaylist").click(function() {
+		$(location).attr("href","<c:url value='/mypage/client_paymentList.do'/>");
+	});
+});
+</script>
 <div class="mainSection">
 	<br>
 	<br>
@@ -35,7 +42,7 @@
 				</div>
 				<div class="ma-t-20px flex">
 					<input class="btblack bt8 ma-r-10px flex1" type="button" value="더 주문하기">
-					<input class="btgray bt8 ma-l-10px flex1" type="button" value="결제내역보기">
+					<input class="btgray bt8 ma-l-10px flex1" type="button" value="결제내역보기" id="showPaylist">
 				</div>
 			</div>
 		</fieldset>

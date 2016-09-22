@@ -42,4 +42,21 @@
 		select count(*) from faq
 		<include refid="searchWhere"></include>
 	</select>
+	
+	<select id="selectByNoFaQ" parameterType="int" resultType="faqVO">
+		select * from faq
+		where faq_no=#{faqNo}
+	</select>
+	
+	<update id="faqUpdate" parameterType="faqVO">
+		update faq
+		set faq_title=#{faqTitle},faq_content=#{faqContent},
+		faq_upfilename=#{faqUpfilename},faq_categori=#{faqNo}
+		where faq_no=#{faqNo}
+	</update>
+	
+	<delete id="faqDelete" parameterType="int">
+		delete from faq
+		where faq_no=#{faqNo}
+	</delete>
 </mapper>

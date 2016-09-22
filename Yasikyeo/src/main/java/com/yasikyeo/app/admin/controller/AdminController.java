@@ -338,7 +338,7 @@ public class AdminController {
 	public String faQView(@ModelAttribute SearchVO searchVo,
 			Model model){
 		//1.
-		logger.info("공지사항 화면 보여주기");
+		logger.info("F&Q 화면 보여주기");
 	//2.
 		logger.info("글목록 조회, 파라미터 searchVo={}",
 				searchVo);
@@ -382,8 +382,8 @@ public class AdminController {
 	public String faQWrite_post(@ModelAttribute FaQVO faqVo,
 			HttpServletRequest request){
 		//1.
-		logger.info("공지사항 글쓰기 처리, 파라미터 FaQVO={}", faqVo);
-	//2.
+		logger.info("F&Q 글쓰기 처리, 파라미터 FaQVO={}", faqVo);
+		//2.
 		
 		//파일 업로드 처리
 		int uploadType = FileUploadWebUtil.IMAGE_UPLOAD;
@@ -401,10 +401,103 @@ public class AdminController {
 		
 		
 		int cnt = faqService.insertFaq(faqVo);
-		logger.info("공지사항 글등록 완료 cnt={}",cnt);
+		logger.info("F&Q항 글등록 완료 cnt={}",cnt);
 	//3.
 		return "redirect:/admintemplet/faQ.do";
 	}
+	
+	@RequestMapping("/faQDetail.do")
+	public String faqdetail_view(@RequestParam (defaultValue="0")int faqNo,
+			Model model){
+		//1.
+			logger.info("F&Q 자세히 보기 파라미터 faqNo={}",faqNo);
+		//2.
+			FaQVO alist = faqService.selectByNoFaq(faqNo);
+			logger.info("faq 수정화면 보여주기 처리 결과 alist={}",alist);
+			
+			model.addAttribute("alist", alist);
+		//3.
+			return "admintemplet/faQDetail";
+		//3.
+	}
+	
+	@RequestMapping(value="/updateFaQ.do", method=RequestMethod.GET)
+	public String faQUpdate_View(@RequestParam (defaultValue="0")int faqNo,
+			Model model){
+		//1.
+			logger.info("faq 수정화면 보여주기 파라미터 faqNo={}",faqNo);
+		//2.
+			FaQVO alist = faqService.selectByNoFaq(faqNo);
+			logger.info("faq 수정화면 보여주기 처리 결과 alist={}",alist);
+			
+			model.addAttribute("alist", alist);
+		//3.
+			return "admintemplet/updateFaQ";
+	}
+	
+	@RequestMapping(value="/updateFaQ.do", method=RequestMethod.POST)
+	public String faqUpdate_post(@ModelAttribute FaQVO faqVo, 
+			@RequestParam String oldfaqUpfilename,
+			HttpServletRequest request){
+		//1.
+		logger.info("글 수정 처리, 파라미터 FaQVO={}", faqVo );
+		logger.info("글 수정 처리 파일 파라미터 oldfaqfileName={}",oldfaqUpfilename);
+	//2.
+		
+		int uploadType = FileUploadWebUtil.IMAGE_UPLOAD;
+		List<Map<String, Object>> fileList=fileUtil.fileUpload(request, uploadType);
+		
+		//업로드된 파일명 구해오기
+		if(fileList!=null && !fileList.isEmpty()){
+			String fileName="";
+			for( Map<String, Object> mymap : fileList){
+			fileName = (String) mymap.get("fileName");
+			
+			}//for
+			
+			faqVo.setFaqUpfilename(fileName);
+			
+			//기존 파일 삭제
+			String upPath = fileUtil.getUploadPath(request,fileUtil.IMAGE_UPLOAD);
+			File oldFile = new File(upPath, oldfaqUpfilename); 
+			if(oldFile.exists()){
+				boolean bool =oldFile.delete();
+				logger.info("기존 파일 삭제 여부={}", bool);
+			}
+		}else{
+			//기존파일 세팅
+			
+		}
+		int cnt = faqService.faqUpdate(faqVo);
+		
+		logger.info("파일 업로드 후 cnt={},noticeVo={}",cnt,faqVo);
+	//3.
+	
+	return "redirect:/admintemplet/faQDetail.do?faqNo="+faqVo.getFaqNo();
+	}
+	
+	@RequestMapping("/faqdelete.do")
+	public String faqDelete(@RequestParam int faqNo,
+			@RequestParam String faqUpfilename,
+			HttpServletRequest request){
+		//1.
+			logger.info("FAQ삭제 파라미터 faqNo={}", faqNo);
+		//2.
+			int cnt = faqService.faqDelete(faqNo);
+			logger.info("FAQ 삭제 결과 cnt={}",cnt);
+			
+			//파일 삭제
+			String upPath = fileUtil.getUploadPath(request,fileUtil.IMAGE_UPLOAD);
+			File oldFile = new File(upPath, faqUpfilename); 
+			if(oldFile.exists()){
+				boolean bool =oldFile.delete();
+				logger.info("기존 파일 삭제 여부={}", bool);
+			}
+		//3.
+			return "redirect:/admintemplet/faQ.do";
+	}
+	
+	
 	
 	@RequestMapping(value="/member.do", method=RequestMethod.GET)
 	public String memberView(Model model){

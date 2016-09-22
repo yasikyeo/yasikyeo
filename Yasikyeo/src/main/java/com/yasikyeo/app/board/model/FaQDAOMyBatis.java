@@ -28,4 +28,19 @@ public class FaQDAOMyBatis extends SqlSessionDaoSupport implements FaQDAO{
 		return getSqlSession().selectOne(namespace+".selectfaqTotalCount",searchVO);
 	}
 
+	@Override
+	public FaQVO selectByNoFaq(int faqNo) {
+		return getSqlSession().selectOne(namespace+".selectByNoFaQ",faqNo);
+	}
+
+	@Override
+	public int faqUpdate(FaQVO faqVo) {
+		return getSqlSession().update(namespace+".faqUpdate",faqVo);
+	}
+
+	@Override
+	public int faqDelete(int faqNo) {
+		return getSqlSession().delete(namespace+".faqDelete",faqNo);
+	}
+
 }
