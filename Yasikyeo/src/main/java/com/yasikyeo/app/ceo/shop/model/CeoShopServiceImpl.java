@@ -13,7 +13,12 @@ public class CeoShopServiceImpl implements CeoShopService{
 	private CeoShopDAO ceoShopDao;
 	
 	@Override
-	public int insertCeoShop(CeoShopVO ceoShopVo){
+	public int insertCeoShop(CeoShopVO ceoShopVo,String ceoId){
+		
+		int ceoNo = ceoShopDao.selectCeoNo(ceoId);
+		
+		ceoShopVo.setCeoNo(ceoNo);
+		
 		return ceoShopDao.insertCeoShop(ceoShopVo);
 	}
 

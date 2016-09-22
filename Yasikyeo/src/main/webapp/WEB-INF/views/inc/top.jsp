@@ -66,8 +66,7 @@
 		    </div>
 		    <div class="abc">
 		    	<div class="inputContainer">
-		    	  <input type="hidden" name="prev" 
-		    	  id="prev">
+		    	  <input type="hidden" name="prev" id="prev">
 			      <input type="text" placeholder="아이디 또는 이메일" class="login" name="memberId" required value="${cookie.ck_memberId.value }">
 			      <input type="password" placeholder="비밀번호" class="login" name="memberPwd" required>
 		    	</div>

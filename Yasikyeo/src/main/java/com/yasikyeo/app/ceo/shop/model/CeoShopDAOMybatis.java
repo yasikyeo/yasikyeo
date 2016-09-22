@@ -14,6 +14,11 @@ public class CeoShopDAOMybatis extends SqlSessionDaoSupport	implements CeoShopDA
 	public int insertCeoShop(CeoShopVO ceoShopVo) {
 		return getSqlSession().insert(namespace+".insertCeoShop", ceoShopVo);
 	}
+
+	@Override
+	public int selectCeoNo(String ceoId) {
+		return getSqlSession().selectOne(namespace+".selectCeoId", ceoId);
+	}
 	
 }
 

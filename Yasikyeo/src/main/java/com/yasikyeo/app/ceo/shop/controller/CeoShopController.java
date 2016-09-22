@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,8 +35,10 @@ public class CeoShopController {
 	}
 	
 	@RequestMapping(value="/ceo_addshop.do",method=RequestMethod.POST)
-	public String ceo_addshop_post(@ModelAttribute CeoShopVO ceoShopVo,HttpServletRequest request,Model model){
+	public String ceo_addshop_post(@ModelAttribute CeoShopVO ceoShopVo,HttpSession session,HttpServletRequest request,Model model){
 		logger.info("업소등록 파라미터 ceoShopVo={}", ceoShopVo);
+		
+		String ceoId = (String) session.getAttribute("ceoId");
 		
 		int uploadType = FileUploadWebUtil.SHOP_IMAGE_UPLOAD;
 		//=> 상품등록시 이미지 업로드
@@ -53,7 +56,7 @@ public class CeoShopController {
 		ceoShopVo.setShopImage(fileName);
 		
 		//2.
-		int cnt = ceoShopService.insertCeoShop(ceoShopVo);
+		int cnt = ceoShopService.insertCeoShop(ceoShopVo,ceoId);
 		logger.info("상품 등록 결과 cnt={}", cnt);
 		
 		return "common/message";

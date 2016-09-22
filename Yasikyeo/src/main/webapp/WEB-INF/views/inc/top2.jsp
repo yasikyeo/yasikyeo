@@ -77,6 +77,12 @@
 	});
 	
   });
+ 
+ window.onload = function(){
+	 var url = window.location.href;
+	 
+	 document.getElementById("prev").value = url;
+ }
 </script>
 </head>
 <body>
@@ -89,6 +95,7 @@
 		    </div>
 		    <div class="abc">
 		    	<div class="inputContainer">
+		    	  <input type="hidden" name="prev" id="prev">
 			      <input type="text" placeholder="아이디 또는 이메일" class="login" name="memberId" required value="${cookie.ck_memberId.value }">
 			      <input type="password" placeholder="비밀번호" class="login" name="memberPwd" required>
 		    	</div>
@@ -116,7 +123,7 @@
 <div class="topNav">
 	<ul>
 		<c:if test="${empty sessionScope.memberId }">
-			<li><a href="#" id="mainlogin">로그인</a></li>
+			<li><span id="mainlogin">로그인</span></li>
 			<li><a href="<c:url value='/login/client_addmember.do'/>">회원가입</a></li>	            
 		</c:if>
 		<c:if test="${!empty sessionScope.memberId }">

@@ -39,8 +39,11 @@ public class LoginController {
 		int result = memberService.loginCheck(memberVo);
 		logger.info("로그인 처리 결과, result={}", result);
 		
+		int res = prev.indexOf("sikyeo") + 6;
 		
-		String url = prev.replace("http://localhost:9090/Yasikyeo", "");
+		logger.info("파라미터={}",res);
+		
+		String url = prev.substring(res);
 	
 		
 		String msg="";
