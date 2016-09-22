@@ -16,7 +16,7 @@
 			select FAQ_no_seq.nextval from dual
 		</selectKey>
 		insert into faq(faq_no,faq_title,faq_content,faq_upfilename,faq_categori)
-		values(#{faqNo},#{faqTitle},#{faqContent},#{faqUpfilename},#{faqNo})
+		values(#{faqNo},#{faqTitle},#{faqContent},#{faqUpfilename},#{faqCategori})
 	</insert>
 	
 	<select id="selectAllFaQ" resultType="faqVO" parameterType="SearchVO">
@@ -51,7 +51,7 @@
 	<update id="faqUpdate" parameterType="faqVO">
 		update faq
 		set faq_title=#{faqTitle},faq_content=#{faqContent},
-		faq_upfilename=#{faqUpfilename},faq_categori=#{faqNo}
+		faq_upfilename=#{faqUpfilename},faq_categori=#{faqCategori}
 		where faq_no=#{faqNo}
 	</update>
 	
