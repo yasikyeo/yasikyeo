@@ -6,19 +6,26 @@ public class MemberVO {
 	private int memberNo;
 	private String memberId; 
 	private String memberPwd;
-	private String memberName;
 	private String memberNickname; 
 	private String memberTel;
 	private String memberEmail;
 	private int memberBirth; 
 	private int memberPoint; 
 	private Timestamp memberRgedate;
-	private String memberWtihdraw; 
+	private String memberWtihdraw;
+	private String memberImage;
 	private String address;
 	private String addressDetail;
 	private int postcode;
 	private String authcode;
 	
+	
+	public String getMemberImage() {
+		return memberImage;
+	}
+	public void setMemberImage(String memberImage) {
+		this.memberImage = memberImage;
+	}
 	public int getMemberNo() {
 		return memberNo;
 	}
@@ -36,12 +43,6 @@ public class MemberVO {
 	}
 	public void setMemberPwd(String memberPwd) {
 		this.memberPwd = memberPwd;
-	}
-	public String getMemberName() {
-		return memberName;
-	}
-	public void setMemberName(String memberName) {
-		this.memberName = memberName;
 	}
 	public String getMemberNickname() {
 		return memberNickname;
@@ -112,9 +113,9 @@ public class MemberVO {
 	@Override
 	public String toString() {
 		return "MemberVO [memberNo=" + memberNo + ", memberId=" + memberId + ", memberPwd=" + memberPwd
-				+ ", memberName=" + memberName + ", memberNickname=" + memberNickname + ", memberTel=" + memberTel
-				+ ", memberEmail=" + memberEmail + ", memberBirth=" + memberBirth + ", memberPoint=" + memberPoint
-				+ ", memberRgedate=" + memberRgedate + ", memberWtihdraw=" + memberWtihdraw + ", address=" + address
+				+ ", memberNickname=" + memberNickname + ", memberTel=" + memberTel + ", memberEmail=" + memberEmail
+				+ ", memberBirth=" + memberBirth + ", memberPoint=" + memberPoint + ", memberRgedate=" + memberRgedate
+				+ ", memberWtihdraw=" + memberWtihdraw + ", memberImage=" + memberImage + ", address=" + address
 				+ ", addressDetail=" + addressDetail + ", postcode=" + postcode + ", authcode=" + authcode + "]";
 	}
 }

@@ -27,6 +27,7 @@ public class FileUploadWebUtil {
      public static final int PDS_UPLOAD=1;//자료실 파일 업로드
 	 public static final int IMAGE_UPLOAD=2;//상품이미지 업로드
 	 public static final int SHOP_IMAGE_UPLOAD=3;
+	 public static final int PROFILE_IMAGE_UPLOAD=4;//회원가입 프로필 이미지 업로드 경로
 	
 	 public static final Logger logger 
 	 =LoggerFactory.getLogger(FileUploadWebUtil.class);

@@ -55,7 +55,6 @@ public class LoginController {
 			
 			HttpSession session = request.getSession();
 			session.setAttribute("memberId", memberVo.getMemberId());
-			session.setAttribute("memberName", memVo.getMemberName());
 			session.setAttribute("authcode", memVo.getAuthcode());
 			
 			//[2] 쿠키에 저장
@@ -71,7 +70,7 @@ public class LoginController {
 				response.addCookie(ck);
 			}
 			
-			msg=memVo.getMemberName() + "님 로그인되었습니다";
+			msg=memVo.getMemberNickname() + "님 로그인되었습니다";
 		}else if(result==MemberService.PWD_DISAGREE){
 			msg="비밀번호가 일치하지 않습니다";			
 		}else if(result==MemberService.ID_NONE){
@@ -95,7 +94,6 @@ public class LoginController {
 		//2.
 		//session.invalidate();
 		session.removeAttribute("memberId");
-		session.removeAttribute("memberName");
 		session.removeAttribute("authcode");
 		
 		//3.
