@@ -131,6 +131,9 @@ public class FileUploadWebUtil {
 					realPath=fileUploadProps.getProperty("imageFile.upload.path.test");
 			}else if(uploadType==SHOP_IMAGE_UPLOAD){
 				realPath=fileUploadProps.getProperty("shopImageFile.upload.path.test");
+			}else if(uploadType==PROFILE_IMAGE_UPLOAD){
+				//회원가입시 프로필 이미지
+				realPath=fileUploadProps.getProperty("profileimg.upload.path.test");
 			}
 				logger.info("테스트 경로={}",realPath);
 		}else{
@@ -146,6 +149,8 @@ public class FileUploadWebUtil {
 				
 			}else if(uploadType==SHOP_IMAGE_UPLOAD){
 				realPath = fileUploadProps.getProperty("shopImageFile.upload.path");
+			}else if(uploadType==PROFILE_IMAGE_UPLOAD){
+				realPath = fileUploadProps.getProperty("profileimg.upload.path");
 			}
 			
 			logger.info("실제 배포시 경로={}", realPath);
