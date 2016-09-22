@@ -44,7 +44,7 @@
 			<mapping path="/admin/*" />
 			<mapping path="/member/memberEdit.do" /> -->
 			<mapping path="/admintemplet/eventNotice.do" />
-			<mapping path="/admintemplet/fandA.do" />
+			<mapping path="/admintemplet/faQ.do" />
 			<mapping path="/admintemplet/memberManage.do" />
 			<mapping path="/admintemplet/messageBoard.do" />
 			<mapping path="/admintemplet/register.do" />

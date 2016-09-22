@@ -38,7 +38,7 @@
 		value="${searchVO.searchKeyword }">	
 </form>
 
-<h2>공지사항</h2>
+<h2>F&A</h2>
 <div class="divList">
 <table class="box2"
 	 	summary="자료실에 관한 표로써, 번호, 제목, 작성자, 작성일, 조회수에 대한 정보를 제공합니다.">
@@ -76,12 +76,12 @@
 				</c:if>
 					<!-- 제목이 긴 경우 일부만 보여주기 -->
 						<c:if test="${fn:length(vo.faqTitle)>30}">
-							<a href="<c:url value='/admintemplet/faqDetail.do?faqNo=${vo.faqNo }'/>">
+							<a href="<c:url value='/admintemplet/faQDetail.do?faqNo=${vo.faqNo }'/>">
 							${fn:substring(vo.faqTitle, 0,30)}...
 							</a>
 						</c:if>
 						<c:if test="${fn:length(vo.faqTitle)<=30}">
-						<a href="<c:url value='/admintemplet/faqDetail.do?faqNo=${vo.faqNo }'/>">
+						<a href="<c:url value='/admintemplet/faQDetail.do?faqNo=${vo.faqNo }'/>">
 							${vo.faqTitle}
 						</a>
 						</c:if>
@@ -155,7 +155,7 @@
     </form>
 </div> --%>
 					<div class="align_right">
-						<a href="<c:url value='/admintemplet/faqInsert.do'/>">F&Q등록</a>
+						<a href="<c:url value='/admintemplet/faQInsert.do'/>">F&Q등록</a>
 					</div>
 					</article>
 				</section>
