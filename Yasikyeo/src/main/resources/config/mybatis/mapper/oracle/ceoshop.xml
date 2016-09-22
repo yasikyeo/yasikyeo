@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="config.mybatis.mapper.oracle.ceoshop">
+	<insert id="insertCeoShop" parameterType="CeoShopVO">
+	<selectKey keyProperty="shopNo" resultType="int" order="BEFORE">
+		select shop_no_seq.nextval from dual
+	</selectKey>
+		insert into shop(shop_no,shop_categori,shop_name,shop_image,shop_explain,
+		shop_minprice,shop_opentime,shop_closetime,shop_tel,shop_origin,address,addressdetail,postcode,
+		shop_accountname,shop_account,shop_license,ceo_no)
+		values(#{shopNo},#{shopCategori},#{shopName},#{shopImage},#{shopExplain},#{shopMinprice},#{shopOpentime}
+		,#{shopClosetime},#{shopTel},#{shopOrigin},#{address},#{addressDetail},#{postcode},#{shopAccountname}
+		,#{shopAccount},#{shopLicense},#{ceoNo})
+	</insert>
+	
+</mapper>
