@@ -1,6 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../inc/top2.jsp" %>
+<script type="text/javascript">
+$(function() {
+	$(".table1 tr").click(function() {
+		$(location).attr("href","<c:url value='/mypage/client_baro_det.do'/>");
+	});
+});
+</script>
 <div class="mainSection">
 	<div class="location">
 		<ul>

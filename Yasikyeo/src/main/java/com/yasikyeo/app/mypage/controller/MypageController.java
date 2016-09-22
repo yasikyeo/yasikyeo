@@ -101,4 +101,9 @@ public class MypageController {
 		
 		return mv;
 	}
+	
+	@RequestMapping("/client_baro_det.do")
+	public void borodetail(){
+		
+	}
 }

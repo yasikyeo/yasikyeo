@@ -543,6 +543,15 @@ footer{
 	cursor: pointer;
 	vertical-align: middle;
 }
+.btorange{
+	padding-bottom: 4px;
+	background-color: #ea4d00;
+	color: white;
+	font-weight: bold;
+	border: none;
+	cursor: pointer;
+	vertical-align: middle;
+}
 .btgray{
 	padding-bottom: 4px;
 	background-color: #808080;
@@ -1876,9 +1885,84 @@ p.btAccodion2 > span.ui-icon-active{
 	display: inline-block;	
 }
 
-
-
-
+/* 
+바로결제상세페이지 
+*/
+.div24{
+	background: #eae4e3;
+	font-size: 14px;
+	color: #808080;
+	padding: 15px;
+	margin-top: 20px;
+}
+.div25{
+	background: #eae4e3;
+	margin-top: 20px;
+	border-bottom: 1px solid black;
+	padding: 8px 0;
+}
+.table7{
+	width: 100%;
+	border-bottom: 1px solid black;
+	text-align: center;
+}
+.table7 td{
+	padding: 8px 0;
+}
+.table7 td:FIRST-CHILD{
+	padding-left: 30px;
+	text-align: left;
+}
+.table7 th:FIRST-CHILD{
+	padding-left: 30px;
+	text-align: left;
+}
+.table7 td:LAST-CHILD{
+	padding-right: 30px;
+	text-align: right;
+}
+.table7 th{
+	padding: 8px 0;
+}
+.table7 tbody tr{
+	border-top: 1px solid #808080;
+}
+.table7 tbody tr:LAST-CHILD{
+	font-weight: bold;
+}
+.fieldset4{
+	margin-top: 20px;
+}
+.fieldset4 legend{
+	font-size: 22px;
+	padding-bottom: 10px;
+}
+.div26{
+	padding: 10px;
+	border: 1px solid #808080;
+}
+.div27{
+	padding: 10px;
+	background: #353535;
+	color: white;
+	text-align: right;
+}
+.lb4{
+	display: inline-block;
+	width: 15%;
+}
+.img3{
+	width: 20px;
+	height: 20px;
+}
+.bt9{
+	margin-top: 20px;
+	font-size: 16px;
+	font-weight: bold;
+}
+.bt9:FOCUS{
+	outline: none;
+}
 
 /*
  	유틸 클래스 
@@ -2036,6 +2120,9 @@ p.btAccodion2 > span.ui-icon-active{
 .dsem{
 	font-family: DSEM;
 }
+.color-green{
+	color: #006c36;
+}
 .color-orange{
 	color: #f75e02;
 }
@@ -2047,6 +2134,9 @@ p.btAccodion2 > span.ui-icon-active{
 }
 .height-40px{
 	height: 40px;
+}
+.align-textb{
+	vertical-align: text-bottom;
 }
 .align-middle{
 	vertical-align: middle;
