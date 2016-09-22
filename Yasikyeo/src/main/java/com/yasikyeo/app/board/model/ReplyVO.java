@@ -2,7 +2,7 @@ package com.yasikyeo.app.board.model;
 
 import java.sql.Timestamp;
 
-public class ReplayVO {
+public class ReplyVO {
 	private int replyNo;
 	private String replyName;
 	private String replyContent;

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="config.mybatis.mapper.oracle.reply">
+<sql id="searchWhere">
+		<where>
+			<if test="searchKeyword!=null and searchKeyword!=''">
+				${searchCondition} 
+				like '%' || #{searchKeyword} || '%'
+			</if>
+		</where>
+	</sql>
+<select id="selectAllReply" resultType="replyVO" parameterType="SearchVO">
+		select *
+		from
+		(
+		    select rownum as RNUM, LIST_ALL.*
+		    from
+		        (select reply_no, reply_name, reply_content,
+		        faq_regdate,admin_no,member_no,qna_no,review_no,ceo_no
+		        from reply 
+		        <include refid="searchWhere"></include>
+		        ) LIST_ALL    
+		) 
+		<![CDATA[
+		where  RNUM> #{firstRecordIndex} 
+			and RNUM<= #{firstRecordIndex}
+			+ #{recordCountPerPage}
+		]]>
+	</select>
+	<select id="selectReplyTotalCount" resultType="int" 
+		parameterType="SearchVO">
+		select count(*) from reply
+		<include refid="searchWhere"></include>
+	</select>
+</mapper>

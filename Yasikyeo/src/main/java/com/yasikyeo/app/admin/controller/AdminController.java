@@ -29,6 +29,8 @@ import com.yasikyeo.app.board.model.FaQService;
 import com.yasikyeo.app.board.model.FaQVO;
 import com.yasikyeo.app.board.model.NoticeService;
 import com.yasikyeo.app.board.model.NoticeVO;
+import com.yasikyeo.app.board.model.ReplyService;
+import com.yasikyeo.app.board.model.ReplyVO;
 import com.yasikyeo.app.ceo.model.CeoVO;
 import com.yasikyeo.app.common.FileUploadWebUtil;
 import com.yasikyeo.app.common.PaginationInfo;
@@ -40,6 +42,9 @@ import com.yasikyeo.app.member.model.MemberVO;
 @Controller
 @RequestMapping("/admintemplet")
 public class AdminController {
+	
+	@Autowired
+	private ReplyService replyService;
 	
 	@Autowired
 	private NoticeService noticeService;
@@ -325,14 +330,40 @@ public class AdminController {
 	
 	
 
-	@RequestMapping(value="/messageBoard.do", method=RequestMethod.GET)
-	public String noticeBoardView(){
+	@RequestMapping(value="/reply.do", method=RequestMethod.GET)
+	public String replyView(@ModelAttribute SearchVO searchVo,
+			Model model){
+		
 		//1.
-			logger.info("게시판 보여주기");
+			logger.info("reply 화면 보여주기");
 		//2.
+			logger.info("글목록 조회, 파라미터 searchVo={}",
+					searchVo);
 			
-		//3.
-			return "admintemplet/messageBoard";
+			PaginationInfo pagingInfo = new PaginationInfo();
+			pagingInfo.setBlockSize(Utility.BLOCK_SIZE);
+			pagingInfo.setRecordCountPerPage(Utility.RECORD_COUNT_PER_PAGE);
+			pagingInfo.setCurrentPage(searchVo.getCurrentPage());
+			
+			searchVo.setBlockSize(Utility.BLOCK_SIZE);
+			searchVo.setRecordCountPerPage(Utility.RECORD_COUNT_PER_PAGE);
+			searchVo.setFirstRecordIndex(pagingInfo.getFirstRecordIndex());
+					
+			//2. db작업 - select
+			List<ReplyVO> alist = replyService.selectAllReply(searchVo); 
+			logger.info("글목록 조회 결과 alist.size()={}", alist.size());
+			
+			//전체 레코드 개수 조회하기
+			int totalRecord 
+				= replyService.selectReplyTotalCount(searchVo);
+			pagingInfo.setTotalRecord(totalRecord);
+					
+			//3. 결과 저장, 뷰페이지 리턴
+			model.addAttribute("alist", alist);
+			model.addAttribute("pagingInfo", pagingInfo);
+		
+			
+			return "admintemplet/reply";
 	}
 	
 	@RequestMapping(value="/faQ.do", method=RequestMethod.GET)
