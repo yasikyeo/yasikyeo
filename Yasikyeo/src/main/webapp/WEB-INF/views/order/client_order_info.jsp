@@ -16,7 +16,7 @@
 				<li>&gt;</li>
 				<li>4.주문완료</li>
 			</ul>
-			<form class="flex" action="">
+			<form class="flex" action="<c:url value='/order/client_order_success.do'/> ">
 				 <!-- 좌측 -->
 				 <div class="flex3 pad-right15px ">
 				 	<fieldset class="fieldset3">

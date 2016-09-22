@@ -6,7 +6,7 @@ public class FaQVO {
 	private String faqContent;
 	private String faqUpfilename;
 	private String faqCategori;
-	private int managerNo;
+	private int adminNo;
 	
 	public int getFaqNo() {
 		return faqNo;
@@ -38,17 +38,16 @@ public class FaQVO {
 	public void setFaqCategori(String faqCategori) {
 		this.faqCategori = faqCategori;
 	}
-	public int getManagerNo() {
-		return managerNo;
+	public int getAdminNo() {
+		return adminNo;
 	}
-	public void setManagerNo(int managerNo) {
-		this.managerNo = managerNo;
+	public void setAdminNo(int adminNo) {
+		this.adminNo = adminNo;
 	}
-	
 	@Override
 	public String toString() {
 		return "FaQVO [faqNo=" + faqNo + ", faqTitle=" + faqTitle + ", faqContent=" + faqContent + ", faqUpfilename="
-				+ faqUpfilename + ", faqCategori=" + faqCategori + ", managerNo=" + managerNo + "]";
+				+ faqUpfilename + ", faqCategori=" + faqCategori + ", adminNo=" + adminNo + "]";
 	}
 	
 	

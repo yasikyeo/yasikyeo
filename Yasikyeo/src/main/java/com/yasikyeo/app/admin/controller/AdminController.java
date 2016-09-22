@@ -25,6 +25,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.yasikyeo.app.admin.model.AdminService;
 import com.yasikyeo.app.admin.model.AdminVO;
+import com.yasikyeo.app.board.model.FaQService;
+import com.yasikyeo.app.board.model.FaQVO;
 import com.yasikyeo.app.board.model.NoticeService;
 import com.yasikyeo.app.board.model.NoticeVO;
 import com.yasikyeo.app.ceo.model.CeoVO;
@@ -41,6 +43,9 @@ public class AdminController {
 	
 	@Autowired
 	private NoticeService noticeService;
+	
+	@Autowired
+	private FaQService faqService;
 	
 	@Autowired
 	private MemberService memberService;
@@ -329,14 +334,76 @@ public class AdminController {
 			return "admintemplet/messageBoard";
 	}
 	
-	@RequestMapping(value="/fandA.do", method=RequestMethod.GET)
-	public String fandAView(){
+	@RequestMapping(value="/faQ.do", method=RequestMethod.GET)
+	public String faQView(@ModelAttribute SearchVO searchVo,
+			Model model){
 		//1.
-			logger.info("F&A보여주기");
+		logger.info("공지사항 화면 보여주기");
+	//2.
+		logger.info("글목록 조회, 파라미터 searchVo={}",
+				searchVo);
+		
+		PaginationInfo pagingInfo = new PaginationInfo();
+		pagingInfo.setBlockSize(Utility.BLOCK_SIZE);
+		pagingInfo.setRecordCountPerPage(Utility.RECORD_COUNT_PER_PAGE);
+		pagingInfo.setCurrentPage(searchVo.getCurrentPage());
+		
+		searchVo.setBlockSize(Utility.BLOCK_SIZE);
+		searchVo.setRecordCountPerPage(Utility.RECORD_COUNT_PER_PAGE);
+		searchVo.setFirstRecordIndex(pagingInfo.getFirstRecordIndex());
+				
+		//2. db작업 - select
+		List<FaQVO> alist = faqService.selectAllFaQ(searchVo);
+		logger.info("글목록 조회 결과 alist.size()={}", alist.size());
+		
+		//전체 레코드 개수 조회하기
+		int totalRecord 
+			= faqService.selectfaqTotalCount(searchVo);
+		pagingInfo.setTotalRecord(totalRecord);
+				
+		//3. 결과 저장, 뷰페이지 리턴
+		model.addAttribute("alist", alist);
+		model.addAttribute("pagingInfo", pagingInfo);
+	//3.
+		return "admintemplet/faQ";
+	}
+	
+	@RequestMapping(value="/faQInsert.do", method=RequestMethod.GET)
+	public String faQWrite_view(){
+		//1.
+			logger.info("FaQ 글쓰기 보여주기");
 		//2.
 		
 		//3.
-			return "admintemplet/fandA";
+			return "admintemplet/faQInsert";
+	}
+	
+	@RequestMapping(value="/faQInsert.do", method=RequestMethod.POST)
+	public String faQWrite_post(@ModelAttribute FaQVO faqVo,
+			HttpServletRequest request){
+		//1.
+		logger.info("공지사항 글쓰기 처리, 파라미터 FaQVO={}", faqVo);
+	//2.
+		
+		//파일 업로드 처리
+		int uploadType = FileUploadWebUtil.IMAGE_UPLOAD;
+		List<Map<String, Object>> fileList=fileUtil.fileUpload(request, uploadType);
+		
+		//업로드된 파일명 구해오기
+		String fileName="";
+		for( Map<String, Object> mymap : fileList){
+			fileName = (String) mymap.get("fileName");
+			
+		}
+		
+		faqVo.setFaqUpfilename(fileName);
+		logger.info("파일등록 결과 파라미터 faqVO={}",faqVo);
+		
+		
+		int cnt = faqService.insertFaq(faqVo);
+		logger.info("공지사항 글등록 완료 cnt={}",cnt);
+	//3.
+		return "redirect:/admintemplet/faQ.do";
 	}
 	
 	@RequestMapping(value="/member.do", method=RequestMethod.GET)

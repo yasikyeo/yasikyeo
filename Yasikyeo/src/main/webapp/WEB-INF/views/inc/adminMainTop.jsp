@@ -71,8 +71,8 @@
 						<img alt="이미지" src="${pageContext.request.contextPath}/images/admin/board.png" width="100px">
 						</a>
 					</li>
-					<li id="fandA">
-						<a href="<c:url value='/admintemplet/fandA.do'/>">
+					<li id="faQ">
+						<a href="<c:url value='/admintemplet/faQ.do'/>">
 						<img alt="이미지" src="${pageContext.request.contextPath}/images/admin/F&A.png" width="100px">
 						<br>
 						</a>
