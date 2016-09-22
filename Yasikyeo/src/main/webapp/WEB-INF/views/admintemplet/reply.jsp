@@ -139,9 +139,9 @@
 		<input type="submit" value="검색">
     </form>
 </div> --%>
-					<div class="align_right">
+				<%-- 	<div class="align_right">
 						<a href="<c:url value='/admintemplet/adminInsertNotice.do'/>">공지사항등록</a>
-					</div>
+					</div> --%>
 					</article>
 				</section>
 			</div>
