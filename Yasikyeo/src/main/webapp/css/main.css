@@ -14,6 +14,30 @@
 	font-family:'BMDO';
 	src:url('../font/BMDOHYEON_ttf.ttf') format('truetype');
 }
+@font-face{
+	font-family:'ARIB';
+	src:url('../font/ariBold.ttf') format('truetype');
+}
+@font-face{
+	font-family:'ARIL';
+	src:url('../font/ariLight.ttf') format('truetype');
+}
+@font-face{
+	font-family:'ARIM';
+	src:url('../font/ariMedium.ttf') format('truetype');
+}
+@font-face{
+	font-family:'ARIS';
+	src:url('../font/ariSemiBold.ttf') format('truetype');
+}
+@font-face{
+	font-family:'DREG';
+	src:url('../font/DRegular.ttf') format('truetype');
+}
+@font-face{
+	font-family:'DSEM';
+	src:url('../font/DSemiBold.ttf') format('truetype');
+}
 /* 
 	로그인 박스
 */
@@ -1742,8 +1766,6 @@ p.btAccodion2 > span.ui-icon-active{
 	font-size: 22px;
 	padding-bottom: 10px;
 }
-.div16{
-}
 .ul3{
 	position: absolute;
 	top: 50px;
@@ -1837,6 +1859,28 @@ p.btAccodion2 > span.ui-icon-active{
 
 
 /*
+ 주문성공시 페이지 
+*/
+.div22{
+	padding: 50px;
+}
+.div22 p{
+	text-align: center;
+}
+.div23{
+	border: 1px solid #676767;
+	padding: 30px;
+}
+.lb3{
+	width: 15%;
+	display: inline-block;	
+}
+
+
+
+
+
+/*
  	유틸 클래스 
 */
 
@@ -1881,6 +1925,9 @@ p.btAccodion2 > span.ui-icon-active{
 }
 .ma-l-10px{
 	margin-left: 10px;
+}
+.ma-r-10px{
+	margin-right: 10px;
 }
 .paddingCol5px{
 	padding: 5px 0;
@@ -1970,6 +2017,24 @@ p.btAccodion2 > span.ui-icon-active{
 }
 .doh{
 	font-family: bmdoh;
+}
+.aril{
+	font-family: ARIL;
+}
+.arim{
+	font-family: ARIM;
+}
+.aris{
+	font-family: ARIS;
+}
+.arib{
+	font-family: arib;
+}
+.dreg{
+	font-family: DREG;
+}
+.dsem{
+	font-family: DSEM;
 }
 .color-orange{
 	color: #f75e02;

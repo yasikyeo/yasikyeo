@@ -11,4 +11,8 @@ public class ClientOrderController {
 	public void info(){
 		
 	}
+	@RequestMapping("/client_order_success.do")
+	public void paymentsuccess(){
+		
+	}
 }
