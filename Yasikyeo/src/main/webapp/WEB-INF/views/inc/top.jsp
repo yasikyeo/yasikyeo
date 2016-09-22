@@ -95,7 +95,7 @@
 <div class="topNav">
 	<ul>
 		<c:if test="${empty sessionScope.memberId }">
-			<li><a href="#" id="mainlogin">로그인</a></li>
+			<li><span id="mainlogin">로그인</span></li>
 			<li><a href="<c:url value='/login/client_addmember.do'/>">회원가입</a></li>	            
 		</c:if>
 		<c:if test="${!empty sessionScope.memberId }">

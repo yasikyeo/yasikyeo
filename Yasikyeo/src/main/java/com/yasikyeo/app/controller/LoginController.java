@@ -40,7 +40,7 @@ public class LoginController {
 		logger.info("로그인 처리 결과, result={}", result);
 		
 		
-		String url = prev.replace("http://localhost:9090/yasikyeo", "");
+		String url = prev.replace("http://localhost:9090/Yasikyeo", "");
 	
 		
 		String msg="";

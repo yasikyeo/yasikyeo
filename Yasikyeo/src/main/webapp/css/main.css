@@ -166,7 +166,7 @@ img.avatar {
 .topNav li:FIRST-CHILD{
 	margin-left: 60%;
 }
-.topNav a{
+.topNav a, .topNav span{
 	color: white;
 	font-family: BMJUA;
 	font-size: 1.2em;
