@@ -20,6 +20,31 @@
 			}
 		});
 	    $("#tabs li:FIRST-CHILD").trigger("click");
+	    
+	    
+			$("#submit1").click(function(event){
+				if($("#memberTel").val().length < 1){
+					alert("전화번호를 입력하세요.");
+					$("#memberTel").focus();
+					return false;
+				}else if($("#memberBirth1").val().length < 1){
+					alert("생년월일을 입력하세요.");
+					$("#memberBirth1").focus();
+					return false;
+				}
+			});
+			
+			$("#submit2").click(function(event){
+				if($("#memberEmail").val().length < 1){
+					alert("이메일주소를 입력하세요.");
+					$("#memberEmaill").focus();
+					return false;
+				}else if($("#memberBirth2").val().length < 1){
+					alert("생년월일을 입력하세요.");
+					$("#memberBirth2").focus();
+					return false;
+				}
+			});
 	});
 </script>
 
@@ -41,14 +66,14 @@
 		<div class="fieldsetContain" id="tabs-1">
 			<fieldset>
 				<legend>아이디찾기</legend>
-				<form name="frm" id="" method="post" action="<c:url value='/login/client_findPwd.do'/>">
+				<form name="frm" name="findId" method="post" action="<c:url value='/login/client_findPwd.do'/>">
 					<div class="div1">
 						<label class="lb1">휴대폰</label>
-						<input type="text" name="memberTel" class="inputText1 flex1" placeholder="'-'를 제외하고 입력해주세요">
+						<input type="text" name="memberTel" id="memberTel" class="inputText1 flex1" placeholder="'-'를 제외하고 입력해주세요">
 					</div>
 					<div class="div1">
 						<label class="lb1">생년월일</label>
-						<input type="text" name="memberBirth" class="inputText1 flex1" placeholder="8자리 입력(예19850815)">
+						<input type="text" name="memberBirth" id="memberBirth1" class="inputText1 flex1" placeholder="8자리 입력(예19850815)">
 					</div>
 					<div class="div1 vertical-container">
 						<strong>
@@ -58,7 +83,7 @@
 						</strong>
 					</div>
 					<div class="div1">
-						<button type="submit" class="sub1 fullwidth" >완료</button>
+						<input type="submit" name="submit" id="submit1" class="sub1 fullwidth" >완료</button>
 					</div>
 				</form>
 			</fieldset>
@@ -66,20 +91,20 @@
 		<div class="fieldsetContain" id="tabs-2">
 			<fieldset>
 				<legend>비밀번호찾기</legend>
-				<form name="frm" id="" method="post" action="<c:url value='/login/client_findPwd.do'/>">
+				<form name="frm" name="findPwd" method="post" action="<c:url value='/login/client_findPwd.do'/>">
 					<div class="div1">
 						<label class="lb1">이메일</label>
-						<input class="inputText1 flex1" name="memberEmail" type="text" placeholder="abcd@abcd.com">
+						<input class="inputText1 flex1" name="memberEmail" id="memberEmail" type="text" placeholder="abcd@abcd.com">
 					</div>
 					<div class="div1">
 						<label class="lb1">생년월일</label>
-						<input class="inputText1 flex1" name="memberBirth" type="text" placeholder="8자리 입력(예19850815)">
+						<input class="inputText1 flex1" name="memberBirth" id="memberBirth2" type="text" placeholder="8자리 입력(예19850815)">
 					</div>
 					<div class="div1 vertical-container">
 						<strong>가입하신 이메일로 임시비밀번호를 보내드립니다.</strong>
 					</div>
-					<div class="div1">
-						<button type="submit"  class="sub1 fullwidth" >완료</button>
+					<div name="findPwd" class="div1">
+						<input type="submit" name="submit" id="submit2" class="sub1 fullwidth" >완료</button>
 					</div>
 				</form>
 			</fieldset>
