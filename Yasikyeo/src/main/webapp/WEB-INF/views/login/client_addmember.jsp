@@ -94,15 +94,15 @@ function iframstr(typestr,i) {
 				<div class="div1">
 					<label class="lb1">약관동의</label>
 					<div class="div1 checkboxContainer">
-					<label class="align-middle"><input type="checkbox" class="align-middle"> 이용약관동의</label>
+					<label class="align-middle"><input type="checkbox" class="align-middle" id="ch2"> 이용약관동의</label>
 					<a class="a1 align-middle cursor-pointer" id="ifram1">내용보기▶</a>
 					</div>
 					<div class="div1 checkboxContainer">
-					<label class="align-middle"><input type="checkbox" class="align-middle"> 전자금융거래 이용약관</label>
+					<label class="align-middle"><input type="checkbox" class="align-middle" id="ch2"> 전자금융거래 이용약관</label>
 					<a class="a1 align-middle cursor-pointer" id="ifram2">내용보기▶</a>
 					</div>
 					<div class="div1 checkboxContainer">
-					<label class="align-middle"><input type="checkbox" class="align-middle"> 개인정보 수집·이용동의</label>
+					<label class="align-middle"><input type="checkbox" class="align-middle" id="ch2"> 개인정보 수집·이용동의</label>
 					<a class="a1 align-middle cursor-pointer" id="ifram3">내용보기▶</a>
 					</div>
 				</div>
@@ -209,6 +209,18 @@ function iframstr(typestr,i) {
 			}else if($("#memberPwd2").val()!=$("#memberPwd2").val()){
 				alert("비밀번호가 일치하지 않습니다.");
 				$("#memberPwd2").focus();
+				return false;
+			}else if(!$("#ch1").is(":checked")){
+				alert("이용약관에 동의해주세요");
+				$("#ch1").fucus();
+				return false;
+			}else if(!$("#ch2").is(":checked")){
+				alert("개인정보수집 및 이용에 동의해주세요");
+				$("#ch1").fucus();
+				return false;
+			}else if(!$("#ch2").is(":checked")){
+				alert("전자금융거래 이용약관에 동의해주세요");
+				$("#ch1").fucus();
 				return false;
 			}
 		});
