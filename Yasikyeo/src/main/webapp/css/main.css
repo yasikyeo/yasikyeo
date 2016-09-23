@@ -208,7 +208,7 @@ header{
 	position: relative;
 }
 .addressdiv{
-	width: 200px;
+	width: 210px;
 	height: 32px;
 	border: 1px solid silver;
 	float: right;
@@ -216,6 +216,7 @@ header{
 }
 .dong{
 	vertical-align: middle;
+	font-size: 15px;
 }
 .dongBT{
 	background-color: black;
@@ -261,6 +262,22 @@ header{
 .findDong:focus{
 	border: 3px solid skyblue;
 }
+.result:FIRST-CHILD{
+	margin-top: 20px;
+}
+.result{
+	font-size: 14px;
+	border: 1px solid silver;
+	margin-top: -1px;
+	padding: 5px 0;
+}
+.result:hover{
+	background: #f7e9df;
+	cursor: pointer;
+}
+
+
+
 
 /* 
 	상점 검색 

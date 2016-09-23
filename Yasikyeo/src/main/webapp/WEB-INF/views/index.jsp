@@ -13,6 +13,8 @@ section{
 	background-color: white;
 }
 </style>
+</header>
+<section>
 <div  class="mainSection">
 	<article class="mainBanner">
 		<!-- Start WOWSlider.com BODY section -->

@@ -2,8 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>    
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -16,20 +15,16 @@
 <script type="text/javascript" src="<c:url value='/jquery/jquery-ui.js'/>"></script>
 <script type="text/javascript">
  $(function() {
+	 var windowWidth = $( window ).width();
+
+	 $( window ).resize(function(){
+		 windowWidth = $( window ).width();
+	 });
+	 
 	 $(".dongBT").click(function() {
 		 if($(".addressfrm").css("display")=="none"){
 			 var options = {};
 			 $( ".addressfrm" ).show("drop" , options, 1000);
-			 $("#dong").focus();
-		 }else{
-			 $(".addressfrm").hide();
-		 } 
-	 });
-	 $(".addressdiv").click(function() {
-		 if($(".addressfrm").css("display")=="none"){
-			 var options = {};
-			 $( ".addressfrm" ).show("drop" , options, 1000);
-			 $("#dong").focus();
 		 }else{
 			 $(".addressfrm").hide();
 		 } 
@@ -51,107 +46,43 @@
 	 
 	 $("#close").click(function() {
 		 $( ".modal" ).hide();
+	 });
+	 
+	 $(".mainNav").mouseenter(function() {
+		 $(".mainNav").stop();
+		 if(windowWidth < 737){
+			 $(".mainNav").animate({height:'273'}, 300);
+		 }else{
+			 $(".mainNav").animate({height:'182'}, 300);
+		 }
+	 });
+	 $(".mainNav").mouseleave(function() {
+		 $(".mainNav").stop();
+		 $(".mainNav").animate({height:'100'}, 300);
+	 })
+	 
+	 $(".categoriContain").hover(function() {
+		$(this).find("span").css("color","orange");
+	},function(){
+		$(this).find("span").css("color","white");
+		
 	});
 	 
 	 $(".addMember").click(function(){
 		 location.href="<c:url value='/login/client_addmember.do'/>"; 
 	 });
 	 
-	 $("#frmZip").submit(function(event){
-			if($("#dong").val().length<1){
-				alert("지역명을 입력하세요");
-				$("#dong").focus();
-				return false;
-			}	
-			send();
-			event.preventDefault();
-	});
-	 
-	 $(document).on("click",".result",function(){
-			var addr = $(this).text();
-			if(addr.length>12){
-				addr=addr.substring(0,12)+".."
-			}
-			
-			$("#addrstr").text(addr);
-			$("#divresult").html("");
-			if(findadress){
-				$(".addressfrm").hide();
-			}
-	});
-	var findadress=false;
-	var targetclass="";
-	$("body").click(function(event){
-		targetclass=event.target.className;
+	 $(".categoriContain").click(function() {
+		 $(location).attr("href","<c:url value='/shop/client_shop_list.do'/>");
 	});
 	
-	$("#dong").blur(function(){
-		findadress=true;
-	});
-	
-  });	
- function send(curPage){
-		$.ajax({
-			url:"<c:url value='/getAddrApi.do'/>"									// 고객사 API 호출할 Controller URL
-			,type:"post"
-			,data:$("#frmZip").serialize() 								// 요청 변수 설정
-			,dataType:"xml"												// 데이터 결과 : XML
-			,success:function(xmlStr){									// xmlStr : 주소 검색 결과 XML 데이터
-				var errCode= $(xmlStr).find("errorCode").text();		// 응답코드
-				var errDesc= $(xmlStr).find("errorMessage").text();		// 응답메시지
-				totalCount= $(xmlStr).find("totalCount").text();		// 응답메시지
-				
-				if(errCode != "0"){ 									// 응답에러시 처리
-					alert(errCode+"="+errDesc);
-				}else{
-					if(xmlStr!= null){
-						makeList(xmlStr);								// 결과 XML 데이터 파싱 및 출력
-					}
-				}
-			}
-			,error: function(xhr,status, error){
-				alert("에러발생 - "+status +":" + error);										// AJAX 호출 에러
-			}
-		});
-	}
- function makeList(xmlStr){
-	    $("#divresult").html("");
-		
-		if(totalCount<0){
-			$("#divresult").css("text-align","center")
-			.html("해당 데이터는 존재하지 않습니다.");
-			return;
-		}
-		
-		// jquery를 이용한 XML 결과 데이터 파싱
-		var dong=new Array();
-		var index3=0;
-		var bool=false;
-		$(xmlStr).find("juso").each(function(){
-			var zipNo = $(this).find("zipNo").text();
-			var addr = $(this).find("roadAddr").text().split(" ");
-			var don = $(this).find("roadAddrPart2").text();
-			var index1=don.indexOf("(");
-			var index2=don.indexOf(")");
-			don = don.substring((index1+1),index2).split(",");
-			
-			if ($.inArray(don[0], dong) == -1) {  // result 에서 값을 찾는다.  //값이 없을경우(-1)
-				dong.push(don[0]);                // result 배열에 값을 넣는다.
-				
-				var roadAddr = addr[0]+" "+addr[1]+" "+don[0];
-				var divresult = $("<div class='result'></div>");
-				divresult.html(roadAddr);
-				$("#divresult").append(divresult);				
-			}
-		});
-	}
+  });
  
  window.onload = function(){
 	 var url = window.location.href;
 	 
 	 document.getElementById("prev").value = url;
  }
- 
 </script>
 </head>
 <body>
@@ -184,7 +115,7 @@
 				</ul>
 			</div>
 			<div>
-				<button type="button" class="addMember">회원가입</button>
+		      <button type="button" class="addMember">회원가입</button>
 			</div>		        
 	    </div>
 	</form>
@@ -211,8 +142,8 @@
 		<div class="searchInput">
 			<div class="address">
 				<div class="addressdiv">
-					<span class="dong" id="addrstr">서울특별시</span>
-					<button class="dongBT"><img class="dongimg" alt="타겟" src="${pageContext.request.contextPath}/images/target.png"></button>
+					<span class="dong">서울특별시</span>
+					<button class="dongBT"><img alt="타겟" src="${pageContext.request.contextPath}/images/target.png"></button>
 				</div>
 				<div class="addressfrm">
 					<div class="noti">
@@ -220,15 +151,11 @@
 						<p>동명을 검색해서 다시 설정해주세요</p>
 					</div>
 					<div class="dongdiv">
-						<form id="frmZip" method="post" action="<c:url value='/login/client_addmember.do'/>">
-							<input type="hidden" id="currentPage" name="currentPage" value="1"/>				<!-- 요청 변수 설정 (현재 페이지) -->
-						    <input type="hidden" id="countPerPage" name="countPerPage" value="5000"/>				<!-- 요청 변수 설정 (페이지당 출력 개수) -->
-						    <input type="hidden" name="confmKey" value="U01TX0FVVEgyMDE2MDcxODIyMDcxMzEzODg5"/>
-							<input type="text" class="findDong" id="dong" name="keyword" value="${param.keyword}" placeholder="동명을 입력하세요">
+						<form action="">
+							<input type="text" class="findDong" placeholder="동명을 입력하세요">
 							<input type="image" class="sbmDong" src="${pageContext.request.contextPath}/images/search.png">
 						</form>
 					</div>
-					<div id="divresult"></div>
 				</div>
 			</div>	
 			<form action="" name="frmSearch" id="frmSearch">
@@ -239,3 +166,83 @@
 			</form>
 		</div>
 	</div>
+	<div class="mainNav">
+		<div class="navContain">
+		<ul>
+			<li class="categoriContain">
+				<a href="#">
+				<img class="imgContain" alt="" src="${pageContext.request.contextPath}/images/icon/chicken.png"><br>
+				<span>치킨</span>
+				</a>
+			</li>
+			<li class="categoriContain">
+				<a href="#">
+				<img class="imgContain" alt="" src="${pageContext.request.contextPath}/images/icon/chineseFood.png"><br>
+				<span>중국집</span>
+				</a>
+			</li>
+			<li class="categoriContain">
+				<a href="#">
+				<img class="imgContain" alt="" src="${pageContext.request.contextPath}/images/icon/pizza.png"><br>
+				<span>피자</span>
+				</a>
+			</li>
+			<li class="categoriContain">
+				<a href="#">
+				<img class="imgContain" alt="" src="${pageContext.request.contextPath}/images/icon/koreanFood.png"><br>
+				<span>한식,분식</span>
+				</a>
+			</li>
+			<li class="categoriContain">
+				<a href="#">
+				<img class="imgContain" alt="" src="${pageContext.request.contextPath}/images/icon/jokbal.png"><br>
+				<span>족발,보쌈</span>
+				</a>
+			</li>
+			<li class="categoriContain">
+				<a href="#">
+				<img class="imgContain" alt="" src="${pageContext.request.contextPath}/images/icon/view.png"><br>
+				<span>야식</span>
+				</a>
+			</li>
+			<li class="categoriContain">
+				<a href="#">
+				<img class="imgContain" alt="" src="${pageContext.request.contextPath}/images/icon/japaneseFood.png"><br>
+				<span>돈까스,회,일식</span>
+				</a>
+			</li>
+			<li class="categoriContain">
+				<a href="#">
+				<img class="imgContain" alt="" src="${pageContext.request.contextPath}/images/icon/jjim.png"><br>
+				<span>찜,탕</span>
+				</a>
+			</li>
+			<li class="categoriContain">
+				<a href="#">
+				<img class="imgContain" alt="" src="${pageContext.request.contextPath}/images/icon/lunch.png"><br>
+				<span>도시락</span>
+				</a>
+			</li>
+			<li class="categoriContain">
+				<a href="#">
+				<img class="imgContain" alt="" src="${pageContext.request.contextPath}/images/icon/hamburger.png"><br>
+				<span>패스트푸드</span>
+				</a>
+			</li>
+			<li class="categoriContain">
+				<a href="#">
+				<img class="imgContain" alt="" src="${pageContext.request.contextPath}/images/icon/payment.png"><br>
+				<span>바로결제</span>
+				</a>
+			</li>
+			<li class="categoriContain">
+				<a href="#">
+				<img class="imgContain" alt="" src="${pageContext.request.contextPath}/images/icon/guitar.png"><br>
+				<span>기타</span>
+				</a>
+			</li>
+		</ul>
+		</div>
+	</div>
+</header>
+<section>
