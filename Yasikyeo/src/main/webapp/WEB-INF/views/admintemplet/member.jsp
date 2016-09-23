@@ -15,18 +15,16 @@
  			
  			<div>
  					<table class="box2">
- 						<caption>회원</caption>
+ 						<h2>회원</h2>
 			<colgroup>
 				<col style="width:30%;" />
-				<col style="width:20%;" />
-				<col style="width:20%;" />
-				<col style="width:20%;" />
+				<col style="width:30%;" />
+				<col style="width:30%;" />
 				<col style="width:10%;" />		
 			</colgroup>
 							<thead>
 								<tr>
 									<th>아이디</th>
-									<th>이름</th>
 									<th>닉네임</th>
 									<th>생년월일</th>
 									<th>포인트</th>
@@ -42,7 +40,6 @@
 								<c:forEach var="userVO" items="${usermember}">
 									<tr align="center">
 										<td><a href="<c:url value='/admintemplet/memberDetail.do?memberNo=${userVO.memberNo }'/>">${userVO.memberId}</a></td>
-										<td>${userVO.memberName}</td>
 										<td>${userVO.memberNickname}</td>
 										<td>${userVO.memberBirth}</td>
 										<td>${userVO.memberPoint}</td>

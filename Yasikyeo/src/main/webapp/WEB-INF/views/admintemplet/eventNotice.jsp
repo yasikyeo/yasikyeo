@@ -30,7 +30,7 @@
 		<section class="contents">
 					<article class="centerCon">
 						<form name="frmPage" method="post" 
-	action="<c:url value='/admintemplet/event.do'/>">
+	action="<c:url value='/admintemplet/eventNotice.do'/>">
 	<input type="hidden" name="currentPage">
 	<input type="hidden" name="searchCondition" 
 		value="${param.searchCondition }">
@@ -74,10 +74,7 @@
 				${vo.noticeSuffix}</a></td>
 				<td style="text-align: left;">
 				<!-- 파일이 첨부된 경우 파일 이미지 보여주기 -->
-				<c:if test="${!empty vo.noticeUpfileName }">
-					<img src="<c:url value='/images/file.gif'/>" 
-					alt="파일 이미지">
-				</c:if>
+				
 					<!-- 제목이 긴 경우 일부만 보여주기 -->
 						<c:if test="${fn:length(vo.noticeTitle)>30}">
 							${fn:substring(vo.noticeTitle, 0,30)}...
@@ -88,7 +85,14 @@
 					
 					<!-- 24시간 이내의 글인 경우 new 이미지 보여주기 -->
 				</td>
-				<td>${vo.noticeContent }</td>				
+				<td>
+					<c:if test="${fn:length(vo.noticeContent)>30}">
+							${fn:substring(vo.noticeContent,0,30)}...
+						</c:if>
+						<c:if test="${fn:length(vo.noticeContent)<=30}">
+							${vo.noticeContent }
+						</c:if>
+					</td>				
 			</tr>				
 		</c:forEach>
 		<!--반복처리 끝  -->
@@ -129,22 +133,22 @@
 		</a>
 	</c:if>
 </div>
-<%-- <div class="divSearch">
+<div class="divSearch">
    	<form name="frmSearch" method="post" 
-   	action="<c:url value='/reBoard/list.do' />" >
+   	action="<c:url value='/admintemplet/eventNotice.do' />" >
         <select name="searchCondition">
-            <option value="title"
-           	   <c:if test="${param.searchCondition=='title'}">
+            <option value="notice_Title"
+           	   <c:if test="${param.searchCondition=='notice_Title'}">
             		selected
                </c:if>
             >제목</option>
-            <option value="content" 
-            	<c:if test="${param.searchCondition=='content'}">
+            <option value="notice_Suffix" 
+            	<c:if test="${param.searchCondition=='notice_Suffix'}">
             		selected
                </c:if>
-            >내용</option>
-            <option value="name" 
-            	<c:if test="${param.searchCondition=='name'}">
+            >머리말</option>
+            <option value="notice_Content" 
+            	<c:if test="${param.searchCondition=='notice_Content'}">
             		selected
                </c:if>
             >작성자</option>
@@ -153,7 +157,7 @@
         	title="검색어 입력" value="${param.searchKeyword}" >   
 		<input type="submit" value="검색">
     </form>
-</div> --%>
+</div> 
 					<div class="align_right">
 						<a href="<c:url value='/admintemplet/adminInsertNotice.do'/>">공지사항등록</a>
 					</div>

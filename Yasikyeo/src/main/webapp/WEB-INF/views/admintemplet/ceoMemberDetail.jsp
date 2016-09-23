@@ -27,22 +27,18 @@
 		</div>
 		<div>
 			<span class="sp1">가입일자</span> 
-			<span>${ceoVo.ceoEmail}</span>
-		</div>
-		<div>
-			<span class="sp1">주소</span> 
-			<span>${ceoVo.address}${addressDetail}</span>
+			<span>${ceoVo.ceoRegdate}</span>
 		</div>
 		<div>
 			<span class="sp1">상태</span> 
-			<span>${ceoVO.authCode}</span>
+			<span>${ceoVo.authcode}</span>
 		</div>	
-		<c:if test="${ceoVo.authCode=='CEO'}">
+		<c:if test="${ceoVo.authcode=='CEO'}">
 		<div class="align_right">
 			<input type="submit" value="정지">
 		</div>
 		</c:if>
-		<c:if test="${ceoVo.authCode=='STOP'}">
+		<c:if test="${ceoVo.authcode=='STOP'}">
 			<div class="align_right">
 				<input type="submit" value="사용자">
 			</div>

@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.yasikyeo.app.admin.model.AdminService;
 import com.yasikyeo.app.admin.model.AdminVO;
@@ -174,6 +175,12 @@ public class AdminController {
 			noticeVo.setNoticeUpfileName(fileName);
 			logger.info("파일등록 결과 파라미터 noticeVo={}",noticeVo);
 			
+			if(noticeVo.getNoticeSuffix().equals("notice")){
+				noticeVo.setNoticeSuffix(noticeService.NOTICE);
+			}else if(noticeVo.getNoticeSuffix().equals("event")){
+				noticeVo.setNoticeSuffix(noticeService.EVENTE);
+			}
+			noticeVo.setAdminNo(adminService.ADMIN_NO);
 			
 			int cnt = noticeService.insertNotice(noticeVo);
 			logger.info("공지사항 글등록 완료 cnt={}",cnt);
@@ -280,6 +287,15 @@ public class AdminController {
 				//기존파일 세팅
 				noticeVo.setNoticeUpfileName(oldNoticeUpfileName);
 			}
+			
+			if(noticeVo.getNoticeSuffix().equals("notice")){
+				noticeVo.setNoticeSuffix(noticeService.NOTICE);
+			}else if(noticeVo.getNoticeSuffix().equals("event")){
+				noticeVo.setNoticeSuffix(noticeService.EVENTE);
+			}
+			
+			noticeVo.setAdminNo(adminService.ADMIN_NO);
+			
 			int cnt = noticeService.noticeUpdate(noticeVo);
 			
 			logger.info("파일 업로드 후 cnt={},noticeVo={}",cnt,noticeVo);
@@ -366,7 +382,7 @@ public class AdminController {
 			return "admintemplet/reply";
 	}
 	
-	@RequestMapping(value="/faQ.do", method=RequestMethod.GET)
+	@RequestMapping("/faQ.do")
 	public String faQView(@ModelAttribute SearchVO searchVo,
 			Model model){
 		//1.
@@ -431,6 +447,23 @@ public class AdminController {
 		faqVo.setFaqUpfilename(fileName);
 		logger.info("파일등록 결과 파라미터 faqVO={}",faqVo);
 		
+		if(faqVo.getFaqCategori().equals("Member")){
+			faqVo.setFaqCategori(faqService.FAQ_MEMBER);
+		}else if(faqVo.getFaqCategori().equals("pay")){
+			faqVo.setFaqCategori(faqService.FAQ_PAY);
+		}else if(faqVo.getFaqCategori().equals("review")){
+			faqVo.setFaqCategori(faqService.FAQ_REVIEW);
+		}else if(faqVo.getFaqCategori().equals("play")){
+			faqVo.setFaqCategori(faqService.FAQ_PLAY);
+		}else if(faqVo.getFaqCategori().equals("advertise")){
+			faqVo.setFaqCategori(faqService.FAQ_ADVERTISE);
+		}else if(faqVo.getFaqCategori().equals("discomform")){
+			faqVo.setFaqCategori(faqService.FAQ_DISCOMFORM);
+		}else if(faqVo.getFaqCategori().equals("etc")){
+			faqVo.setFaqCategori(faqService.FAQ_ETC);
+		}
+		
+		faqVo.setAdminNo(adminService.ADMIN_NO);
 		
 		int cnt = faqService.insertFaq(faqVo);
 		logger.info("F&Q항 글등록 완료 cnt={}",cnt);
@@ -500,6 +533,25 @@ public class AdminController {
 			//기존파일 세팅
 			
 		}
+		
+		if(faqVo.getFaqCategori().equals("Member")){
+			faqVo.setFaqCategori(faqService.FAQ_MEMBER);
+		}else if(faqVo.getFaqCategori().equals("pay")){
+			faqVo.setFaqCategori(faqService.FAQ_PAY);
+		}else if(faqVo.getFaqCategori().equals("review")){
+			faqVo.setFaqCategori(faqService.FAQ_REVIEW);
+		}else if(faqVo.getFaqCategori().equals("play")){
+			faqVo.setFaqCategori(faqService.FAQ_PLAY);
+		}else if(faqVo.getFaqCategori().equals("advertise")){
+			faqVo.setFaqCategori(faqService.FAQ_ADVERTISE);
+		}else if(faqVo.getFaqCategori().equals("discomform")){
+			faqVo.setFaqCategori(faqService.FAQ_DISCOMFORM);
+		}else if(faqVo.getFaqCategori().equals("etc")){
+			faqVo.setFaqCategori(faqService.FAQ_ETC);
+		}
+		
+		faqVo.setAdminNo(adminService.ADMIN_NO);
+		
 		int cnt = faqService.faqUpdate(faqVo);
 		
 		logger.info("파일 업로드 후 cnt={},noticeVo={}",cnt,faqVo);

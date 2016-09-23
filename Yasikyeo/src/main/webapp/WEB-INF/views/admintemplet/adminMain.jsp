@@ -37,7 +37,8 @@
 							<legend>관리자 로그인</legend>
 							<div class="align_left">
 								<label for="adminId" class="label">아이디</label>
-								<input type="text" name="adminId" id="adminId">
+								<input type="text" name="adminId" id="adminId"
+								value="${cookie.admin_ck_userid.value}">
 							</div>
 							<div class="align_left">
 								<label for="adminPwd" class="label">페스워드</label>
@@ -45,7 +46,10 @@
 							</div>
 							<div class="align_center">
 								<label for="chkSave">아이디 저장</label>
-								<input type="checkbox" value="checked" name="chkSave" id=chkSave">
+								<input type="checkbox" value="checked" name="chkSave" id="chkSave"
+									<c:if test="${!empty cookie.admin_ck_userid}">
+										checked
+									</c:if>>
 							</div>
 							<div class="align_center">
 									<input type="submit" value="로그인">

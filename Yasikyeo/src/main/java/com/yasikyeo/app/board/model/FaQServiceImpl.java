@@ -10,6 +10,8 @@ import com.yasikyeo.app.common.SearchVO;
 @Service
 public class FaQServiceImpl implements FaQService{
 
+	
+	
 	@Autowired
 	private FaQDAO faqDao;
 	

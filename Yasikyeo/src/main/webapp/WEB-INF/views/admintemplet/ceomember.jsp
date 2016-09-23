@@ -14,7 +14,7 @@
  			</nav>
  				<div>
 						<table class="box2">
-										<caption>ceo회원</caption>
+										<h2>ceo회원</h2>
 			<colgroup>
 				<col style="width:30%;" />
 				<col style="width:20%;" />
@@ -25,7 +25,7 @@
 								<tr>
 									<th>아이디</th>
 									<th>이름</th>
-									<th>주소</th>
+									<th>이메일</th>
 									<th>전화번호</th>
 								</tr>
 							</thead>
@@ -39,9 +39,9 @@
 								<c:if test="${!empty ceomember}">
 								<c:forEach var="ceoVO" items="${ceomember}">
 									<tr>
-									<td><a href="<c:url value='/admintemplet/ceoMemberDetail.do?ceoNo=${ceoVo.ceoNo }'/>">${ceoVO.ceoId}</a></td>
+									<td><a href="<c:url value='/admintemplet/ceoMemberDetail.do?ceoNo=${ceoVO.ceoNo }'/>">${ceoVO.ceoId}</a></td>
 									<td>${ceoVO.ceoName}</td>
-									<td>${ceoVO.address}</td>
+									<td>${ceoVO.ceoEmail}</td>
 									<td>${ceoVO.ceoTel}</td>
 									</tr>
 								</c:forEach>

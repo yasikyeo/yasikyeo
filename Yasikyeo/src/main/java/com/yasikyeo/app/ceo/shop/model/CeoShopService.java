@@ -6,6 +6,8 @@ public interface CeoShopService {
 	public int insertCeoShop(CeoShopVO ceoShopVo,String ceoId);
 	public int selectCeoNo(String ceoId);
 	public int selectShop(int ceoNo);
+	public int insertCeoProduct(CeoProductVO ceoProductVo,int ceoNo);
+	public int selectShopNo(int ceoNo);
 }
 
 

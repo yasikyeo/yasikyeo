@@ -27,27 +27,19 @@
 		</div>
 		<div>
 			<label for="noticeSuffix">머릿말</label>   
-        	<select name="noticeSuffix" id="noticeSuffix">
-            	<option value="notice" 
-            		<c:if test="${alist.noticeSuffix=='notice'}">
-            			selected
-            		</c:if>>공지사항</option>
-            	<option value="event"
-            		<c:if test="${alist.noticeSuffix=='event' }">
-            			selected
-            		</c:if>>이벤트</option>
-            	</select>
-           </div>
+        	<span>${alist.noticeSuffix }</span>
+            	
+         </div>
 		<div>
 			<span class="sp1">제목</span> 
 			<span>${alist.noticeTitle}</span>
 		</div>
 		<div>
-			<span class="sp1">내용</span> 
-			<a>${alist.noticeContent}
+			<span>${alist.noticeContent}
 			<c:if test="${!empty alist.noticeUpfileName}">
-				<img src="<c:url value='/board_Image/${alist.noticeUpfileName}'/>"alt="이미지" ></a>
+				<img src="<c:url value='/board_Image/${alist.noticeUpfileName}'/>"alt="이미지" >
 			</c:if>
+			</span>
 		</div>
 		<div class="align_center">
 			<input type="button" id="bt1" value="수정" onclick="location.href='<c:url value="/admintemplet/noticeUpdate.do?noticeNo=${alist.noticeNo}"/>'">
