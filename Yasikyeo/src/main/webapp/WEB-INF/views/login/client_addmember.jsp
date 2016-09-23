@@ -5,27 +5,27 @@
 <script type="text/javascript">
 $(function() {
 	$("#ifram1").click(function() {
-		alert("눌림");
 		$(".fieldsetContain:LAST-CHILD").after(iframstr("이용약관",3));
 	});
 	$("#ifram2").click(function() {
-		alert("눌림");
-		$(".fieldsetContain:LAST-CHILD").after(iframstr("이용약관",4));
+		$(".fieldsetContain:LAST-CHILD").after(iframstr("개인정보수집 및 이용",4));
 	});
 	$("#ifram3").click(function() {
-		alert("눌림");
-		$(".fieldsetContain:LAST-CHILD").after(iframstr("이용약관",5));
+		$(".fieldsetContain:LAST-CHILD").after(iframstr("전자금융거래 이용약관",5));
 	});
-	
+	$(document).on("click","#btclo",function(){
+		alert("눌림");
+		$(this).parents(".fieldsetContain").remove();
+	});
 	
 });
 function iframstr(typestr,i) {
 	var str = "";
-	var i="'/etc/provision"+i+".html'";
+	var i="<c:url value='/etc/provision"+i+".html'/>";
 	alert(i);
 	str+='<div class="fieldsetContain">';
-	str+='<h2 class="paddingCol10px">'+typestr+'<input class="bt7 float-right" type="button" value="X"></h2>';
-	str+='<iframe class="bord-1ss" src="<c:url value='+i+'/>"width="950px" height="200px"></iframe>';
+	str+='<h2 class="paddingCol10px">'+typestr+'<input class="bt7 float-right" type="button" value="X" id="btclo"></h2>';
+	str+='<iframe class="bord-1ss" src="'+i+'" width="950px" height="200px"></iframe>';
 	str+='</div>';
 	return str;
 }
@@ -112,19 +112,6 @@ function iframstr(typestr,i) {
 			</form>
 		</fieldset>
 	</div>
-	<div class="fieldsetContain">
-		<h2 class="paddingCol10px">이용약관<input class="bt7 float-right" type="button" value="X"></h2>
-		<iframe class="bord-1ss" src="<c:url value='/etc/provision3.html'/>"width="950px" height="200px"></iframe>
-	</div>
-	<div class="fieldsetContain">
-		<h2 class="paddingCol10px">개인정보수집 및 이용<input class="bt7 float-right" type="button" value="X"></h2>
-		<iframe class="bord-1ss" src="<c:url value='/etc/provision4.html'/>"width="950px" height="200px"></iframe>
-	</div>
-	<div class="fieldsetContain">
-		<h2 class="paddingCol10px">전자금융거래 이용약관<input class="bt7 float-right" type="button" value="X"></h2>
-		<iframe class="bord-1ss" src="<c:url value='/etc/provision5.html'/>"width="950px" height="200px"></iframe>
-	</div>
-	
 </div>
 <br>
 <br>
