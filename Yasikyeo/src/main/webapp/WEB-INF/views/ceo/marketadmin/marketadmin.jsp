@@ -2,32 +2,9 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../../inc/ceo/top.jsp" %>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/ceoallmenu.css" type="text/css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/marketmember3.css" type="text/css"/>
 <title>야시켜, 사장님 업소관리 페이지</title>
 
-
-
-		<div id="main">
-			<div id="navigator">
-						
-						<table>
-							<tr>
-								<th>내 업소관리</th>
-							</tr>
-							<tr>
-								<td><a href="#">메뉴 등록</a></td>
-							</tr>
-							<tr>
-								<td><a href="#">메뉴 수정</a></td>
-							</tr>
-							<tr>
-								<td><a href="#">리뷰 관리</a></td>
-							</tr>
-							<tr>
-								<td><a href="#">주문 관리</a></td>
-							</tr>
-						</table>
-			</div>
-		
 			<div id="main_box">
 				<div id="box_1">
 					<div id="a_1">
@@ -48,19 +25,23 @@
 										<details> <summary>메뉴 등록</summary>
 										<div id="content">
 											<div class="needpopup">
-												<form id="write">
-													<input type="file" id="up_files[0]" name="up_files" onchange="handleFileSelect(0)" class="formInput1"/>
-													<div id="list[0]"></div>
-													메뉴 이름 <input type="text" id="qwe" class="formInput"><br>										
-													<select name="opt" class="formInput">
-														<option>선택구분</option>												
-														<option value="choice">선택</option>
-														<option value="indispensable" >필수</option>
-													</select>
-													음식명 : <input type="text" id="food" class="formInput"> 가격 : <input type="text" id="price" class="formInput"><input type='button'  value="추가" class="additem"/><br>
+												<form id="write" method="post" action="<c:url value='/ceo/marketadmin/marketadmin.do'/>" enctype="multipart/form-data">
+													<div id="productImgView"></div>
+													<div>메뉴 이미지 등록 : <input type="file" name="imageUpload" id="imageUpload" onchange="handleFileSelect(0)" class="formInput1"/></div>
+													<div>메뉴 이름 : <input type="text" id="food" name="productName" class="formInput2"></div>
+													<div>메뉴 옵션 : <select name="productOption" class="formInput">
+														<option value="" >옵션없음</option>									
+														<option value="대/중/소">대/중/소</option>
+														<option value="S/M/L" >S/M/L</option>
+													</select></div>
+													<div>메뉴 가격 : <input type="text" id="price" name="productPrice" class="formInput2"></div><br>
+													<div><label for="productExplain">메뉴 설명<br></label>
+													<textarea rows="15" cols="80" name="productExplain" class="formInput" style="width: 350px; height: 170px; float: inherit;"></textarea></div><br>
+													 <input type="submit" class="formInput" value="등록하기"><br>
 												</div>
 											</form>
 										</div>
+										
 										</details>
 									</div>
 									</tr>
@@ -109,8 +90,8 @@
 								
 								
     							function handleFileSelect(i) {
-    									var fileselectobj = "up_files["+i+"]";
-    									var previmageobj ="list["+i+"]";
+    									var fileselectobj = "imageUpload";
+    									var previmageobj ="productImgView";
 										var files = document.getElementById(fileselectobj).files[0]; //파일 객체
 
 										var reader = new FileReader();
@@ -127,35 +108,6 @@
 
 										reader.readAsDataURL(files);
 								}
-    							
-    							var menustep=0;
-    							
-    							function temp(step) {
-									var str = "";
-									
-									
-									str+="<br><br><input type='file' id='up_files["+menustep+"]' name='up_files["+menustep+"]' onchange='handleFileSelect("+menustep+")' class='formInput1'/>";
-									str+="<br><div id='list["+menustep+"]'></div>";
-									str+="메뉴 이름 <input type='text' class='formInput'><br>";										
-									str+="<select name='opt["+menustep+"]' class='formInput' >";
-									str+="<option>선택구분</option>";
-									str+="<option value='choice'>선택</option>";	
-									str+="<option value='indispensable'>필수</option>";
-									str+="</select>";
-									str+="음식명 : <input type='text' class='formInput'> 가격 : <input type='text' class='formInput'>";
-									//str+="<input type='button'  value='추가' class='additem'/><br>";
-									
-									return str;
-								} 
-    							
-	    						$(document).on("click",".additem",function() {    	
-    								menustep++;
-    																	
-    								$(".needpopup").append(temp(menustep));
-    								$(".needpopup").append($(".additem"));
-    								
-								});
-    							
     							
 								</script>
 

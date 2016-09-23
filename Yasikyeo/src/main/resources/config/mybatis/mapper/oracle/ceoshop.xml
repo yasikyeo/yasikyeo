@@ -19,9 +19,21 @@
 		,#{shopClosetime},#{shopTel},#{shopOrigin},#{address},#{addressDetail},#{postcode},#{shopAccountname}
 		,#{shopAccount},#{shopLicense},#{ceoNo})
 	</insert>
-	
+
 	<select id="selectShop" parameterType="string" resultType="int">
 		select count(*) from shop where ceo_no=#{ceoNo}
 	</select>
+
+	<select id="selectShopNo" parameterType="int" resultType="int">
+		select shop_no from shop where ceo_no=#{ceoNo}
+	</select>
+		
+	<insert id="insertCeoProduct" parameterType="CeoProductVO">
+	<selectKey keyProperty="productNo" resultType="int" order="BEFORE">
+		select product_no_seq.nextval from dual
+	</selectKey>
+		insert into product(product_no,product_name,product_explain,product_price,product_option,product_image,shop_no)
+		values(#{productNo},#{productName},#{productExplain},#{productPrice},#{productOption},#{productImage},#{shopNo})
+	</insert>
 	
 </mapper>

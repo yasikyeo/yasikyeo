@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.yasikyeo.app.ceo.shop.model.CeoProductVO;
 import com.yasikyeo.app.ceo.shop.model.CeoShopService;
 import com.yasikyeo.app.ceo.shop.model.CeoShopVO;
 import com.yasikyeo.app.common.FileUploadWebUtil;
@@ -92,8 +93,8 @@ public class CeoShopController {
 		return "common/message";
 	}
 	
-	@RequestMapping(value="/ceo/marketadmin/marketadmin.do",method=RequestMethod.GET)
-	public String marketadmin(HttpSession session,Model model){
+	@RequestMapping(value="ceo/marketadmin/marketadmin.do",method=RequestMethod.GET)
+	public String marketadmin_get(HttpSession session,Model model){
 		
 		String ceoId = (String) session.getAttribute("ceoId");
 		
@@ -116,5 +117,44 @@ public class CeoShopController {
 		return "common/message";
 	}
 	
+	@RequestMapping(value="ceo/marketadmin/marketadmin.do",method=RequestMethod.POST)
+	public String marketadmin_post(@ModelAttribute CeoProductVO ceoProductVo,HttpSession session,HttpServletRequest request,Model model){
+		logger.info("메뉴등록 파라미터 ceoProductVo={}", ceoProductVo);
+		
+		String ceoId = (String) session.getAttribute("ceoId");
+		int ceoNo = ceoShopService.selectCeoNo(ceoId);
+		
+		int uploadType = FileUploadWebUtil.SHOP_PRODUCT_IMAGE_UPLOAD;
+		//=> 상품등록시 이미지 업로드
+		
+		List<Map<String, Object>> fileList = fileUtil.fileUpload(request, uploadType);
+		
+		//업로드된 파일명 구해오기
+		String fileName="";
+		long fileSize=0;
+		for(Map<String, Object> mymap : fileList){
+			fileName= (String) mymap.get("fileName");
+			fileSize=(Long) mymap.get("fileSize");			
+		}
+		
+		logger.info("파일명={}",fileName);
+		
+		ceoProductVo.setProductImage(fileName);
+		
+		int cnt = ceoShopService.insertCeoProduct(ceoProductVo, ceoNo);
+		String msg="",url="/ceo/marketadmin/marketadmin.do";
+		if(cnt>0){
+			msg="메뉴 등록이 완료되었습니다.";
+		}else{
+			msg="메뉴 등록 실패";
+		}
+		
+		logger.info("메뉴 등록 결과 cnt={}", cnt);
+		
+		model.addAttribute("msg",msg);
+		model.addAttribute("url",url);
+		
+		return "common/message";
+	}
 	
 }

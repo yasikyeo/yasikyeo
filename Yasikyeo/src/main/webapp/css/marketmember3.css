@@ -116,6 +116,20 @@ table{
 	margin-top: 1.5%;
 }
 
+.formInput2 {
+	border: 1px solid #c0c0c0;
+	border-bottom: 1px solid #c0c0c0;
+	color: black;
+	font-size: 14.5px;
+	width: 290px;
+	height: 35px;
+	background: #f6f6f6;
+	box-shadow: outset 0px 1px 1px #c0c0c0;
+	font-family: BMJUA;
+	margin-right: 13px;
+	margin-top: 1.5%;
+}
+
 .next_button {
 	color: #ffffff;
 	margin: 0px auto 20px auto;
