@@ -12,10 +12,6 @@
 				alert("제목을 입력하세요");
 				$("#noticeTitle").focus();
 				return false;
-			}else if($("#noticeSuffix").val().length<1){
-				alert("머릿말을 입력하세요");
-				$("#noticeSuffix").focus();
-				return false;
 			}else if($("#content").val().length<1){
 				alert("내용을 입력하세요");
 				$("#noticeContent").focus();
@@ -37,15 +33,17 @@
             <label for="noticeTitle">제목</label>
             <input type="text" id="noticeTitle" name="noticeTitle"  />
         </div>
-        <div>
-        	<label for="noticeSuffix">머릿말</label>
-        	<input type="text" id="noticeSuffix" name="noticeSuffix"/>
+       <div>
+        	<label for="noticeSuffix">카테고리</label>
+        	<select name="noticeSuffix" id="noticeSuffix">
+            	<option value="notice">공지사항</option>
+            	<option value="event">이벤트</option>
+            </select>
         </div>
       	<div>
             <label for="upfile">이미지 파일</label>
             <input type="file" id="upfile" name="upfile" />
-            (최대 100M)
-        </div>
+       	</div>
         <div>  
         	<label for="noticeContent">내용</label>
         </div>

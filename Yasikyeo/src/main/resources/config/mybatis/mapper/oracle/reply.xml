@@ -18,7 +18,7 @@
 		    select rownum as RNUM, LIST_ALL.*
 		    from
 		        (select reply_no, reply_name, reply_content,
-		        faq_regdate,admin_no,member_no,qna_no,review_no,ceo_no
+		        reply_regdate,admin_no,member_no,qna_no,review_no,ceo_no
 		        from reply 
 		        <include refid="searchWhere"></include>
 		        ) LIST_ALL    

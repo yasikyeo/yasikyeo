@@ -43,7 +43,7 @@ public class CeoShopController {
 			msg="이미 업소등록을 하셨습니다.";
 			url="/ceo/index.do";
 		}else{
-			return "/ceo/member/ceo_addshop.do";
+			return "/ceo/member/ceo_addshop";
 		}
 		
 		model.addAttribute("msg",msg);
@@ -91,4 +91,10 @@ public class CeoShopController {
 		
 		return "common/message";
 	}
+	
+	@RequestMapping(value="/ceo/marketadmin/marketadmin.do",method=RequestMethod.GET)
+	public void marketadmin(){
+	}
+	
+	
 }
