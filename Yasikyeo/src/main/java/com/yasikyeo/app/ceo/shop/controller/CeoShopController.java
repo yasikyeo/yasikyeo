@@ -93,7 +93,27 @@ public class CeoShopController {
 	}
 	
 	@RequestMapping(value="/ceo/marketadmin/marketadmin.do",method=RequestMethod.GET)
-	public void marketadmin(){
+	public String marketadmin(HttpSession session,Model model){
+		
+		String ceoId = (String) session.getAttribute("ceoId");
+		
+		int ceoNo = ceoShopService.selectCeoNo(ceoId);
+		int res = ceoShopService.selectShop(ceoNo);
+		
+		String msg="",url="";
+		
+		if(res>0){
+			return "/ceo/marketadmin/marketadmin";
+		}else{
+			msg="등록된 업소가 없습니다 업소등록을 해주세요.";
+			url="/ceo/member/ceo_addshop.do";
+		}
+		
+		model.addAttribute("msg",msg);
+		model.addAttribute("url",url);
+		
+		
+		return "common/message";
 	}
 	
 	

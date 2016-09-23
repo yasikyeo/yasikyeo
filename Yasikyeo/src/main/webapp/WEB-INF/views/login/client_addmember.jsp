@@ -94,7 +94,7 @@ function iframstr(typestr,i) {
 				<div class="div1">
 					<label class="lb1">약관동의</label>
 					<div class="div1 checkboxContainer">
-					<label class="align-middle"><input type="checkbox" class="align-middle" id="ch2"> 이용약관동의</label>
+					<label class="align-middle"><input type="checkbox" class="align-middle" id="ch1"> 이용약관동의</label>
 					<a class="a1 align-middle cursor-pointer" id="ifram1">내용보기▶</a>
 					</div>
 					<div class="div1 checkboxContainer">
@@ -102,7 +102,7 @@ function iframstr(typestr,i) {
 					<a class="a1 align-middle cursor-pointer" id="ifram2">내용보기▶</a>
 					</div>
 					<div class="div1 checkboxContainer">
-					<label class="align-middle"><input type="checkbox" class="align-middle" id="ch2"> 개인정보 수집·이용동의</label>
+					<label class="align-middle"><input type="checkbox" class="align-middle" id="ch3"> 개인정보 수집·이용동의</label>
 					<a class="a1 align-middle cursor-pointer" id="ifram3">내용보기▶</a>
 					</div>
 				</div>
@@ -196,8 +196,6 @@ function iframstr(typestr,i) {
 				alert("아이디를 입력하세요.");
 				$("#memberId").focus();
 				return false;
-				event.stopPropagation();
-				event.preventDefault();
 			}else if($("#authNum").val()!="인증완료"){
 				alert("이메일 인증을 하세요.");
 				$("#memberEmail").focus();
@@ -212,15 +210,15 @@ function iframstr(typestr,i) {
 				return false;
 			}else if(!$("#ch1").is(":checked")){
 				alert("이용약관에 동의해주세요");
-				$("#ch1").fucus();
+				$("#ch1").focus();
 				return false;
-			}else if(!$("#ch2").is(":checked")){
+			}else if(!$("#ch3").is(":checked")){
 				alert("개인정보수집 및 이용에 동의해주세요");
-				$("#ch1").fucus();
+				$("#ch3").focus();
 				return false;
 			}else if(!$("#ch2").is(":checked")){
 				alert("전자금융거래 이용약관에 동의해주세요");
-				$("#ch1").fucus();
+				$("#ch2").focus();
 				return false;
 			}
 		});
