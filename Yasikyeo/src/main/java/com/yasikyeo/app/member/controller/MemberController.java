@@ -84,7 +84,6 @@ public class MemberController {
 		if(memberVo.getMemberNickname()==null||memberVo.getMemberNickname().isEmpty()){
 			memberVo.setMemberNickname(memberVo.getMemberId());
 		}
-		
 		logeer.info("회원가입 파라미터 MemberVO={}",memberVo);
 		
 		int cnt = memberService.insertMember(memberVo);

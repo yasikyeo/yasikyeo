@@ -7,8 +7,8 @@
 	<selectKey keyProperty="memberNo" resultType="int" order="BEFORE">
 		select member_no_seq.nextval from dual
 	</selectKey>
-		insert into member(member_no,member_id,member_pwd,member_nickname,member_tel,member_email,member_birth,member_image,address,addressdetail,postcode)
-		values(#{memberNo},#{memberId},#{memberPwd},#{memberNickname},#{memberTel},#{memberEmail},#{memberBirth},#{memberImage},#{address},#{addressDetail},#{postcode})
+		insert into member(member_no,member_id,member_pwd,member_nickname,member_tel,member_email,member_birth,address,addressdetail,postcode)
+		values(#{memberNo},#{memberId},#{memberPwd},#{memberNickname},#{memberTel},#{memberEmail},#{memberBirth},#{address},#{addressDetail},#{postcode})
 	</insert>
 	
 	<select id="selectCountMemberId" parameterType="string" resultType="int">

@@ -47,8 +47,8 @@ function iframstr(typestr,i) {
 				<li class="color-orange">#은 필수 항목입니다.</li>
 			</ul>
 			<form name="frm" method="post">
-				<input type="hidden" id="authNum">
-				<input type="hidden" id="chkId">
+				<input type="text" id="authNum">
+				<input type="text" id="chkId">
 				<div class="div1">
 					<label class="lb1">아이디 <span class="color-orange">#</span></label>
 					<input type="text" class="inputText1 flex1" name="memberId" id="memberId" placeholder="4글자이상 입력해주세요"><span class="sp1" id="message"></span>
@@ -80,7 +80,7 @@ function iframstr(typestr,i) {
 				</div>
 				<div class="div1">
 					<label class="lb1">우편번호 </label>
-					<input type="text" class="inputText2 flex1"  ReadOnly name="postcode" id="postcode" title="우편번호" >        
+					<input type="number" class="inputText2 flex1"  ReadOnly name="postcode" id="postcode" title="우편번호" >        
 					<input type="Button" class="bt1" value="우편번호 찾기" title="새창열림" onclick="execDaumPostcode()"><br>
 				</div>
 				<div class="div2">
