@@ -39,10 +39,10 @@
 		value="${searchVO.searchKeyword }">	
 </form>
 
-<h2>공지사항</h2>
+<h2>리플 게시판</h2>
 <div class="divList">
 <table class="box2"
-	 	summary="자료실에 관한 표로써, 번호, 제목, 작성자, 작성일, 조회수에 대한 정보를 제공합니다.">
+	 	summary="리플에 관한 표로써, 번호, 제목, 작성자 대한 정보를 제공합니다.">
 	<caption>댓글게시판</caption>
 	<colgroup>
 		<col style="width:10%;" />

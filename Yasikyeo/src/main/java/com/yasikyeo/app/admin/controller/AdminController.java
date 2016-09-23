@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.yasikyeo.app.admin.model.AdminService;
 import com.yasikyeo.app.admin.model.AdminVO;
@@ -179,6 +180,7 @@ public class AdminController {
 			}else if(noticeVo.getNoticeSuffix().equals("event")){
 				noticeVo.setNoticeSuffix(noticeService.EVENTE);
 			}
+			noticeVo.setAdminNo(adminService.ADMIN_NO);
 			
 			int cnt = noticeService.insertNotice(noticeVo);
 			logger.info("공지사항 글등록 완료 cnt={}",cnt);
@@ -291,6 +293,8 @@ public class AdminController {
 			}else if(noticeVo.getNoticeSuffix().equals("event")){
 				noticeVo.setNoticeSuffix(noticeService.EVENTE);
 			}
+			
+			noticeVo.setAdminNo(adminService.ADMIN_NO);
 			
 			int cnt = noticeService.noticeUpdate(noticeVo);
 			
@@ -459,6 +463,8 @@ public class AdminController {
 			faqVo.setFaqCategori(faqService.FAQ_ETC);
 		}
 		
+		faqVo.setAdminNo(adminService.ADMIN_NO);
+		
 		int cnt = faqService.insertFaq(faqVo);
 		logger.info("F&Q항 글등록 완료 cnt={}",cnt);
 	//3.
@@ -543,6 +549,8 @@ public class AdminController {
 		}else if(faqVo.getFaqCategori().equals("etc")){
 			faqVo.setFaqCategori(faqService.FAQ_ETC);
 		}
+		
+		faqVo.setAdminNo(adminService.ADMIN_NO);
 		
 		int cnt = faqService.faqUpdate(faqVo);
 		

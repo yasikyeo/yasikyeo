@@ -15,7 +15,7 @@
  			
  			<div>
  					<table class="box2">
- 						<caption>회원</caption>
+ 						<h2>회원</h2>
 			<colgroup>
 				<col style="width:30%;" />
 				<col style="width:30%;" />

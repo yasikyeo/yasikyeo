@@ -30,45 +30,11 @@
 			<span>${alist.faqTitle}</span>
 		</div>
 		<div>
-			<label for="faqCategori">카테고리</label>   
-        	<select name="faqCategori" id="faqCategori">
-            	<option value="Member" 
-            		<c:if test="${alist.faqCategori=='Member'}">
-            			selected
-            		</c:if>>회원가입</option>
-            	<option value="pay"
-            		<c:if test="${alist.faqCategori=='pay' }">
-            			selected
-            		</c:if>>바로결제</option>
-            	<option value="review" 
-            		<c:if test="${alist.faqCategori=='review' }">
-            			selected
-            		</c:if>>리뷰관리</option>
-            	<option value="play"
-            		<c:if test="${alist.faqCategori=='play' }">
-            			selected
-            		</c:if>
-            	>이용문의</option>
-            	<option value="advertise"
-            		<c:if test="${alist.faqCategori=='advertise' }">
-            			selected
-            		</c:if>
-            	>광고문의</option>
-            	<option value="discomform"
-            		<c:if test="${alist.faqCategori=='discomform' }">
-            			selected
-            		</c:if>
-            	>불편문의</option>
-            	<option value="etc"
-            		<c:if test="${alist.faqCategori=='etc' }">
-            			selected
-            		</c:if>
-            	>기타</option>
-           </select>
-           </div>
+			<span class="sp1">카테고리</span>
+			<span>${alist.faqCategori }</span>
+		</div>
 		<div>
-			<span class="sp1">내용</span> 
-			<a>${alist.faqContent}
+			 <a>${alist.faqContent}
 			<c:if test="${!empty alist.faqUpfilename}">
 				<img src="<c:url value='/board_Image/${alist.faqUpfilename}'/>"alt="이미지" ></a>
 			</c:if>

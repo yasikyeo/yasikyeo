@@ -30,7 +30,7 @@
 		<section class="contents">
 					<article class="centerCon">
 						<form name="frmPage" method="post" 
-	action="<c:url value='/admintemplet/event.do'/>">
+	action="<c:url value='/admintemplet/eventNotice.do'/>">
 	<input type="hidden" name="currentPage">
 	<input type="hidden" name="searchCondition" 
 		value="${param.searchCondition }">

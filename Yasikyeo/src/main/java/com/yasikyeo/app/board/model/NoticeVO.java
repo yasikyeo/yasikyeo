@@ -6,7 +6,8 @@ public class NoticeVO {
 	private String noticeContent;
 	private String noticeUpfileName;
 	private String noticeSuffix;
-	private String adminNo;
+	private int adminNo;
+	
 	public int getNoticeNo() {
 		return noticeNo;
 	}
@@ -37,10 +38,10 @@ public class NoticeVO {
 	public void setNoticeSuffix(String noticeSuffix) {
 		this.noticeSuffix = noticeSuffix;
 	}
-	public String getAdminNo() {
+	public int getAdminNo() {
 		return adminNo;
 	}
-	public void setAdminNo(String adminNo) {
+	public void setAdminNo(int adminNo) {
 		this.adminNo = adminNo;
 	}
 	@Override
@@ -49,7 +50,8 @@ public class NoticeVO {
 				+ ", noticeUpfileName=" + noticeUpfileName + ", noticeSuffix=" + noticeSuffix + ", adminNo=" + adminNo
 				+ "]";
 	}
-
+	
+	
 	
 	
 	

@@ -14,7 +14,7 @@
  			</nav>
  				<div>
 						<table class="box2">
-										<caption>ceo회원</caption>
+										<h2>ceo회원</h2>
 			<colgroup>
 				<col style="width:30%;" />
 				<col style="width:20%;" />
