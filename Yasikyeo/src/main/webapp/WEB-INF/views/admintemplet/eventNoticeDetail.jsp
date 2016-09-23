@@ -26,9 +26,18 @@
 			<span>${alist.noticeNo }</span>
 		</div>
 		<div>
-			<span class="sp1">머리말</span> 
-			<span>${alist.noticeSuffix}</span>
-		</div>
+			<label for="noticeSuffix">머릿말</label>   
+        	<select name="noticeSuffix" id="noticeSuffix">
+            	<option value="notice" 
+            		<c:if test="${alist.noticeSuffix=='notice'}">
+            			selected
+            		</c:if>>공지사항</option>
+            	<option value="event"
+            		<c:if test="${alist.noticeSuffix=='event' }">
+            			selected
+            		</c:if>>이벤트</option>
+            	</select>
+           </div>
 		<div>
 			<span class="sp1">제목</span> 
 			<span>${alist.noticeTitle}</span>

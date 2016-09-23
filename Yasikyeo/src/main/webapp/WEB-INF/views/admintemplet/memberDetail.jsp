@@ -23,10 +23,6 @@
 			<span>${memVo.memberId}</span>
 		</div>
 		<div>
-			<span class="sp1">이름</span> 
-			<span>${memVo.memberName}</span>
-		</div>
-		<div>
 			<span class="sp1">닉내임</span> 
 			<span>${memVo.memberNickname}</span>
 		</div>

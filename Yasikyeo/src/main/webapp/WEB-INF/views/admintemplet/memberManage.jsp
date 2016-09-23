@@ -25,7 +25,6 @@
 							<thead>
 								<tr>
 									<th>아이디</th>
-									<th>이름</th>
 									<th>닉네임</th>
 									<th>생년월일</th>
 									<th>포인트</th>
@@ -41,7 +40,6 @@
 								<c:forEach var="userVO" items="${usermember}">
 									<tr align="center">
 										<td>${userVO.memberId}</td>
-										<td>${userVO.memberName}</td>
 										<td>${userVO.memberNickname}</td>
 										<td>${userVO.memberBirth}</td>
 										<td>${userVO.memberPoint}</td>
@@ -65,7 +63,7 @@
 								<tr>
 									<th>아이디</th>
 									<th>이름</th>
-									<th>주소</th>
+									<th>이메일</th>
 									<th>전화번호</th>
 								</tr>
 							</thead>
@@ -81,7 +79,7 @@
 									<tr>
 									<td>${ceoVO.ceoId}</td>
 									<td>${ceoVO.ceoName}</td>
-									<td>${ceoVO.address}</td>
+									<td>${ceoVO.ceoEmail}</td>
 									<td>${ceoVO.ceoTel}</td>
 									</tr>
 								</c:forEach>
