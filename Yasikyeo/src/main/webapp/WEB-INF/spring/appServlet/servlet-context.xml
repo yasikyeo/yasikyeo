@@ -60,6 +60,7 @@
 		
 		<interceptor>
 			<mapping path="/marketadmin/*" />
+			<mapping path="/ceo/member/ceo_addshop.do"/>
 			<beans:ref bean="ceoLoginInterceptor" />
 		</interceptor>
 	</interceptors>

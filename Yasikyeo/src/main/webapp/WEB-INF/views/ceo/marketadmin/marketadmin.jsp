@@ -58,8 +58,8 @@
 														<option value="indispensable" >필수</option>
 													</select>
 													음식명 : <input type="text" id="food" class="formInput"> 가격 : <input type="text" id="price" class="formInput"><input type='button'  value="추가" class="additem"/><br>
-												</form>
-											</div>
+												</div>
+											</form>
 										</div>
 										</details>
 									</div>

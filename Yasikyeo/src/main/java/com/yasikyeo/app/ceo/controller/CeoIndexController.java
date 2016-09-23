@@ -37,10 +37,6 @@ public class CeoIndexController {
 	public void honeytip(){
 	}
 	
-	@RequestMapping("/ceo/marketadmin/marketadmin.do")
-	public void marketadmin(){
-	}
-	
 	@RequestMapping("/ceo/serviceintro/serviceintro.do")
 	public void serviceintro(){
 	}
