@@ -75,6 +75,9 @@
 		</where>
 	</select>
 	
+	<select id="selectByShopNo" parameterType="int" resultType="CeoShopVO">
+		select * from shop where shop_no=#{shopno}
+	</select>
 	
 	
 </mapper>

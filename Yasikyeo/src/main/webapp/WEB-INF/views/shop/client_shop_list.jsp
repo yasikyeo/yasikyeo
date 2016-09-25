@@ -18,7 +18,8 @@ $(function () {
 	 	  targetScore: '#hint'
 	});
 	$(".divshop").click(function() {
-		$(location).attr("href","<c:url value='/shop/client_shop_det.do'/>")
+		var shopNo=$(this).find(".shopNo").val();
+		$(location).attr("href","<c:url value='/shop/client_shop_det.do?no="+shopNo+"'/>")
 	});
 	
 	$("#Condition").change(function() {
@@ -70,6 +71,7 @@ $(function () {
 			<div class="shopcontain1 shopcontain2 shopcontain3">
 				<div class="divshop">
 					<img class="div13" alt="상점이미지" src="<c:url value='/shop_Image/${shop.shopImage}'/>">
+					<input type="hidden" value="${shop.shopNo}" class="shopNo">
 					<div class="div7">
 						<p><b>${shop.shopName}</b></p>
 						<div class="padding3px star1" data-score="${shop.shopAvgreview}"></div>

@@ -70,7 +70,12 @@ public class ClientShopController {
 		
 	}
 	@RequestMapping("/client_shop_det.do")
-	public void clientShopDetail(){
+	public void clientShopDetail(@RequestParam(defaultValue="0") int no,Model model){
+		logger.info("업소 상세내역조회하기 파라미터 no={}",no);
 		
+		CeoShopVO shopVo = shopService.selectByShopNo(no);
+		logger.info("업소 상세내역 조회결과 shopVo={}",shopVo);
+		
+		model.addAttribute("shop", shopVo);
 	}
 }

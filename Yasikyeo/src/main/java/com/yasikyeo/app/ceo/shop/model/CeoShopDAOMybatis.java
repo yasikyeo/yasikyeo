@@ -52,6 +52,11 @@ public class CeoShopDAOMybatis extends SqlSessionDaoSupport	implements CeoShopDA
 	public int countShopByCategory(SearchVO2 searchVo2) {
 		return getSqlSession().selectOne(namespace+".countShopByCategory", searchVo2);
 	}
+
+	@Override
+	public CeoShopVO selectByShopNo(int shopNo) {
+		return getSqlSession().selectOne(namespace+".selectByShopNo", shopNo);
+	}
 	
 }
 

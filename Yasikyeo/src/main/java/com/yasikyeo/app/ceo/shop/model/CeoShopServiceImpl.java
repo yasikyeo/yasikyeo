@@ -63,6 +63,11 @@ public class CeoShopServiceImpl implements CeoShopService{
 	public int countShopByCategory(SearchVO2 searchVo2) {
 		return ceoShopDao.countShopByCategory(searchVo2);
 	}
+
+	@Override
+	public CeoShopVO selectByShopNo(int shopNo) {
+		return ceoShopDao.selectByShopNo(shopNo);
+	}
 }
 
 
