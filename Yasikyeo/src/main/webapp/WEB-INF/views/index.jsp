@@ -4,7 +4,9 @@
 <script type="text/javascript">
 $(function() {
 	$(".foodItem").click(function() {
-		$(location).attr("href","<c:url value='/shop/client_shop_list.do'/>");
+		var menu = $(this).find("p").text();
+		alert(menu);
+		$(location).attr("href","<c:url value='/shop/client_shop_list.do?menu="+menu+"'/>");
 	});
 });
 </script>
@@ -63,7 +65,7 @@ section{
 	  		<img class="foodImg" src="${pageContext.request.contextPath}/images/icon2/japaneseFood.png">
   			<div class="foodIcon">
 	  			<img alt="" src="${pageContext.request.contextPath}/images/icon/japaneseFood.png">
-	  			<p>돈까스일식</p>
+	  			<p>일식,돈까스</p>
   			</div>
 		</div>
 		<div class="foodItem">

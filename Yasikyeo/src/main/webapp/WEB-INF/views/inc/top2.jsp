@@ -64,7 +64,7 @@
 			<li class="categoriContain">
 				<a href="#">
 				<img class="imgContain" alt="" src="${pageContext.request.contextPath}/images/icon/japaneseFood.png"><br>
-				<span>돈까스,회,일식</span>
+				<span>일식,돈까스</span>
 				</a>
 			</li>
 			<li class="categoriContain">

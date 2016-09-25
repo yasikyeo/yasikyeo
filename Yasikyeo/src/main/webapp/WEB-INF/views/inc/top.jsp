@@ -66,19 +66,48 @@
 			send();
 			event.preventDefault();
 	});
-	 
+	
+	/*  주소검색및 클릭시 값을 변수에 저장및 세팅 */
 	 $(document).on("click",".result",function(){
 			var addr = $(this).text();
-			if(addr.length>12){
-				addr=addr.substring(0,12)+".."
-			}
+			var address = addr.split(" ");
+			$.ajax({
+				url:"<c:url value='/setAddress.do' />",
+				data:"si="+address[0]+"&gu="+address[1]+"&dong="+address[2],
+				type:"GET",
+				success:function(res){
+					 if(addr.length>12){
+						 addr=addr.substring(0,12)+".."
+					}
+					$("#addrstr").text(addr);				
+				},
+				error:function(xhr, status, error){
+					alert(status+" : " + error);
+				}
+			});
 			
-			$("#addrstr").text(addr);
 			$("#divresult").html("");
 			if(findadress){
 				$(".addressfrm").hide();
 			}
 	});
+	 /*  주소검색및 클릭시 값을 세션에 저장및 세팅 */ 
+	 
+	/* 디폴트 시구동 세션에 저장 */
+	if("${sessionScope.si}".length<1){
+		$.ajax({
+			url:"<c:url value='/setDefultAddress.do' />",
+			type:"GET",
+			success:function(res){
+				alert("${sessionScope.si},${sessionScope.gu},${sessionScope.dong}");				
+			},
+			error:function(xhr, status, error){
+				alert(status+" : " + error);
+			}
+		});	
+	}
+	/* 디폴트 시구동 세션에 저장 */
+	
 	var findadress=false;
 	var targetclass="";
 	$("body").click(function(event){
@@ -88,8 +117,16 @@
 	$("#dong").blur(function(){
 		findadress=true;
 	});
-	
-  });	
+	setaddress();
+});//onload
+ function setaddress() {
+	var addstr = "${sessionScope.si}"+" "+"${sessionScope.gu}"+" "+"${sessionScope.dong}";
+	 if(addstr.length>12){
+		 addstr=addstr.substring(0,12)+".."
+	}
+	$("#addrstr").text(addstr);
+} 
+  
  function send(curPage){
 		$.ajax({
 			url:"<c:url value='/getAddrApi.do'/>"									// 고객사 API 호출할 Controller URL
@@ -211,7 +248,7 @@
 		<div class="searchInput">
 			<div class="address">
 				<div class="addressdiv">
-					<span class="dong" id="addrstr">서울특별시</span>
+					<span class="dong" id="addrstr"></span>
 					<button class="dongBT"><img class="dongimg" alt="타겟" src="${pageContext.request.contextPath}/images/target.png"></button>
 				</div>
 				<div class="addressfrm">

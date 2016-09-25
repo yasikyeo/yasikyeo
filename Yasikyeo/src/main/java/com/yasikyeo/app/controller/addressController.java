@@ -7,12 +7,15 @@ import java.net.URLEncoder;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class addressController {
@@ -47,4 +50,22 @@ public class addressController {
 		response.setContentType("text/xml");
 		response.getWriter().write(sb.toString());			// 응답결과 반환
     }
+	
+	@RequestMapping("/setDefultAddress.do")
+	@ResponseBody
+	public void setDefultAddress(HttpSession session){
+		session.setAttribute("si", "서울특별시");
+		session.setAttribute("gu", "영등포구");
+		session.setAttribute("dong", "당산1가");
+	}
+	@RequestMapping("/setAddress.do")
+	@ResponseBody
+	public void setAddress(HttpSession session,
+				@RequestParam String si,
+				@RequestParam String gu,
+				@RequestParam String dong){
+		session.setAttribute("si", si);
+		session.setAttribute("gu", gu);
+		session.setAttribute("dong", dong);
+	}
 }
