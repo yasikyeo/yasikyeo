@@ -270,7 +270,7 @@
 			</div>	
 			<form action="<c:url value='/shop/client_shop_list.do?menu=${param.menu}'/>" name="frmSearch" id="frmSearch" method="post">
 				<div class="shop">
-					<input type="text" class="fishop" name="searchKeyword">
+					<input type="text" class="fishop" name="searchKeyword" value="${param.searchKeyword}">
 					<button class="findBT" type="submit"><img alt="돋보기" src="${pageContext.request.contextPath}/images/magnifier.png"></button>
 				</div>
 			</form>

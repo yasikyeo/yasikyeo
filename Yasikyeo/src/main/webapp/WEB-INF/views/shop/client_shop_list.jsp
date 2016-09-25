@@ -46,7 +46,7 @@ $(function () {
 			<li>|</li>
 			<li><b>${sessionScope.si}&nbsp;${sessionScope.gu}&nbsp;${sessionScope.dong}</b>를 중심으로 총 <span class="color-orange"><b>${pagingInfo.totalRecord}</b></span>곳을 찾았습니다.</li>
 			<li>
-				<select class="selectoption2">
+				<select class="selectoption2" name="searchCondition">
 					<option>기본정렬로 보기</option>
 					<option>주문 순으로 보기</option>
 					<option>평점 순으로 보기</option>
