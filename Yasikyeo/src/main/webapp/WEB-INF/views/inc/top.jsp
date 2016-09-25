@@ -268,10 +268,10 @@
 					<div id="divresult"></div>
 				</div>
 			</div>	
-			<form action="" name="frmSearch" id="frmSearch">
+			<form action="<c:url value='/shop/client_shop_list.do?menu=${param.menu}'/>" name="frmSearch" id="frmSearch" method="post">
 				<div class="shop">
-					<input type="text" class="fishop">
-					<button class="findBT"><img alt="돋보기" src="${pageContext.request.contextPath}/images/magnifier.png"></button>
+					<input type="text" class="fishop" name="searchKeyword">
+					<button class="findBT" type="submit"><img alt="돋보기" src="${pageContext.request.contextPath}/images/magnifier.png"></button>
 				</div>
 			</form>
 		</div>

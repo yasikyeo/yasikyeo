@@ -6,6 +6,8 @@ import java.util.Map;
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.springframework.stereotype.Repository;
 
+import com.yasikyeo.app.common.SearchVO2;
+
 @Repository
 public class CeoShopDAOMybatis extends SqlSessionDaoSupport	implements CeoShopDAO{
 
@@ -42,13 +44,13 @@ public class CeoShopDAOMybatis extends SqlSessionDaoSupport	implements CeoShopDA
 	}
 
 	@Override
-	public List<CeoShopVO> selectShopByCategory(Map<String, String> map) {
-		return getSqlSession().selectList(namespace+".selectShopByCategory", map);
+	public List<CeoShopVO> selectShopByCategory(SearchVO2 searchVo2) {
+		return getSqlSession().selectList(namespace+".selectShopByCategory", searchVo2);
 	}
 
 	@Override
-	public int countShopByCategory(Map<String, String> map) {
-		return getSqlSession().selectOne(namespace+".countShopByCategory", map);
+	public int countShopByCategory(SearchVO2 searchVo2) {
+		return getSqlSession().selectOne(namespace+".countShopByCategory", searchVo2);
 	}
 	
 }

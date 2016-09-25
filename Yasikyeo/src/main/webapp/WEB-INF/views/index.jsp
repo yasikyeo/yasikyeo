@@ -5,7 +5,6 @@
 $(function() {
 	$(".foodItem").click(function() {
 		var menu = $(this).find("p").text();
-		alert(menu);
 		$(location).attr("href","<c:url value='/shop/client_shop_list.do?menu="+menu+"'/>");
 	});
 });

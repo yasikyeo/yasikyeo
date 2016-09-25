@@ -6,6 +6,8 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.yasikyeo.app.common.SearchVO2;
+
 @Service
 public class CeoShopServiceImpl implements CeoShopService{
 	
@@ -53,13 +55,13 @@ public class CeoShopServiceImpl implements CeoShopService{
 	}
 
 	@Override
-	public List<CeoShopVO> selectShopByCategory(Map<String, String> map) {
-		return ceoShopDao.selectShopByCategory(map);
+	public List<CeoShopVO> selectShopByCategory(SearchVO2 searchVo2) {
+		return ceoShopDao.selectShopByCategory(searchVo2);
 	}
 
 	@Override
-	public int countShopByCategory(Map<String, String> map) {
-		return ceoShopDao.countShopByCategory(map);
+	public int countShopByCategory(SearchVO2 searchVo2) {
+		return ceoShopDao.countShopByCategory(searchVo2);
 	}
 }
 

@@ -40,24 +40,39 @@
 		values(#{productNo},#{productName},#{productExplain},#{productPrice},#{productOption},#{productImage},#{shopNo})
 	</insert>
 	
+	<sql id="searchWhere">
+		<if test="searchKeyword!=null and searchKeyword!=''">
+			and SHOP_NAME like '%'||#{searchKeyword}||'%'
+		</if>
+	</sql>
 	
-	<parameterMap type="map" id="searchinfo">
-		<parameter property="si" javaType="string" 
-			jdbcType="VARCHAR" mode="IN"/>
-		<parameter property="gu" javaType="string" 
-			jdbcType="VARCHAR" mode="IN"/>
-		<parameter property="dong" javaType="string" 
-			jdbcType="VARCHAR" mode="IN"/>
-		<parameter property="categori" javaType="string" 
-			jdbcType="VARCHAR" mode="IN"/>
-	</parameterMap>
-	<select id="selectShopByCategory" parameterMap="searchinfo" resultType="CeoShopVO">
-		select * from shop
-		where ADDRESS like '%' || ? || '%' and ADDRESS like '%' || ? || '%' and ADDRESS like '%' || ? || '%' and SHOP_CATEGORI like '%' || ? || '%'
+	<select id="selectShopByCategory" parameterType="SearchVO2" resultType="CeoShopVO">
+		select * from 
+		(
+			select rownum as RNUM, LIST_ALL.*
+		    from
+		        (select * from shop
+		        <where>
+		        	ADDRESS like '%'||#{si}||'%' and ADDRESS like '%'||#{gu}||'%' and ADDRESS like '%'||#{dong}||'%' and SHOP_CATEGORI like '%'||#{categori}||'%'
+		        	<include refid="searchWhere"></include>
+		        </where>
+		        ) LIST_ALL
+		        <if test="searchCondition!=null and searchCondition!=''">
+					order by #{searchCondition} desc
+				</if>
+		)
+		<![CDATA[
+		where  RNUM> #{firstRecordIndex} 
+			and RNUM<= #{firstRecordIndex}
+			+ #{recordCountPerPage}
+		]]>
 	</select>
-	<select id="countShopByCategory" parameterMap="searchinfo" resultType="int">
+	<select id="countShopByCategory" parameterType="SearchVO2" resultType="int">
 		select count(*) from shop
-		where ADDRESS like '%' || ? || '%' and ADDRESS like '%' || ? || '%' and ADDRESS like '%' || ? || '%' and SHOP_CATEGORI like '%' || ? || '%'
+		<where>
+		ADDRESS like '%' || #{si} || '%' and ADDRESS like '%' || #{gu} || '%' and ADDRESS like '%' || #{dong} || '%' and SHOP_CATEGORI like '%' || #{categori} || '%'
+		<include refid="searchWhere"></include>
+		</where>
 	</select>
 	
 	

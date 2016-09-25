@@ -22,7 +22,19 @@ $(function () {
 	});
 	
 });
+	function pageProc(curPage){
+		document.frmPage.currentPage.value=curPage;
+		document.frmPage.submit();
+	}
 </script>
+<form name="frmPage" method="post" 
+	action="<c:url value='/shop/client_shop_list.do?menu=${param.menu}'/>">
+	<input type="hidden" name="currentPage">
+	<input type="hidden" name="searchCondition" 
+		value="${param.searchCondition }">
+	<input type="hidden" name="searchKeyword" 
+		value="${searchVO2.searchKeyword }">	
+</form>
 <div class="mainSection">
 	<div class="location">
 		<ul>
@@ -32,7 +44,7 @@ $(function () {
 			<li>&gt;</li>
 			<li><b>${param.menu}</b></li>
 			<li>|</li>
-			<li><b>${sessionScope.si}&nbsp;${sessionScope.gu}&nbsp;${sessionScope.dong}</b>를 중심으로 총 <span class="color-orange"><b>${findShop}</b></span>곳을 찾았습니다.</li>
+			<li><b>${sessionScope.si}&nbsp;${sessionScope.gu}&nbsp;${sessionScope.dong}</b>를 중심으로 총 <span class="color-orange"><b>${pagingInfo.totalRecord}</b></span>곳을 찾았습니다.</li>
 			<li>
 				<select class="selectoption2">
 					<option>기본정렬로 보기</option>
@@ -44,8 +56,11 @@ $(function () {
 		</ul>
 	</div>
 	<div class="div12">
-		<!-- 반복시작 -->
+		<c:if test="${empty shopList}">
+			<div class="align-center">해당 업소를 찾을수 없습니다.</div>
+		</c:if>
 		<c:if test="${!empty shopList}">
+		<!-- 반복시작 -->
 		<c:forEach var="shop" items="${shopList}">
 			<div class="shopcontain1 shopcontain2 shopcontain3">
 				<div class="divshop">
@@ -79,14 +94,26 @@ $(function () {
 		<br class="clear-both">
  		<div class="vertical-container">
  			<ul class="pagination">
- 				<li><a href="#">&laquo;</a></li>
- 				<li><a href="#">1</a></li>
- 				<li><a class="active" href="#">2</a></li>
- 				<li><a href="#">3</a></li>
-				<li><a href="#">4</a></li>
- 				<li><a href="#">5</a></li>
-				<li><a href="#">6</a></li>
-				<li><a href="#">&raquo;</a></li>
+ 				<!-- 이전 블럭으로 이동 -->
+				<c:if test="${pagingInfo.firstPage>1 }">	
+ 					<li><a href="#" onclick="pageProc(${pagingInfo.firstPage-1})">&laquo;</a></li>
+				</c:if>
+				<!-- 페이지 번호 추가 -->						
+				<!-- [1][2][3][4][5][6][7][8][9][10] -->
+				<c:forEach var="i" begin="${pagingInfo.firstPage }" 
+					end="${pagingInfo.lastPage }">	 
+					<c:if test="${i==pagingInfo.currentPage }">
+						<li><a class="active">${i}</a></li>
+					</c:if>		
+					<c:if test="${i!=pagingInfo.currentPage }">
+						<li><a href="#" onclick="pageProc(${i})">${i}</a></li>
+					</c:if>
+				</c:forEach>	
+				<!--  페이지 번호 끝 -->
+ 				<!-- 다음 블럭으로 이동 -->
+				<c:if test="${pagingInfo.lastPage<pagingInfo.totalPage }">	
+					<li><a href="#" onclick="pageProc(${pagingInfo.lastPage+1})">&raquo;</a></li>
+				</c:if>
 			</ul>
 		</div>
 		<br>
