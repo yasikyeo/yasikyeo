@@ -28,6 +28,7 @@ import com.yasikyeo.app.admin.model.AdminService;
 import com.yasikyeo.app.admin.model.AdminVO;
 import com.yasikyeo.app.board.model.FaQService;
 import com.yasikyeo.app.board.model.FaQVO;
+import com.yasikyeo.app.board.model.NoticeListVO;
 import com.yasikyeo.app.board.model.NoticeService;
 import com.yasikyeo.app.board.model.NoticeVO;
 import com.yasikyeo.app.board.model.ReplyService;
@@ -156,9 +157,11 @@ public class AdminController {
 	@RequestMapping(value="/adminInsertNotice.do",method=RequestMethod.POST)
 	public String adminNoticeWrite_post(HttpServletRequest request,
 			@ModelAttribute NoticeVO noticeVo,
+			HttpSession session,
 			Model model){
 		//1.
 			logger.info("공지사항 글쓰기 처리, 파라미터 noticeVo={}", noticeVo);
+			int adminNo = (Integer)session.getAttribute("adminNo");
 		//2.
 			
 			//파일 업로드 처리
@@ -180,7 +183,7 @@ public class AdminController {
 			}else if(noticeVo.getNoticeSuffix().equals("event")){
 				noticeVo.setNoticeSuffix(noticeService.EVENTE);
 			}
-			noticeVo.setAdminNo(adminService.ADMIN_NO);
+			noticeVo.setAdminNo(adminNo);
 			
 			int cnt = noticeService.insertNotice(noticeVo);
 			logger.info("공지사항 글등록 완료 cnt={}",cnt);
@@ -220,6 +223,55 @@ public class AdminController {
 			model.addAttribute("pagingInfo", pagingInfo);
 		//3.
 			return "admintemplet/eventNotice";
+	}
+	
+	@RequestMapping("/multdelete.do")
+	public String adminmultdelete(@ModelAttribute NoticeListVO noticeListVo ,
+			HttpServletRequest request, Model model){
+		//1.
+			logger.info("관리자-선택한 상품 삭제, 파라미터 NoticeListVO={}",noticeListVo);
+		//2.
+			List<NoticeVO> noticeList = noticeListVo.getNoticeItems();
+			logger.info("noticeList.size={}", noticeList.size());
+			
+			int cnt = noticeService.deleteNotice(noticeList);
+			logger.info("선택한 notice 삭제 처리 결과 , cnt={}", cnt);
+			
+			String msg="", url="/admintemplet/eventNotice.do";
+			if(cnt>0){
+				for(int i=0;i<noticeList.size();i++){
+					NoticeVO noticeVo = noticeList.get(i);
+					
+					int noticeNo = noticeVo.getNoticeNo();
+					String fileName = noticeVo.getNoticeUpfileName();
+					
+					logger.info("i={}", i);
+					logger.info("notiveNo={}, fileName={}", noticeNo,fileName );
+					
+					if(noticeNo!=0){
+						
+						String upPath = fileUtil.getUploadPath(request, fileUtil.IMAGE_UPLOAD);
+						
+						File delFile= new File(upPath, fileName);
+						if(delFile.exists()){
+							boolean bool = delFile.delete();
+							logger.info("파일 삭제 결과={}",bool);
+						}
+					}//if
+					
+				}//for
+				
+				msg="선택한 테이블을 삭제하엿습니다";
+			}else{
+				msg="선택한 테이블을 삭제하지 못했습니다";
+			}//if
+		//3.
+		model.addAttribute("msg",msg);
+		model.addAttribute("url", url);
+		
+		return "common/message";
+		
+		
 	}
 	
 	@RequestMapping("/eventNoticeDetail.do")
@@ -294,8 +346,7 @@ public class AdminController {
 				noticeVo.setNoticeSuffix(noticeService.EVENTE);
 			}
 			
-			noticeVo.setAdminNo(adminService.ADMIN_NO);
-			
+		
 			int cnt = noticeService.noticeUpdate(noticeVo);
 			
 			logger.info("파일 업로드 후 cnt={},noticeVo={}",cnt,noticeVo);

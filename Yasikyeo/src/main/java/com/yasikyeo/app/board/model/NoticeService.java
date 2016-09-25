@@ -16,4 +16,5 @@ public interface NoticeService {
 	public NoticeVO selectByNoNotice(int noticeNo);
 	public int noticeUpdate(NoticeVO noticeVo);
 	public int deleteNotice(int noticeNo);
+	public int deleteNotice(List<NoticeVO> noticeList);
 }

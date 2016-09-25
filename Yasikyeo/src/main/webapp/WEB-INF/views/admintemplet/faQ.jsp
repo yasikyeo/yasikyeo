@@ -38,7 +38,39 @@
 		value="${searchVO.searchKeyword }">	
 </form>
 
+
+
 <h2>F&A</h2>
+<div class="align_right">
+						<a href="<c:url value='/admintemplet/faQInsert.do'/>">F&Q등록</a>
+					</div>
+<div class="divSearch">
+   	<form name="frmSearch" method="post" 
+   	action="<c:url value='/admintemplet/faQ.do' />" >
+        <select name="searchCondition">
+            <option value="faq_Title"
+           	   <c:if test="${param.searchCondition=='faq_Title'}">
+            		selected
+               </c:if>
+            >제목</option>
+            <option value="faq_Categori" 
+            	<c:if test="${param.searchCondition=='faq_Categori'}">
+            		selected
+               </c:if>
+            >카테고리</option>
+            <option value="faq_Content" 
+            	<c:if test="${param.searchCondition=='faq_Content'}">
+            		selected
+               </c:if>
+            >내용</option>
+        </select>   
+        <input type="text" name="searchKeyword" 
+        	title="검색어 입력" value="${param.searchKeyword}" >   
+		<input type="submit" value="검색">
+    </form>
+</div>
+					
+
 <div class="divList">
 <table class="box2"
 	 	summary="자료실에 관한 표로써, 번호, 제목, 작성자, 작성일, 조회수에 대한 정보를 제공합니다.">
@@ -156,34 +188,7 @@
 		</a>
 	</c:if>
 </div>
-<div class="divSearch">
-   	<form name="frmSearch" method="post" 
-   	action="<c:url value='/admintemplet/faQ.do' />" >
-        <select name="searchCondition">
-            <option value="faq_Title"
-           	   <c:if test="${param.searchCondition=='faq_Title'}">
-            		selected
-               </c:if>
-            >제목</option>
-            <option value="faq_Categori" 
-            	<c:if test="${param.searchCondition=='faq_Categori'}">
-            		selected
-               </c:if>
-            >카테고리</option>
-            <option value="faq_Content" 
-            	<c:if test="${param.searchCondition=='faq_Content'}">
-            		selected
-               </c:if>
-            >내용</option>
-        </select>   
-        <input type="text" name="searchKeyword" 
-        	title="검색어 입력" value="${param.searchKeyword}" >   
-		<input type="submit" value="검색">
-    </form>
-</div>
-					<div class="align_right">
-						<a href="<c:url value='/admintemplet/faQInsert.do'/>">F&Q등록</a>
-					</div>
+
 					</article>
 				</section>
 			</div>
