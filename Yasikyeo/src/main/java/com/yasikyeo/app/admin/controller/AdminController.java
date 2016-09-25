@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.yasikyeo.app.admin.model.AdminService;
 import com.yasikyeo.app.admin.model.AdminVO;
+import com.yasikyeo.app.board.model.FaQListVO;
 import com.yasikyeo.app.board.model.FaQService;
 import com.yasikyeo.app.board.model.FaQVO;
 import com.yasikyeo.app.board.model.NoticeListVO;
@@ -225,7 +226,7 @@ public class AdminController {
 			return "admintemplet/eventNotice";
 	}
 	
-	@RequestMapping("/multdelete.do")
+	@RequestMapping("/multnoticedelete.do")
 	public String adminmultdelete(@ModelAttribute NoticeListVO noticeListVo ,
 			HttpServletRequest request, Model model){
 		//1.
@@ -479,9 +480,11 @@ public class AdminController {
 	
 	@RequestMapping(value="/faQInsert.do", method=RequestMethod.POST)
 	public String faQWrite_post(@ModelAttribute FaQVO faqVo,
-			HttpServletRequest request){
+			HttpServletRequest request,
+			HttpSession session){
 		//1.
 		logger.info("F&Q 글쓰기 처리, 파라미터 FaQVO={}", faqVo);
+		int adminNo = (Integer)session.getAttribute("adminNo");
 		//2.
 		
 		//파일 업로드 처리
@@ -514,12 +517,60 @@ public class AdminController {
 			faqVo.setFaqCategori(faqService.FAQ_ETC);
 		}
 		
-		faqVo.setAdminNo(adminService.ADMIN_NO);
+		faqVo.setAdminNo(adminNo);
 		
 		int cnt = faqService.insertFaq(faqVo);
 		logger.info("F&Q항 글등록 완료 cnt={}",cnt);
 	//3.
 		return "redirect:/admintemplet/faQ.do";
+	}
+	
+	@RequestMapping("/multfaqdelete.do")
+	public String faqmultdelete(@ModelAttribute FaQListVO faqListVo,
+			HttpServletRequest request,
+			Model model){
+		//1.
+		logger.info("관리자-선택한 상품 삭제, 파라미터 faqListVO={}", faqListVo);
+	//2.
+		List<FaQVO> faqList = faqListVo.getFaqItems(); 
+		logger.info("faqList.size={}", faqList.size());
+		
+		int cnt = faqService.faqDelete(faqList);
+		logger.info("선택한 faq 삭제 처리 결과 , cnt={}", cnt);
+		
+		String msg="", url="/admintemplet/faQ.do";
+		if(cnt>0){
+			for(int i=0;i<faqList.size();i++){
+				FaQVO faqVo = faqList.get(i);
+				
+				int faqNo = faqVo.getFaqNo();
+				String fileName = faqVo.getFaqUpfilename();
+				
+				logger.info("i={}", i);
+				logger.info("faqVo={}, fileName={}", faqVo,fileName );
+				
+				if(faqNo!=0){
+					
+					String upPath = fileUtil.getUploadPath(request, fileUtil.IMAGE_UPLOAD);
+					
+					File delFile= new File(upPath, fileName);
+					if(delFile.exists()){
+						boolean bool = delFile.delete();
+						logger.info("파일 삭제 결과={}",bool);
+					}
+				}//if
+				
+			}//for
+			
+			msg="선택한 테이블을 삭제하엿습니다";
+		}else{
+			msg="선택한 테이블을 삭제하지 못했습니다";
+		}//if
+	//3.
+	model.addAttribute("msg",msg);
+	model.addAttribute("url", url);
+	
+	return "common/message";
 	}
 	
 	@RequestMapping("/faQDetail.do")
@@ -601,7 +652,6 @@ public class AdminController {
 			faqVo.setFaqCategori(faqService.FAQ_ETC);
 		}
 		
-		faqVo.setAdminNo(adminService.ADMIN_NO);
 		
 		int cnt = faqService.faqUpdate(faqVo);
 		

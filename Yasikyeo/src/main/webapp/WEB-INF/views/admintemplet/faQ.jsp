@@ -11,6 +11,22 @@
 			}, function(){
 				$(this).css("background","");
 			});
+		
+		//선택한 테이블 삭제
+		$("#btDel").click(function(){
+			var count
+			=$("tbody input[type=checkbox]:checked").length;
+			
+			if(count==0){
+				alert("삭제하려는 상품을 먼저 체크하세요");
+				return false;
+			}
+			
+			frmList.action
+="<c:url value='/admintemplet/multfaqdelete.do'/>";
+			frmList.submit();
+		});
+		
 	});
 
 	function pageProc(curPage){
@@ -41,9 +57,7 @@
 
 
 <h2>F&A</h2>
-<div class="align_right">
-						<a href="<c:url value='/admintemplet/faQInsert.do'/>">F&Q등록</a>
-					</div>
+
 <div class="divSearch">
    	<form name="frmSearch" method="post" 
    	action="<c:url value='/admintemplet/faQ.do' />" >
@@ -69,17 +83,23 @@
 		<input type="submit" value="검색">
     </form>
 </div>
-					
 
+<form name="frmList" method="post">
 <div class="divList">
 <table class="box2"
 	 	summary="자료실에 관한 표로써, 번호, 제목, 작성자, 작성일, 조회수에 대한 정보를 제공합니다.">
-	<caption>공지사항</caption>
+	<caption>F&A</caption>
+	<div class="align_right">
+						<input type="button" id="bt1" value="글쓰기" onclick="location.href='<c:url value="/admintemplet/faQInsert.do"/>'">
+						||
+						<input type="button" id="btDel" value="선택 삭제">
+					</div>
 	<colgroup>
 		<col style="width:10%;" />
 		<col style="width:10%;" />
 		<col style="width:20%;" />
-		<col style="width:50%;" />
+		<col style="width:40%;" />
+		<col style="width:10%;" />
 	</colgroup>
 	<thead>
 	  <tr>
@@ -87,44 +107,24 @@
 	    <th scope="col">카테고리</th>
 	  	 <th scope="col">제목</th>
 	    <th scope="col">내용</th>
+	    <th scope="col">삭제여부</th>
 	 </tr>
 	</thead> 
 	<tbody>  
 	<c:if test="${empty alist}">
 		<tr>
-			<td colspan="4" class="align_center">
+			<td colspan="5" class="align_center">
 			해당 데이터가 없습니다
 			</td>
 		</tr>
 	</c:if>
 	<c:if test="${!empty alist}">
-		<!--게시판 내용 반복문 시작  -->		
+		<!--게시판 내용 반복문 시작  -->	
+		<c:set var="i" value="0" />	
 		<c:forEach var="vo" items="${alist }">
 			<tr style="text-align: center">
 				<td>${vo.faqNo}</td>
-				<td>
-					<c:if test="${vo.faqCategori=='회원가입'}">
-						회원가입
-					</c:if>
-					<c:if test="${vo.faqCategori=='바로결제'}">
-						바로결제
-					</c:if>	
-					<c:if test="${vo.faqCategori=='리뷰관리'}">
-						리뷰관리
-					</c:if>		
-					<c:if test="${vo.faqCategori=='이용문의'}">
-						이용문의
-					</c:if>	
-					<c:if test="${vo.faqCategori=='광고문의'}">
-						광고문의
-					</c:if>	
-					<c:if test="${vo.faqCategori=='불편문의'}">
-						불편문의
-					</c:if>	
-					<c:if test="${vo.faqCategori=='기타'}">
-						기타
-					</c:if>	
-				</td>
+				<td>${vo.faqCategori }</td>
 				<td style="text-align: left;">
 					<!-- 제목이 긴 경우 일부만 보여주기 -->
 						<c:if test="${fn:length(vo.faqTitle)>30}">
@@ -147,14 +147,26 @@
 						<c:if test="${fn:length(vo.faqContent)<=30}">
 							${vo.faqContent }
 						</c:if>
-					</td>				
-			</tr>				
+					</td>
+					<td>
+						<input type="checkbox" 
+						name="faqItems[${i}].faqNo"
+						id="chk_${i}"
+						value="${vo.faqNo}">
+						<input type="hidden" 
+							name="faqItems[${i}].faqUpfilename"
+							value="${vo.faqUpfilename}">
+					</td>						
+			</tr>
+			<c:set var="i" value="${i+1}" />				
 		</c:forEach>
 		<!--반복처리 끝  -->
 	</c:if>
 	</tbody>
 </table>	   
 </div>
+</form>					
+
 <div class="divPage">
 	<!-- 이전 블럭으로 이동 -->
 	<c:if test="${pagingInfo.firstPage>1 }">	

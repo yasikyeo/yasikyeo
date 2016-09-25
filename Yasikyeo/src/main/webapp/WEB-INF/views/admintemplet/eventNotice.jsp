@@ -12,7 +12,7 @@
 				$(this).css("background","");
 			});
 		
-		//선택한 상품 삭제
+		//선택한 테이블 삭제
 		$("#btDel").click(function(){
 			var count
 			=$("tbody input[type=checkbox]:checked").length;
@@ -23,7 +23,7 @@
 			}
 			
 			frmList.action
-="<c:url value='/admintemplet/multdelete.do'/>";
+="<c:url value='/admintemplet/multnoticedelete.do'/>";
 			frmList.submit();
 		});
 		
@@ -56,11 +56,7 @@
 </form>
 
 <h2>공지사항</h2>
-<div class="divList">
-<table class="box2"
-	 	summary="자료실에 관한 표로써, 번호, 제목, 작성자, 작성일, 조회수에 대한 정보를 제공합니다.">
-	<caption>공지사항</caption>
-	<div class="divSearch">
+<div class="divSearch">
    	<form name="frmSearch" method="post" 
    	action="<c:url value='/admintemplet/eventNotice.do' />" >
         <select name="searchCondition">
@@ -78,19 +74,26 @@
             	<c:if test="${param.searchCondition=='notice_Content'}">
             		selected
                </c:if>
-            >작성자</option>
+            >내용</option>
         </select>   
         <input type="text" name="searchKeyword" 
         	title="검색어 입력" value="${param.searchKeyword}" >   
 		<input type="submit" value="검색">
     </form>
 </div> 
-						<div class="align_right">
+						
+<form name ="frmList" method="post">
+
+<div class="divList">
+<table class="box2"
+	 	summary="자료실에 관한 표로써, 번호, 제목, 작성자, 작성일, 조회수에 대한 정보를 제공합니다.">
+	<caption>공지사항</caption>
+			<div class="align_right">
 						<input type="button" id="bt1" value="글쓰기" onclick="location.href='<c:url value="/admintemplet/adminInsertNotice.do"/>'">
 						||
 						<input type="button" id="btDel" value="선택 삭제">
 					</div>
-<form name ="frmList" method="post">
+
 
 	<colgroup>
 		<col style="width:10%;" />
