@@ -24,8 +24,16 @@ public class CeoShopVO {
 	private int shopAvgreview;
 	private int shopReviewcnt;
 	private int shopCeoreplycnt;
+	private int shopOrdercnt;
 	private int ceoNo;
 	
+	
+	public int getShopOrdercnt() {
+		return shopOrdercnt;
+	}
+	public void setShopOrdercnt(int shopOrdercnt) {
+		this.shopOrdercnt = shopOrdercnt;
+	}
 	public int getShopNo() {
 		return shopNo;
 	}
@@ -161,8 +169,8 @@ public class CeoShopVO {
 				+ ", shopOrigin=" + shopOrigin + ", address=" + address + ", addressDetail=" + addressDetail
 				+ ", postcode=" + postcode + ", shopAccountname=" + shopAccountname + ", shopAccount=" + shopAccount
 				+ ", shopLicense=" + shopLicense + ", shopHit=" + shopHit + ", shopAvgreview=" + shopAvgreview
-				+ ", shopReviewcnt=" + shopReviewcnt + ", shopCeoreplycnt=" + shopCeoreplycnt + ", ceoNo=" + ceoNo
-				+ "]";
+				+ ", shopReviewcnt=" + shopReviewcnt + ", shopCeoreplycnt=" + shopCeoreplycnt + ", shopOrdercnt="
+				+ shopOrdercnt + ", ceoNo=" + ceoNo + "]";
 	}
 	
 }

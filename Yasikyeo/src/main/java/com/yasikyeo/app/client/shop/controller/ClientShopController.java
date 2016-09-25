@@ -45,7 +45,7 @@ public class ClientShopController {
 		
 		logger.info("상점리스트 보여주기 파라미터 si={},gu={}",si,gu);
 		logger.info("상점리스트 보여주기 파라미터 dong={},munu={}",dong,menu);
-		
+		logger.info("searchVo2.getSearchCondition={}",searchVo2.getSearchCondition());
 		PaginationInfo pagingInfo = new PaginationInfo();
 		pagingInfo.setBlockSize(Utility.CLIENT_SHOP_BLOCK_SIZE);
 		pagingInfo.setRecordCountPerPage(Utility.CLIENT_SHOP_RECODE_COUNT_PER_PAGE);

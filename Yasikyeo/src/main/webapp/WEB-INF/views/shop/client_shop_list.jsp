@@ -21,16 +21,21 @@ $(function () {
 		$(location).attr("href","<c:url value='/shop/client_shop_det.do'/>")
 	});
 	
+	$("#Condition").change(function() {
+		$("#searchCondition").val($("#Condition").val());
+		document.frmPage.currentPage.value=1
+		document.frmPage.submit();
+	});
 });
 	function pageProc(curPage){
 		document.frmPage.currentPage.value=curPage;
 		document.frmPage.submit();
 	}
 </script>
-<form name="frmPage" method="post" 
+<form name="frmPage" method="post" id="frmPage"
 	action="<c:url value='/shop/client_shop_list.do?menu=${param.menu}'/>">
-	<input type="hidden" name="currentPage">
-	<input type="hidden" name="searchCondition" 
+	<input type="text" name="currentPage" id="currentPage" value="${param.currentPage}">
+	<input type="text" name="searchCondition" id="searchCondition"
 		value="${param.searchCondition }">
 	<input type="hidden" name="searchKeyword" 
 		value="${searchVO2.searchKeyword }">	
@@ -46,11 +51,11 @@ $(function () {
 			<li>|</li>
 			<li><b>${sessionScope.si}&nbsp;${sessionScope.gu}&nbsp;${sessionScope.dong}</b>를 중심으로 총 <span class="color-orange"><b>${pagingInfo.totalRecord}</b></span>곳을 찾았습니다.</li>
 			<li>
-				<select class="selectoption2" name="searchCondition">
+				<select class="selectoption2" id="Condition">
 					<option>기본정렬로 보기</option>
-					<option>주문 순으로 보기</option>
-					<option>평점 순으로 보기</option>
-					<option>즐겨찾기 순으로 보기</option>
+					<option value="shop_Ordercnt">주문 순으로 보기</option>
+					<option value="shop_Avgreview">평점 순으로 보기</option>
+					<option value="shop_Hit">즐겨찾기 순으로 보기</option>
 				</select>
 			</li>
 		</ul>
