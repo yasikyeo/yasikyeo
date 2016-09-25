@@ -21,4 +21,5 @@ public interface FaQService {
 	public FaQVO selectByNoFaq(int faqNo);
 	public int faqUpdate(FaQVO faqVo);
 	public int faqDelete(int faqNo);
+	public int faqDelete(List<FaQVO> faqList);
 }

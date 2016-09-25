@@ -44,6 +44,27 @@ public class FaQServiceImpl implements FaQService{
 	public int faqDelete(int faqNo) {
 		return faqDao.faqDelete(faqNo);
 	}
+
+	@Override
+	public int faqDelete(List<FaQVO> faqList) {
+		int cnt =0;
+		try{
+			for(FaQVO vo : faqList){
+				int faqNo= vo.getFaqNo();
+				if(faqNo!=0){
+					cnt = faqDao.faqDelete(faqNo);
+				}
+			}
+		}catch(RuntimeException e){
+			e.printStackTrace();
+			cnt=-1;
+		}
+		
+		return cnt;
+	}
+
+		
+	
 	
 	
 }

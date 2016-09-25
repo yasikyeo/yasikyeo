@@ -11,6 +11,23 @@
 			}, function(){
 				$(this).css("background","");
 			});
+		
+		//선택한 테이블 삭제
+		$("#btDel").click(function(){
+			var count
+			=$("tbody input[type=checkbox]:checked").length;
+			
+			if(count==0){
+				alert("삭제하려는 상품을 먼저 체크하세요");
+				return false;
+			}
+			
+			frmList.action
+="<c:url value='/admintemplet/multnoticedelete.do'/>";
+			frmList.submit();
+		});
+		
+	
 	});
 
 	function pageProc(curPage){
@@ -39,15 +56,51 @@
 </form>
 
 <h2>공지사항</h2>
+<div class="divSearch">
+   	<form name="frmSearch" method="post" 
+   	action="<c:url value='/admintemplet/eventNotice.do' />" >
+        <select name="searchCondition">
+            <option value="notice_Title"
+           	   <c:if test="${param.searchCondition=='notice_Title'}">
+            		selected
+               </c:if>
+            >제목</option>
+            <option value="notice_Suffix" 
+            	<c:if test="${param.searchCondition=='notice_Suffix'}">
+            		selected
+               </c:if>
+            >머리말</option>
+            <option value="notice_Content" 
+            	<c:if test="${param.searchCondition=='notice_Content'}">
+            		selected
+               </c:if>
+            >내용</option>
+        </select>   
+        <input type="text" name="searchKeyword" 
+        	title="검색어 입력" value="${param.searchKeyword}" >   
+		<input type="submit" value="검색">
+    </form>
+</div> 
+						
+<form name ="frmList" method="post">
+
 <div class="divList">
 <table class="box2"
 	 	summary="자료실에 관한 표로써, 번호, 제목, 작성자, 작성일, 조회수에 대한 정보를 제공합니다.">
 	<caption>공지사항</caption>
+			<div class="align_right">
+						<input type="button" id="bt1" value="글쓰기" onclick="location.href='<c:url value="/admintemplet/adminInsertNotice.do"/>'">
+						||
+						<input type="button" id="btDel" value="선택 삭제">
+					</div>
+
+
 	<colgroup>
 		<col style="width:10%;" />
 		<col style="width:20%;" />
+		<col style="width:20%;" />
 		<col style="width:30%;" />
-		<col style="width:40%;" />
+		<col style="width:10%;"	/>
 	</colgroup>
 	<thead>
 	  <tr>
@@ -55,18 +108,20 @@
 	    <th scope="col">머리말</th>
 	    <th scope="col">제목</th>
 	    <th scope="col">내용</th>
+	    <th scope="col">삭제여부</th>
 	 </tr>
 	</thead> 
 	<tbody>  
 	<c:if test="${empty alist}">
 		<tr>
-			<td colspan="4" class="align_center">
+			<td colspan="5" class="align_center">
 			해당 데이터가 없습니다
 			</td>
 		</tr>
 	</c:if>
 	<c:if test="${!empty alist}">
 		<!--게시판 내용 반복문 시작  -->		
+		<c:set var="i" value="0" />
 		<c:forEach var="vo" items="${alist }">
 			<tr style="text-align: center">
 				<td>${vo.noticeNo}</td>
@@ -92,14 +147,25 @@
 						<c:if test="${fn:length(vo.noticeContent)<=30}">
 							${vo.noticeContent }
 						</c:if>
+					</td>
+					<td>
+						<input type="checkbox" 
+						name="noticeItems[${i}].noticeNo"
+						id="chk_${i}"
+						value="${vo.noticeNo}">
+						<input type="hidden" 
+							name="noticeItems[${i}].noticeUpfileName"
+							value="${vo.noticeUpfileName}">
 					</td>				
-			</tr>				
+			</tr>		
+			<c:set var="i" value="${i+1}"/>		
 		</c:forEach>
 		<!--반복처리 끝  -->
 	</c:if>
 	</tbody>
 </table>	   
 </div>
+</form>
 <div class="divPage">
 	<!-- 이전 블럭으로 이동 -->
 	<c:if test="${pagingInfo.firstPage>1 }">	
@@ -133,34 +199,7 @@
 		</a>
 	</c:if>
 </div>
-<div class="divSearch">
-   	<form name="frmSearch" method="post" 
-   	action="<c:url value='/admintemplet/eventNotice.do' />" >
-        <select name="searchCondition">
-            <option value="notice_Title"
-           	   <c:if test="${param.searchCondition=='notice_Title'}">
-            		selected
-               </c:if>
-            >제목</option>
-            <option value="notice_Suffix" 
-            	<c:if test="${param.searchCondition=='notice_Suffix'}">
-            		selected
-               </c:if>
-            >머리말</option>
-            <option value="notice_Content" 
-            	<c:if test="${param.searchCondition=='notice_Content'}">
-            		selected
-               </c:if>
-            >작성자</option>
-        </select>   
-        <input type="text" name="searchKeyword" 
-        	title="검색어 입력" value="${param.searchKeyword}" >   
-		<input type="submit" value="검색">
-    </form>
-</div> 
-					<div class="align_right">
-						<a href="<c:url value='/admintemplet/adminInsertNotice.do'/>">공지사항등록</a>
-					</div>
+
 					</article>
 				</section>
 			</div>
