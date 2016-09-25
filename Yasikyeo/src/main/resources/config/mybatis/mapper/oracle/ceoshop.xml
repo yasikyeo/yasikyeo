@@ -8,6 +8,10 @@
 		select ceo_no from ceo where ceo_id=#{ceoId}
 	</select>
 	
+	<select id="selectCeoShop" parameterType="int" resultType="CeoShopVO">
+		select * from shop where ceo_no=#{ceoNo}
+	</select>
+	
 	<insert id="insertCeoShop" parameterType="CeoShopVO">
 	<selectKey keyProperty="shopNo" resultType="int" order="BEFORE">
 		select shop_no_seq.nextval from dual

@@ -130,7 +130,7 @@
 			location.href="<c:url value='/ceo/member/ceo_addshop.do'/>";
 		}
 		function link2(){
-			location.href="http://www.naver.com";
+			location.href="<c:url value='/ceo/member/ceo_updateshop.do'/>";
 		}
 		function link3(){
 			location.href="http://www.naver.com";

@@ -60,10 +60,22 @@
 									<br>
 									<tr>
 									<div class="product clear">
-										<details> <summary>주문관리</summary>
+										<details> <summary>주문 관리</summary>
 										<div id="content">
 											<div class="needpopup2">
 												({주문내용보기(주문일시,주문번호,메뉴,주문금액,상태변경버튼(배달중,배달완료)})
+											</div>
+										</div>
+										</details>
+									</div>
+									</tr>
+									<br>
+									<tr>
+									<div class="product clear">
+										<details> <summary>ㄴㅇㄻㄴㅇㄹ</summary>
+										<div id="content">
+											<div class="needpopup3">
+												ㅁㄴㅇㄹ
 											</div>
 										</div>
 										</details>

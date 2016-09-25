@@ -157,4 +157,29 @@ public class CeoShopController {
 		return "common/message";
 	}
 	
+	@RequestMapping(value="ceo/member/ceo_updateshop.do",method=RequestMethod.GET)
+	public String ceo_updateshop_get(HttpSession session,Model model){
+		
+		String ceoId = (String) session.getAttribute("ceoId");
+		
+		int ceoNo = ceoShopService.selectCeoNo(ceoId);
+		CeoShopVO ceoShopVo = ceoShopService.selectCeoShop(ceoNo);
+		
+		String msg="",url="";
+		
+		if(ceoShopVo!=null){
+			model.addAttribute("ceoShopVo",ceoShopVo);
+			
+			return "/ceo/member/ceo_updateshop";
+		}else{
+			msg="등록된 업소가 없습니다 업소등록을 해주세요.";
+			url="/ceo/member/ceo_addshop.do";
+		}
+		
+		model.addAttribute("msg",msg);
+		model.addAttribute("url",url);
+		
+		
+		return "common/message";
+	}
 }

@@ -2,23 +2,23 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../../inc/ceo/top.jsp" %>
 <link rel="stylesheet"	href="${pageContext.request.contextPath}/css/marketmember4.css"	type="text/css" />
-<title>야시켜, 사장님 회원가입</title>
+<title>야시켜, 사장님 업소정보 수정</title>
 
 		<div id="main">
 			<div id="main_box">
 				<div id="box_1">
 					<div id="a_1">
-						<div id="show1">정보입력</div>
+						<div id="show1">업소정보수정</div>
 						<div class="show2">
-							<div id="lsh">사장님께서 등록하실 업소의 상세 내용을 기재해주세요.</div>
-							<div id="rsh">업소등록</div>
+							<div id="lsh">사장님께서 수정하실 업소의 상세 내용을 기재해주세요.</div>
+							<div id="rsh">업소정보수정</div>
 						</div>
 						<div class="shop_info">
-							<form id="shop_reg" method="post" action="<c:url value='/ceo/member/ceo_addshop.do'/>"  enctype="multipart/form-data">
+							<form id="shop_reg" method="post" action="<c:url value='/ceo/member/ceo_updateshop.do'/>"  enctype="multipart/form-data">
 								<table border="3" ; width="100%" ; height="100%";>
 									<tr>
 										<td class="td_1">업소 카테고리</td>
-										<td class="td_2"><select name="shopCategori" class="formInput">
+										<td class="td_2"><select id="shopCategori" name="shopCategori" class="formInput">
 												<option value="치킨">치킨</option>
 												<option value="피자">피자</option>
 												<option value="중국집">중국집</option>
@@ -35,7 +35,7 @@
 
 									<tr>
 										<td class="td_1">업소명</td>
-										<td class="td_2"><input type="text" class="formInput4" name="shopName"></td>
+										<td class="td_2"><input type="text" class="formInput4" name="shopName" value="${ceoShopVo.shopName}"></td>
 									</tr>
 
 									<tr>
@@ -44,73 +44,73 @@
 											<input type="text" id="shopImage" class="file_input_textbox" readonly="readonly">
 											<div class="file_input_div">
 												<input type="button" value="이미지 업로드" class="file_input_button" /> <input type="file"
-													class="file_input_hidden" name="imageUpload" id="imageUpload"
-													onchange="javascript: document.getElementById('shopImage').value = this.value" />
+													class="file_input_hidden" name="imageUpload" id="imageUpload" onchange="handleFileSelect(0)" class="formInput1" />
 											</div>
+											<div id="productImgView"></div>
 											</tr>
 									<tr>
 										<td class="td_1">업소소개</td>
 										<td class="td_2">
-											<textarea rows="15" cols="80" name="shopExplain" class="formInput" style="width: 350px; height: 170px;"></textarea>
+											<textarea rows="15" cols="80" name="shopExplain" class="formInput" style="width: 350px; height: 170px;"
+											value="${ceoShopVo.shopExplain }"></textarea>
 										</td>
 									</tr>
 
 									<tr>
 										<td class="td_1">최소배달금액</td>
-										<td class="td_2"><input type="text" class="formInput" name="shopMinprice"></td>
+										<td class="td_2"><input type="text" class="formInput" name="shopMinprice" value="${ceoShopVo.shopMinprice }"></td>
 									</tr>
 
 									<tr>
 										<td class="td_1">오픈 & 마감시간</td>
-										<td class="td_2"><input type="time" class="formInput" name="shopOpentime">
-										<input type="time" class="formInput" name="shopClosetime">
+										<td class="td_2"><input type="time" class="formInput" name="shopOpentime" value="${ceoShopVo.shopOpentime }">
+										<input type="time" class="formInput" name="shopClosetime" value="${ceoShopVo.shopClosetime }">
 										</td>
 									</tr>
 
 									<tr>
 										<td class="td_1">전화번호</td>
-										<td class="td_2"><input type="text" class="formInput" name="shopTel"></td>
+										<td class="td_2"><input type="text" class="formInput" name="shopTel" value="${ceoShopVo.shopTel }"></td>
 									</tr>
 
 									<tr>
 										<td class="td_1">원산지정보</td>
-										<td class="td_2"><input type="text" class="formInput" name="shopOrigin"></td>
+										<td class="td_2"><input type="text" class="formInput" name="shopOrigin" value="${ceoShopVo.shopOrigin }"></td>
 									</tr>
 									
 									<tr>
 										<td class="td_1">사업자등록번호</td>
-										<td class="td_2"><input type="text" class="formInput"
-											name="shopLicense"></td>
+										<td class="td_2"><input type="text" class="formInput" name="shopLicense" value="${ceoShopVo.shopLicense }"></td>
 									</tr>
 
 									<tr>
 										<td class="td_1">우편번호</td>
 										<td class="td_2">
-											<input type="text" ReadOnly id="postcode" name="postcode" class="formInput">
+											<input type="text" ReadOnly id="postcode" name="postcode" class="formInput" value="${ceoShopVo.postcode }">
 											<input type="Button" class="formButton" value="우편번호 찾기" title="새창열림" onclick="execDaumPostcode()">
 										</td>
 									</tr>
 									<tr>
 										<td class="td_1">주소</td>
 										<td class="td_2">
-											<input type="text" ReadOnly id="address" name="address" class="formInput4">
+											<input type="text" ReadOnly id="address" name="address" class="formInput4" value="${ceoShopVo.address }">
 										</td>
 									</tr>
 									<tr>
 										<td class="td_1">상세주소</td>
 										<td class="td_2">
-											<input type="text" id="addressDetail" name="addressDetail" class="formInput4">
+											<input type="text" id="addressDetail" name="addressDetail" class="formInput4" value="${ceoShopVo.addressDetail }">
 										</td>
 									</tr>
 
 									<tr>
 										<td class="td_1">업소은행계좌</td>
-										<td class="td_2"><select name="shopAccountname" class="formInput">
+										<td class="td_2"><select name="shopAccountname" class="formInput" value="${ceoShopVo.shopAccountname}">
 												<option value="국민">국민</option>
 												<option value="신한">신한</option>
 												<option value="우리">우리</option>
 												<option value="농협">농협</option>
-										</select> <input type="text" class="formInput" name="shopAccount"></td>
+										</select> <input type="text" class="formInput" name="shopAccount" value="${ceoShopVo.shopAccount }"></td>
 									</tr>
 								</table>
 							<div id="buttonset">
@@ -202,6 +202,8 @@
 				alert("아이디를 입력하세요.");
 				$("#memberId").focus();
 				return false;
+				event.stopPropagation();
+				event.preventDefault();
 			}else if($("#memberName").val().length < 1){
 				alert("이름을 입력하세요.");
 				$("#memberName").focus();
@@ -250,6 +252,8 @@
 					$("#chkId").val("N");
 				}
 			});
+		 
+		 
     });  
     
 	function validate_member_Id(memberId){
@@ -257,6 +261,30 @@
 		
 		return pattern.test(memberId);		
 	}
+	
+	function handleFileSelect(i) {
+			var fileselectobj = "imageUpload";
+			var previmageobj ="productImgView";
+			var files = document.getElementById(fileselectobj).files[0]; //파일 객체
+
+			var reader = new FileReader();
+
+			//파일정보 수집        
+			reader.onload = (function(theFile) {
+				return function(e) {
+					//이미지 뷰
+					var img_view = [ '<img src="',e.target.result,'" title="',escape(theFile.name),'"width=200px height=120px"/>' ].join('');
+					document.getElementById(previmageobj).innerHTML = img_view;
+				};
+
+			})(files);
+
+			reader.readAsDataURL(files);
+			
+			document.getElementById('shopImage').value = document.getElementById('imageUpload').value;
+	}
+	
+
 </script>
 
 
