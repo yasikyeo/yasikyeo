@@ -46,16 +46,23 @@ $(function () {
 	<div class="div12">
 		<!-- 반복시작 -->
 		<c:if test="${!empty shopList}">
+		<c:forEach var="shop" items="${shopList}">
 			<div class="shopcontain1 shopcontain2 shopcontain3">
 				<div class="divshop">
-					<div class="div13">
-						<img alt="상점이미지" src="<c:url value='/shop_Image/${shopList.shopImage}'/>">
-					</div>
+					<img class="div13" alt="상점이미지" src="<c:url value='/shop_Image/${shop.shopImage}'/>">
 					<div class="div7">
-						<p><b>${shopList.shopName}</b></p>
-						<div class="padding3px star1" data-score="${shopList.shopAvgreview}"></div>
-						<p class="padding3px sp2">${shopList.address}</p>
-						<div class="padding3px description1">리뷰<span>${shopList.shopReviewcnt}</span>사장님댓글<span>${shopList.shopCeoreplycnt}</span></div>
+						<p><b>${shop.shopName}</b></p>
+						<div class="padding3px star1" data-score="${shop.shopAvgreview}"></div>
+						<p class="padding3px sp2">
+							<!-- 주소가 긴 경우 일부만 보여주기 -->
+							<c:if test="${fn:length(shop.address)>13}">
+								${fn:substring(shop.address, 0,13)}...
+							</c:if>
+							<c:if test="${fn:length(shop.address)<=13}">
+								${shop.address}
+							</c:if>
+						</p>
+						<div class="padding3px description1">리뷰<span>${shop.shopReviewcnt}</span>사장님댓글<span>${shop.shopCeoreplycnt}</span></div>
 						<div class="padding3px">
 							<span class="spaquabox">바로결제</span>
 							<span class="spaquabox">만나서결제</span>
@@ -67,58 +74,8 @@ $(function () {
 				</div> -->
 			</div>
 			<!-- 반복끝 -->
+		</c:forEach>
 		</c:if>
-		<div class="shopcontain1 shopcontain2 shopcontain3">
-			<div class="divshop">
-				<div class="div13">
-					<img alt="상점이미지" src="">
-				</div>
-				<div class="div7">
-					<p><b>피자스토리 원플러스원</b></p>
-					<div class="padding3px star1" data-score="3.6"></div>
-					<p class="padding3px sp2">주소들어갈부분</p>
-					<div class="padding3px description1">리뷰<span>4</span>사장님댓글<span>3</span></div>
-					<div class="padding3px">
-						<span class="spaquabox">바로결제</span>
-						<span class="spaquabox">만나서결제</span>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="shopcontain1 shopcontain2 shopcontain3">
-			<div class="divshop">
-				<div class="div13">
-					<img alt="상점이미지" src="">
-				</div>
-				<div class="div7">
-					<p><b>피자스토리 원플러스원</b></p>
-					<div class="padding3px star1" data-score="3.6"></div>
-					<p class="padding3px sp2">주소들어갈부분</p>
-					<div class="padding3px description1">리뷰<span>4</span>사장님댓글<span>3</span></div>
-					<div class="padding3px">
-						<span class="spaquabox">바로결제</span>
-						<span class="spaquabox">만나서결제</span>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="shopcontain1 shopcontain2 shopcontain3">
-			<div class="divshop">
-				<div class="div13">
-					<img alt="상점이미지" src="">
-				</div>
-				<div class="div7">
-					<p><b>피자스토리 원플러스원</b></p>
-					<div class="padding3px star1" data-score="3.6"></div>
-					<p class="padding3px sp2">주소들어갈부분</p>
-					<div class="padding3px description1">리뷰<span>4</span>사장님댓글<span>3</span></div>
-					<div class="padding3px">
-						<span class="spaquabox">바로결제</span>
-						<span class="spaquabox">만나서결제</span>
-					</div>
-				</div>
-			</div>
-		</div>
 		<br class="clear-both">
  		<div class="vertical-container">
  			<ul class="pagination">
