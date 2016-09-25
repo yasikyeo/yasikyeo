@@ -281,110 +281,95 @@ $(document).ready(function () {
 					</div>
 					<!-- /추천메뉴 -->
 					<!-- 카테고리반복 -->
-					<div class="group1">
-						<div class="btAccodion1">
-							<div class="inline-block">
-								<b>모밀 Set</b>
-								<p class="sp2">- 곱배기 추가시 2,000원</p>
-							</div>
-						</div>
-					    <div class="accordion2">
-							<!-- 메뉴반복 -->
-					    	<div class="group2">
-								<div class="btAccodion2" id="m1">
-									<span>1.만두+냉모밀1</span>
-									<p class="sp2">설명1</p>
+					<c:if test="${!empty cateList}">
+						<c:forEach var="cate" items="${cateList}">
+							<div class="group1">
+								<div class="btAccodion1">
+									<div class="inline-block">
+										<b>${cate.categoriName}</b>
+										<p class="sp2">${cate.categoriExplain}</p>
+									</div>
 								</div>
-							    <div>
-							    	  <!-- 컨텐츠내용 -->
-								      <p>
-								      	<img class="img1" alt="메뉴" src="">
-								      	<span class="font0-8em">설명1</span>
-								      </p>
-								      <!-- 옵션반복 -->
-								      <div class="paddingCol20px font0-9em">
-									      <p><b>가격<span class="color-orange">(필수선택)</span></b></p>
-									      <p>
-									      	<label><input type="radio" name="op1">15,000원</label>
-									      	<label><input type="radio" name="op1">17,000원</label>
-									      </p>
-								      </div>
-								      <!-- /옵션반복 -->
-								      <!-- 추가선택 -->
-								      <div class="paddingCol20px font0-9em">
-									      <p><b>추가선택<span class="color-orange">(1개이상 선택가능)</span></b></p>
-									      <p>
-									      	<label><input type="checkbox" name="op2">공기밥1,000원</label>
-									      	<label><input type="checkbox" name="op3">사리추가2,000원</label>
-									      </p>
-								      </div>
-							      	  <!-- 추가선택 -->
-							      	  <div class="paddingCol20px flex">
-							      	  	<input class="flex3 btblack padding15px font1-2em" type="button" value="장바구니 담기">
-							      	  	<input class="flex1 btgray padding15px font1-2em" type="reset" value="취소">
-							      	  </div>
+							    <div class="accordion2">
+									<!-- 메뉴반복 -->
+							    	<div class="group2">
+										<div class="btAccodion2" id="m1">
+											<span>1.만두+냉모밀1</span>
+											<p class="sp2">설명1</p>
+										</div>
+									    <div>
+									    	  <!-- 컨텐츠내용 -->
+										      <p>
+										      	<img class="img1" alt="메뉴" src="">
+										      	<span class="font0-8em">설명1</span>
+										      </p>
+										      <!-- 옵션반복 -->
+										      <div class="paddingCol20px font0-9em">
+											      <p><b>가격<span class="color-orange">(필수선택)</span></b></p>
+											      <p>
+											      	<label><input type="radio" name="op1">15,000원</label>
+											      	<label><input type="radio" name="op1">17,000원</label>
+											      </p>
+										      </div>
+										      <!-- /옵션반복 -->
+										      <!-- 추가선택 -->
+										      <div class="paddingCol20px font0-9em">
+											      <p><b>추가선택<span class="color-orange">(1개이상 선택가능)</span></b></p>
+											      <p>
+											      	<label><input type="checkbox" name="op2">공기밥1,000원</label>
+											      	<label><input type="checkbox" name="op3">사리추가2,000원</label>
+											      </p>
+										      </div>
+									      	  <!-- 추가선택 -->
+									      	  <div class="paddingCol20px flex">
+									      	  	<input class="flex3 btblack padding15px font1-2em" type="button" value="장바구니 담기">
+									      	  	<input class="flex1 btgray padding15px font1-2em" type="reset" value="취소">
+									      	  </div>
+									    </div>
+									</div>
+							    	<!-- /메뉴반복 -->
+							    	<!-- 메뉴반복 -->
+							    	<div class="group2">
+										<div class="btAccodion2"  id="m2">
+											<span>1.만두+냉모밀1</span>
+											<p class="sp2">설명1</p>
+										</div>
+									    <div>
+									    	  <!-- 컨텐츠내용 -->
+										      <p>
+										      	<img class="img1" alt="메뉴" src="">
+										      	<span class="font0-8em">설명1</span>
+										      </p>
+										      <!-- 옵션반복 -->
+										      <div class="paddingCol20px font0-9em">
+											      <p><b>가격<span class="color-orange">(필수선택)</span></b></p>
+											      <p>
+											      	<label><input type="radio" name="op1">15,000원</label>
+											      	<label><input type="radio" name="op1">17,000원</label>
+											      </p>
+										      </div>
+										      <!-- /옵션반복 -->
+										      <!-- 추가선택 -->
+										      <div class="paddingCol20px font0-9em">
+											      <p><b>추가선택<span class="color-orange">(1개이상 선택가능)</span></b></p>
+											      <p>
+											      	<label><input type="checkbox" name="op2">공기밥1,000원</label>
+											      	<label><input type="checkbox" name="op3">사리추가2,000원</label>
+											      </p>
+										      </div>
+									      	  <!-- 추가선택 -->
+									      	  <div class="paddingCol20px flex">
+									      	  	<input class="flex3 btblack padding15px font1-2em" type="button" value="장바구니 담기">
+									      	  	<input class="flex1 btgray padding15px font1-2em" type="reset" value="취소">
+									      	  </div>
+									    </div>
+									</div>
+							    	<!-- /메뉴반복 -->
 							    </div>
 							</div>
-					    	<!-- /메뉴반복 -->
-					    	<!-- 메뉴반복 -->
-					    	<div class="group2">
-								<div class="btAccodion2"  id="m2">
-									<span>1.만두+냉모밀1</span>
-									<p class="sp2">설명1</p>
-								</div>
-							    <div>
-							    	  <!-- 컨텐츠내용 -->
-								      <p>
-								      	<img class="img1" alt="메뉴" src="">
-								      	<span class="font0-8em">설명1</span>
-								      </p>
-								      <!-- 옵션반복 -->
-								      <div class="paddingCol20px font0-9em">
-									      <p><b>가격<span class="color-orange">(필수선택)</span></b></p>
-									      <p>
-									      	<label><input type="radio" name="op1">15,000원</label>
-									      	<label><input type="radio" name="op1">17,000원</label>
-									      </p>
-								      </div>
-								      <!-- /옵션반복 -->
-								      <!-- 추가선택 -->
-								      <div class="paddingCol20px font0-9em">
-									      <p><b>추가선택<span class="color-orange">(1개이상 선택가능)</span></b></p>
-									      <p>
-									      	<label><input type="checkbox" name="op2">공기밥1,000원</label>
-									      	<label><input type="checkbox" name="op3">사리추가2,000원</label>
-									      </p>
-								      </div>
-							      	  <!-- 추가선택 -->
-							      	  <div class="paddingCol20px flex">
-							      	  	<input class="flex3 btblack padding15px font1-2em" type="button" value="장바구니 담기">
-							      	  	<input class="flex1 btgray padding15px font1-2em" type="reset" value="취소">
-							      	  </div>
-							    </div>
-							</div>
-					    	<!-- /메뉴반복 -->
-					    </div>
-					</div>
-					<!-- /카테고리반복 -->
-					<div class="group1">
-						<div class="btAccodion1">
-							<div class="inline-block">
-								<b>모밀 Set</b>
-								<p class="sp2">- 곱배기 추가시 2,000원</p>
-							</div>
-						</div>
-					    <div class="accordion2">
-					    	<div class="group2">
-								<div class="btAccodion2"  id="m3">
-									<span>1.만두+냉모밀1</span>
-								</div>
-							    <div>
-							      <p>컨텐츠</p>
-							    </div>
-							</div>
-					    </div>
-					</div>
-					<!-- 카테고리반복 -->
+							<!-- /카테고리반복 -->
+						</c:forEach>
+					</c:if>
 					<br>
 				</div>				
 				<!-- 원산지영역 -->

@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.yasikyeo.app.categori.model.CategoriService;
+import com.yasikyeo.app.categori.model.CategoriVO;
 import com.yasikyeo.app.ceo.shop.model.CeoShopService;
 import com.yasikyeo.app.ceo.shop.model.CeoShopVO;
 import com.yasikyeo.app.common.PaginationInfo;
@@ -29,6 +31,9 @@ public class ClientShopController {
 	
 	@Autowired
 	private CeoShopService shopService;
+	
+	@Autowired
+	private CategoriService cateService;
 	
 	@RequestMapping("/client_shop_list.do")
 	public void clientShopList(@ModelAttribute SearchVO2 searchVo2,
@@ -76,6 +81,10 @@ public class ClientShopController {
 		CeoShopVO shopVo = shopService.selectByShopNo(no);
 		logger.info("업소 상세내역 조회결과 shopVo={}",shopVo);
 		
+		List<CategoriVO> cateList = cateService.selectByShopNo(no);
+		logger.info("업소 카테고리 조회결과 cateList.size={}",cateList.size());
+		
 		model.addAttribute("shop", shopVo);
+		model.addAttribute("cateList", cateList);
 	}
 }
