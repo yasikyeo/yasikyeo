@@ -1,10 +1,10 @@
 package com.yasikyeo.app.ceo.shop.model;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class CeoShopServiceImpl implements CeoShopService{
@@ -50,6 +50,16 @@ public class CeoShopServiceImpl implements CeoShopService{
 	@Override
 	public CeoShopVO selectCeoShop(int ceoNo) {
 		return ceoShopDao.selectCeoShop(ceoNo);
+	}
+
+	@Override
+	public List<CeoShopVO> selectShopByCategory(Map<String, String> map) {
+		return ceoShopDao.selectShopByCategory(map);
+	}
+
+	@Override
+	public int countShopByCategory(Map<String, String> map) {
+		return ceoShopDao.countShopByCategory(map);
 	}
 }
 

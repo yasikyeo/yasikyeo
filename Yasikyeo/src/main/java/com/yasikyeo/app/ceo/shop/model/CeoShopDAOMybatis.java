@@ -1,6 +1,7 @@
 package com.yasikyeo.app.ceo.shop.model;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.springframework.stereotype.Repository;
@@ -38,6 +39,16 @@ public class CeoShopDAOMybatis extends SqlSessionDaoSupport	implements CeoShopDA
 	@Override
 	public CeoShopVO selectCeoShop(int ceoNo) {
 		return getSqlSession().selectOne(namespace+".selectCeoShop",ceoNo);
+	}
+
+	@Override
+	public List<CeoShopVO> selectShopByCategory(Map<String, String> map) {
+		return getSqlSession().selectList(namespace+".selectShopByCategory", map);
+	}
+
+	@Override
+	public int countShopByCategory(Map<String, String> map) {
+		return getSqlSession().selectOne(namespace+".countShopByCategory", map);
 	}
 	
 }

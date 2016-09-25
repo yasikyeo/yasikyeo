@@ -40,4 +40,26 @@
 		values(#{productNo},#{productName},#{productExplain},#{productPrice},#{productOption},#{productImage},#{shopNo})
 	</insert>
 	
+	
+	<parameterMap type="map" id="searchinfo">
+		<parameter property="si" javaType="string" 
+			jdbcType="VARCHAR" mode="IN"/>
+		<parameter property="gu" javaType="string" 
+			jdbcType="VARCHAR" mode="IN"/>
+		<parameter property="dong" javaType="string" 
+			jdbcType="VARCHAR" mode="IN"/>
+		<parameter property="categori" javaType="string" 
+			jdbcType="VARCHAR" mode="IN"/>
+	</parameterMap>
+	<select id="selectShopByCategory" parameterMap="searchinfo" resultType="CeoShopVO">
+		select * from shop
+		where ADDRESS like '%' || ? || '%' and ADDRESS like '%' || ? || '%' and ADDRESS like '%' || ? || '%' and SHOP_CATEGORI like '%' || ? || '%';
+	</select>
+	<select id="countShopByCategory" parameterMap="searchinfo" resultType="int">
+		select count(*) from shop
+		where ADDRESS like '%' || ? || '%' and ADDRESS like '%' || ? || '%' and ADDRESS like '%' || ? || '%' and SHOP_CATEGORI like '%' || ? || '%';
+	</select>
+	
+	
+	
 </mapper>
