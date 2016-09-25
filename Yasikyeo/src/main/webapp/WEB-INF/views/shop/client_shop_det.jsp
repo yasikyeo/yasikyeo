@@ -181,7 +181,7 @@ $(document).ready(function () {
 				<a href="">홈</a>
 			</li>
 			<li>&gt;</li>
-			<li><b>메뉴</b></li>
+			<li><b>${shop.shopCategori}</b></li>
 			<li>
 				<label class="switch">
 					<input type="checkbox" id="bookmark">
@@ -194,13 +194,13 @@ $(document).ready(function () {
 	<div class="contain1">
 		<div>
 			<ul class="ul1 align-middle">
-				<li class="font17px"><b>업소명</b></li>
+				<li class="font17px"><b>${shop.shopName}</b></li>
 				<li>|</li>
-				<li>주소들어가는부분</li>
+				<li>${shop.address}</li>
 				<li>|</li>
 				<li>
-					<span class="star2" data-score="3.6"></span>
-					<b>X명</b>
+					<span class="star2" data-score="${shop.shopAvgreview}"></span>
+					<b>${shop.shopReviewcnt}명</b>
 				</li>
 				<li><span class="spbrownbox padding3px">포인트적립</span></li>
 			</ul>
@@ -390,7 +390,7 @@ $(document).ready(function () {
 				<!-- 원산지영역 -->
 				<div class="contain4">
 					<p class="paddingCol5px"><b>원산지</b></p>
-					<p class="paddingCol5px">도우(국내산),불고기(국내산)</p>
+					<p class="paddingCol5px">${shop.shopOrigin}</p>
 				</div>
 				<!-- 원산지영역 -->
 			</div>
@@ -627,13 +627,19 @@ $(document).ready(function () {
 				<div class="border-bottom1 font16px padding10px"><b>업소상세정보</b></div>
 				<dl class="font13px padding10px dl1">
 					<dt>최소금액</dt>
-					<dd class="ma-l-60px">12,000원 부터</dd>
+					<dd class="ma-l-60px">
+					<fmt:formatNumber pattern="#,###" value="${shop.shopMinprice}"/>
+					원 부터
+					</dd>
 					<dt>운영시간</dt>
-					<dd class="ma-l-60px">낮 12:00 ~ 익일 새벽 01:00</dd>
+					<dd class="ma-l-60px">
+					${shop.shopOpentime}
+					~ ${shop.shopClosetime}
+					</dd>
 					<dt>전화번호</dt>
-					<dd class="ma-l-60px color-orange"><b>050-6381-5910</b></dd>
+					<dd class="ma-l-60px color-orange"><b>${shop.shopTel}</b></dd>
 					<dt>업소소개</dt>
-					<dd class="ma-l-60px">새로운 신개념 치킨과 피자의 러브스토리^^ 치킨과피자 더이상 고민하시지 말고 둘다 드실수 있습니다! 정성있는맛과 좋은가격 좋은품질 모두다 완벽한 피치스토리 느껴보십시요</dd>
+					<dd class="ma-l-60px">${shop.shopExplain}</dd>
 				</dl>
 			</div>
 			<!-- 장바구니영역 -->
