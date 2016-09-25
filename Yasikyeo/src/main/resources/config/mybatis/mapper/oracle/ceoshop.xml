@@ -53,11 +53,11 @@
 	</parameterMap>
 	<select id="selectShopByCategory" parameterMap="searchinfo" resultType="CeoShopVO">
 		select * from shop
-		where ADDRESS like '%' || ? || '%' and ADDRESS like '%' || ? || '%' and ADDRESS like '%' || ? || '%' and SHOP_CATEGORI like '%' || ? || '%';
+		where ADDRESS like '%' || ? || '%' and ADDRESS like '%' || ? || '%' and ADDRESS like '%' || ? || '%' and SHOP_CATEGORI like '%' || ? || '%'
 	</select>
 	<select id="countShopByCategory" parameterMap="searchinfo" resultType="int">
 		select count(*) from shop
-		where ADDRESS like '%' || ? || '%' and ADDRESS like '%' || ? || '%' and ADDRESS like '%' || ? || '%' and SHOP_CATEGORI like '%' || ? || '%';
+		where ADDRESS like '%' || ? || '%' and ADDRESS like '%' || ? || '%' and ADDRESS like '%' || ? || '%' and SHOP_CATEGORI like '%' || ? || '%'
 	</select>
 	
 	

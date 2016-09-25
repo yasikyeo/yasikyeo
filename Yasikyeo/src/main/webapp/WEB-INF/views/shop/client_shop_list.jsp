@@ -30,9 +30,9 @@ $(function () {
 				<a href="">홈</a>
 			</li>
 			<li>&gt;</li>
-			<li><b>마이페이지</b></li>
+			<li><b>${param.menu}</b></li>
 			<li>|</li>
-			<li><b>주소</b>를 중심으로 총 <span class="color-orange"><b>xx</b></span>곳을 찾았습니다.</li>
+			<li><b>${sessionScope.si}&nbsp;${sessionScope.gu}&nbsp;${sessionScope.dong}</b>를 중심으로 총 <span class="color-orange"><b>${findShop}</b></span>곳을 찾았습니다.</li>
 			<li>
 				<select class="selectoption2">
 					<option>기본정렬로 보기</option>
@@ -45,27 +45,29 @@ $(function () {
 	</div>
 	<div class="div12">
 		<!-- 반복시작 -->
-		<div class="shopcontain1 shopcontain2 shopcontain3">
-			<div class="divshop">
-				<div class="div13">
-					<img alt="상점이미지" src="">
-				</div>
-				<div class="div7">
-					<p><b>피자스토리 원플러스원</b></p>
-					<div class="padding3px star1" data-score="3.6"></div>
-					<p class="padding3px sp2">주소들어갈부분</p>
-					<div class="padding3px description1">리뷰<span>4</span>사장님댓글<span>3</span></div>
-					<div class="padding3px">
-						<span class="spaquabox">바로결제</span>
-						<span class="spaquabox">만나서결제</span>
+		<c:if test="${!empty shopList}">
+			<div class="shopcontain1 shopcontain2 shopcontain3">
+				<div class="divshop">
+					<div class="div13">
+						<img alt="상점이미지" src="<c:url value='/shop_Image/${shopList.shopImage}'/>">
+					</div>
+					<div class="div7">
+						<p><b>${shopList.shopName}</b></p>
+						<div class="padding3px star1" data-score="${shopList.shopAvgreview}"></div>
+						<p class="padding3px sp2">${shopList.address}</p>
+						<div class="padding3px description1">리뷰<span>${shopList.shopReviewcnt}</span>사장님댓글<span>${shopList.shopCeoreplycnt}</span></div>
+						<div class="padding3px">
+							<span class="spaquabox">바로결제</span>
+							<span class="spaquabox">만나서결제</span>
+						</div>
 					</div>
 				</div>
+				<!-- <div class="modal1">
+					<div class="modal-content1">현재 운영시간이 아닙니다</div>
+				</div> -->
 			</div>
-				<div class="modal1">
- 					<div class="modal-content1">현재 운영시간이 아닙니다</div>
- 				</div>
-		</div>
-		<!-- 반복끝 -->
+			<!-- 반복끝 -->
+		</c:if>
 		<div class="shopcontain1 shopcontain2 shopcontain3">
 			<div class="divshop">
 				<div class="div13">
