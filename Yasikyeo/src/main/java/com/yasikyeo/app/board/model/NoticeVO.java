@@ -7,6 +7,7 @@ public class NoticeVO {
 	private String noticeUpfileName;
 	private String noticeSuffix;
 	private int adminNo;
+	private String noticeCode;
 	
 	public int getNoticeNo() {
 		return noticeNo;
@@ -44,11 +45,18 @@ public class NoticeVO {
 	public void setAdminNo(int adminNo) {
 		this.adminNo = adminNo;
 	}
+	
+	public String getNoticeCode() {
+		return noticeCode;
+	}
+	public void setNoticeCode(String noticeCode) {
+		this.noticeCode = noticeCode;
+	}
 	@Override
 	public String toString() {
 		return "NoticeVO [noticeNo=" + noticeNo + ", noticeTitle=" + noticeTitle + ", noticeContent=" + noticeContent
 				+ ", noticeUpfileName=" + noticeUpfileName + ", noticeSuffix=" + noticeSuffix + ", adminNo=" + adminNo
-				+ "]";
+				+ ", noticeCode=" + noticeCode + "]";
 	}
 	
 	

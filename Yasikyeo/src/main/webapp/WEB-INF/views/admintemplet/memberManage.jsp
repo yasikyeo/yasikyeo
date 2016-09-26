@@ -33,7 +33,7 @@
 							<tbody>
 							<c:if test="${empty usermember}">
 								<tr align="center">
-									<td colspan="5">데이터가 없습니다</td>
+									<td colspan="4">데이터가 없습니다</td>
 								</tr>
 							</c:if>
 								<c:if test="${!empty usermember }">

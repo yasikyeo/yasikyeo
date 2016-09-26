@@ -124,9 +124,9 @@
 		<c:set var="i" value="0" />
 		<c:forEach var="vo" items="${alist }">
 			<tr style="text-align: center">
-				<td>${vo.noticeNo}</td>
-				<td><a href="<c:url value='/admintemplet/eventNoticeDetail.do?noticeNo=${vo.noticeNo }'/>">
-				${vo.noticeSuffix}</a></td>
+				<td onclick="location.href='<c:url value="/admintemplet/eventNoticeDetail.do?noticeNo=${vo.noticeNo }"/>'">${vo.noticeNo}</td>
+				<td onclick="location.href='<c:url value="/admintemplet/eventNoticeDetail.do?noticeNo=${vo.noticeNo }"/>'">
+				${vo.noticeSuffix}</td>
 				<td style="text-align: left;">
 				<!-- 파일이 첨부된 경우 파일 이미지 보여주기 -->
 				
@@ -140,7 +140,7 @@
 					
 					<!-- 24시간 이내의 글인 경우 new 이미지 보여주기 -->
 				</td>
-				<td>
+				<td onclick="location.href='<c:url value="/admintemplet/eventNoticeDetail.do?noticeNo=${vo.noticeNo }"/>'">
 					<c:if test="${fn:length(vo.noticeContent)>30}">
 							${fn:substring(vo.noticeContent,0,30)}...
 						</c:if>
