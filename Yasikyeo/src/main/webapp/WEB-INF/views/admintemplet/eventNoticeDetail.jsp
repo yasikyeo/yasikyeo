@@ -42,6 +42,8 @@
 			</span>
 		</div>
 		<div class="align_center">
+			<input type="button" value="목록으로" onclick="location.href='<c:url value="/admintemplet/eventNotice.do"/>'">
+			||
 			<input type="button" id="bt1" value="수정" onclick="location.href='<c:url value="/admintemplet/noticeUpdate.do?noticeNo=${alist.noticeNo}"/>'">
 			||
 			<input type="submit" id="bt2" value="삭제" >			

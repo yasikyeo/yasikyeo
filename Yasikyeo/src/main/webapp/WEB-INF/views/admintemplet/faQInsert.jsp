@@ -59,6 +59,8 @@
  			<textarea id="faqContent" name="faqContent" rows="12" cols="40"></textarea>
  		</div>
         <div class="align_center" >
+        	<input type="button" value="목록으로" onclick="location.href='<c:url value="/admintemplet/faQ.do"/>'">
+        	||
             <input type = "submit" value="등록"/>
   		</div>
     </fieldset>

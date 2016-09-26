@@ -40,6 +40,9 @@
 			</c:if>
 		</div>
 		<div class="align_center">
+			
+			<input type="button" value="목록으로" onclick="location.href='<c:url value="/admintemplet/faQ.do"/>'">
+			||
 			<input type="button" id="bt1" value="수정" onclick="location.href='<c:url value="/admintemplet/updateFaQ.do?faqNo=${alist.faqNo}"/>'">
 			||
 			<input type="submit" id="bt2" value="삭제" >			
