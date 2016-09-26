@@ -12,6 +12,11 @@ import com.yasikyeo.app.member.model.MemberVO;
 
 public interface AdminService {
 	
+	//아이디 중복 확인
+	public static final int EXIST_ID=1; //해당아이디가 존재
+	public static final int NONE_EXIST_ID=2;
+	//=> 해당 아이디가 존재하지 않음
+	
 	//로그인 처리시 사용하는 상수	
 	public static final int LOGIN_OK=1; //로그인 성공
 	public static final int PWD_DISAGREE=2;//비밀번호 불일치
@@ -20,6 +25,7 @@ public interface AdminService {
 	
 	
 	public int insertAdmin(AdminVO adminVo);
+	public int adminIdCheck(String adminId);
 	public int loginCheck(AdminVO adminVo);
 	public AdminVO selectMemberByMemberId(String adminId);
 	public List<MemberVO> selectMember();

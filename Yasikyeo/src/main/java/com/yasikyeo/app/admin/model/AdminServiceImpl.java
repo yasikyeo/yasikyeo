@@ -86,5 +86,20 @@ public class AdminServiceImpl implements AdminService{
 		return adminDao.adminInsert(adminVo);
 	}
 
+	@Override
+	public int adminIdCheck(String adminId) {
+		//아이디 중복확인
+				int result=0;
+				
+				int count = adminDao.adminIdCheck(adminId);
+				if(count>0){ //해당 아이디가 이미 존재하는 경우
+					result=EXIST_ID;
+				}else{ //해당 아이디가 없는 경우
+					result=NONE_EXIST_ID;
+				}
+				
+				return result;		
+	}
+
 	
 }

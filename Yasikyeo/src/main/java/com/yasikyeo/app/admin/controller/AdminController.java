@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.yasikyeo.app.admin.model.AdminService;
@@ -86,6 +87,20 @@ public class AdminController {
 		
 		//3.
 			return "admintemplet/adminRegister";
+	}
+	
+	@RequestMapping("/ajaxCheckUserid.do")
+	@ResponseBody
+	public int ajaxCheckId(@RequestParam String adminId){
+		logger.info("ajax-아이디 중복확인, 파라미터 adminId={}",
+				adminId);
+		
+		int result = adminService.adminIdCheck(adminId);
+		logger.info("ajax 아이디 중복확인 결과, result={}",
+				result);
+		//해당 아이디가 존재하면 1, 존재하지 않으면 2를 리턴
+		
+		return result;
 	}
 	
 	@RequestMapping(value="/adminRegister.do", method=RequestMethod.POST)

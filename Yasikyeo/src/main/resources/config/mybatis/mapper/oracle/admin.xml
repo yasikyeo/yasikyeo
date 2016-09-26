@@ -10,6 +10,12 @@
 		insert into admin(admin_no,admin_id,admin_pwd,admin_name)
 		values(#{adminNo},#{adminId},#{adminPwd},#{adminName})
 	</insert>
+	
+	<select id="selectCountadminId" 
+		parameterType="string" resultType="int">
+		select count(*)	from admin 
+		where admin_id=#{adminId}
+	</select>
 
 	<select id="selectPwd" parameterType="AdminVO"
 		resultType="string">

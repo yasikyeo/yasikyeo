@@ -21,9 +21,48 @@
 				alert("비밀번호가 일치하지 않습니다.");
 				$("#adminPwd2").focus();
 				return false;
+			}else if($("#chkId").val()!='Y'){
+				alert("아이디 중복확인을 하셔야 합니다!");
+				$("#btnChkId").focus();
+				return false;
 			}
+		});
+		//click
 			
-		});//click
+			$("#adminId").keyup(function(){
+				//1 <= 해당 아이디가 존재하는 경우
+				//2 <= 존재하지 않는 경우
+				if($("#adminId").val().length>=1){
+					$.ajax({
+						url:"<c:url value='/admintemplet/ajaxCheckUserid.do'/>",
+						type:"GET",
+						data:"adminId="+$("#adminId").val(),
+						success:function(res){
+							var result="";
+							if(res==1){
+								result="이미 등록된 아이디입니다.";
+								$("#chkId").val("N");
+							}else if(res==2){
+								result = "사용가능한 아이디입니다.";
+								$("#chkId").val("Y");
+							}
+							$("#message").html(result);
+						},
+						error:function(xhr, status, error){
+							alert(status+":"+error);
+						}
+					});
+				}else{
+					//유효성 검사를 통과하지 못한 경우
+					$("#message").html("아이디 규칙에 맞지 않습니다");
+					$("#chkId").val("N");
+				}
+				
+			});
+			
+	});//document.ready
+			
+		
 </script>
  			
  			<section class="contents">
@@ -38,9 +77,10 @@
         <input type="text" name="adminName" id="adminName" style="ime-mode:active">
     </div>
     <div>
-        <label for="userid">관리자ID</label>
+        <label for="adminId">관리자ID</label>
         <input type="text" name="adminId" id="adminId"
         		style="ime-mode:inactive">&nbsp;
+        <span id="message"></span>
   	</div>
     <div>
         <label for="adminPwd">비밀번호</label>
@@ -56,6 +96,7 @@
     </div>
    </fieldset>
 			
+			<input type="hidden" name="chkId" id="chkId">
 			
 			</div>
 		</div>
