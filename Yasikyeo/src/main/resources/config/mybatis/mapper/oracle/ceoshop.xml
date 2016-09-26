@@ -31,6 +31,15 @@
 	<select id="selectShopNo" parameterType="int" resultType="int">
 		select shop_no from shop where ceo_no=#{ceoNo}
 	</select>
+	
+	<update id="updateCeoShop" parameterType="CeoShopVO">
+		update shop
+		set shop_categori=#{shopCategori},shop_Name=#{shopName},shop_Image=#{shopImage},shop_Explain=#{shopExplain},
+		shop_Minprice=#{shopMinprice},shop_opentime=#{shopOpentime},shop_closetime=#{shopClosetime},shop_tel=#{shopTel},
+		shop_origin=#{shopOrigin},address=#{address},addressDetail=#{addressDetail},postcode=#{postcode},shop_accountname=#{shopAccountname},
+		shop_account=#{shopAccount},shop_license=#{shopLicense}		
+		where shop_no=#{shopNo}
+	</update>
 		
 	<insert id="insertCeoProduct" parameterType="CeoProductVO">
 	<selectKey keyProperty="productNo" resultType="int" order="BEFORE">

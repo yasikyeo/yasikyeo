@@ -19,16 +19,16 @@
 									<tr>
 										<td class="td_1">업소 카테고리</td>
 										<td class="td_2"><select id="shopCategori" name="shopCategori" class="formInput">
-												<option value="치킨">치킨</option>
-												<option value="피자">피자</option>
-												<option value="중국집">중국집</option>
-												<option value="패스트푸드">패스트푸드</option>
-												<option value="돈까스/일식">돈까스/일식</option>
-												<option value="찜/탕">찜/탕</option>
-												<option value="족발/보쌈">족발/보쌈</option>
-												<option value="한식/분식">한식/분식</option>
-												<option value="도시락">도시락</option>
-												<option value="야식">야식</option>
+												<option value="치킨" <c:if test="${ceoShopVo.shopCategori=='치킨' }">selected</c:if>>치킨</option>
+												<option value="피자" <c:if test="${ceoShopVo.shopCategori=='피자' }">selected</c:if>>피자</option>
+												<option value="중국집" <c:if test="${ceoShopVo.shopCategori=='중국집' }">selected</c:if>>중국집</option>
+												<option value="패스트푸드" <c:if test="${ceoShopVo.shopCategori=='패스트푸드' }">selected</c:if>>패스트푸드</option>
+												<option value="돈까스,일식" <c:if test="${ceoShopVo.shopCategori=='돈까스/일식' }">selected</c:if>>돈까스,일식</option>
+												<option value="찜,탕" <c:if test="${ceoShopVo.shopCategori=='찜/탕' }">selected</c:if>>찜,탕</option>
+												<option value="족발,보쌈" <c:if test="${ceoShopVo.shopCategori=='족발/보쌈' }">selected</c:if>>족발,보쌈</option>
+												<option value="한식,분식" <c:if test="${ceoShopVo.shopCategori=='한식/분식' }">selected</c:if>>한식,분식</option>
+												<option value="도시락" <c:if test="${ceoShopVo.shopCategori=='도시락' }">selected</c:if>>도시락</option>
+												<option value="야식" <c:if test="${ceoShopVo.shopCategori=='야식' }">selected</c:if>>야식</option>
 										</select>
 										</td>
 									</tr>
@@ -52,7 +52,7 @@
 										<td class="td_1">업소소개</td>
 										<td class="td_2">
 											<textarea rows="15" cols="80" name="shopExplain" class="formInput" style="width: 350px; height: 170px;"
-											value="${ceoShopVo.shopExplain }"></textarea>
+											>${ceoShopVo.shopExplain }</textarea>
 										</td>
 									</tr>
 
@@ -106,15 +106,15 @@
 									<tr>
 										<td class="td_1">업소은행계좌</td>
 										<td class="td_2"><select name="shopAccountname" class="formInput" value="${ceoShopVo.shopAccountname}">
-												<option value="국민">국민</option>
-												<option value="신한">신한</option>
-												<option value="우리">우리</option>
-												<option value="농협">농협</option>
+												<option value="국민" <c:if test="${ceoShopVo.shopAccountname=='국민' }">selected</c:if>>국민</option>
+												<option value="신한" <c:if test="${ceoShopVo.shopAccountname=='신한' }">selected</c:if>>신한</option>
+												<option value="우리" <c:if test="${ceoShopVo.shopAccountname=='우리' }">selected</c:if>>우리</option>
+												<option value="농협" <c:if test="${ceoShopVo.shopAccountname=='농협' }">selected</c:if>>농협</option>
 										</select> <input type="text" class="formInput" name="shopAccount" value="${ceoShopVo.shopAccount }"></td>
 									</tr>
 								</table>
 							<div id="buttonset">
-								<input type="submit" value="업소등록" class="next_button">
+								<input type="submit" value="수정하기" class="next_button">
 							</div>
 							</form>
 							<div id="post" style="display:none;position:fixed;overflow:hidden;z-index:1;-webkit-overflow-scrolling:touch;"></div>
@@ -194,74 +194,6 @@
         element_layer.style.top = (((window.innerHeight || document.documentElement.clientHeight) - height)/2 - borderWidth) + 'px';
     }
     
-    
-    
-    $(document).ready(function(){
-		$("#memSubmit").click(function(event){
-			if($("#memberId").val().length < 1){
-				alert("아이디를 입력하세요.");
-				$("#memberId").focus();
-				return false;
-				event.stopPropagation();
-				event.preventDefault();
-			}else if($("#memberName").val().length < 1){
-				alert("이름을 입력하세요.");
-				$("#memberName").focus();
-				return false;
-			}else if($("#authNum").val()!="인증완료"){
-				alert("이메일 인증을 하세요.");
-				$("#memberEmail").focus();
-				return false;
-			}else if($("#memberNickname").val().lenght<1){
-				alert("닉네임을 입력하세요.");
-				$("#memberNickname").focus();
-				return false;
-			}else if($("#memberPwd").val().length<1){
-				alert("비밀번호를 입력하세요.");
-				$("#memberPwd").focus();
-				return false;
-			}else if($("#memberPwd2").val()!=$("#memberPwd2").val()){
-				alert("비밀번호가 일치하지 않습니다.");
-				$("#memberPwd2").focus();
-				return false;
-			}
-			
-		 $("#memberId").keyup(function(){
-				if(validate_member_Id($("#memberId").val()) && $("#memberId").val().length>=4){
-					$.ajax({
-						url:"<c:url value='/login/ajaxCheckMemberId.do'/>",
-						type:"GET",
-						data:"memberId="+$("#memberId").val(),
-						success:function(res){
-							var result="";
-							if(res==1){
-								result="이미 등록된 아이디입니다.";
-								$("#chkId").val("N");
-							}else if(res==2){
-								result = "사용가능한 아이디입니다.";
-								$("#chkId").val("Y");
-							}
-							$("#message").html(result);
-						},
-						error:function(xhr, status, error){
-							alert(status+":"+error);
-						}
-					});
-				}else{
-					$("#message").html("아이디 규칙에 맞지 않습니다");
-					$("#chkId").val("N");
-				}
-			});
-		 
-		 
-    });  
-    
-	function validate_member_Id(memberId){
-		var pattern = new RegExp(/^[a-z0-9_]+$/g);
-		
-		return pattern.test(memberId);		
-	}
-	
 	function handleFileSelect(i) {
 			var fileselectobj = "imageUpload";
 			var previmageobj ="productImgView";

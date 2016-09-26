@@ -1,5 +1,6 @@
 package com.yasikyeo.app.ceo.shop.controller;
 
+import java.io.File;
 import java.util.List;
 import java.util.Map;
 
@@ -61,7 +62,6 @@ public class CeoShopController {
 		String ceoId = (String) session.getAttribute("ceoId");
 		
 		int uploadType = FileUploadWebUtil.SHOP_IMAGE_UPLOAD;
-		//=> 상품등록시 이미지 업로드
 		
 		List<Map<String, Object>> fileList = fileUtil.fileUpload(request, uploadType);
 		
@@ -179,6 +179,64 @@ public class CeoShopController {
 		model.addAttribute("msg",msg);
 		model.addAttribute("url",url);
 		
+		
+		return "common/message";
+	}
+	
+	@RequestMapping(value="ceo/member/ceo_updateshop.do",method=RequestMethod.POST)
+	public String ceo_updateshop_post(@ModelAttribute CeoShopVO ceoShopVo,HttpSession session,HttpServletRequest request,Model model){
+		
+		
+		String ceoId = (String) session.getAttribute("ceoId");
+		
+		int uploadType = FileUploadWebUtil.SHOP_IMAGE_UPLOAD;
+		
+		int ceoNo = ceoShopService.selectCeoNo(ceoId);
+		String oldShopImage = ceoShopService.selectCeoShop(ceoNo).getShopImage();
+		int shopNo = ceoShopService.selectCeoShop(ceoNo).getShopNo();
+		ceoShopVo.setShopNo(shopNo);
+		
+		logger.info("업소정보 수정 파라미터 ceoShopVo={}", ceoShopVo);
+		
+		List<Map<String, Object>> fileList = fileUtil.fileUpload(request, uploadType);
+		
+		//업로드된 파일명 구해오기
+		String fileName="";
+		long fileSize=0;
+		for(Map<String, Object> mymap : fileList){
+			fileName= (String) mymap.get("fileName");
+			fileSize=(Long) mymap.get("fileSize");			
+		}
+		
+		logger.info("파일명={}",fileName);
+		
+		if(fileName==null || fileName.isEmpty()){
+			ceoShopVo.setShopImage(oldShopImage);
+		}else{
+			ceoShopVo.setShopImage(fileName);
+			
+			String upPath=fileUtil.getUploadPath(request, fileUtil.SHOP_IMAGE_UPLOAD);
+					
+				//File객체 생성 후 파일 삭제
+				File delFile = new File(upPath,oldShopImage);
+				if(delFile.exists()){
+					boolean bool= delFile.delete();
+					logger.info("파일 삭제 결과={}", bool);
+				}
+		}
+		
+		int cnt = ceoShopService.updateCeoShop(ceoShopVo);
+		String msg="",url="/ceo/index.do";
+		if(cnt>0){
+			msg="업소 정보 수정이 완료되었습니다.";
+		}else{
+			msg="업소 정보 수정 실패";
+		}
+		
+		logger.info("업소 정보 수정 결과 cnt={}", cnt);
+		
+		model.addAttribute("msg",msg);
+		model.addAttribute("url",url);
 		
 		return "common/message";
 	}

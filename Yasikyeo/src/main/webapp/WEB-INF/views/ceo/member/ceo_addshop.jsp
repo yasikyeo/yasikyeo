@@ -194,69 +194,6 @@
         element_layer.style.top = (((window.innerHeight || document.documentElement.clientHeight) - height)/2 - borderWidth) + 'px';
     }
     
-    
-    
-    $(document).ready(function(){
-		$("#memSubmit").click(function(event){
-			if($("#memberId").val().length < 1){
-				alert("아이디를 입력하세요.");
-				$("#memberId").focus();
-				return false;
-			}else if($("#memberName").val().length < 1){
-				alert("이름을 입력하세요.");
-				$("#memberName").focus();
-				return false;
-			}else if($("#authNum").val()!="인증완료"){
-				alert("이메일 인증을 하세요.");
-				$("#memberEmail").focus();
-				return false;
-			}else if($("#memberNickname").val().lenght<1){
-				alert("닉네임을 입력하세요.");
-				$("#memberNickname").focus();
-				return false;
-			}else if($("#memberPwd").val().length<1){
-				alert("비밀번호를 입력하세요.");
-				$("#memberPwd").focus();
-				return false;
-			}else if($("#memberPwd2").val()!=$("#memberPwd2").val()){
-				alert("비밀번호가 일치하지 않습니다.");
-				$("#memberPwd2").focus();
-				return false;
-			}
-			
-		 $("#memberId").keyup(function(){
-				if(validate_member_Id($("#memberId").val()) && $("#memberId").val().length>=4){
-					$.ajax({
-						url:"<c:url value='/login/ajaxCheckMemberId.do'/>",
-						type:"GET",
-						data:"memberId="+$("#memberId").val(),
-						success:function(res){
-							var result="";
-							if(res==1){
-								result="이미 등록된 아이디입니다.";
-								$("#chkId").val("N");
-							}else if(res==2){
-								result = "사용가능한 아이디입니다.";
-								$("#chkId").val("Y");
-							}
-							$("#message").html(result);
-						},
-						error:function(xhr, status, error){
-							alert(status+":"+error);
-						}
-					});
-				}else{
-					$("#message").html("아이디 규칙에 맞지 않습니다");
-					$("#chkId").val("N");
-				}
-			});
-    });  
-    
-	function validate_member_Id(memberId){
-		var pattern = new RegExp(/^[a-z0-9_]+$/g);
-		
-		return pattern.test(memberId);		
-	}
 </script>
 
 

@@ -35,9 +35,9 @@
 					<div id="a_1">
 						<div class="container">
     						<div id="slides">
-      							<img src="${pageContext.request.contextPath}/images/test1.png" alt="이미지1" width="800" height="470">
-							    <img src="${pageContext.request.contextPath}/images/test2.png" alt="이미지2" width="800" height="470">
-							    <img src="${pageContext.request.contextPath}/images/test3.png"alt="이미지3" width="800" height="470">
+      							<img src="${pageContext.request.contextPath}/images/ceo1.jpg" alt="이미지1" width="800" height="470">
+							    <img src="${pageContext.request.contextPath}/images/ceo2.jpg" alt="이미지2" width="800" height="470">
+							    <img src="${pageContext.request.contextPath}/images/ceo3.jpg"alt="이미지3" width="800" height="470">
     						</div>
     						
     						<div id="conlogin">
@@ -46,7 +46,7 @@
     							<form name="frm" method="post" action="<c:url value='/ceo/login.do'/>">
 	    							<input type="text" placeholder="ID 입력" name="ceoId" class="input" value="${cookie.ck_ceoId.value }" >
 	    							<br><input type="password" required placeholder="비밀번호 입력" name="ceoPwd" class="input">
-	    							<br><p><input type="checkbox" id="idSave" name="idSave" <c:if test="${!empty cookie.ck_ceoId}">
+	    							<br><p><input type="checkbox" id="idSave" name="idSave" <c:if test="${!empty cookie.ck_ceoId}">http://localhost:9090/yasikyeo/images/test1.png
 					    				checked</c:if>>
 				    				<label for="idSave">아이디 저장 |</label>
 				    				<a href="<c:url value='/ceo/index.do'/>"> ID/PW찾기 </a>
