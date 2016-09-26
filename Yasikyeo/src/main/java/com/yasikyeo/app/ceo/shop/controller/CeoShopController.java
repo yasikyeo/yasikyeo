@@ -124,7 +124,7 @@ public class CeoShopController {
 		String ceoId = (String) session.getAttribute("ceoId");
 		int ceoNo = ceoShopService.selectCeoNo(ceoId);
 		
-		int uploadType = FileUploadWebUtil.SHOP_PRODUCT_IMAGE_UPLOAD;
+		int uploadType = FileUploadWebUtil.PRODUCT_IMAGE_UPLOAD;
 		//=> 상품등록시 이미지 업로드
 		
 		List<Map<String, Object>> fileList = fileUtil.fileUpload(request, uploadType);

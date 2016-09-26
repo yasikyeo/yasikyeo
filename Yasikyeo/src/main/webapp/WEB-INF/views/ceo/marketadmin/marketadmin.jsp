@@ -29,19 +29,83 @@
 													<div id="productImgView"></div>
 													<div>메뉴 이미지 등록 : <input type="file" name="imageUpload" id="imageUpload" onchange="handleFileSelect(0)" class="formInput1"/></div>
 													<div>메뉴 이름 : <input type="text" id="food" name="productName" class="formInput2"></div>
-													<div>메뉴 옵션 : <select name="productOption" class="formInput">
-														<option value="" >옵션없음</option>									
-														<option value="대/중/소">대/중/소</option>
-														<option value="S/M/L" >S/M/L</option>
-													</select></div>
-													<div>메뉴 가격 : <input type="text" id="price" name="productPrice" class="formInput2"></div><br>
+													<div>메뉴 옵션 : <input type="text" name="productOption" class="formInput2" placeholder="작성 예) : 콜라500ml 1000/콜라1.25L 2000/사이다500ml 1500"></div>
+													<div>메뉴 가격 : <input type="text" id="price" name="productPrice" class="formInput2" placeholder="작성 예 : 대 16000/중 15000/소 14000"></div><br>
 													<div><label for="productExplain">메뉴 설명<br></label>
-													<textarea rows="15" cols="80" name="productExplain" class="formInput" style="width: 350px; height: 170px; float: inherit;"></textarea></div><br>
+													<textarea rows="15" cols="80" name="productExplain" class="formInput" style="width: 500px; height: 170px; float: inherit;"></textarea></div><br>
 													 <input type="submit" class="formInput" value="등록하기"><br>
 												</div>
 											</form>
 										</div>
 										
+										</details>
+									</div>
+									</tr>
+									<br>
+									<tr>
+									<div class="product clear">
+										<details> <summary>메뉴 관리</summary>
+										<div id="content">
+											<div class="needpopup3">
+												<table summary="상품목록에 관한 표로써, 번호, 제목, 작성자, 작성일, 조회수에 대한 정보를 제공합니다.">
+													<caption>상품 목록</caption>
+													<colgroup>
+														<col style="width:5%" />
+														<col style="width:15%" />
+														<col style="width:32%" />
+														<col style="width:15%" />
+														<col style="width:15%" />	
+														<col style="width:9%" />
+														<col style="width:9%" />			
+													</colgroup>
+													<thead>
+													  <tr>
+														<th><input type="checkbox" name="chkAll" ></th>
+														<th scope="col">상품이미지</th>
+														<th scope="col">상품이름</th>
+														<th scope="col">가격</th>
+														<th scope="col">등록일</th>
+														<th scope="col">수정</th>
+														<th scope="col">삭제</th>
+													  </tr>
+													</thead> 
+													<tbody>  
+													
+													<!-- 반복 시작 -->
+													<c:set var="i" value="0"/>
+													<c:forEach var="vo" items="${pdList }" >
+														<tr class="td1">
+															<td>
+																<input type="checkbox" 
+																	name="pdItems[${i}].productNo"
+																	id="chk_${i}"
+																	value="${vo.productNo}" >
+																<input type="hidden" 
+																	name="pdItems[${i}].imageURL"
+																	value="${vo.imageURL}">	
+															</td>
+															<td>
+																<img src
+															="<c:url value='/pd_images/${vo.imageURL }'/>" 
+																	alt="${vo.productName }" width="50">
+															</td>
+															<td class="align_left">${vo.productName }</td>
+															<td class="align_right">
+																<fmt:formatNumber value="${vo.sellPrice }"
+																pattern="#,###" />원 </td>
+															<td>
+																<fmt:formatDate value="${vo.regDate }"
+																	pattern="yyyy-MM-dd"/></td>
+															<td><a href="#">수정</a></td>
+															<td><a href="#">삭제</a></td>
+														</tr>
+														<c:set var="i" value="${i+1}"/> 
+													</c:forEach>
+													<!-- 반복 끝 -->
+													</tbody>
+												</table>
+											</div>
+											</div>
 										</details>
 									</div>
 									</tr>
@@ -70,17 +134,6 @@
 									</div>
 									</tr>
 									<br>
-									<tr>
-									<div class="product clear">
-										<details> <summary>ㄴㅇㄻㄴㅇㄹ</summary>
-										<div id="content">
-											<div class="needpopup3">
-												ㅁㄴㅇㄹ
-											</div>
-										</div>
-										</details>
-									</div>
-									</tr>
 									
 									<!-- 메뉴버튼 클릭 시 내용이 나옴 -->
 									<script>
