@@ -1986,6 +1986,10 @@ p.btAccodion2 > span.ui-icon-active{
 .bt9:FOCUS{
 	outline: none;
 }
+.div28{
+	text-align: center;
+	padding: 15px 0;
+}
 
 /*
  	유틸 클래스 

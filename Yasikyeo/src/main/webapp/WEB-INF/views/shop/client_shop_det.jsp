@@ -172,7 +172,12 @@ $(document).ready(function () {
 		  });
 	});
 
+	//장바구니담기
+	$(".cartadd").click(function () {
+		
+	});
 });
+
 </script>
 <div class="mainSection">
 	<div class="location1">
@@ -241,7 +246,11 @@ $(document).ready(function () {
 											<img alt="${product.productNo }" src="<c:url value='/product_Image/${product.productImage}'/>">
 											<div class="contain3">
 												<p>${product.productName }</p>
-												<p><b>${product.productPrice}원</b></p>
+												<p><b>
+													<c:set var="pricearr1" value="${product.productPrice}"/>
+													<c:set var="price1" value="${fn:split(pricearr1,'/')[0]}"/>
+													${price1}원
+												</b></p>
 											</div>
 										</div>
 									</div>
@@ -280,8 +289,24 @@ $(document).ready(function () {
 												      <div class="paddingCol20px font0-9em">
 													      <p><b>가격<span class="color-orange">(필수선택)</span></b></p>
 													      <p>
-													      	<label><input type="radio" name="op1">${product.productPrice}원</label>
-													      	<!-- <label><input type="radio" name="op1">17,000원</label> -->
+													      	<c:set var="pricearr" value="${product.productPrice}"/>
+													      	<c:set var="price" value="${fn:split(pricearr,'/')}"/>
+													      	<c:set var="a" value="0"/>
+													      	<c:forEach var="pri" items="${price}">
+														      	<c:set var="a" value="${a+1}"/>
+														      	<c:set var="pri1" value="${fn:split(pri,' ')[0]}"/>
+														      	<c:set var="pri2" value="${fn:split(pri,' ')[1]}"/>
+														      	<label>
+														      		<c:if test="${empty pri2}">
+															      		<input type="radio" name="price" id="pr1">
+															      		<fmt:formatNumber value="${pri1}" pattern="#,###" type="number"/>원
+														      		</c:if>
+														      		<c:if test="${!empty pri2}">
+															      		<input type="radio" name="price" id="pr1">${pri1}
+															      		<fmt:formatNumber value="${pri2}" pattern="#,###" type="number"/>원
+														      		</c:if>
+														      	</label>
+													      	</c:forEach>
 													      </p>
 												      </div>
 												      <!-- /옵션반복 -->
@@ -289,18 +314,22 @@ $(document).ready(function () {
 												      <div class="paddingCol20px font0-9em">
 													      <p><b>추가선택<span class="color-orange">(1개이상 선택가능)</span></b></p>
 													      <p>
-													      	<script type="text/javascript">
-													      		var optarray = "${product.productOption}".split(",");
-													      		var optstr = optarray[0].split("/");
-													      		var optprice = optarray[1].split("/");
-													      	</script>
-													      	<label><input type="checkbox" name="op2">공기밥1,000원</label>
-												      		<label><input type="checkbox" name="op3">사리추가2,000원</label>
+													      	<c:set var="optarr" value="${product.productOption}"/>
+													      	<c:set var="option" value="${fn:split(optarr,'/')}"/>
+													      	<c:set var="i" value="0"/>
+													      	<c:forEach var="opt" items="${option}">
+													      	<c:set var="i" value="${i+1}"/>
+													      	<c:set var="opt1" value="${fn:split(opt,' ')[0]}"/>
+													      	<c:set var="opt2" value="${fn:split(opt,' ')[1]}"/>
+														      	<label>
+														      		<input type="checkbox" name="op${i}">${opt1}<fmt:formatNumber value="${opt2}" pattern="#,###" type="number"/>원
+														      	</label>
+													      	</c:forEach>
 													      </p>
 												      </div>
 											      	  <!-- /추가선택 -->
 											      	  <div class="paddingCol20px flex">
-											      	  	<input class="flex3 btblack padding15px font1-2em" type="button" value="장바구니 담기">
+											      	  	<input class="flex3 btblack padding15px font1-2em cartadd" type="button" value="장바구니 담기">
 											      	  	<input class="flex1 btgray padding15px font1-2em" type="reset" value="취소">
 											      	  </div>
 											    </div>
@@ -575,40 +604,68 @@ $(document).ready(function () {
 				<div class="border-bottom1 font16px padding10px">
 					<b>장바구니 <span class="color-orange">X개</span></b>
 				</div>
-				
+				<!-- 로그인을 안했을때 -->
+				<c:if test="${empty sessionScope.memberId }">
+					<div class="div28">
+						<p>바로결제를 하시려면</p>
+						<p>로그인을 해주세요<p>
+					</div>
+					<input class="btblack bt8" type="submit" value="로그인하기">
+				</c:if>
+				<!-- /로그인을 안했을때 -->
+				<c:if test="${!empty sessionScope.memberId }">
 				<!-- 장바구니메뉴추가부분 -->
-				<form class="font14px" action="<c:url value='/order/client_order_info.do'/> ">
-					<!-- 각 메뉴 -->
-					<div class="accordion2">
-						<div class="padding10px">
-							<span class="sp12">탕수육+짬뽕</span>
-							<input class="textsize1 " type="text">개
-							<input class="align-middle bt7" type="button" value="X">
-						</div>
-						<div class="border-bottom1">
-							<p class="btAccodion2"><b class="sp13">14,000원</b></p>
-							<div class="padding10px div15">
-								<span class="float-left"><b>가격:</b></span>
-								<span class="float-right">+ 14,000원</span>
+					<form class="font14px" action="<c:url value='/order/client_order_info.do'/> ">
+						<!-- 각 메뉴 -->
+						<div class="accordion2">
+							<div class="padding10px">
+								<span class="sp12">탕수육+짬뽕</span>
+								<input class="textsize1 " type="text">개
+								<input class="align-middle bt7" type="button" value="X">
+							</div>
+							<div class="border-bottom1">
+								<p class="btAccodion2"><b class="sp13">14,000원</b></p>
+								<div class="padding10px div15">
+									<span class="float-left"><b>가격:</b></span>
+									<span class="float-right">+ 14,000원</span>
+								</div>
 							</div>
 						</div>
-					</div>
-					<!-- 각 메뉴 -->
-					<!-- 주문합계부분 -->
-					<div>
-						<div class="padding10px align-right">
-							<p><b class="font15px">주문합계</b></p>
-							<p class="color-orange font18px"><b>54,000</b>원</p>
-							<p class="color-silver font13px">[최소주문금액:10,000원]</p>
-						</div>
+						<!-- 각 메뉴 -->
 						<!-- 주문합계부분 -->
-						<input class="btbrown bt8" type="submit" value="주문하기">
-					</div>
-				</form>
+						<div>
+							<div class="padding10px align-right">
+								<p><b class="font15px">주문합계</b></p>
+								<p class="color-orange font18px"><b>54,000</b>원</p>
+								<p class="color-silver font13px">[최소주문금액:10,000원]</p>
+							</div>
+							<!-- 주문합계부분 -->
+							<input class="btbrown bt8" type="submit" value="주문하기">
+						</div>
+					</form>
 				<!-- 장바구니메뉴추가부분 -->
-				
+				</c:if>
 			</div>
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+function cartmenu(menu,price) {
+	var cartmenustr="";
+	cartmenustr+='<div class="accordion2">';
+		cartmenustr+='<div class="padding10px">';
+			cartmenustr+='<span class="sp12">'+menu+'</span>';
+			cartmenustr+='<input class="textsize1 " type="number">개';
+			cartmenustr+='<input class="align-middle bt7" type="button" value="X">';
+		cartmenustr+='</div>';
+		cartmenustr+='<div class="border-bottom1">';
+			cartmenustr+='<p class="btAccodion2"><b class="sp13">'+price+'원</b></p>';
+			cartmenustr+='<div class="padding10px div15">';
+				cartmenustr+='<span class="float-left"><b>가격:</b></span>';
+				cartmenustr+='<span class="float-right">+ '+price+'원</span>';
+			cartmenustr+='</div>';
+		cartmenustr+='</div>';
+	cartmenustr+='</div>';
+}
+</script>
 <%@ include file="../inc/bottom.jsp" %>
