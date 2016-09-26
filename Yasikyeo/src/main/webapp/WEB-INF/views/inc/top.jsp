@@ -99,7 +99,7 @@
 			url:"<c:url value='/setDefultAddress.do' />",
 			type:"GET",
 			success:function(res){
-				alert("${sessionScope.si},${sessionScope.gu},${sessionScope.dong}");				
+								
 			},
 			error:function(xhr, status, error){
 				alert(status+" : " + error);

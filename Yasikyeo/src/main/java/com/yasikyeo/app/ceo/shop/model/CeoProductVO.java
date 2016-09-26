@@ -1,5 +1,7 @@
 package com.yasikyeo.app.ceo.shop.model;
 
+import java.sql.Timestamp;
+
 public class CeoProductVO {
 	
 	private int productNo;
@@ -7,9 +9,24 @@ public class CeoProductVO {
 	private String productExplain;
 	private String productPrice;
 	private String productOption;
+	private Timestamp productRegdate;
+	private String productRecommend;
 	private String productImage;
 	private int shopNo;
 	
+		
+	public Timestamp getProductRegdate() {
+		return productRegdate;
+	}
+	public void setProductRegdate(Timestamp productRegdate) {
+		this.productRegdate = productRegdate;
+	}
+	public String getProductRecommend() {
+		return productRecommend;
+	}
+	public void setProductRecommend(String productRecommend) {
+		this.productRecommend = productRecommend;
+	}
 	public int getProductNo() {
 		return productNo;
 	}
@@ -56,7 +73,8 @@ public class CeoProductVO {
 	public String toString() {
 		return "CeoProductVO [productNo=" + productNo + ", productName=" + productName + ", productExplain="
 				+ productExplain + ", productPrice=" + productPrice + ", productOption=" + productOption
-				+ ", productImage=" + productImage + ", shopNo=" + shopNo + "]";
+				+ ", productRegdate=" + productRegdate + ", productRecommend=" + productRecommend + ", productImage="
+				+ productImage + ", shopNo=" + shopNo + "]";
 	}
 	
 	
