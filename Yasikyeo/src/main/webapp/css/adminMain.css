@@ -115,6 +115,7 @@ body, td, th{
 		float: left; /*background:#FFCCCC;*/
 		width: 35%;
 		padding: 35px 0 0 0;
+		margin: 0 0 1000px 0;
 		
 		}
 		.container .leftNavi dt	{
@@ -266,6 +267,7 @@ caption{
 		clear: left;		
 		font-weight: bold;
 		}
+		
 .divList, .divPage, .divSearch, .divRight, .divList table{
 		width:700px;
 	}	

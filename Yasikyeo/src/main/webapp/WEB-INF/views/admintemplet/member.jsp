@@ -13,14 +13,14 @@
 				
  			</nav>
  			
- 			<div class="divList">
+ 			<div>
  					<table class="box2">
  						<h2>회원</h2>
 			<colgroup>
+				<col style="width:20%;" />
+				<col style="width:20%;" />
 				<col style="width:30%;" />
-				<col style="width:30%;" />
-				<col style="width:30%;" />
-				<col style="width:10%;" />		
+				<col style="width:30%;" />		
 			</colgroup>
 							<thead>
 								<tr>
