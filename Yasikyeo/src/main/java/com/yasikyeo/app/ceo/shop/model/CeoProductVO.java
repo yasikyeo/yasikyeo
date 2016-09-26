@@ -12,9 +12,16 @@ public class CeoProductVO {
 	private Timestamp productRegdate;
 	private String productRecommend;
 	private String productImage;
+	private int categoriNo;
 	private int shopNo;
 	
 		
+	public int getCategoriNo() {
+		return categoriNo;
+	}
+	public void setCategoriNo(int categoriNo) {
+		this.categoriNo = categoriNo;
+	}
 	public Timestamp getProductRegdate() {
 		return productRegdate;
 	}
@@ -74,7 +81,7 @@ public class CeoProductVO {
 		return "CeoProductVO [productNo=" + productNo + ", productName=" + productName + ", productExplain="
 				+ productExplain + ", productPrice=" + productPrice + ", productOption=" + productOption
 				+ ", productRegdate=" + productRegdate + ", productRecommend=" + productRecommend + ", productImage="
-				+ productImage + ", shopNo=" + shopNo + "]";
+				+ productImage + ", categoriNo=" + categoriNo + ", shopNo=" + shopNo + "]";
 	}
 	
 	

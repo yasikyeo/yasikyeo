@@ -79,5 +79,8 @@
 		select * from shop where shop_no=#{shopno}
 	</select>
 	
+	<select id="productSelectByShopNo" parameterType="int" resultType="CeoProductVO">
+		select * from product where Shop_no=#{shopNo} order by CATEGORI_NO asc
+	</select>
 	
 </mapper>

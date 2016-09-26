@@ -68,6 +68,11 @@ public class CeoShopServiceImpl implements CeoShopService{
 	public CeoShopVO selectByShopNo(int shopNo) {
 		return ceoShopDao.selectByShopNo(shopNo);
 	}
+
+	@Override
+	public List<CeoProductVO> productSelectByShopNo(int shopNo) {
+		return ceoShopDao.productSelectByShopNo(shopNo);
+	}
 }
 
 
