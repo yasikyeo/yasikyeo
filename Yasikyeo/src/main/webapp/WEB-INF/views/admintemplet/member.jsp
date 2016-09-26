@@ -13,7 +13,7 @@
 				
  			</nav>
  			
- 			<div>
+ 			<div class="divList">
  					<table class="box2">
  						<h2>회원</h2>
 			<colgroup>
@@ -33,16 +33,16 @@
 							<tbody>
 							<c:if test="${empty usermember}">
 								<tr align="center">
-									<td colspan="5">데이터가 없습니다</td>
+									<td colspan="4">데이터가 없습니다</td>
 								</tr>
 							</c:if>
 								<c:if test="${!empty usermember }">
 								<c:forEach var="userVO" items="${usermember}">
 									<tr align="center">
-										<td><a href="<c:url value='/admintemplet/memberDetail.do?memberNo=${userVO.memberNo }'/>">${userVO.memberId}</a></td>
-										<td>${userVO.memberNickname}</td>
-										<td>${userVO.memberBirth}</td>
-										<td>${userVO.memberPoint}</td>
+										<td onclick="location.href='<c:url value='/admintemplet/memberDetail.do?memberNo=${userVO.memberNo }'/>'">${userVO.memberId}</td>
+										<td onclick="location.href='<c:url value='/admintemplet/memberDetail.do?memberNo=${userVO.memberNo }'/>'">${userVO.memberNickname}</td>
+										<td onclick="location.href='<c:url value='/admintemplet/memberDetail.do?memberNo=${userVO.memberNo }'/>'">${userVO.memberBirth}</td>
+										<td onclick="location.href='<c:url value='/admintemplet/memberDetail.do?memberNo=${userVO.memberNo }'/>'">${userVO.memberPoint}</td>
 									</tr>
 								</c:forEach>
 								</c:if>	

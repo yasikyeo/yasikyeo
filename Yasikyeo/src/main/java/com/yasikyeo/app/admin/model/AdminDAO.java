@@ -8,6 +8,7 @@ import com.yasikyeo.app.common.SearchVO;
 import com.yasikyeo.app.member.model.MemberVO;
 
 public interface AdminDAO {
+	public int adminInsert(AdminVO adminVo);
 	public String loginCheck(AdminVO adminVo);
 	public AdminVO selectMemberByMemberId(String adminId);
 	public List<MemberVO> selectMember();

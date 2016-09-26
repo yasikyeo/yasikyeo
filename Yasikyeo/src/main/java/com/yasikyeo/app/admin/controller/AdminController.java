@@ -78,6 +78,28 @@ public class AdminController {
 			return "admintemplet/adminIndex";
 	}
 	
+	@RequestMapping(value="/adminRegister.do", method=RequestMethod.GET)
+	public String adminRegisterView(){
+		//1.
+			logger.info("관리자 회원가입 보여주기");
+		//2.
+		
+		//3.
+			return "admintemplet/adminRegister";
+	}
+	
+	@RequestMapping(value="/adminRegister.do", method=RequestMethod.POST)
+	public String adminRegister_post(@ModelAttribute AdminVO adminVo){
+		//1.
+			logger.info("관리자 회원가입 파라미터 adminVO={}",adminVo);
+		//2.
+			int cnt = adminService.insertAdmin(adminVo);
+			logger.info("관리자 회원가입 완료 cnt={}", cnt);
+			
+		//3.
+			return "redirect:/admintemplet/adminMain.do";
+	}
+	
 	@RequestMapping(value="/adminMain.do",method=RequestMethod.GET)
 	public String adminMainView(){
 		//1.
@@ -88,6 +110,7 @@ public class AdminController {
 			return "admintemplet/adminMain";
 	}
 	
+	
 	@RequestMapping(value="/adminMain.do", method=RequestMethod.POST)
 	public String adminMain_post(@ModelAttribute AdminVO adminVo,
 			@RequestParam(required=false) String chkSave,
@@ -96,7 +119,6 @@ public class AdminController {
 			Model model){
 		//1.
 			adminVo.setAuthcode(MemberService.ADMIN_AUTH_CODE);
-			adminVo.setAdminNo(adminService.ADMIN_NO);
 			logger.info("관리자 로그인 파라미터 adminVO={}", adminVo);
 			
 		//2.	
@@ -112,7 +134,8 @@ public class AdminController {
 				HttpSession session = request.getSession();
 				session.setAttribute("adminId", adminVo.getAdminId());
 				session.setAttribute("adminNo", adminVo.getAdminNo());
-				session.setAttribute("authcode", adVo.getAuthcode());
+				session.setAttribute("authcode", adminVo.getAuthcode());
+				logger.info("authcode 파라미터 autocode={}",adminVo.getAuthcode());
 				
 				//[2] 쿠키에 저장
 				Cookie ck = new Cookie("ck_admin_Id", adminVo.getAdminId());
@@ -163,6 +186,8 @@ public class AdminController {
 		//1.
 			logger.info("공지사항 글쓰기 처리, 파라미터 noticeVo={}", noticeVo);
 			int adminNo = (Integer)session.getAttribute("adminNo");
+			String authCode=(String)session.getAttribute("authcode");
+			logger.info("세션 파라미터 adminNo={},adminCode={}",adminNo,authCode);
 		//2.
 			
 			//파일 업로드 처리
@@ -185,6 +210,7 @@ public class AdminController {
 				noticeVo.setNoticeSuffix(noticeService.EVENTE);
 			}
 			noticeVo.setAdminNo(adminNo);
+			noticeVo.setNoticeCode(authCode);
 			
 			int cnt = noticeService.insertNotice(noticeVo);
 			logger.info("공지사항 글등록 완료 cnt={}",cnt);
@@ -485,6 +511,7 @@ public class AdminController {
 		//1.
 		logger.info("F&Q 글쓰기 처리, 파라미터 FaQVO={}", faqVo);
 		int adminNo = (Integer)session.getAttribute("adminNo");
+		logger.info("세션값 파라미터 adminNo={}",adminNo);
 		//2.
 		
 		//파일 업로드 처리
@@ -521,6 +548,8 @@ public class AdminController {
 		
 		int cnt = faqService.insertFaq(faqVo);
 		logger.info("F&Q항 글등록 완료 cnt={}",cnt);
+		logger.info("adminNo값 faqVo.getAdminNo={}",faqVo.getAdminNo());
+		logger.info("완료된 F&A값 faqVO={}", faqVo);
 	//3.
 		return "redirect:/admintemplet/faQ.do";
 	}

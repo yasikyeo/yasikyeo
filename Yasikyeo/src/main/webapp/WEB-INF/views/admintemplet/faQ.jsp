@@ -121,26 +121,24 @@
 	<c:if test="${!empty alist}">
 		<!--게시판 내용 반복문 시작  -->	
 		<c:set var="i" value="0" />	
+		<!-- <td align="center" onClick="location.href='http://www.daum.net/'" style="cursor:pointer;"> -->
 		<c:forEach var="vo" items="${alist }">
 			<tr style="text-align: center">
-				<td>${vo.faqNo}</td>
-				<td>${vo.faqCategori }</td>
-				<td style="text-align: left;">
+				<td onclick="location.href='<c:url value="/admintemplet/faQDetail.do?faqNo=${vo.faqNo }"/>'">${vo.faqNo}</td>
+				<td onclick="location.href='<c:url value="/admintemplet/faQDetail.do?faqNo=${vo.faqNo }"/>'">${vo.faqCategori }</td>
+				<td style="text-align: left" onclick="location.href='<c:url value="/admintemplet/faQDetail.do?faqNo=${vo.faqNo }"/>'"">
 					<!-- 제목이 긴 경우 일부만 보여주기 -->
 						<c:if test="${fn:length(vo.faqTitle)>30}">
-							<a href="<c:url value='/admintemplet/faQDetail.do?faqNo=${vo.faqNo }'/>">
 							${fn:substring(vo.faqTitle, 0,30)}...
-							</a>
 						</c:if>
 						<c:if test="${fn:length(vo.faqTitle)<=30}">
-						<a href="<c:url value='/admintemplet/faQDetail.do?faqNo=${vo.faqNo }'/>">
-							${vo.faqTitle}
-						</a>
+						${vo.faqTitle}
+						
 						</c:if>
 					
 					<!-- 24시간 이내의 글인 경우 new 이미지 보여주기 -->
 				</td>
-					<td>
+					<td onclick="location.href='<c:url value="/admintemplet/faQDetail.do?faqNo=${vo.faqNo }"/>'">
 						<c:if test="${fn:length(vo.faqContent)>30}">
 							${fn:substring(vo.faqContent,0,30)}...
 						</c:if>

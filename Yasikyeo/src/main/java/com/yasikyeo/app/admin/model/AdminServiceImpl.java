@@ -81,5 +81,10 @@ public class AdminServiceImpl implements AdminService{
 		return adminDao.updateCeo(ceoNo);
 	}
 
+	@Override
+	public int insertAdmin(AdminVO adminVo) {
+		return adminDao.adminInsert(adminVo);
+	}
+
 	
 }

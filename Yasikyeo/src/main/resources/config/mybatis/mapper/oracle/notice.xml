@@ -16,8 +16,8 @@
 		<selectKey keyProperty="noticeNo" resultType="int" order="BEFORE">
 			select notice_no_seq.nextval from dual
 		</selectKey>
-		insert into notice(notice_no,notice_title,notice_content,notice_upfilename,notice_suffix)
-		values(#{noticeNo},#{noticeTitle},#{noticeContent},#{noticeUpfileName},#{noticeSuffix})
+		insert into notice(notice_no,notice_title,notice_content,notice_upfilename,notice_suffix,admin_no,notice_code)
+		values(#{noticeNo},#{noticeTitle},#{noticeContent},#{noticeUpfileName},#{noticeSuffix},#{adminNo},#{noticeCode})
 	</insert>
 	
 	<select id="selectAllNotice" resultType="noticeVO" parameterType="SearchVO">

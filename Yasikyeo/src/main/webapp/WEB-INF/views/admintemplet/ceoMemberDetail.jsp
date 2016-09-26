@@ -44,6 +44,9 @@
 			</div>
 		</c:if>
 	</div>
+	<div>
+		<input type="button" value="목록으로" onclick="location.href='<c:url value="/admintemplet/member.do"/>'">
+	</div>
 	</form>
 					</article>
 			</section>

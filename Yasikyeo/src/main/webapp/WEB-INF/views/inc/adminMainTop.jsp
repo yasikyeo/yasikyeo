@@ -36,7 +36,7 @@
 	<div id="wrap">
 		<!-- header -->		
 		<div id="header">
-			<h1><a href="<c:url value='/admintemplet/adminMain.do' />">
+			<h1><a href="<c:url value='/admintemplet/adminIndex.do' />">
 			<img alt="로고 이미지" src="${pageContext.request.contextPath}/images/admin/adminlogo.png" 
 			height="80px" /></a></h1>
 			<div id="headerRight">
@@ -47,13 +47,13 @@
 				<c:if test="${!empty sessionScope.adminId}">
 					<li><a href="<c:url value='/admintemplet/adminlogout.do'/>">로그아웃</a></li>
 				</c:if>
+					<li><a href="<c:url value='/admintemplet/adminRegister.do' />">회원가입</a></li>
 					<li><a href="<c:url value='/index.do' />">회원홈페이지로</a></li>
-					<li><a href="#">사장님홈페이지로</a>
+					<li><a href="<c:url value='/ceo/index.do' />">사장님홈페이지로</a>
 				</ul>
 			</div>
 		</div>
-		
-		<div id="header2">
+	<div id="header2">
 			<nav class="topNav">
 				<ul>
 					<li id="notice">
@@ -88,7 +88,8 @@
 		<div id="topLine" class="top_Line" style="background:url(${pageContext.request.contextPath}/images/line6.jpg)  repeat-x;font-size:7px">
 			&nbsp;
 		</div>
-		
+				
+	
 		
 
  		

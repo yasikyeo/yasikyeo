@@ -64,6 +64,11 @@ public class AdminDAOMyBatis extends SqlSessionDaoSupport implements AdminDAO{
 		return getSqlSession().update(namespace+".updateceo",ceoNo);
 	}
 
+	@Override
+	public int adminInsert(AdminVO adminVo) {
+		return getSqlSession().insert(namespace+".insertAdmin",adminVo);
+	}
+
 	
 	
 

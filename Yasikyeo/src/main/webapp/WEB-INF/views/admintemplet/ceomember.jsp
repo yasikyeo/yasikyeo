@@ -39,10 +39,10 @@
 								<c:if test="${!empty ceomember}">
 								<c:forEach var="ceoVO" items="${ceomember}">
 									<tr>
-									<td><a href="<c:url value='/admintemplet/ceoMemberDetail.do?ceoNo=${ceoVO.ceoNo }'/>">${ceoVO.ceoId}</a></td>
-									<td>${ceoVO.ceoName}</td>
-									<td>${ceoVO.ceoEmail}</td>
-									<td>${ceoVO.ceoTel}</td>
+									<td onclick="location.href='<c:url value='/admintemplet/ceoMemberDetail.do?ceoNo=${ceoVO.ceoNo }'/>'">${ceoVO.ceoId}</td>
+									<td onclick="location.href='<c:url value='/admintemplet/ceoMemberDetail.do?ceoNo=${ceoVO.ceoNo }'/>'">${ceoVO.ceoName}</td>
+									<td onclick="location.href='<c:url value='/admintemplet/ceoMemberDetail.do?ceoNo=${ceoVO.ceoNo }'/>'">${ceoVO.ceoEmail}</td>
+									<td onclick="location.href='<c:url value='/admintemplet/ceoMemberDetail.do?ceoNo=${ceoVO.ceoNo }'/>'">${ceoVO.ceoTel}</td>
 									</tr>
 								</c:forEach>
 								</c:if>	
