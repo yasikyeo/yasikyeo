@@ -48,9 +48,9 @@
 								</c:if>	
 							</tbody>
 						</table>
-					</div>
+					
 						<br><br>
-					<div>
+					
 						<table class="box2">
 										<h2>ceo회원</h2>
 			<colgroup>
@@ -86,12 +86,12 @@
 								</c:if>	
 							</tbody>
 						</table>
+					</div>
 				</div>
 					
 				
 		
- 			
- 		</div>
+ 	
  				 	
 			
 		
