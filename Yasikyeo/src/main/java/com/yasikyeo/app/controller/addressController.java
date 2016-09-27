@@ -56,7 +56,7 @@ public class addressController {
 	public void setDefultAddress(HttpSession session){
 		session.setAttribute("si", "서울특별시");
 		session.setAttribute("gu", "영등포구");
-		session.setAttribute("dong", "당산1가");
+		session.setAttribute("dong", "당산동1가");
 	}
 	@RequestMapping("/setAddress.do")
 	@ResponseBody

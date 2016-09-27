@@ -67,7 +67,7 @@
 		        </where>
 		        ) LIST_ALL
 		        <if test="searchCondition!=null and searchCondition!=''">
-					order by #{searchCondition} desc
+					order by ${searchCondition} desc
 				</if>
 		)
 		<![CDATA[
