@@ -107,9 +107,12 @@ public class AdminController {
 	public String adminRegister_post(@ModelAttribute AdminVO adminVo){
 		//1.
 			logger.info("관리자 회원가입 파라미터 adminVO={}",adminVo);
+		
 		//2.
+			
 			int cnt = adminService.insertAdmin(adminVo);
 			logger.info("관리자 회원가입 완료 cnt={}", cnt);
+			logger.info("관리자 adminNo값 adminNo={}", adminVo.getAdminNo());
 			
 		//3.
 			return "redirect:/admintemplet/adminMain.do";
@@ -148,9 +151,10 @@ public class AdminController {
 				
 				HttpSession session = request.getSession();
 				session.setAttribute("adminId", adminVo.getAdminId());
-				session.setAttribute("adminNo", adminVo.getAdminNo());
-				session.setAttribute("authcode", adminVo.getAuthcode());
-				logger.info("authcode 파라미터 autocode={}",adminVo.getAuthcode());
+				session.setAttribute("adminNo", adVo.getAdminNo());
+				session.setAttribute("authcode", adVo.getAuthcode());
+				logger.info("authcode 파라미터 autocode={}",adVo.getAuthcode());
+				logger.info("adminNo 파라미터 adminNo={}", adVo.getAdminNo());
 				
 				//[2] 쿠키에 저장
 				Cookie ck = new Cookie("ck_admin_Id", adminVo.getAdminId());
