@@ -90,7 +90,7 @@ $(function () {
 				<div class="bookmarkContain">
 					<!-- 북마크 없을때 -->
 					<div class="div1 vertical-container">
-						<img alt="" src="<c:url value='/images/temp/img-nofav.jpg'/>">
+						<img alt="" src="<c:url value='/images/즐겨찾기등록.png'/>">
 					</div>
 					<!-- 북마크 있을때 -->
 					<!-- 북마크 반복시작 -->

@@ -27,7 +27,7 @@
 					<li>|</li>
 					<li><a href="#">문의하기</a></li>
 					<li>|</li>
-					<li><a href="#">사장님사이트</a></li>
+					<li><a href="http://192.168.0.27:9090/yasikyeo/ceo/index.do">사장님사이트</a></li>
 					<li>|</li>
 				</ul>
 				<p>Copyright &copy; 2016.All rights reserved by wook's</p>

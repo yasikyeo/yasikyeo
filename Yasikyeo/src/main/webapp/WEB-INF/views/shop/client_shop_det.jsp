@@ -171,11 +171,12 @@ $(document).ready(function () {
 		    preview_default:"test-failed.png"
 		  });
 	});
-
-	//장바구니담기
-	$(".cartadd").click(function () {
-		
+	//로그인 버튼
+	$("#loginbt").click(function() {
+		$( ".modal" ).show();
 	});
+
+	
 });
 
 </script>
@@ -274,9 +275,9 @@ $(document).ready(function () {
 							    	<c:forEach var="product" items="${productList}">
 							    		<c:if test="${product.categoriNo==cate.categoriNo}">
 											<!-- 메뉴반복 -->
-									    	<div class="group2">
+									    	<div class="group2 menu1">
 												<div class="btAccodion2" id="${product.productNo }">
-													<span>${product.productName}</span>
+													<span class="productName">${product.productName}</span>
 													<p class="sp2">${product.productExplain}</p>
 												</div>
 											    <div>
@@ -298,11 +299,11 @@ $(document).ready(function () {
 														      	<c:set var="pri2" value="${fn:split(pri,' ')[1]}"/>
 														      	<label>
 														      		<c:if test="${empty pri2}">
-															      		<input type="radio" name="price" id="pr1">
+															      		<input type="radio" name="price" id="pr${a}" value="${pri1}">
 															      		<fmt:formatNumber value="${pri1}" pattern="#,###" type="number"/>원
 														      		</c:if>
 														      		<c:if test="${!empty pri2}">
-															      		<input type="radio" name="price" id="pr1">${pri1}
+															      		<input type="radio" name="price" id="pr${a}" value="${pri1}/${pri2}">${pri1}
 															      		<fmt:formatNumber value="${pri2}" pattern="#,###" type="number"/>원
 														      		</c:if>
 														      	</label>
@@ -312,7 +313,7 @@ $(document).ready(function () {
 												      <!-- /옵션반복 -->
 												      <!-- 추가선택 -->
 												      <div class="paddingCol20px font0-9em">
-													      <p><b>추가선택<span class="color-orange">(1개이상 선택가능)</span></b></p>
+													      <p><b>추가선택<span class="color-orange">(추가로 1개 선택가능)</span></b></p>
 													      <p>
 													      	<c:set var="optarr" value="${product.productOption}"/>
 													      	<c:set var="option" value="${fn:split(optarr,'/')}"/>
@@ -322,7 +323,7 @@ $(document).ready(function () {
 													      	<c:set var="opt1" value="${fn:split(opt,' ')[0]}"/>
 													      	<c:set var="opt2" value="${fn:split(opt,' ')[1]}"/>
 														      	<label>
-														      		<input type="checkbox" name="op${i}">${opt1}<fmt:formatNumber value="${opt2}" pattern="#,###" type="number"/>원
+														      		<input type="checkbox" id="op${i}" value="${opt1}/${opt2}">${opt1}<fmt:formatNumber value="${opt2}" pattern="#,###" type="number"/>원
 														      	</label>
 													      	</c:forEach>
 													      </p>
@@ -602,7 +603,7 @@ $(document).ready(function () {
 			<!-- 장바구니영역 -->
 			<div class="contain2 ma-t-20px"  data-spy="affix" data-offset-top="772">
 				<div class="border-bottom1 font16px padding10px">
-					<b>장바구니 <span class="color-orange">X개</span></b>
+					<b>장바구니 <span class="color-orange" id="cartcnt"></span></b>
 				</div>
 				<!-- 로그인을 안했을때 -->
 				<c:if test="${empty sessionScope.memberId }">
@@ -610,38 +611,45 @@ $(document).ready(function () {
 						<p>바로결제를 하시려면</p>
 						<p>로그인을 해주세요<p>
 					</div>
-					<input class="btblack bt8" type="submit" value="로그인하기">
+					<input class="btblack bt8" type="submit" value="로그인하기" id="loginbt">
 				</c:if>
 				<!-- /로그인을 안했을때 -->
 				<c:if test="${!empty sessionScope.memberId }">
 				<!-- 장바구니메뉴추가부분 -->
-					<form class="font14px" action="<c:url value='/order/client_order_info.do'/> ">
+					<form class="font14px cartform" action="<c:url value='/order/client_order_info.do'/> ">
 						<!-- 각 메뉴 -->
-						<div class="accordion2">
+						<!-- <div class="accordion2 cartmenu">
 							<div class="padding10px">
 								<span class="sp12">탕수육+짬뽕</span>
-								<input class="textsize1 " type="text">개
+								<input class="textsize1 cnt" type="number" min="1" value="1">개
 								<input class="align-middle bt7" type="button" value="X">
 							</div>
 							<div class="border-bottom1">
-								<p class="btAccodion2"><b class="sp13">14,000원</b></p>
+								<p class="btAccodion2">
+									<b class="sp13 result1">
+										14,000원
+									</b>
+								</p>
 								<div class="padding10px div15">
 									<span class="float-left"><b>가격:</b></span>
-									<span class="float-right">+ 14,000원</span>
+									<span class="float-right pric1">+ 14,000원</span>
+									<span class="float-left"><b>추가선택: 한그릇 곱배기 추가</b></span>
+									<span class="float-right pric2">+ 1,000원</span>
 								</div>
 							</div>
-						</div>
-						<!-- 각 메뉴 -->
+						</div> -->
+						<!-- /각 메뉴 -->
 						<!-- 주문합계부분 -->
-						<div>
+						<%-- <div id="cartsumdiv">
 							<div class="padding10px align-right">
 								<p><b class="font15px">주문합계</b></p>
-								<p class="color-orange font18px"><b>54,000</b>원</p>
-								<p class="color-silver font13px">[최소주문금액:10,000원]</p>
+								<p class="color-orange font18px"><b id="totalprice1">54,000</b>원</p>
+								<p class="color-silver font13px">[최소주문금액:
+								<fmt:formatNumber pattern="#,###" value="${shop.shopMinprice}"/>원]</p>
 							</div>
 							<!-- 주문합계부분 -->
 							<input class="btbrown bt8" type="submit" value="주문하기">
-						</div>
+						</div> --%>
 					</form>
 				<!-- 장바구니메뉴추가부분 -->
 				</c:if>
@@ -650,22 +658,157 @@ $(document).ready(function () {
 	</div>
 </div>
 <script type="text/javascript">
-function cartmenu(menu,price) {
-	var cartmenustr="";
-	cartmenustr+='<div class="accordion2">';
+$(document).on("change",".cnt",function () {
+	var cnt = $(this).val();
+	var price1=$(this).parents(".cartmenu").find(".pric1").text();
+	price1=price1.replace(/[^0-9]/g,"");
+	var price2=$(this).parents(".cartmenu").find(".pric2").text();
+	price2=price2.replace(/[^0-9]/g,"");
+
+	var menuPrice=(cnt*price1)+(cnt*price2);
+	menuPrice = numberWithCommas(menuPrice);
+	var menuPriceObj = $(this).parents(".cartmenu").find(".result1");
+	menuPriceObj.text(menuPrice+"원");
+	
+	findtotalsum();
+});
+//장바구니담기
+$(document).on("click",".cartadd",function () {
+	var productName = $(this).parents(".menu1").find(".productName").text();
+	var pric1=$(this).parents(".menu1").find("input[type=radio]:checked").val();
+	var pric2=$(this).parents(".menu1").find("input[type=checkbox]:checked").val();
+	var price1=pric1.split("/");
+	var pricestr=price1[0];
+	var price=price1[1];
+	var str ="";
+	var menuprice=0;
+	if(pric2!=null){
+		var price2=pric2.split("/");
+		var optstr=price2[0];
+		var optprice=price2[1];
+		if(price==null){
+			menuprice=parseInt(pricestr)+parseInt(optprice);
+			str = cartmenu(productName,(parseInt(pricestr)+parseInt(optprice)),pricestr," ",optprice,optstr)
+		}else{
+			menuprice=parseInt(price)+parseInt(optprice);
+			str = cartmenu(productName,(parseInt(price)+parseInt(optprice)),price,pricestr,optprice,optstr)
+		}
+	}else{
+		if(price==null){
+			menuprice=pricestr;
+			str = cartmenu(productName,pricestr,pricestr,"")
+		}else{
+			menuprice=price;
+			str = cartmenu(productName,price,price,pricestr)
+		}
+	}
+	var cartmenucnt = $('.cartmenu').length;
+	$("#cartcnt").text((cartmenucnt+1)+"개");
+	
+	$(".cartform").prepend(str);
+	
+	if(cartmenucnt>0){
+		var totalprice=$("#totalprice").text().replace(/[^0-9]/g,"");
+		totalprice=parseInt(totalprice)+parseInt(menuprice);
+		totalprice=numberWithCommas(totalprice);
+		$("#totalprice").text(totalprice);
+	}
+	if(cartmenucnt<1){
+		menuprice=numberWithCommas(menuprice);
+		var divSumStr=cartsum(menuprice);
+		$(".cartform").append(divSumStr);
+	}
+//------------------------------------------------------	
+//아코디언	
+	var icons = {
+    		header: "ui-icon-difult",
+    		activeHeader: "ui-icon-active"
+    };
+	$(".accordion2").accordion({
+	    	header: "> div > .btAccodion2",
+	    	collapsible: true,
+	    	heightStyle: "content",
+	    	active: true,
+	    	icons: icons
+		    }).sortable({
+		        axis: "y",
+		        handle: ".btAccodion2",
+		        stop: function( event, ui ) {
+		          ui.item.children( ".btAccodion2" ).triggerHandler( "focusout" );
+		          $( this ).accordion( "refresh" );
+		     }
+	});
+//---------------------------------------------------------------
+});
+//------------장바구니 X 버튼 클릭시---------------------------------
+$(document).on("click",".btmenuclose",function(){
+	$(this).parents(".cartmenu").remove();
+	var cartmenucnt = $('.cartmenu').length;
+	$("#cartcnt").text((cartmenucnt)+"개");
+	
+	if(cartmenucnt>0){
+		findtotalsum();
+	}
+	if(cartmenucnt<1){
+		$("#cartcnt").text("");
+		$("#cartsumdiv").remove();
+	}
+	
+});
+function findtotalsum(){
+	var totalprice = 0;
+	$(".result1").each(function() {
+		totalprice+=parseInt($(this).text().replace(/[^0-9]/g,""));
+	});
+	
+	var totalPriceObj = $("#cartsumdiv").find("#totalprice");
+	
+	totalprice = numberWithCommas(totalprice);
+	
+	totalPriceObj.text(totalprice);
+}
+function cartmenu(menu,price,price1,pricestr,price2,option) {
+	var cartmenustr='';
+	cartmenustr+='<div class="accordion2 cartmenu">';
 		cartmenustr+='<div class="padding10px">';
 			cartmenustr+='<span class="sp12">'+menu+'</span>';
-			cartmenustr+='<input class="textsize1 " type="number">개';
-			cartmenustr+='<input class="align-middle bt7" type="button" value="X">';
+			cartmenustr+='<input class="textsize1 cnt" type="number" min="1" value="1">개';
+			cartmenustr+='<input class="align-middle bt7 btmenuclose" type="button" value="X">';
 		cartmenustr+='</div>';
 		cartmenustr+='<div class="border-bottom1">';
-			cartmenustr+='<p class="btAccodion2"><b class="sp13">'+price+'원</b></p>';
+			cartmenustr+='<p class="btAccodion2">';
+				cartmenustr+='<b class="sp13 result1">';
+					cartmenustr+=price+'원';
+				cartmenustr+='</b>';
+			cartmenustr+='</p>';
 			cartmenustr+='<div class="padding10px div15">';
-				cartmenustr+='<span class="float-left"><b>가격:</b></span>';
-				cartmenustr+='<span class="float-right">+ '+price+'원</span>';
+				cartmenustr+='<span class="float-left"><b>가격:'+pricestr+'</b></span>';
+				cartmenustr+='<span class="float-right pric1">+ '+price1+'원</span>';
+				if(price2!=null){
+					cartmenustr+='<span class="float-left"><b>추가선택: '+option+'</b></span>';
+					cartmenustr+='<span class="float-right pric2">+ '+price2+'원</span>';
+				}
 			cartmenustr+='</div>';
 		cartmenustr+='</div>';
 	cartmenustr+='</div>';
+	return cartmenustr;
 }
+function cartsum(totalprice){
+	var cartsum='';
+	 cartsum+='<div id="cartsumdiv">';
+		 cartsum+='<div class="padding10px align-right">';
+			 cartsum+='<p><b class="font15px">주문합계</b></p>';
+			 cartsum+='<p class="color-orange font18px"><b id="totalprice">'+totalprice+'</b>원</p>';
+			 cartsum+='<p class="color-silver font13px">[최소주문금액:';
+			 cartsum+='<fmt:formatNumber pattern="#,###" value="${shop.shopMinprice}"/>원]</p>';
+		 cartsum+='</div>';
+		 cartsum+='<input class="btbrown bt8" type="submit" value="주문하기">';
+	 cartsum+='</div>';
+	 return cartsum;
+}
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
 </script>
 <%@ include file="../inc/bottom.jsp" %>
