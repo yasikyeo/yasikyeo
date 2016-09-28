@@ -17,6 +17,7 @@ public interface CeoShopService {
 	public CeoShopVO selectByShopNo(int shopNo);
 	public List<CeoProductVO> productSelectByShopNo(int shopNo);
 	public int updateCeoShop(CeoShopVO ceoShopVo);
+	public int countShop(int shopNo);
 }
 
 

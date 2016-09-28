@@ -92,4 +92,9 @@
 		select * from product where Shop_no=#{shopNo} order by CATEGORI_NO asc
 	</select>
 	
+	<select id="countShop" parameterType="int" resultType="int">
+		select count(*) from product where shop_no=#{shopNo}
+	</select>
+	
+	
 </mapper>

@@ -1,10 +1,14 @@
 package com.yasikyeo.app.categori.model;
 
-public class CategoriVO {
+import com.yasikyeo.app.common.SearchVO;
+
+public class CategoriVO extends SearchVO{
+	
 	private int categoriNo;
 	private String categoriName;
 	private String categoriExplain;
 	private int shopNo;
+	
 	public int getCategoriNo() {
 		return categoriNo;
 	}

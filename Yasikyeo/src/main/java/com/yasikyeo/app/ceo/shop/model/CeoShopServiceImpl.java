@@ -78,6 +78,11 @@ public class CeoShopServiceImpl implements CeoShopService{
 	public int updateCeoShop(CeoShopVO ceoShopVo) {
 		return ceoShopDao.updateCeoShop(ceoShopVo);
 	}
+
+	@Override
+	public int countShop(int shopNo) {
+		return ceoShopDao.countShop(shopNo);
+	}
 }
 
 

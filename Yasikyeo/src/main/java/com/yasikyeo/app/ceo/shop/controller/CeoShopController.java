@@ -16,10 +16,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.yasikyeo.app.categori.model.CategoriVO;
 import com.yasikyeo.app.ceo.shop.model.CeoProductVO;
 import com.yasikyeo.app.ceo.shop.model.CeoShopService;
 import com.yasikyeo.app.ceo.shop.model.CeoShopVO;
 import com.yasikyeo.app.common.FileUploadWebUtil;
+import com.yasikyeo.app.common.PaginationInfo;
+import com.yasikyeo.app.common.Utility;
 
 @Controller
 public class CeoShopController {
@@ -239,5 +242,44 @@ public class CeoShopController {
 		model.addAttribute("url",url);
 		
 		return "common/message";
+	}
+	
+	@RequestMapping(value="ceo/marketadmin/market_menuList.do",method=RequestMethod.GET)
+	public String market_menuList_get(@ModelAttribute CategoriVO searchVo,HttpSession session,Model model){
+		
+		//1.
+		logger.info("관리자 페이지 - 상품목록 파라미터 searchVo={}",
+				searchVo);
+		
+		String ceoId = (String) session.getAttribute("ceoId");
+		int ceoNo = ceoShopService.selectCeoNo(ceoId);
+		int shopNo = ceoShopService.selectShop(ceoNo);
+		
+		//페이징 처리 관련 setting
+		//[1]
+		PaginationInfo pagingInfo = new PaginationInfo();
+		pagingInfo.setBlockSize(Utility.BLOCK_SIZE);
+		pagingInfo.setRecordCountPerPage(Utility.CEO_PDLIST_RECORD_COUNT_PER_PAGE);
+		pagingInfo.setCurrentPage(searchVo.getCurrentPage());
+				
+		//[2]
+		searchVo.setRecordCountPerPage(Utility.CEO_PDLIST_RECORD_COUNT_PER_PAGE);
+		searchVo.setFirstRecordIndex(pagingInfo.getFirstRecordIndex());
+		
+		//2.		
+		List<CeoProductVO> alist = ceoShopService.productSelectByShopNo(shopNo);
+		logger.info("관리자 - 상품목록 조회 결과, alist.size()={}",
+				alist.size());
+		
+		//전체 레코드개수 조회
+		int totalRecord = ceoShopService.countShop(shopNo);
+		logger.info("전체 레코드 개수 totalRecord={}",totalRecord);
+		pagingInfo.setTotalRecord(totalRecord);
+		
+		//3.
+		model.addAttribute("pdList", alist);
+		model.addAttribute("pagingInfo", pagingInfo);
+		
+		return "ceo/marketadmin/market_menuList";
 	}
 }

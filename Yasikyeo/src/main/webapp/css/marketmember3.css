@@ -204,6 +204,7 @@ index.css 조절용
 	width: 100%;
 	height: 700px;
 	box-sizing: border-box;
+	float: right;
 }
 
 #main_box {

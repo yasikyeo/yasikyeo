@@ -8,7 +8,7 @@
 			<div id="main_box">
 				<div id="box_1">
 					<div id="a_1">
-						<div id="show1">내 업소관리</div>
+						<div id="show1">내 업소관리 - 메뉴등록</div>
 						<div class="show2">
 							<div id="lsh">사장님 업소에 대한 내용을 확인 및 수정할수 있는 메뉴입니다.</div>
 						</div>
@@ -22,7 +22,7 @@
 								<table>
 									<tr>
 									<div class="product clear">
-										<details> <summary>메뉴 등록</summary>
+									 <summary>메뉴 등록</summary>
 										<div id="content">
 											<div class="needpopup">
 												<form id="write" method="post" action="<c:url value='/ceo/marketadmin/marketadmin.do'/>" enctype="multipart/form-data">
@@ -37,120 +37,10 @@
 												</div>
 											</form>
 										</div>
-										
-										</details>
 									</div>
 									</tr>
-									<br>
-									<tr>
-									<div class="product clear">
-										<details> <summary>메뉴 관리</summary>
-										<div id="content">
-											<div class="needpopup3">
-												<table summary="상품목록에 관한 표로써, 번호, 제목, 작성자, 작성일, 조회수에 대한 정보를 제공합니다.">
-													<caption>상품 목록</caption>
-													<colgroup>
-														<col style="width:5%" />
-														<col style="width:15%" />
-														<col style="width:32%" />
-														<col style="width:15%" />
-														<col style="width:15%" />	
-														<col style="width:9%" />
-														<col style="width:9%" />			
-													</colgroup>
-													<thead>
-													  <tr>
-														<th><input type="checkbox" name="chkAll" ></th>
-														<th scope="col">상품이미지</th>
-														<th scope="col">상품이름</th>
-														<th scope="col">가격</th>
-														<th scope="col">등록일</th>
-														<th scope="col">수정</th>
-														<th scope="col">삭제</th>
-													  </tr>
-													</thead> 
-													<tbody>  
-													
-													<!-- 반복 시작 -->
-													<c:set var="i" value="0"/>
-													<c:forEach var="vo" items="${pdList }" >
-														<tr class="td1">
-															<td>
-																<input type="checkbox" 
-																	name="pdItems[${i}].productNo"
-																	id="chk_${i}"
-																	value="${vo.productNo}" >
-																<input type="hidden" 
-																	name="pdItems[${i}].imageURL"
-																	value="${vo.imageURL}">	
-															</td>
-															<td>
-																<img src
-															="<c:url value='/pd_images/${vo.imageURL }'/>" 
-																	alt="${vo.productName }" width="50">
-															</td>
-															<td class="align_left">${vo.productName }</td>
-															<td class="align_right">
-																<fmt:formatNumber value="${vo.sellPrice }"
-																pattern="#,###" />원 </td>
-															<td>
-																<fmt:formatDate value="${vo.regDate }"
-																	pattern="yyyy-MM-dd"/></td>
-															<td><a href="#">수정</a></td>
-															<td><a href="#">삭제</a></td>
-														</tr>
-														<c:set var="i" value="${i+1}"/> 
-													</c:forEach>
-													<!-- 반복 끝 -->
-													</tbody>
-												</table>
-											</div>
-											</div>
-										</details>
-									</div>
-									</tr>
-									<br>
-									<tr>
-									<div class="product clear">
-										<details> <summary>리뷰 관리</summary>
-										<div id="content">
-											<div class="needpopup1">
-												(리뷰내용을list형식으로보기,리플달기)
-											</div>
-										</div>
-										</details>
-									</div>
-									</tr>
-									<br>
-									<tr>
-									<div class="product clear">
-										<details> <summary>주문 관리</summary>
-										<div id="content">
-											<div class="needpopup2">
-												({주문내용보기(주문일시,주문번호,메뉴,주문금액,상태변경버튼(배달중,배달완료)})
-											</div>
-										</div>
-										</details>
-									</div>
-									</tr>
-									<br>
 									
-									<!-- 메뉴버튼 클릭 시 내용이 나옴 -->
-									<script>
-										if ($('html').hasClass('no-details')) {
-											var summary = $('details summary');
-											summary.siblings().wrapAll('<div class="slide"></div>');
-
-											$('details:not(.open) summary').siblings('div').hide();
-
-											summary.click(function() {
-												$(this).siblings('div').toggle();
-												$('details').toggleClass('open');
-											});
-										}
-									</script>
-
-								<!-- 이미지 등록시 미리보기를 보여주는 DHTML -->
+																<!-- 이미지 등록시 미리보기를 보여주는 DHTML -->
 								<script type="text/javascript">
 								
 								

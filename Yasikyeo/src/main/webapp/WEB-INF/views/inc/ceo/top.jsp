@@ -22,6 +22,14 @@
 					<div class="menu_test">
 						<ul>
 							<li class="float_leftmenu"><a href="<c:url value='/ceo/marketadmin/marketadmin.do'/>">내 업소관리</a>
+							<div class="open_menu">
+									<ul>
+										<li><a href="<c:url value='/ceo/marketadmin/marketadmin.do'/>">메뉴 등록</a></li>
+										<li><a href="<c:url value='/ceo/marketadmin/market_menuList.do'/>">메뉴 보기</li>
+										<li><a href="">리뷰 관리</li>
+										<li><a href="">주문 관리</li>
+									</ul>
+								</div></li>
 							<li class="float_leftmenu"><a href="<c:url value='/ceo/serviceintro/serviceintro.do'/>">서비스 소개</a></li>
 							<li class="float_leftmenu"><a href="<c:url value='/ceo/honeytip/honeytip.do'/>">사장님 꿀팁</a></li>
 							<li class="float_leftmenu"><a href="<c:url value='/ceo/event/ceo_event.do'/>">이벤트</a></li>
