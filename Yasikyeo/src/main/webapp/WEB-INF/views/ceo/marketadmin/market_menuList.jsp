@@ -27,7 +27,7 @@ function pageFunc(curPage){
 								<br>
 									<div class="product clear">
 									 <summary>메뉴 목록</summary>
-										<table>
+										<table border="1">
 											<colgroup>
 												<col width="5%">
 												<col width="13%">
@@ -53,27 +53,27 @@ function pageFunc(curPage){
 												<c:set var="i" value="0"/>
 												<c:forEach var="vo" items="${pdList }" >
 													<tr>
-														<td>
+														<td align="center">
 															<input type="checkbox" name="pdItems[${i}].productNo" id="chk_${i}"
 																value="${vo.productNo}" >
 															<input type="hidden" 
 																name="pdItems[${i}].productImage"
 																value="${vo.productImage}">	
 														</td>
-														<td>
+														<td align="center">
 															<img src
 														="${pageContext.request.contextPath}/product_Image/${vo.productImage }" 
 																alt="${vo.productName }" width="50">
 														</td>
-														<td>${vo.productName }</td>
-														<td>
+														<td align="center">${vo.productName }</td>
+														<td align="center">
 															<fmt:formatNumber value="${vo.productPrice }"
 															pattern="#,###" />원 </td>
-														<td>
+														<td align="center">
 															<fmt:formatDate value="${vo.productRegdate }"
 																pattern="yyyy-MM-dd"/></td>
-														<td><a href="#">수정</a></td>
-														<td><a href="#">삭제</a></td>
+														<td align="center"><a href="#">수정</a></td>
+														<td align="center"><a href="#">삭제</a></td>
 													</tr>
 													<c:set var="i" value="${i+1}"/> 
 												</c:forEach>
