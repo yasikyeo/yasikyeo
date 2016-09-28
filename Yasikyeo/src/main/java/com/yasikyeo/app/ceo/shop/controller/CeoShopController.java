@@ -248,12 +248,14 @@ public class CeoShopController {
 	public String market_menuList_get(@ModelAttribute CategoriVO searchVo,HttpSession session,Model model){
 		
 		//1.
-		logger.info("관리자 페이지 - 상품목록 파라미터 searchVo={}",
+		logger.info("상품목록 파라미터 searchVo={}",
 				searchVo);
 		
 		String ceoId = (String) session.getAttribute("ceoId");
 		int ceoNo = ceoShopService.selectCeoNo(ceoId);
-		int shopNo = ceoShopService.selectShop(ceoNo);
+		int shopNo = ceoShopService.selectShopNo(ceoNo);
+		
+		logger.info("ceoNo={},shopNo={}",ceoNo,shopNo);
 		
 		//페이징 처리 관련 setting
 		//[1]
@@ -268,7 +270,7 @@ public class CeoShopController {
 		
 		//2.		
 		List<CeoProductVO> alist = ceoShopService.productSelectByShopNo(shopNo);
-		logger.info("관리자 - 상품목록 조회 결과, alist.size()={}",
+		logger.info("상품목록 조회 결과, alist.size()={}",
 				alist.size());
 		
 		//전체 레코드개수 조회

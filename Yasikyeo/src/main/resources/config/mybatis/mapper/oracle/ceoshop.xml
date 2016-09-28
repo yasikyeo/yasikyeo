@@ -24,7 +24,7 @@
 		,#{shopAccount},#{shopLicense},#{ceoNo})
 	</insert>
 
-	<select id="selectShop" parameterType="string" resultType="int">
+	<select id="selectShop" parameterType="int" resultType="int">
 		select count(*) from shop where ceo_no=#{ceoNo}
 	</select>
 
@@ -85,11 +85,11 @@
 	</select>
 	
 	<select id="selectByShopNo" parameterType="int" resultType="CeoShopVO">
-		select * from shop where shop_no=#{shopno}
+		select * from shop where shop_no=#{shopNo}
 	</select>
 	
 	<select id="productSelectByShopNo" parameterType="int" resultType="CeoProductVO">
-		select * from product where Shop_no=#{shopNo} order by CATEGORI_NO asc
+		select * from product where shop_no=#{shopNo} order by CATEGORI_NO asc
 	</select>
 	
 	<select id="countShop" parameterType="int" resultType="int">
