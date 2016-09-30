@@ -95,6 +95,4 @@
 	<select id="countShop" parameterType="int" resultType="int">
 		select count(*) from product where shop_no=#{shopNo}
 	</select>
-	
-	
 </mapper>
