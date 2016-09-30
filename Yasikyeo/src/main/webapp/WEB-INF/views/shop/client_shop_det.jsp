@@ -702,6 +702,7 @@ $(document).on("click",".cartadd",function () {
 			str = cartmenu(productName,price,price,pricestr)
 		}
 	}
+	
 	var cartmenucnt = $('.cartmenu').length;
 	$("#cartcnt").text((cartmenucnt+1)+"개");
 	
@@ -778,15 +779,15 @@ function cartmenu(menu,price,price1,pricestr,price2,option) {
 		cartmenustr+='<div class="border-bottom1">';
 			cartmenustr+='<p class="btAccodion2">';
 				cartmenustr+='<b class="sp13 result1">';
-					cartmenustr+=price+'원';
+					cartmenustr+=numberWithCommas(price)+'원';
 				cartmenustr+='</b>';
 			cartmenustr+='</p>';
 			cartmenustr+='<div class="padding10px div15">';
 				cartmenustr+='<span class="float-left"><b>가격:'+pricestr+'</b></span>';
-				cartmenustr+='<span class="float-right pric1">+ '+price1+'원</span>';
+				cartmenustr+='<span class="float-right pric1">+ '+numberWithCommas(price1)+'원</span>';
 				if(price2!=null){
 					cartmenustr+='<span class="float-left"><b>추가선택: '+option+'</b></span>';
-					cartmenustr+='<span class="float-right pric2">+ '+price2+'원</span>';
+					cartmenustr+='<span class="float-right pric2">+ '+numberWithCommas(price2)+'원</span>';
 				}
 			cartmenustr+='</div>';
 		cartmenustr+='</div>';
