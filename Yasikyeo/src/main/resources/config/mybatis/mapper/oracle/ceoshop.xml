@@ -89,7 +89,7 @@
 	</select>
 	
 	<select id="productSelectByShopNo" parameterType="int" resultType="CeoProductVO">
-		select * from ProductView where shop_no=#{shopNo} order by CATEGORI_NO asc
+		select * from Product where shop_no=#{shopNo} order by CATEGORI_NO asc
 	</select>
 	
 	<select id="countShop" parameterType="int" resultType="int">
