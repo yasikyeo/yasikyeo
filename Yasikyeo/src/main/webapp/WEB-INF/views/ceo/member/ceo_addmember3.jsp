@@ -94,42 +94,8 @@
 <script type="text/javascript">
    
     $(document).ready(function(){
-		$("#ceoSubmit").click(function(event){
-			if($("#ceoId").val().length < 1){
-				alert("아이디를 입력하세요.");
-				$("#ceoId").focus();
-				return false;
-				event.stopPropagation();
-				event.preventDefault();
-			}else if($("#authNum").val()!="인증완료"){
-				alert("이메일 인증을 하세요.");
-				$("#ceoEmail").focus();
-				return false;
-			}else if($("#ceoPwd").val().length<1){
-				alert("비밀번호를 입력하세요.");
-				$("#ceoPwd").focus();
-				return false;
-			}else if($("#ceoPwd").val()!=$("#ceoPwd2").val()){
-				alert("비밀번호가 일치하지 않습니다.");
-				$("#ceoPwd2").focus();
-				return false;
-			}else if($("#ceoName").val().length < 2){
-				alert("이름을 입력하세요.");
-				$("#ceoName").focus();
-				return false;
-			}else if($("#ceoTel").val().length < 2){
-				alert("전화번호를 입력하세요.");
-				$("#ceoName").focus();
-				return false;
-			}else if($("#ceoBirth").val().length < 2){
-				alert("생일을 입력하세요.");
-				$("#ceoName").focus();
-				return false;
-			}
-		});
-		
 		 $("#ceoId").keyup(function(){
-				if(validate_ceo_Id($("#ceoId").val()) && $("#ceoId").val().length>=4){
+			if(validate_ceo_Id($("#ceoId").val()) && $("#ceoId").val().length>=4){
 					$.ajax({
 						url:"<c:url value='/ceo/member/ajaxCheckCeoId.do'/>",
 						type:"GET",
@@ -154,7 +120,7 @@
 					$("#chkId").val("N");
 				}
 			});
-    });  
+    	});  
     
 	function validate_ceo_Id(ceoId){
 		var pattern = new RegExp(/^[a-z0-9_]+$/g);

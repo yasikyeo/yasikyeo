@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../../inc/ceo/top.jsp" %>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/ceoallmenu.css" type="text/css" />
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/marketmember3.css" type="text/css"/>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/marketmenulist.css" type="text/css"/>
 <script type="text/javascript">
 function pageFunc(curPage){
 	document.frmPage.currentPage.value=curPage;
