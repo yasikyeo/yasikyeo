@@ -674,6 +674,9 @@ $(document).on("change",".cnt",function () {
 });
 //장바구니담기
 $(document).on("click",".cartadd",function () {
+	var cartmenucnt = $('.cartmenu').length;
+	$("#cartcnt").text((cartmenucnt+1)+"개");
+	
 	var productName = $(this).parents(".menu1").find(".productName").text();
 	var pric1=$(this).parents(".menu1").find("input[type=radio]:checked").val();
 	var pric2=$(this).parents(".menu1").find("input[type=checkbox]:checked").val();
@@ -688,23 +691,20 @@ $(document).on("click",".cartadd",function () {
 		var optprice=price2[1];
 		if(price==null){
 			menuprice=parseInt(pricestr)+parseInt(optprice);
-			str = cartmenu(productName,(parseInt(pricestr)+parseInt(optprice)),pricestr," ",optprice,optstr)
+			str = cartmenu(cartmenucnt,productName,(parseInt(pricestr)+parseInt(optprice)),pricestr," ",optprice,optstr);
 		}else{
 			menuprice=parseInt(price)+parseInt(optprice);
-			str = cartmenu(productName,(parseInt(price)+parseInt(optprice)),price,pricestr,optprice,optstr)
+			str = cartmenu(cartmenucnt,productName,(parseInt(price)+parseInt(optprice)),price,pricestr,optprice,optstr);
 		}
 	}else{
 		if(price==null){
 			menuprice=pricestr;
-			str = cartmenu(productName,pricestr,pricestr,"")
+			str = cartmenu(cartmenucnt,productName,pricestr,pricestr,"");
 		}else{
 			menuprice=price;
-			str = cartmenu(productName,price,price,pricestr)
+			str = cartmenu(cartmenucnt,productName,price,price,pricestr);
 		}
 	}
-	
-	var cartmenucnt = $('.cartmenu').length;
-	$("#cartcnt").text((cartmenucnt+1)+"개");
 	
 	$(".cartform").prepend(str);
 	
@@ -768,12 +768,12 @@ function findtotalsum(){
 	
 	totalPriceObj.text(totalprice);
 }
-function cartmenu(menu,price,price1,pricestr,price2,option) {
+function cartmenu(cartcnt,menu,price,price1,pricestr,price2,option) {
 	var cartmenustr='';
 	cartmenustr+='<div class="accordion2 cartmenu">';
 		cartmenustr+='<div class="padding10px">';
 			cartmenustr+='<span class="sp12">'+menu+'</span>';
-			cartmenustr+='<input class="textsize1 cnt" type="number" min="1" value="1">개';
+			cartmenustr+='<input class="textsize1 cnt" type="number" min="1" value="1" name="orderdetQty['+cartcnt+']">개';
 			cartmenustr+='<input class="align-middle bt7 btmenuclose" type="button" value="X">';
 		cartmenustr+='</div>';
 		cartmenustr+='<div class="border-bottom1">';
@@ -788,7 +788,12 @@ function cartmenu(menu,price,price1,pricestr,price2,option) {
 				if(price2!=null){
 					cartmenustr+='<span class="float-left"><b>추가선택: '+option+'</b></span>';
 					cartmenustr+='<span class="float-right pric2">+ '+numberWithCommas(price2)+'원</span>';
+					cartmenustr+='<input type="text" name="orderdetOption['+cartcnt+']" value="'+option+'"><br>'
+					cartmenustr+='<input type="text" name="orderdetOptionprice['+cartcnt+']" value="'+price2+'"><br>'
 				}
+				cartmenustr+='<input type="text" name="orderdetProductname['+cartcnt+']" value="'+menu+'"><br>'
+				cartmenustr+='<input type="text" name="orderdetSelectproduct['+cartcnt+']" value="'+pricestr+'"><br>'
+				cartmenustr+='<input type="text" name="orderdetSelectprice['+cartcnt+']" value="'+price1+'"><br>'
 			cartmenustr+='</div>';
 		cartmenustr+='</div>';
 	cartmenustr+='</div>';
