@@ -253,6 +253,29 @@ index.css 조절용
 	font-family: BMJUA;
 }
 
+.list{
+	background-color: black;
+	color: white;
+	font-family: BMJUA;
+}
+
+.td-center{
+	margin: 0 auto;
+	align:center;
+	text-align: center;
+	text-align: center;	
+}
+.td-center2{
+	margin: 0 auto;
+	align:center;
+	text-align: center;
+	padding-top: 1.5em;
+}
+
+
+.btCg{
+	text-align: right;
+}
 
 
 
