@@ -20,6 +20,7 @@ public interface CeoShopDAO {
 	public int countShop(int shopNo);
 	public CeoProductVO selectProduct(int productNo);
 	public int updateProduct(CeoProductVO ceoProductVo);
+	public int deleteProduct(int productNo);
 }
 
 

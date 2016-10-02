@@ -103,7 +103,11 @@
 	<update id="updateProduct" parameterType="CeoProductVO">
 		update product
 		set product_name=#{productName},product_explain=#{productExplain},product_price=#{productPrice},
-		product_option=#{productOption},product_image=#{productImage},product_regdate='sysdate'
+		product_option=#{productOption},product_image=#{productImage},product_regdate=sysdate
 		where product_no=#{productNo}
 	</update>
+	
+	<delete id="deleteProduct" parameterType="int">
+		delete from product where product_no=#{productNo}
+	</delete>
 </mapper>

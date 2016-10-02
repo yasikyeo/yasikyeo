@@ -4,10 +4,23 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/ceoallmenu.css" type="text/css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/marketmenulist.css" type="text/css"/>
 <script type="text/javascript">
-function pageFunc(curPage){
-	document.frmPage.currentPage.value=curPage;
-	frmPage.submit();
-}
+
+	$(function() {
+		$("#delete").click(function(){
+			if(confirm("해당 상품정보를 삭제 하시겠습니까?")){
+				return true;
+			}else{
+				return false;
+			}
+		});
+	});
+
+
+	function pageFunc(curPage){
+		document.frmPage.currentPage.value=curPage;
+		frmPage.submit();
+	}
+
 </script>
 <title>야시켜, 사장님 업소관리 페이지</title>
 
@@ -71,7 +84,7 @@ function pageFunc(curPage){
 															<fmt:formatDate value="${vo.productRegdate }"
 																pattern="yyyy-MM-dd"/></td>
 														<td class="td-center2"><a href="<c:url value='market_menuUpdate.do?productNo=${vo.productNo }'/>">수정</a></td>
-														<td class="td-center2"><a href="#">삭제</a></td>
+														<td class="td-center2"><a id="delete" href="<c:url value='market_menuDelete.do?productNo=${vo.productNo }'/>">삭제</a></td>
 													</tr>
 													<c:set var="i" value="${i+1}"/> 
 												</c:forEach>

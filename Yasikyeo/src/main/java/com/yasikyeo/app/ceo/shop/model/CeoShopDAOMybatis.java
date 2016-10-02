@@ -82,6 +82,11 @@ public class CeoShopDAOMybatis extends SqlSessionDaoSupport	implements CeoShopDA
 	public int updateProduct(CeoProductVO ceoProductVo) {
 		return getSqlSession().update(namespace+".updateProduct", ceoProductVo);
 	}
+
+	@Override
+	public int deleteProduct(int productNo) {
+		return getSqlSession().delete(namespace+".deleteProduct", productNo);
+	}
 	
 }
 

@@ -301,7 +301,7 @@ public class CeoShopController {
 		
 		String oldProductImage = ceoShopService.selectProduct(ceoProductVo.getProductNo()).getProductImage();
 		
-		logger.info("상품정보 수정 파라미터 ceoProductVo={}", ceoProductVo);
+		logger.info("메뉴 정보 수정 파라미터 ceoProductVo={}", ceoProductVo);
 		
 		List<Map<String, Object>> fileList = fileUtil.fileUpload(request, uploadType);
 		
@@ -330,20 +330,41 @@ public class CeoShopController {
 				}
 		}
 		
-		int cnt = 1;
-		String msg="",url="/ceo/index.do";
+		int cnt = ceoShopService.updateProduct(ceoProductVo);
+		String msg="",url="/ceo/marketadmin/market_menuList.do";
 		if(cnt>0){
-			msg="업소 정보 수정이 완료되었습니다.";
+			msg="메뉴 정보 수정이 완료되었습니다.";
 		}else{
-			msg="업소 정보 수정 실패";
+			msg="메뉴 정보 수정 실패";
 		}
 		
-		logger.info("업소 정보 수정 결과 cnt={}", cnt);
+		logger.info("메뉴 정보 수정 결과 cnt={}", cnt);
 		
 		model.addAttribute("msg",msg);
 		model.addAttribute("url",url);
 		
 		return "common/message";
+	}
+	
+	@RequestMapping(value="ceo/marketadmin/market_menuDelete.do",method=RequestMethod.GET)
+	public String market_menuDelete(@RequestParam int productNo,Model model){
+		
+		int res = ceoShopService.deleteProduct(productNo);
+		
+		String msg="",url="/ceo/marketadmin/market_menuList.do";
+		if(res>0){
+			msg="메뉴 정보 삭제가 완료되었습니다.";
+		}else{
+			msg="메뉴 정보 삭제 실패";
+		}
+		
+		logger.info("메뉴 정보 삭제 결과 cnt={}", res);
+		
+		model.addAttribute("msg",msg);
+		model.addAttribute("url",url);
+		
+		return "common/message";
+		
 	}
 	
 }

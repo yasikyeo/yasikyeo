@@ -93,6 +93,11 @@ public class CeoShopServiceImpl implements CeoShopService{
 	public int updateProduct(CeoProductVO ceoProductVo) {
 		return ceoShopDao.updateProduct(ceoProductVo);
 	}
+
+	@Override
+	public int deleteProduct(int productNo) {
+		return ceoShopDao.deleteProduct(productNo);
+	}
 }
 
 
