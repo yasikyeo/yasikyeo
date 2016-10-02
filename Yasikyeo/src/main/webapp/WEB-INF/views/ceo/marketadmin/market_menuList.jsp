@@ -16,7 +16,7 @@ function pageFunc(curPage){
 					<div id="a_1">
 						<div id="show1">내 업소관리 - 메뉴목록</div>
 						<div class="show2">
-							<div id="lsh">사장님 업소에 대한 내용을 확인 및 수정할수 있는 메뉴입니다.</div>
+							<div id="lsh">사장님 업소에 대한 내용을 확인 및 수정할수 있는 페이지입니다.</div>
 						</div>
 							<div class="marketadmins">
 								
@@ -70,7 +70,7 @@ function pageFunc(curPage){
 														<td class="td-center2">
 															<fmt:formatDate value="${vo.productRegdate }"
 																pattern="yyyy-MM-dd"/></td>
-														<td class="td-center2"><a href="#">수정</a></td>
+														<td class="td-center2"><a href="<c:url value='market_menuUpdate.do?productNo=${vo.productNo }'/>">수정</a></td>
 														<td class="td-center2"><a href="#">삭제</a></td>
 													</tr>
 													<c:set var="i" value="${i+1}"/> 

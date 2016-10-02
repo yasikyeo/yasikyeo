@@ -95,4 +95,15 @@
 	<select id="countShop" parameterType="int" resultType="int">
 		select count(*) from product where shop_no=#{shopNo}
 	</select>
+	
+	<select id="selectProduct" parameterType="int" resultType="CeoProductVO">
+		select * from Product where product_no=#{productNo}
+	</select>
+	
+	<update id="updateProduct" parameterType="CeoProductVO">
+		update product
+		set product_name=#{productName},product_explain=#{productExplain},product_price=#{productPrice},
+		product_option=#{productOption},product_image=#{productImage},product_regdate='sysdate'
+		where product_no=#{productNo}
+	</update>
 </mapper>
