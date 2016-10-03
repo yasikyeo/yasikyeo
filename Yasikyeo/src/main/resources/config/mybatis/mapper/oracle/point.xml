@@ -16,4 +16,33 @@
 			set MEMBER_POINT=MEMBER_POINT+#{memberPoint}
 		where member_no=#{memberNo}
 	</update>
+	
+	<sql id="searchWhere">
+		<if test="searchCondition!=null and searchCondition!=''">
+			and point_type=#{searchCondition}
+		</if>
+	</sql>
+	
+	<select id="selectPoint" parameterType="SearchVO" resultType="map">
+		select * from 
+		(
+			select rownum as RNUM, LIST_ALL.*
+		    from
+		        (select * from pointView
+		        	where member_no=#{searchKeyword}
+		        	<include refid="searchWhere"></include>
+		        	order by orderlist_Regdate desc
+		        ) LIST_ALL
+		)
+		<![CDATA[
+		where  RNUM> #{firstRecordIndex} 
+			and RNUM<= #{firstRecordIndex}
+			+ #{recordCountPerPage}
+		]]>
+	</select>
+	
+	<select id="selectCountPoint" parameterType="SearchVO" resultType="int">
+		select count(*) from pointView where member_no=#{searchKeyword}
+		<include refid="searchWhere"></include>
+	</select>
 </mapper>

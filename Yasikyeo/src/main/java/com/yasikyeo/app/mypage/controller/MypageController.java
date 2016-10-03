@@ -28,6 +28,7 @@ import com.yasikyeo.app.member.model.MemberVO;
 import com.yasikyeo.app.order.model.OrderDetVO;
 import com.yasikyeo.app.order.model.OrderListService;
 import com.yasikyeo.app.order.model.OrderListVO;
+import com.yasikyeo.app.point.model.MemberPointService;
 
 @Controller
 @RequestMapping("/mypage")
@@ -44,15 +45,38 @@ public class MypageController {
 	@Autowired
 	private OrderListService orderListService;
 	
+	@Autowired
+	private MemberPointService memberPointService;
+	
 	@RequestMapping("/client_mypage.do")
 	public void MyPage(){
 	}
 	
 	@RequestMapping("/client_mypoint.do")
-	public void MyPoint(HttpSession session,Model model){
+	public void MyPoint(@ModelAttribute SearchVO searchVo,
+							HttpSession session,Model model){
 		String memberId = (String) session.getAttribute("memberId");
 		MemberVO memberVo = memberService.selectMemberByMemberId(memberId);
 		logger.info("내포인트확인 memberVo={}",memberVo);
+		
+		PaginationInfo pagingInfo = new PaginationInfo();
+		pagingInfo.setBlockSize(Utility.CLIENT_PAYMENTLIST_BLOCK_SIZE);
+		pagingInfo.setRecordCountPerPage(Utility.CLIENT_PAYMENTLIST_RECODE_COUNT_PER_PAGE);
+		pagingInfo.setCurrentPage(searchVo.getCurrentPage());
+		
+		searchVo.setBlockSize(Utility.CLIENT_PAYMENTLIST_BLOCK_SIZE);
+		searchVo.setRecordCountPerPage(Utility.CLIENT_PAYMENTLIST_RECODE_COUNT_PER_PAGE);
+		searchVo.setFirstRecordIndex(pagingInfo.getFirstRecordIndex());
+		searchVo.setSearchKeyword(memberVo.getMemberNo()+"");
+		
+		logger.info("searchVo={}",searchVo);
+		List<Map<String, Object>>pointList = memberPointService.selectPoint(searchVo);
+		int totalRecord = memberPointService.selectCountPoint(searchVo);
+		pagingInfo.setTotalRecord(totalRecord);
+		
+		model.addAttribute("memberVo", memberVo);
+		model.addAttribute("pagingInfo", pagingInfo);
+		model.addAttribute("pointList", pointList);
 		
 	}
 	@RequestMapping("/client_myreview.do")
