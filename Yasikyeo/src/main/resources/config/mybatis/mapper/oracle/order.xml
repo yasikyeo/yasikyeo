@@ -10,7 +10,7 @@
 		insert into orderlist(orderlist_no,orderlist_tel,orderlist_address,orderlist_message,
 		orderlist_price,orderlist_paypoint,orderlist_cargeprice,orderlist_savepoint,member_no,shop_no)
 		values(#{orderlistNo},#{orderlistTel},#{orderlistAddress},#{orderlistMessage},
-		#{orderlistPrice},#{orderlistPaypoint},#{orderlistCargeprice},#{orderlistSavepoint},#{memberNo},#{shopNo});
+		#{orderlistPrice},#{orderlistPaypoint},#{orderlistCargeprice},#{orderlistSavepoint},#{memberNo},#{shopNo})
 	</insert>
 	
 	<insert id="insertOrderDet" parameterType="OrderDetVO">

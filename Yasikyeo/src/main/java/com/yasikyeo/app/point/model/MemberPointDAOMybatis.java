@@ -1,5 +1,7 @@
 package com.yasikyeo.app.point.model;
 
+import java.util.Map;
+
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.springframework.stereotype.Repository;
 
@@ -10,6 +12,10 @@ public class MemberPointDAOMybatis extends SqlSessionDaoSupport implements Membe
 	@Override
 	public int insertPoint(MemberPointVO memberPointVo) {
 		return getSqlSession().insert(namespace+".insertPoint", memberPointVo);
+	}
+	@Override
+	public int updatePoint(Map<String, Object> map) {
+		return getSqlSession().update(namespace+".updatePoint", map);
 	}
 
 }

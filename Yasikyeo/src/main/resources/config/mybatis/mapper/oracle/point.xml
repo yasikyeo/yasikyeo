@@ -4,10 +4,16 @@
 
 <mapper namespace="config.mybatis.mapper.oracle.point">
 	<insert id="insertPoint" parameterType="MemberPointVO">
-		<selectKey keyProperty="orderdetNo" resultType="int" order="BEFORE">
+		<selectKey keyProperty="pointNo" resultType="int" order="BEFORE">
 			select point_no_seq.nextval from dual
 		</selectKey>
 		insert into point(POINT_NO,POINT_TYPE,POINT_POINT,MEMBER_NO,ORDERLIST_NO)
-		values(#{point_no},#{point_type},#{point_point},#{member_no},#{orderlist_no}) 
+		values(#{pointNo},#{pointType},#{pointPoint},#{memberNo},#{orderlistNo}) 
 	</insert>
+	
+	<update id="updatePoint" parameterType="map">
+		update member
+			set MEMBER_POINT=MEMBER_POINT+#{memberPoint}
+		where member_no=#{memberNo}
+	</update>
 </mapper>
