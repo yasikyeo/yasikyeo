@@ -808,6 +808,7 @@ function cartsum(totalprice){
 			 cartsum+='<p><b class="font15px">주문합계</b></p>';
 			 cartsum+='<p class="color-orange font18px"><b id="totalprice">'+numberWithCommas(totalprice)+'</b>원</p>';
 			 cartsum+='<input type="text" name="totalmenuprice" value="'+totalprice+'" id="totalmenuprice"><br>';
+			 cartsum+='<input type="text" name="shopno" value="'+${shop.shopNo}+'" id="shopno"><br>';
 			 cartsum+='<p class="color-silver font13px">[최소주문금액:';
 			 cartsum+='<fmt:formatNumber pattern="#,###" value="${shop.shopMinprice}"/>원]</p>';
 		 cartsum+='</div>';

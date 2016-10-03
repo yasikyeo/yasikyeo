@@ -16,6 +16,7 @@ import com.yasikyeo.app.member.model.MemberService;
 import com.yasikyeo.app.member.model.MemberVO;
 import com.yasikyeo.app.orderdet.model.OrderDetList;
 import com.yasikyeo.app.orderdet.model.OrderDetVO;
+import com.yasikyeo.app.orderlist.model.OrderListVO;
 
 @Controller
 @RequestMapping("/order")
@@ -31,9 +32,11 @@ public class ClientOrderController {
 		logger.info("주문하기 파라미터 orderList={}",orderList);
 		List<OrderDetVO>ordermenuList = orderList.getOrderDetList();
 		int totalMprice=orderList.getTotalmenuprice();
+		int shopNo=orderList.getShopno();
 		
 		session.setAttribute("ordermenuList",ordermenuList );
 		session.setAttribute("totalMprice",totalMprice );
+		session.setAttribute("shopNo",shopNo);
 		
 		String userid = (String)session.getAttribute("memberId");
 		logger.info("userid={}",userid);
@@ -44,6 +47,13 @@ public class ClientOrderController {
 		
 		
 	}
+	@RequestMapping("/client_order.do")
+	public String ClientOrder(@ModelAttribute OrderListVO orderListVo){
+		logger.info("주문하기 파라미터 orderListVo={}",orderListVo);
+		
+		return "redirect:/order/client_order_success.do";
+	}
+	
 	@RequestMapping("/client_order_success.do")
 	public void paymentsuccess(){
 		

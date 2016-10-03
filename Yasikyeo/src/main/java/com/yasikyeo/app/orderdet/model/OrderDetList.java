@@ -6,8 +6,17 @@ public class OrderDetList {
 
 	private List<OrderDetVO> orderDetList;
 	private int totalmenuprice;
+	private int shopno;
 	
 	
+	public int getShopno() {
+		return shopno;
+	}
+
+	public void setShopno(int shopno) {
+		this.shopno = shopno;
+	}
+
 	public int getTotalmenuprice() {
 		return totalmenuprice;
 	}
@@ -26,7 +35,8 @@ public class OrderDetList {
 
 	@Override
 	public String toString() {
-		return "OrderDetList [orderDetList=" + orderDetList + ", totalmenuprice=" + totalmenuprice + "]";
+		return "OrderDetList [orderDetList=" + orderDetList + ", totalmenuprice=" + totalmenuprice + ", shopno="
+				+ shopno + "]";
 	}
 	
 	

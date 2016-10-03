@@ -1,7 +1,5 @@
 package com.yasikyeo.app.ceo.shop.model;
 
-import java.sql.Timestamp;
-
 public class CeoShopVO {
 	
 	private int shopNo;

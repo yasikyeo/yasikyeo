@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="config.mybatis.mapper.oracle.order">
+	<insert id="insertOrderList" parameterType="OrderListVO">
+		<selectKey keyProperty="orderlistNo" resultType="int" order="BEFORE">
+			select orderlist_no_seq.nextval from dual
+		</selectKey>
+		insert into orderlist(orderlist_no,orderlist_tel,orderlist_address,orderlist_message,
+		orderlist_price,orderlist_paypoint,orderlist_cargeprice,orderlist_savepoint,member_no,shop_no)
+		values(#{orderlistNo},#{orderlistTel},#{orderlistAddress},#{orderlistMessage},
+		#{orderlistPrice},#{orderlistPaypoint},#{orderlistCargeprice},#{orderlistSavepoint},#{memberNo},#{shopNo});
+	</insert>
+	
+	<insert id="insertOrderDet" parameterType="OrderDetVO">
+		<selectKey keyProperty="orderdetNo" resultType="int" order="BEFORE">
+			select orderdet_no_seq.nextval from dual
+		</selectKey>
+		insert into orderdet(orderdet_no,orderdet_productname,orderdet_selectproduct,
+		 orderdet_selectprice,orderdet_option,orderdet_optionprice,orderdet_qty,orderlist_no)
+		values(#{orderdetNo},#{orderdetProductname},#{orderdetSelectproduct},#{orderdetSelectprice},
+		#{orderdetOption},#{orderdetOptionprice},#{orderdetQty},#{orderdetTotalprice},#{orderlistNo},#{},#{},#{},#{},)
+	</insert>
+</mapper>
