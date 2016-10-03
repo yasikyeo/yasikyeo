@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.yasikyeo.app.bookmark.model.BookmarkService;
+import com.yasikyeo.app.bookmark.model.BookmarkVO;
 import com.yasikyeo.app.categori.model.CategoriService;
 import com.yasikyeo.app.categori.model.CategoriVO;
 import com.yasikyeo.app.ceo.shop.model.CeoProductVO;
@@ -21,6 +23,8 @@ import com.yasikyeo.app.ceo.shop.model.CeoShopVO;
 import com.yasikyeo.app.common.PaginationInfo;
 import com.yasikyeo.app.common.SearchVO2;
 import com.yasikyeo.app.common.Utility;
+import com.yasikyeo.app.member.model.MemberService;
+import com.yasikyeo.app.member.model.MemberVO;
 
 @Controller
 @RequestMapping("/shop")
@@ -33,6 +37,12 @@ public class ClientShopController {
 	
 	@Autowired
 	private CategoriService cateService;
+	
+	@Autowired
+	private MemberService memberService;
+	
+	@Autowired
+	private BookmarkService bookmarkService;
 	
 	@RequestMapping("/client_shop_list.do")
 	public void clientShopList(@ModelAttribute SearchVO2 searchVo2,
@@ -74,7 +84,19 @@ public class ClientShopController {
 		
 	}
 	@RequestMapping("/client_shop_det.do")
-	public void clientShopDetail(@RequestParam(defaultValue="0") int no,Model model){
+	public void clientShopDetail(@RequestParam(defaultValue="0") int no,
+								HttpSession session,Model model){
+		String memberId = (String) session.getAttribute("memberId");
+		int bookmarkcnt=0;
+		if(memberId!=null && memberId!=""){
+			MemberVO memberVo = memberService.selectMemberByMemberId(memberId);
+			logger.info("업소상세내역 조회 파라미터 memberVo={}",memberVo);
+			BookmarkVO bookmarkvo = new BookmarkVO(no, memberVo.getMemberNo());
+			bookmarkcnt = bookmarkService.selectCountBookmark(bookmarkvo);
+		}
+		logger.info("북마크내역조회 bookmarkcnt={}",bookmarkcnt);
+		
+		
 		logger.info("업소 상세내역조회하기 파라미터 no={}",no);
 		
 		CeoShopVO shopVo = shopService.selectByShopNo(no);
@@ -87,6 +109,7 @@ public class ClientShopController {
 		logger.info("업소 상품 조회결과 productList.size={}",productList.size());
 		
 		
+		model.addAttribute("bookmarkcnt", bookmarkcnt);
 		model.addAttribute("shop", shopVo);
 		model.addAttribute("cateList", cateList);
 		model.addAttribute("productList", productList);

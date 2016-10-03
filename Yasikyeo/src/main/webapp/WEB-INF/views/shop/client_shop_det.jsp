@@ -176,7 +176,37 @@ $(document).ready(function () {
 		$( ".modal" ).show();
 	});
 
-	
+	//북마크유무
+	if(${bookmarkcnt}>0){
+		$("#bookmark").prop('checked', true);
+	}
+	$("#bookmark").change(function() {
+		if($("#bookmark").is(":checked")){
+			$.ajax({
+				url:"<c:url value='/addBookmark.do' />",
+				type:"GET",
+				data:"shopNo=${param.no}", //요청 파라미터
+				success:function(res){
+					alert("즐겨찾기가 등록되었습니다.");					
+				},
+				error:function(xhr, status, error){
+					alert(status+" : " + error);
+				}
+			});	
+		}else{
+			$.ajax({
+				url:"<c:url value='/deleteBookmark.do' />",
+				type:"GET",
+				data:"shopNo=${param.no}", //요청 파라미터
+				success:function(res){
+					alert("즐겨찾기가 삭제되었습니다.");					
+				},
+				error:function(xhr, status, error){
+					alert(status+" : " + error);
+				}
+			});	
+		}
+	});
 });
 
 </script>

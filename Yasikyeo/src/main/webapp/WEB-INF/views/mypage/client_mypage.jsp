@@ -17,6 +17,34 @@ $(function () {
 	 	  targetFormat : 'Rating: {score}', */
 	 	  targetScore: '#hint'
 	});
+	$(".bookmark").click(function() {
+		var shopNo = $(this).find(".shopno").val();
+		$(location).attr("href","<c:url value='/shop/client_shop_det.do?no="+shopNo+"'/>");
+	});
+	$(".close1").click(function() {
+		$(this).parents(".bookmark").remove();
+		var shopNo = $(this).parents(".bookmark").find(".shopno").val();
+		$.ajax({
+			url:"<c:url value='/deleteBookmark.do' />",
+			type:"GET",
+			data:"shopNo="+shopNo, //요청 파라미터
+			success:function(res){
+				alert("즐겨찾기가 삭제되었습니다.");					
+			},
+			error:function(xhr, status, error){
+				alert(status+" : " + error);
+			}
+		});
+		var markCnt = $('.mark').length;
+		if(markCnt==0){
+			var src = "<c:url value='/images/즐겨찾기등록.png'/>";
+			var str = '';
+			str+='<div class="div1 vertical-container">';
+				str+='<img alt="" src="'+src+'">';
+				str+='</div>';
+			$("#markContain").append(str);
+		}
+	});
 });
 </script>
 <div class="mainSection">
@@ -58,27 +86,18 @@ $(function () {
 				</div>
 				<div class="bookmarkContain">
 					<!-- 음식점 조회 -->
-					<div class="bookmark">
+					<c:forEach var="shop" items="${shopList}">
+						<div class="bookmark cursor-pointer">
+							<div>${shop.shopName}<input type="text" value="${shop.shopNo}" class="shopno"></div>
+							<div class="star" data-score="${shop.shopAvgreview}"></div>
+							<div class="description">리뷰<span>${shop.shopReviewcnt}</span>즐겨찾기<span>${shop.shopHit}</span></div>
+						</div>
+					</c:forEach>
+					<!-- <div class="bookmark">
 						<div>피자스토리 원플러스원</div>
 						<div class="star" data-score="3.6"></div>
 						<div class="description">리뷰<span>4</span>즐겨찾기<span>3</span></div>
-					</div>
-					<div class="bookmark">
-						<div>피자스토리 원플러스원</div>
-						<div class="star" data-score="3.6"></div>
-						<div class="description">리뷰<span>4</span>즐겨찾기<span>3</span></div>
-					</div>
-					<div class="bookmark">
-						<div>피자스토리 원플러스원</div>
-						<div class="star" data-score="3.6"></div>
-						<div class="description">리뷰<span>4</span>즐겨찾기<span>3</span></div>
-					</div>
-					<div class="bookmark">
-						<div>피자스토리 원플러스원</div>
-						<div class="star" data-score="3.6"></div>
-						<div class="description">리뷰<span>4</span>&nbsp;즐겨찾기<span>3</span></div>
-					</div>
-					
+					</div> -->
 					<!-- 음식점 조회끝 -->
 				</div>
 			</div>
@@ -87,38 +106,25 @@ $(function () {
 				<div class="pageTitle">
 					<strong>즐겨찾기</strong> <span>자주 이용하는 업소를 즐겨찾기에 등록해 보세요.</span>
 				</div>
-				<div class="bookmarkContain">
+				<div class="bookmarkContain" id="markContain">
 					<!-- 북마크 없을때 -->
-					<div class="div1 vertical-container">
-						<img alt="" src="<c:url value='/images/즐겨찾기등록.png'/>">
-					</div>
+					<c:if test="${empty bookmarkshopList}">
+						<div class="div1 vertical-container">
+							<img alt="" src="<c:url value='/images/즐겨찾기등록.png'/>">
+						</div>
+					</c:if>					
+					<c:if test="${!empty bookmarkshopList}">
 					<!-- 북마크 있을때 -->
 					<!-- 북마크 반복시작 -->
-					<div class="bookmark">
-						<span class="close" id="close1" >&times;</span>
-						<div>피자스토리 원플러스원</div>
-						<div class="star" data-score="3.6"></div>
-						<div class="description">리뷰<span>4</span>즐겨찾기<span>3</span></div>
-					</div>
-					<div class="bookmark">
-						<span class="close" id="close1" >&times;</span>
-						<div>피자스토리 원플러스원</div>
-						<div class="star" data-score="3.6"></div>
-						<div class="description">리뷰<span>4</span>즐겨찾기<span>3</span></div>
-					</div>
-					<div class="bookmark">
-						<span class="close" id="close1" >&times;</span>
-						<div>피자스토리 원플러스원</div>
-						<div class="star" data-score="3.6"></div>
-						<div class="description">리뷰<span>4</span>즐겨찾기<span>3</span></div>
-					</div>
-					<div class="bookmark">
-						<span class="close" id="close1" >&times;</span>
-						<div>피자스토리 원플러스원</div>
-						<div class="star" data-score="3.6"></div>
-						<div class="description">리뷰<span>4</span>&nbsp;즐겨찾기<span>3</span></div>
-					</div>
-					
+						<c:forEach var="bookmarkshop" items="${bookmarkshopList}">
+							<div class="bookmark cursor-pointer mark">
+								<span class="close close1">&times;</span>
+								<div>${bookmarkshop.shopName}<input type="text" value="${bookmarkshop.shopNo}" class="shopno"></div>
+								<div class="star" data-score="${bookmarkshop.shopAvgreview}"></div>
+								<div class="description">리뷰<span>${bookmarkshop.shopReviewcnt}</span>즐겨찾기<span>${bookmarkshop.shopHit}</span></div>
+							</div>
+						</c:forEach>
+					</c:if>	
 					<!-- 북마크 반복끝 -->
 				</div>
 			</div>

@@ -54,4 +54,15 @@
 	<select id="selectCountOrderListView" parameterType="int" resultType="int">
 		select count(*) from orderlistView where member_no=#{memberNo}
 	</select>
+	
+	<select id="selectShopnofromOrderList" parameterType="int" resultType="int">
+		select shop_no from
+		(
+			select rownum,LIST_ALL.* from
+			(
+				select distinct shop_no from 
+				(select * from orderlist where member_no=#{memberNo} order by ORDERLIST_REGDATE)
+			)LIST_ALL where rownum between 1 and 20
+		)
+	</select>
 </mapper>

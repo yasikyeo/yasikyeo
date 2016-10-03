@@ -13,4 +13,5 @@ public interface OrderListService {
 	public List<Map<String, Object>> selectOrderListView(SearchVO searchVo);
 	public int selectCountOrderListView(int memberNo);
 	public Map<String, Object> selectOrderListViewByListNo(int orderlistNo);
+	public List<Integer> selectShopnofromOrderList(int memberNo);
 }

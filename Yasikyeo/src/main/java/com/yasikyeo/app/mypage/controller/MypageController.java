@@ -1,6 +1,7 @@
 package com.yasikyeo.app.mypage.controller;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -18,6 +19,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.yasikyeo.app.bookmark.model.BookmarkService;
+import com.yasikyeo.app.bookmark.model.BookmarkVO;
+import com.yasikyeo.app.ceo.shop.model.CeoShopService;
+import com.yasikyeo.app.ceo.shop.model.CeoShopVO;
 import com.yasikyeo.app.common.FileUploadWebUtil;
 import com.yasikyeo.app.common.PaginationInfo;
 import com.yasikyeo.app.common.SearchVO;
@@ -48,8 +53,40 @@ public class MypageController {
 	@Autowired
 	private MemberPointService memberPointService;
 	
+	@Autowired
+	private CeoShopService ceoShopService;
+	
+	@Autowired
+	private BookmarkService bookmarkService;
+	
 	@RequestMapping("/client_mypage.do")
-	public void MyPage(){
+	public void MyPage(HttpSession session,Model model){
+		String memberId = (String) session.getAttribute("memberId");
+		MemberVO memberVo = memberService.selectMemberByMemberId(memberId);
+		logger.info("마이페이지 보여주기 파라미터 memberVo={}",memberVo);
+		List<Integer>shopNoList =orderListService.selectShopnofromOrderList(memberVo.getMemberNo());
+		logger.info("shopNoList={}",shopNoList);
+		
+		List<CeoShopVO> shopList = new ArrayList<CeoShopVO>();
+		
+		for(int shopNo:shopNoList){
+			logger.info("shopNo={}",shopNo);
+			CeoShopVO shopVo = ceoShopService.selectByShopNo(shopNo);
+			shopList.add(shopVo);
+		}
+		logger.info("shopList={}",shopList);
+		
+		List<CeoShopVO> bookmarkshopList = new ArrayList<CeoShopVO>();
+		List<BookmarkVO>bookmarkList = bookmarkService.selectBookmark(memberVo.getMemberNo());
+		for(BookmarkVO bookmark:bookmarkList){
+			CeoShopVO shopVo = ceoShopService.selectByShopNo(bookmark.getShopNo());
+			bookmarkshopList.add(shopVo);
+		}
+		logger.info("bookmarkshopList={}",bookmarkshopList);
+		
+		model.addAttribute("shopList", shopList);
+		model.addAttribute("bookmarkshopList", bookmarkshopList);
+		
 	}
 	
 	@RequestMapping("/client_mypoint.do")

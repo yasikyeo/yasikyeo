@@ -93,4 +93,9 @@ public class OrderListServiceImpl implements OrderListService{
 		return orderListDao.selectOrderListViewByListNo(orderlistNo);
 	}
 
+	@Override
+	public List<Integer> selectShopnofromOrderList(int memberNo) {
+		return orderListDao.selectShopnofromOrderList(memberNo);
+	}
+
 }
