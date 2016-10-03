@@ -25,43 +25,17 @@
 									 <summary>카테고리 등록</summary>
 										<div id="content">
 											<div class="needpopup">
-												<form id="write" method="post" action="<c:url value='/ceo/marketadmin/market_menuUpdate.do'/>" enctype="multipart/form-data">
-												<input type="hidden" name="productNo" value="${ceoProductVo.productNo }">
-													<div>메뉴 이름 : <input type="text" id="food" name="productName" class="formInput2" value="${ceoProductVo.productName}" ></div>
-													<div><label for="productExplain">메뉴 설명<br></label>
-													<textarea rows="15" cols="80" name="productExplain" class="formInput" style="width: 500px; height: 170px; float: inherit;">${ceoProductVo.productExplain }</textarea></div><br>
-													 <input type="submit" class="formInput" value="수정하기"><br>
+												<form id="write" method="post" action="<c:url value='/ceo/marketadmin/market_category.do'/>">
+													<div>카테고리 이름 : <input type="text" name="categoriName" class="formInput2"></div>
+													<div><label for="categoriExplain">카테고리 설명<br></label>
+													<textarea rows="15" cols="80" name="categoriExplain" class="formInput" style="width: 500px; height: 170px; float: inherit;"></textarea></div><br>
+													 <input type="submit" class="formInput" value="등록하기"><br>
 												</div>
 											</form>
 										</div>
 									</div>
 									</tr>
 									
-																<!-- 이미지 등록시 미리보기를 보여주는 DHTML -->
-								<script type="text/javascript">
-								
-								
-    							function handleFileSelect(i) {
-    									var fileselectobj = "imageUpload";
-    									var previmageobj ="productImgView";
-										var files = document.getElementById(fileselectobj).files[0]; //파일 객체
-
-										var reader = new FileReader();
-
-										//파일정보 수집        
-										reader.onload = (function(theFile) {
-											return function(e) {
-												//이미지 뷰
-												var img_view = [ '<img src="',e.target.result,'" title="',escape(theFile.name),'"width=200px height=120px"/>' ].join('');
-												document.getElementById(previmageobj).innerHTML = img_view;
-											};
-
-										})(files);
-
-										reader.readAsDataURL(files);
-								}
-    							
-								</script>
 
 							</table>
 							

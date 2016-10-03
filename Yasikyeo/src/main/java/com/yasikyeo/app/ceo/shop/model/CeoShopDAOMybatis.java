@@ -6,6 +6,7 @@ import java.util.Map;
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.springframework.stereotype.Repository;
 
+import com.yasikyeo.app.categori.model.CategoriVO;
 import com.yasikyeo.app.common.SearchVO2;
 
 @Repository
@@ -86,6 +87,21 @@ public class CeoShopDAOMybatis extends SqlSessionDaoSupport	implements CeoShopDA
 	@Override
 	public int deleteProduct(int productNo) {
 		return getSqlSession().delete(namespace+".deleteProduct", productNo);
+	}
+
+	@Override
+	public int insertCategory(CategoriVO ceoCategoryVo) {
+		return getSqlSession().insert(namespace+".insertCategory", ceoCategoryVo);
+	}
+
+	@Override
+	public List<CategoriVO> selectCategory(int shopNo) {
+		return getSqlSession().selectList(namespace+".selectCategory", shopNo);
+	}
+
+	@Override
+	public int updateProductCategory(CeoProductVO ceoProductVo) {
+		return getSqlSession().update(namespace+".updateProductCategory", ceoProductVo);
 	}
 	
 }

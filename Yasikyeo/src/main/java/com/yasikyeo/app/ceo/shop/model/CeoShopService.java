@@ -3,6 +3,7 @@ package com.yasikyeo.app.ceo.shop.model;
 import java.util.List;
 import java.util.Map;
 
+import com.yasikyeo.app.categori.model.CategoriVO;
 import com.yasikyeo.app.common.SearchVO2;
 
 public interface CeoShopService {
@@ -21,6 +22,9 @@ public interface CeoShopService {
 	public CeoProductVO selectProduct(int productNo);
 	public int updateProduct(CeoProductVO ceoProductVo);
 	public int deleteProduct(int productNo);
+	public int insertCategory(CategoriVO ceoCategoryVo);
+	public List<CategoriVO> selectCategory(int shopNo);
+	public int updateProductCategory(CeoProductVO ceoProductVo);
 }
 
 

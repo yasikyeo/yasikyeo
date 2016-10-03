@@ -110,4 +110,23 @@
 	<delete id="deleteProduct" parameterType="int">
 		delete from product where product_no=#{productNo}
 	</delete>
+	
+	<insert id="insertCategory" parameterType="CategoriVO">
+	<selectKey keyProperty="categoriNo" resultType="int" order="BEFORE">
+		select categori_no_seq.nextval from dual
+	</selectKey>
+		insert into categori
+		values(#{categoriNo},#{categoriName},#{categoriExplain},#{shopNo})
+	</insert>
+	
+	<select id="selectCategory" parameterType="int" resultType="CategoriVO">
+		select * from categori where shop_no=#{shopNo} order by categori_no asc
+	</select>
+	
+	<update id="updateProductCategory" parameterType="CeoProductVO">
+		update product
+		set categori_no=#{categoriNo}
+		where product_no=#{productNo}
+	</update>
+	
 </mapper>

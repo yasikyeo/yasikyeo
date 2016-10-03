@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.yasikyeo.app.categori.model.CategoriVO;
+import com.yasikyeo.app.ceo.shop.model.CeoProductListVO;
 import com.yasikyeo.app.ceo.shop.model.CeoProductVO;
 import com.yasikyeo.app.ceo.shop.model.CeoShopService;
 import com.yasikyeo.app.ceo.shop.model.CeoShopVO;
@@ -245,11 +246,11 @@ public class CeoShopController {
 		return "common/message";
 	}
 	
-	@RequestMapping(value="ceo/marketadmin/market_menuList.do",method=RequestMethod.GET)
+	@RequestMapping(value="ceo/marketadmin/market_menuList.do")
 	public String market_menuList_get(@ModelAttribute CategoriVO searchVo,HttpSession session,Model model){
 		
 		//1.
-		logger.info("상품목록 파라미터 searchVo={}",
+		logger.info("메뉴목록 파라미터 searchVo={}",
 				searchVo);
 		
 		String ceoId = (String) session.getAttribute("ceoId");
@@ -271,7 +272,8 @@ public class CeoShopController {
 		
 		//2.		
 		List<CeoProductVO> alist = ceoShopService.productSelectByShopNo(shopNo);
-		logger.info("상품목록 조회 결과, alist.size()={}",
+		List<CategoriVO> clist = ceoShopService.selectCategory(shopNo);
+		logger.info("메뉴목록 조회 결과, alist.size()={}",
 				alist.size());
 		
 		//전체 레코드개수 조회
@@ -281,6 +283,7 @@ public class CeoShopController {
 		
 		//3.
 		model.addAttribute("pdList", alist);
+		model.addAttribute("cgList", clist);
 		model.addAttribute("pagingInfo", pagingInfo);
 		
 		return "ceo/marketadmin/market_menuList";
@@ -295,7 +298,7 @@ public class CeoShopController {
 	}
 	
 	@RequestMapping(value="ceo/marketadmin/market_menuUpdate.do",method=RequestMethod.POST)
-	public String market_menuUpdate_post(@ModelAttribute CeoProductVO ceoProductVo,HttpSession session,HttpServletRequest request,Model model){
+	public String market_menuUpdate_post(@ModelAttribute CeoProductVO ceoProductVo,HttpServletRequest request,Model model){
 		
 		int uploadType = FileUploadWebUtil.PRODUCT_IMAGE_UPLOAD;
 		
@@ -366,5 +369,63 @@ public class CeoShopController {
 		return "common/message";
 		
 	}
+	
+	@RequestMapping(value="ceo/marketadmin/market_category.do",method=RequestMethod.GET)
+	public void market_category_get(){
+	}
+	
+	@RequestMapping(value="ceo/marketadmin/market_category.do",method=RequestMethod.POST)
+	public String market_category_post(@ModelAttribute CategoriVO ceoCategoryVo,HttpSession session,Model model){
+		
+		logger.info("카테고리 등록 파라미터 CeoCategoryVO={}", ceoCategoryVo);
+		
+		String ceoId = (String) session.getAttribute("ceoId");
+		
+		int ceoNo = ceoShopService.selectCeoNo(ceoId);
+		int shopNo = ceoShopService.selectCeoShop(ceoNo).getShopNo();
+		
+		ceoCategoryVo.setShopNo(shopNo);
+		
+		int res = ceoShopService.insertCategory(ceoCategoryVo);
+		
+		String msg="",url="/ceo/marketadmin/market_menuList.do";
+		if(res>0){
+			msg="카테고리 등록이 완료되었습니다.";
+		}else{
+			msg="카테고리 등록 실패";
+		}
+		
+		logger.info("카테고리 등록 결과 cnt={}", res);
+		
+		model.addAttribute("msg",msg);
+		model.addAttribute("url",url);
+		
+		return "common/message";
+	}
+	
+	/*@RequestMapping(value="ceo/marketadmin/market_categoryAdd.do")
+	public String market_categoryAdd(@RequestParam String categorySel,@ModelAttribute CeoProductListVO pdListVo  ,Model model){
+		
+		logger.info("선택한 상품 이벤트 등록 처리, 파라미터 pdListVo={}, eventSel={}", pdListVo, categorySel);
+		
+		//2.
+		List<CeoProductVO> pdList = pdListVo.getPdItems();
+		int cnt=productService.insertEventProduct(pdList, categorySel);
+		logger.info("선택한 상품 이벤트 등록 결과,cnt={}",cnt);
+		
+		//3.
+		String msg="", url="/admin/product/productList.do";
+		if(cnt>0){
+			msg="선택한 상품을 해당 이벤트로 등록하였습니다.";
+		}else{
+			msg="선택한 상품을 이벤트로 등록하지 못했습니다.";
+		}//if
+		
+		model.addAttribute("msg", msg);
+		model.addAttribute("url", url);
+		
+		return "common/message";
+		
+	}*/
 	
 }
