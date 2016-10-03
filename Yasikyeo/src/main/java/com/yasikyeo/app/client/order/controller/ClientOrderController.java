@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.yasikyeo.app.member.model.MemberService;
 import com.yasikyeo.app.member.model.MemberVO;
-import com.yasikyeo.app.orderdet.model.OrderDetList;
-import com.yasikyeo.app.orderdet.model.OrderDetVO;
-import com.yasikyeo.app.orderlist.model.OrderListVO;
+import com.yasikyeo.app.order.model.OrderDetList;
+import com.yasikyeo.app.order.model.OrderDetVO;
+import com.yasikyeo.app.order.model.OrderListVO;
 
 @Controller
 @RequestMapping("/order")

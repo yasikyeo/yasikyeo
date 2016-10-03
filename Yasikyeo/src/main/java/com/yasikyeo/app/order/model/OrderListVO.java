@@ -1,4 +1,4 @@
-package com.yasikyeo.app.orderlist.model;
+package com.yasikyeo.app.order.model;
 
 import java.sql.Timestamp;
 
@@ -9,7 +9,7 @@ public class OrderListVO {
 	private int orderlistTel;
 	private String orderlistAddress;
 	private String orderlistMessage;
-	private String orderlistPrice;
+	private int orderlistPrice;
 	private int orderlistPaypoint;
 	private int orderlistCargeprice;
 	private int orderlistSavepoint;
@@ -47,10 +47,10 @@ public class OrderListVO {
 	public void setOrderlistMessage(String orderlistMessage) {
 		this.orderlistMessage = orderlistMessage;
 	}
-	public String getOrderlistPrice() {
+	public int getOrderlistPrice() {
 		return orderlistPrice;
 	}
-	public void setOrderlistPrice(String orderlistPrice) {
+	public void setOrderlistPrice(int orderlistPrice) {
 		this.orderlistPrice = orderlistPrice;
 	}
 	public int getOrderlistPaypoint() {

@@ -18,8 +18,8 @@
 			select orderdet_no_seq.nextval from dual
 		</selectKey>
 		insert into orderdet(orderdet_no,orderdet_productname,orderdet_selectproduct,
-		 orderdet_selectprice,orderdet_option,orderdet_optionprice,orderdet_qty,orderlist_no)
+		 orderdet_selectprice,orderdet_option,orderdet_optionprice,orderdet_qty,orderdet_totalprice,orderlist_no)
 		values(#{orderdetNo},#{orderdetProductname},#{orderdetSelectproduct},#{orderdetSelectprice},
-		#{orderdetOption},#{orderdetOptionprice},#{orderdetQty},#{orderdetTotalprice},#{orderlistNo},#{},#{},#{},#{},)
+		#{orderdetOption},#{orderdetOptionprice},#{orderdetQty},#{orderdetTotalprice},#{orderlistNo})
 	</insert>
 </mapper>

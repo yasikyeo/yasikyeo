@@ -1,4 +1,4 @@
-package com.yasikyeo.app.orderdet.model;
+package com.yasikyeo.app.order.model;
 
 import java.util.List;
 
