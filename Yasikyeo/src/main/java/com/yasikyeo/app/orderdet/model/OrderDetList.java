@@ -5,6 +5,16 @@ import java.util.List;
 public class OrderDetList {
 
 	private List<OrderDetVO> orderDetList;
+	private int totalmenuprice;
+	
+	
+	public int getTotalmenuprice() {
+		return totalmenuprice;
+	}
+
+	public void setTotalmenuprice(int totalmenuprice) {
+		this.totalmenuprice = totalmenuprice;
+	}
 
 	public List<OrderDetVO> getOrderDetList() {
 		return orderDetList;
@@ -16,7 +26,7 @@ public class OrderDetList {
 
 	@Override
 	public String toString() {
-		return "OrderDetList [orderDetList=" + orderDetList + "]";
+		return "OrderDetList [orderDetList=" + orderDetList + ", totalmenuprice=" + totalmenuprice + "]";
 	}
 	
 	

@@ -616,7 +616,7 @@ $(document).ready(function () {
 				<!-- /로그인을 안했을때 -->
 				<c:if test="${!empty sessionScope.memberId }">
 				<!-- 장바구니메뉴추가부분 -->
-					<form class="font14px cartform" action="<c:url value='/order/client_order_info.do'/> ">
+					<form class="font14px cartform" action="<c:url value='/order/client_order_info.do'/>" method="post">
 						<!-- 각 메뉴 -->
 						<!-- <div class="accordion2 cartmenu">
 							<div class="padding10px">
@@ -666,6 +666,7 @@ $(document).on("change",".cnt",function () {
 	price2=price2.replace(/[^0-9]/g,"");
 
 	var menuPrice=(cnt*price1)+(cnt*price2);
+	$(this).parents(".cartmenu").find(".detTotalprice").val(menuPrice);
 	menuPrice = numberWithCommas(menuPrice);
 	var menuPriceObj = $(this).parents(".cartmenu").find(".result1");
 	menuPriceObj.text(menuPrice+"원");
@@ -711,11 +712,10 @@ $(document).on("click",".cartadd",function () {
 	if(cartmenucnt>0){
 		var totalprice=$("#totalprice").text().replace(/[^0-9]/g,"");
 		totalprice=parseInt(totalprice)+parseInt(menuprice);
-		totalprice=numberWithCommas(totalprice);
-		$("#totalprice").text(totalprice);
+		$("#totalmenuprice").val(totalprice);
+		$("#totalprice").text(numberWithCommas(totalprice));
 	}
 	if(cartmenucnt<1){
-		menuprice=numberWithCommas(menuprice);
 		var divSumStr=cartsum(menuprice);
 		$(".cartform").append(divSumStr);
 	}
@@ -764,6 +764,7 @@ function findtotalsum(){
 	
 	var totalPriceObj = $("#cartsumdiv").find("#totalprice");
 	
+	$("#cartsumdiv").find("#totalmenuprice").val(totalprice);
 	totalprice = numberWithCommas(totalprice);
 	
 	totalPriceObj.text(totalprice);
@@ -773,7 +774,7 @@ function cartmenu(cartcnt,menu,price,price1,pricestr,price2,option) {
 	cartmenustr+='<div class="accordion2 cartmenu">';
 		cartmenustr+='<div class="padding10px">';
 			cartmenustr+='<span class="sp12">'+menu+'</span>';
-			cartmenustr+='<input class="textsize1 cnt" type="number" min="1" value="1" name="orderdetQty['+cartcnt+']">개';
+			cartmenustr+='<input class="textsize1 cnt" type="number" min="1" value="1" name="orderDetList['+cartcnt+'].orderdetQty">개';
 			cartmenustr+='<input class="align-middle bt7 btmenuclose" type="button" value="X">';
 		cartmenustr+='</div>';
 		cartmenustr+='<div class="border-bottom1">';
@@ -788,12 +789,13 @@ function cartmenu(cartcnt,menu,price,price1,pricestr,price2,option) {
 				if(price2!=null){
 					cartmenustr+='<span class="float-left"><b>추가선택: '+option+'</b></span>';
 					cartmenustr+='<span class="float-right pric2">+ '+numberWithCommas(price2)+'원</span>';
-					cartmenustr+='<input type="text" name="orderdetOption['+cartcnt+']" value="'+option+'"><br>'
-					cartmenustr+='<input type="text" name="orderdetOptionprice['+cartcnt+']" value="'+price2+'"><br>'
+					cartmenustr+='<input type="text" name="orderDetList['+cartcnt+'].orderdetOption" value="'+option+'"><br>';
+					cartmenustr+='<input type="text" name="orderDetList['+cartcnt+'].orderdetOptionprice" value="'+price2+'"><br>';
 				}
-				cartmenustr+='<input type="text" name="orderdetProductname['+cartcnt+']" value="'+menu+'"><br>'
-				cartmenustr+='<input type="text" name="orderdetSelectproduct['+cartcnt+']" value="'+pricestr+'"><br>'
-				cartmenustr+='<input type="text" name="orderdetSelectprice['+cartcnt+']" value="'+price1+'"><br>'
+				cartmenustr+='<input type="text" name="orderDetList['+cartcnt+'].orderdetProductname" value="'+menu+'"><br>';
+				cartmenustr+='<input type="text" name="orderDetList['+cartcnt+'].orderdetSelectproduct" value="'+pricestr+'"><br>';
+				cartmenustr+='<input type="text" name="orderDetList['+cartcnt+'].orderdetSelectprice" value="'+price1+'"><br>';
+				cartmenustr+='<input type="text" name="orderDetList['+cartcnt+'].orderdetTotalprice" value="'+price+'" class="detTotalprice"><br>';
 			cartmenustr+='</div>';
 		cartmenustr+='</div>';
 	cartmenustr+='</div>';
@@ -804,7 +806,8 @@ function cartsum(totalprice){
 	 cartsum+='<div id="cartsumdiv">';
 		 cartsum+='<div class="padding10px align-right">';
 			 cartsum+='<p><b class="font15px">주문합계</b></p>';
-			 cartsum+='<p class="color-orange font18px"><b id="totalprice">'+totalprice+'</b>원</p>';
+			 cartsum+='<p class="color-orange font18px"><b id="totalprice">'+numberWithCommas(totalprice)+'</b>원</p>';
+			 cartsum+='<input type="text" name="totalmenuprice" value="'+totalprice+'" id="totalmenuprice"><br>';
 			 cartsum+='<p class="color-silver font13px">[최소주문금액:';
 			 cartsum+='<fmt:formatNumber pattern="#,###" value="${shop.shopMinprice}"/>원]</p>';
 		 cartsum+='</div>';

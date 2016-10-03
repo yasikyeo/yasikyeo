@@ -9,7 +9,15 @@ public class OrderDetVO {
 	private String orderdetOption;
 	private int orderdetOptionprice;
 	private int orderdetQty;
+	private int orderdetTotalprice;
 	private int orderlistNo;
+	
+	public int getOrderdetTotalprice() {
+		return orderdetTotalprice;
+	}
+	public void setOrderdetTotalprice(int orderdetTotalprice) {
+		this.orderdetTotalprice = orderdetTotalprice;
+	}
 	public int getOrderdetNo() {
 		return orderdetNo;
 	}
@@ -63,6 +71,7 @@ public class OrderDetVO {
 		return "OrderDetVO [orderdetNo=" + orderdetNo + ", orderdetProductname=" + orderdetProductname
 				+ ", orderdetSelectproduct=" + orderdetSelectproduct + ", orderdetSelectprice=" + orderdetSelectprice
 				+ ", orderdetOption=" + orderdetOption + ", orderdetOptionprice=" + orderdetOptionprice
-				+ ", orderdetQty=" + orderdetQty + ", orderlistNo=" + orderlistNo + "]";
+				+ ", orderdetQty=" + orderdetQty + ", orderdetTotalprice=" + orderdetTotalprice + ", orderlistNo="
+				+ orderlistNo + "]";
 	}
 }

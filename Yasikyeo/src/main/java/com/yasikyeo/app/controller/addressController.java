@@ -51,6 +51,36 @@ public class addressController {
 		response.getWriter().write(sb.toString());			// 응답결과 반환
     }
 	
+	@RequestMapping("/getAddrApi1.do")
+    public void getAddrApi1(HttpServletRequest req, ModelMap model, HttpServletResponse response) throws Exception {
+		// 요청변수 설정
+    	String currentPage = req.getParameter("currentPage");
+		String countPerPage = req.getParameter("countPerPage");
+		String confmKey = req.getParameter("confmKey");
+		String keyword = req.getParameter("keyword");
+		
+		logger.info("ajax-요청 처리, currentPage={},keyword={}",
+				currentPage, keyword);
+		
+		// OPEN API 호출 URL 정보 설정
+		String apiUrl = "http://www.juso.go.kr/addrlink/addrLinkApi.do?currentPage="+currentPage+"&countPerPage="+countPerPage+"&keyword="+URLEncoder.encode(keyword,"UTF-8")+"&confmKey="+confmKey;
+		URL url = new URL(apiUrl);
+    	BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream(),"UTF-8"));
+    	StringBuffer sb = new StringBuffer();
+    	String tempStr = null;
+
+    	while(true){
+    		tempStr = br.readLine();
+    		if(tempStr == null) break;
+    		sb.append(tempStr);								// 응답결과 XML 저장
+    	}
+    	br.close();
+    	response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/xml");
+		response.getWriter().write(sb.toString());			// 응답결과 반환
+    }
+	
+	
 	@RequestMapping("/setDefultAddress.do")
 	@ResponseBody
 	public void setDefultAddress(HttpSession session){
