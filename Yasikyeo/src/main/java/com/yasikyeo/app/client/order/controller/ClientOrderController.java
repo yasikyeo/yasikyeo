@@ -1,7 +1,5 @@
 package com.yasikyeo.app.client.order.controller;
 
-import static org.hamcrest.CoreMatchers.instanceOf;
-
 import java.util.List;
 import java.util.Map;
 
@@ -14,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.yasikyeo.app.member.model.MemberService;
 import com.yasikyeo.app.member.model.MemberVO;
@@ -83,11 +82,19 @@ public class ClientOrderController {
 		
 		
 		
-		return "redirect:/order/client_order_success.do";
+		return "redirect:/order/client_order_success.do?OrderlistNo="+orderListVo.getOrderlistNo();
 	}
 	
 	@RequestMapping("/client_order_success.do")
-	public void paymentsuccess(){
+	public void paymentsuccess(@RequestParam(defaultValue="0") int OrderlistNo,Model model){
+		logger.info("주문 완료 페이지 파라미터={}",OrderlistNo);
 		
+		List<OrderDetVO>orderDetList =  orderService.selectOrderDet(OrderlistNo);
+		logger.info("orderDetList={}",orderDetList);
+		OrderListVO orderlistVo = orderService.selectOrderList(OrderlistNo);
+		logger.info("orderlistVo={}",orderlistVo);
+		
+		model.addAttribute("orderDetList", orderDetList);
+		model.addAttribute("orderlistVo", orderlistVo);
 	}
 }

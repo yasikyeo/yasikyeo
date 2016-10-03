@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.yasikyeo.app.common.SearchVO;
 import com.yasikyeo.app.point.model.MemberPointDAO;
 import com.yasikyeo.app.point.model.MemberPointVO;
 
@@ -65,6 +66,31 @@ public class OrderListServiceImpl implements OrderListService{
 		result.put("pointCnt", pointCnt);
 		
 		return result;
+	}
+
+	@Override
+	public OrderListVO selectOrderList(int orderlistNo) {
+		return orderListDao.selectOrderList(orderlistNo);
+	}
+
+	@Override
+	public List<OrderDetVO> selectOrderDet(int orderlistNo) {
+		return orderListDao.selectOrderDet(orderlistNo);
+	}
+
+	@Override
+	public List<Map<String, Object>> selectOrderListView(SearchVO searchVo) {
+		return orderListDao.selectOrderListView(searchVo);
+	}
+
+	@Override
+	public int selectCountOrderListView(int memberNo) {
+		return orderListDao.selectCountOrderListView(memberNo);
+	}
+
+	@Override
+	public Map<String, Object> selectOrderListViewByListNo(int orderlistNo) {
+		return orderListDao.selectOrderListViewByListNo(orderlistNo);
 	}
 
 }

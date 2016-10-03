@@ -4,10 +4,21 @@
 <script type="text/javascript">
 $(function() {
 	$(".table1 tr").click(function() {
-		$(location).attr("href","<c:url value='/mypage/client_baro_det.do'/>");
+		var orderlistNo = $(this).find("#orderlistNo").text();
+		$(location).attr("href","<c:url value='/mypage/client_baro_det.do?orderlistNo="+orderlistNo+"'/>");
 	});
 });
+function pageProc(curPage){
+	document.frmPage1.currentPage.value=curPage;
+	document.frmPage1.submit();
+}
 </script>
+<form name="frmPage1" method="post" id="frmPage"
+	action="<c:url value='/mypage/client_paymentList.do'/>">
+	<input type="text" name="currentPage" id="currentPage" value="${param.currentPage}">
+	<input type="hidden" name="searchKeyword" 
+		value="${searchVO.searchKeyword }">	
+</form>
 <div class="mainSection">
 	<div class="location">
 		<ul>
@@ -51,19 +62,58 @@ $(function() {
 					</thead>
 					<tbody>
 						<!-- 반복시작 -->
-						<tr>
-							<td>2016.09.13 오후 7:58</td>
-							<td class="color-orange">BEGRC00434</td>
-							<td>피자나라치킨공주 신내점</td>
-							<td class="color-orange"><b>1,6000원</b></td>
-							<td><span class="spgreenbox">배달완료</span></td>
-						</tr>
-						
+						<c:if test="${empty orderlistview}">
+							<tr><td colspan="5">결제내역이 없습니다.</td></tr>
+						</c:if>
+						<c:if test="${!empty orderlistview}">
+							<c:forEach var="map" items="${orderlistview}">
+								<tr>
+									<td><fmt:formatDate value="${map['ORDERLIST_REGDATE'] }" pattern="YYYY.MM.dd a h:mm"/></td>
+									<td class="color-orange" id="orderlistNo">${map["ORDERLIST_NO"] }</td>
+									<td>${map["SHOP_NAME"] }</td>
+									<td class="color-orange"><b><fmt:formatNumber value="${map['ORDERLIST_PRICE'] }" pattern="#,###"/>원</b></td>
+									<td>
+										<c:if test="${map['ORDERLIST_STATE']=='접수대기' }">
+											<span class="spgreenbox">${map["ORDERLIST_STATE"] }</span>
+										</c:if>
+										<c:if test="${map['ORDERLIST_STATE']=='배달완료' }">
+											<span class="sporangebox">${map["ORDERLIST_STATE"] }</span>
+										</c:if>
+									</td>
+								</tr>
+							</c:forEach>
+						</c:if>
 					</tbody>
 				</table>
 			</fieldset>
 		</div>
 	</div>
+	<br>
+	<div class="vertical-container">
+			<ul class="pagination">
+				<!-- 이전 블럭으로 이동 -->
+			<c:if test="${pagingInfo.firstPage>1 }">	
+					<li><a href="#" onclick="pageProc(${pagingInfo.firstPage-1})">&laquo;</a></li>
+			</c:if>
+			<!-- 페이지 번호 추가 -->						
+			<!-- [1][2][3][4][5][6][7][8][9][10] -->
+			<c:forEach var="i" begin="${pagingInfo.firstPage }" 
+				end="${pagingInfo.lastPage }">	 
+				<c:if test="${i==pagingInfo.currentPage }">
+					<li><a class="active">${i}</a></li>
+				</c:if>		
+				<c:if test="${i!=pagingInfo.currentPage }">
+					<li><a href="#" onclick="pageProc(${i})">${i}</a></li>
+				</c:if>
+			</c:forEach>	
+			<!--  페이지 번호 끝 -->
+				<!-- 다음 블럭으로 이동 -->
+			<c:if test="${pagingInfo.lastPage<pagingInfo.totalPage }">	
+				<li><a href="#" onclick="pageProc(${pagingInfo.lastPage+1})">&raquo;</a></li>
+			</c:if>
+		</ul>
+	</div>
+	<br>
 </div>
 <br>
 <br>

@@ -22,4 +22,36 @@
 		values(#{orderdetNo},#{orderdetProductname},#{orderdetSelectproduct},#{orderdetSelectprice},
 		#{orderdetOption},#{orderdetOptionprice},#{orderdetQty},#{orderdetTotalprice},#{orderlistNo})
 	</insert>
+	
+	<select id="selectOrderList" parameterType="int" resultType="OrderListVO">
+		select * from orderlist where orderlist_no=#{orderlistNo}
+	</select>
+	
+	<select id="selectOrderDet" parameterType="int" resultType="OrderDetVO">
+		select * from orderdet where orderlist_no=#{orderlistNo}
+	</select>
+	
+	<select id="selectOrderListViewByListNo" parameterType="int" resultType="map">
+		select * from orderlistView	where orderlist_no=#{orderlistNo}	
+	</select>
+	
+	<select id="selectOrderListView" parameterType="SearchVO" resultType="map">
+		select * from 
+		(
+			select rownum as RNUM, LIST_ALL.*
+		    from
+		        (select * from orderlistView
+		        	where member_no=#{searchKeyword} order by orderlist_Regdate desc
+		        ) LIST_ALL
+		)
+		<![CDATA[
+		where  RNUM> #{firstRecordIndex} 
+			and RNUM<= #{firstRecordIndex}
+			+ #{recordCountPerPage}
+		]]>
+	</select>
+	
+	<select id="selectCountOrderListView" parameterType="int" resultType="int">
+		select count(*) from orderlistView where member_no=#{memberNo}
+	</select>
 </mapper>

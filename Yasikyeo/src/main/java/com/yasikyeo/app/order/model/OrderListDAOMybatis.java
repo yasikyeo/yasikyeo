@@ -1,7 +1,12 @@
 package com.yasikyeo.app.order.model;
 
+import java.util.List;
+import java.util.Map;
+
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.springframework.stereotype.Repository;
+
+import com.yasikyeo.app.common.SearchVO;
 
 @Repository
 public class OrderListDAOMybatis extends SqlSessionDaoSupport implements OrderListDAO{
@@ -16,6 +21,31 @@ public class OrderListDAOMybatis extends SqlSessionDaoSupport implements OrderLi
 	@Override
 	public int insertOrderDet(OrderDetVO orderDetVo) {
 		return getSqlSession().insert(namespace+".insertOrderDet", orderDetVo);
+	}
+
+	@Override
+	public OrderListVO selectOrderList(int orderlistNo) {
+		return getSqlSession().selectOne(namespace+".selectOrderList", orderlistNo);
+	}
+
+	@Override
+	public List<OrderDetVO> selectOrderDet(int orderlistNo) {
+		return getSqlSession().selectList(namespace+".selectOrderDet", orderlistNo);
+	}
+
+	@Override
+	public List<Map<String, Object>> selectOrderListView(SearchVO searchVo) {
+		return getSqlSession().selectList(namespace+".selectOrderListView", searchVo);
+	}
+
+	@Override
+	public int selectCountOrderListView(int memberNo) {
+		return getSqlSession().selectOne(namespace+".selectCountOrderListView", memberNo);
+	}
+
+	@Override
+	public Map<String, Object> selectOrderListViewByListNo(int orderlistNo) {
+		return getSqlSession().selectOne(namespace+".selectOrderListViewByListNo", orderlistNo);
 	}
 
 }

@@ -19,8 +19,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.yasikyeo.app.common.FileUploadWebUtil;
+import com.yasikyeo.app.common.PaginationInfo;
+import com.yasikyeo.app.common.SearchVO;
+import com.yasikyeo.app.common.SearchVO2;
+import com.yasikyeo.app.common.Utility;
 import com.yasikyeo.app.member.model.MemberService;
 import com.yasikyeo.app.member.model.MemberVO;
+import com.yasikyeo.app.order.model.OrderDetVO;
+import com.yasikyeo.app.order.model.OrderListService;
+import com.yasikyeo.app.order.model.OrderListVO;
 
 @Controller
 @RequestMapping("/mypage")
@@ -34,19 +41,49 @@ public class MypageController {
 	@Autowired
 	private FileUploadWebUtil fileUploadWebUil;
 	
+	@Autowired
+	private OrderListService orderListService;
+	
 	@RequestMapping("/client_mypage.do")
 	public void MyPage(){
 	}
 	
 	@RequestMapping("/client_mypoint.do")
-	public void MyPoint(){
+	public void MyPoint(HttpSession session,Model model){
+		String memberId = (String) session.getAttribute("memberId");
+		MemberVO memberVo = memberService.selectMemberByMemberId(memberId);
+		logger.info("내포인트확인 memberVo={}",memberVo);
+		
 	}
 	@RequestMapping("/client_myreview.do")
 	public void MyReview(){
 	}
+	
 	@RequestMapping("/client_paymentList.do")
-	public void MyPaymentList(){
+	public void MyPaymentList(@ModelAttribute SearchVO searchVo,
+								HttpSession session,Model model){
+		String memberId = (String) session.getAttribute("memberId");
+		MemberVO memberVo = memberService.selectMemberByMemberId(memberId);
+		logger.info("바로결제내역보기 memberVo={}",memberVo);
+		
+		PaginationInfo pagingInfo = new PaginationInfo();
+		pagingInfo.setBlockSize(Utility.CLIENT_PAYMENTLIST_BLOCK_SIZE);
+		pagingInfo.setRecordCountPerPage(Utility.CLIENT_PAYMENTLIST_RECODE_COUNT_PER_PAGE);
+		pagingInfo.setCurrentPage(searchVo.getCurrentPage());
+		
+		searchVo.setBlockSize(Utility.CLIENT_PAYMENTLIST_BLOCK_SIZE);
+		searchVo.setRecordCountPerPage(Utility.CLIENT_PAYMENTLIST_RECODE_COUNT_PER_PAGE);
+		searchVo.setFirstRecordIndex(pagingInfo.getFirstRecordIndex());
+		searchVo.setSearchKeyword(memberVo.getMemberNo()+"");
+		
+		List<Map<String, Object>>orderlistview = orderListService.selectOrderListView(searchVo);
+		int totalRecord = orderListService.selectCountOrderListView(memberVo.getMemberNo());
+		pagingInfo.setTotalRecord(totalRecord);
+		
+		model.addAttribute("pagingInfo", pagingInfo);
+		model.addAttribute("orderlistview", orderlistview);
 	}
+	
 	@RequestMapping("/client_myreview_reg_possible.do")
 	public void MyReview_reg(){
 	}
@@ -141,7 +178,16 @@ public class MypageController {
 	}
 	
 	@RequestMapping("/client_baro_det.do")
-	public void borodetail(){
+	public void borodetail(@RequestParam(defaultValue="0") int orderlistNo,Model model){
+		
+		List<OrderDetVO>orderDetList =  orderListService.selectOrderDet(orderlistNo);
+		logger.info("orderDetList={}",orderDetList);
+		
+		Map<String, Object>OrderListView = orderListService.selectOrderListViewByListNo(orderlistNo);
+		logger.info("OrderListView={}",OrderListView);
+		
+		model.addAttribute("orderDetList", orderDetList);
+		model.addAttribute("OrderListView", OrderListView);
 		
 	}
 }

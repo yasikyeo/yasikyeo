@@ -6,6 +6,9 @@ $(function() {
 	$("#showPaylist").click(function() {
 		$(location).attr("href","<c:url value='/mypage/client_paymentList.do'/>");
 	});
+	$("#addorder").click(function() {
+		$(location).attr("href","<c:url value='/shop/client_shop_det.do?no=${orderlistVo.shopNo}'/>");
+	});
 });
 </script>
 <div class="mainSection">
@@ -27,21 +30,32 @@ $(function() {
 				<div class="div22">
 					<p class="tp padding3px"><b>결제성공</b></p>
 					<p class="padding3px">감사합니다..</p>
-					<p class="padding3px">고객님의 주문이 14시 40분 아래와 같이 성공적으로 완료 되었습니다</p>
+					<p class="padding3px">고객님의 주문이 <fmt:formatDate value="${orderlistVo.orderlistRegdate}" pattern="dd일 ah시mm분"/> 아래와 같이 성공적으로 완료 되었습니다</p>
 					<p class="padding3px">마이페이지 > 바로결제내역에서 주문정보를 조회하여 보실 수 있습니다.</p>
 				</div>
 				<div class="div23 aris">
-					<p class="p4"><label class="lb3 color-silver">주문번호</label>a12345</p>
-					<p class="p4"><label class="lb3 color-silver">주문자정보</label>서울 송파구 석촌동</p>
-					<p class="p4"><label class="lb3 color-silver">&nbsp;</label>010-5896-7894</p>
-					<p class="p4"><label class="lb3 color-silver">요청사항</label>벨누르기전에 전화주세요.</p>
-					<p class="p4"><label class="lb3 color-silver">주문내역</label>파닭, 마늘파닭</p>
-					<p class="p4"><label class="lb3 color-silver">주문금액</label>35,000원</p>
-					<p class="p4"><label class="lb3 color-silver">할인금액</label>3,000원(포인트결제)</p>
-					<p class="p4"><label class="lb3 color-silver">총 결제금액</label><b class="arib">32000원</b></p>
+					<p class="p4"><label class="lb3 color-silver">주문번호</label>${orderlistVo.orderlistNo}</p>
+					<p class="p4"><label class="lb3 color-silver">주문자정보</label>${orderlistVo.orderlistAddress}</p>
+					<p class="p4"><label class="lb3 color-silver">&nbsp;</label>${orderlistVo.orderlistTel}</p>
+					<p class="p4"><label class="lb3 color-silver">요청사항</label>${orderlistVo.orderlistMessage}</p>
+					<p class="p4"><label class="lb3 color-silver">주문내역</label>
+						<c:set var="i" value="0"/>
+						<c:forEach var="orderdet" items="${orderDetList}">
+							<c:if test="${i==0}">
+								${orderdet.orderdetProductname}
+							</c:if>
+							<c:if test="${i>0}">
+								, ${orderdet.orderdetProductname}
+							</c:if>
+						<c:set var="i" value="${i+1}"/>
+						</c:forEach>
+					</p>
+					<p class="p4"><label class="lb3 color-silver">주문금액</label><fmt:formatNumber value="${orderlistVo.orderlistPrice}" pattern="#,###"/></p>
+					<p class="p4"><label class="lb3 color-silver">할인금액</label><fmt:formatNumber value="${orderlistVo.orderlistPaypoint}" pattern="#,###"/>원(포인트결제)</p>
+					<p class="p4"><label class="lb3 color-silver">총 결제금액</label><b class="arib"><fmt:formatNumber value="${orderlistVo.orderlistCargeprice}" pattern="#,###"/>원</b></p>
 				</div>
 				<div class="ma-t-20px flex">
-					<input class="btblack bt8 ma-r-10px flex1" type="button" value="더 주문하기">
+					<input class="btblack bt8 ma-r-10px flex1" type="button" value="더 주문하기" id="addorder">
 					<input class="btgray bt8 ma-l-10px flex1" type="button" value="결제내역보기" id="showPaylist">
 				</div>
 			</div>
