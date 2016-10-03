@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.yasikyeo.app.categori.model.CategoriVO;
 import com.yasikyeo.app.ceo.shop.model.CeoProductVO;
@@ -284,4 +285,86 @@ public class CeoShopController {
 		
 		return "ceo/marketadmin/market_menuList";
 	}
+	
+	@RequestMapping(value="ceo/marketadmin/market_menuUpdate.do",method=RequestMethod.GET)
+	public void market_menuUpdate_get(@RequestParam int productNo,Model model){
+		
+		CeoProductVO ceoProductVo = ceoShopService.selectProduct(productNo);
+		
+		model.addAttribute("ceoProductVo",ceoProductVo);
+	}
+	
+	@RequestMapping(value="ceo/marketadmin/market_menuUpdate.do",method=RequestMethod.POST)
+	public String market_menuUpdate_post(@ModelAttribute CeoProductVO ceoProductVo,HttpSession session,HttpServletRequest request,Model model){
+		
+		int uploadType = FileUploadWebUtil.PRODUCT_IMAGE_UPLOAD;
+		
+		String oldProductImage = ceoShopService.selectProduct(ceoProductVo.getProductNo()).getProductImage();
+		
+		logger.info("메뉴 정보 수정 파라미터 ceoProductVo={}", ceoProductVo);
+		
+		List<Map<String, Object>> fileList = fileUtil.fileUpload(request, uploadType);
+		
+		//업로드된 파일명 구해오기
+		String fileName="";
+		long fileSize=0;
+		for(Map<String, Object> mymap : fileList){
+			fileName= (String) mymap.get("fileName");
+			fileSize=(Long) mymap.get("fileSize");			
+		}
+		
+		logger.info("파일명={}",fileName);
+		
+		if(fileName==null || fileName.isEmpty()){
+			ceoProductVo.setProductImage(oldProductImage);
+		}else{
+			ceoProductVo.setProductImage(fileName);
+			
+			String upPath=fileUtil.getUploadPath(request, fileUtil.SHOP_IMAGE_UPLOAD);
+					
+				//File객체 생성 후 파일 삭제
+				File delFile = new File(upPath,oldProductImage);
+				if(delFile.exists()){
+					boolean bool= delFile.delete();
+					logger.info("파일 삭제 결과={}", bool);
+				}
+		}
+		
+		int cnt = ceoShopService.updateProduct(ceoProductVo);
+		String msg="",url="/ceo/marketadmin/market_menuList.do";
+		if(cnt>0){
+			msg="메뉴 정보 수정이 완료되었습니다.";
+		}else{
+			msg="메뉴 정보 수정 실패";
+		}
+		
+		logger.info("메뉴 정보 수정 결과 cnt={}", cnt);
+		
+		model.addAttribute("msg",msg);
+		model.addAttribute("url",url);
+		
+		return "common/message";
+	}
+	
+	@RequestMapping(value="ceo/marketadmin/market_menuDelete.do",method=RequestMethod.GET)
+	public String market_menuDelete(@RequestParam int productNo,Model model){
+		
+		int res = ceoShopService.deleteProduct(productNo);
+		
+		String msg="",url="/ceo/marketadmin/market_menuList.do";
+		if(res>0){
+			msg="메뉴 정보 삭제가 완료되었습니다.";
+		}else{
+			msg="메뉴 정보 삭제 실패";
+		}
+		
+		logger.info("메뉴 정보 삭제 결과 cnt={}", res);
+		
+		model.addAttribute("msg",msg);
+		model.addAttribute("url",url);
+		
+		return "common/message";
+		
+	}
+	
 }

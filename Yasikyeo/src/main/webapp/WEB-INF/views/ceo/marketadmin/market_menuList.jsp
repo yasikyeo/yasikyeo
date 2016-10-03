@@ -4,10 +4,23 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/ceoallmenu.css" type="text/css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/marketmenulist.css" type="text/css"/>
 <script type="text/javascript">
-function pageFunc(curPage){
-	document.frmPage.currentPage.value=curPage;
-	frmPage.submit();
-}
+
+	$(function() {
+		$("#delete").click(function(){
+			if(confirm("해당 상품정보를 삭제 하시겠습니까?")){
+				return true;
+			}else{
+				return false;
+			}
+		});
+	});
+
+
+	function pageFunc(curPage){
+		document.frmPage.currentPage.value=curPage;
+		frmPage.submit();
+	}
+
 </script>
 <title>야시켜, 사장님 업소관리 페이지</title>
 
@@ -16,7 +29,7 @@ function pageFunc(curPage){
 					<div id="a_1">
 						<div id="show1">내 업소관리 - 메뉴목록</div>
 						<div class="show2">
-							<div id="lsh">사장님 업소에 대한 내용을 확인 및 수정할수 있는 메뉴입니다.</div>
+							<div id="lsh">사장님 업소에 대한 내용을 확인 및 수정할수 있는 페이지입니다.</div>
 						</div>
 							<div class="marketadmins">
 								
@@ -25,8 +38,6 @@ function pageFunc(curPage){
 								<p>등록된 즐겨찾기 수 - 0건</p>
 								<p>등록된 리뷰 수 - 0건</p>
 								<br>
-									<div class="product clear">
-									 <summary>메뉴 목록</summary>
 										<table border="1">
 											<colgroup>
 												<col width="5%">
@@ -38,7 +49,7 @@ function pageFunc(curPage){
 												<col width="9%">
 											</colgroup>
 											<thead>
-												<tr>
+												<tr class="list">
 													<th scope="col"><input type="checkbox"></th>
 													<th scope="col">메뉴 이미지</th>
 													<th scope="col">메뉴 이름</th>
@@ -53,27 +64,27 @@ function pageFunc(curPage){
 												<c:set var="i" value="0"/>
 												<c:forEach var="vo" items="${pdList }" >
 													<tr>
-														<td align="center">
+														<td class="td-center2">
 															<input type="checkbox" name="pdItems[${i}].productNo" id="chk_${i}"
 																value="${vo.productNo}" >
 															<input type="hidden" 
 																name="pdItems[${i}].productImage"
 																value="${vo.productImage}">	
 														</td>
-														<td align="center">
+														<td class="td-center">
 															<img src
 														="${pageContext.request.contextPath}/product_Image/${vo.productImage }" 
-																alt="${vo.productName }" width="50">
+																alt="${vo.productName }" width="50%">
 														</td>
-														<td align="center">${vo.productName }</td>
-														<td align="center">
+														<td class="td-center2">${vo.productName }</td>
+														<td class="td-center2">
 															<fmt:formatNumber value="${vo.productPrice }"
 															pattern="#,###" />원 </td>
-														<td align="center">
+														<td class="td-center2">
 															<fmt:formatDate value="${vo.productRegdate }"
 																pattern="yyyy-MM-dd"/></td>
-														<td align="center"><a href="#">수정</a></td>
-														<td align="center"><a href="#">삭제</a></td>
+														<td class="td-center2"><a href="<c:url value='market_menuUpdate.do?productNo=${vo.productNo }'/>">수정</a></td>
+														<td class="td-center2"><a id="delete" href="<c:url value='market_menuDelete.do?productNo=${vo.productNo }'/>">삭제</a></td>
 													</tr>
 													<c:set var="i" value="${i+1}"/> 
 												</c:forEach>
@@ -82,7 +93,7 @@ function pageFunc(curPage){
 										</table>
 									</div>
 									<!-- 페이징 처리를 위한 div -->
-<div class="divPage">
+<div align="center">
 	<!-- 이전 블럭으로 이동 -->
 	<c:if test="${pagingInfo.firstPage>1}">				
 		<a href="#" 
@@ -119,7 +130,7 @@ function pageFunc(curPage){
 	</c:if>
 </div>
 
-<div class="divRight">
+<div class="btCg">
 	<input type="button" id="btDel" value="선택한 상품 삭제"><br><br>
 	선택한 상품을
 	<select name="eventSel" id="eventSel">

@@ -18,6 +18,9 @@ public interface CeoShopDAO {
 	public List<CeoProductVO> productSelectByShopNo(int shopNo);
 	public int updateCeoShop(CeoShopVO ceoShopVo);
 	public int countShop(int shopNo);
+	public CeoProductVO selectProduct(int productNo);
+	public int updateProduct(CeoProductVO ceoProductVo);
+	public int deleteProduct(int productNo);
 }
 
 
