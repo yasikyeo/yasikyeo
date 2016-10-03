@@ -53,4 +53,9 @@ public class OrderListDAOMybatis extends SqlSessionDaoSupport implements OrderLi
 		return getSqlSession().selectList(namespace+".selectShopnofromOrderList", memberNo);
 	}
 
+	@Override
+	public List<OrderListAllVo> selectOrderListviews(SearchVO searchVo) {
+		return getSqlSession().selectList(namespace+".selectOrderListviews", searchVo);
+	}
+
 }

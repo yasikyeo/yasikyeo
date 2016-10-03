@@ -4,10 +4,21 @@
 <script type="text/javascript">
 	$(function() {
 		$(".writeReview").click(function() {
-			$(location).attr("href","<c:url value='/shop/client_shop_det.do#review'/>");
+			var shopno = $(this).parent("td").find(".shopno").val();
+			$(location).attr("href","<c:url value='/shop/client_shop_det.do?no="+shopno+"#review'/>");
 		});
 	});
+	function pageProc(curPage){
+		document.frmPage1.currentPage.value=curPage;
+		document.frmPage1.submit();
+	}
 </script>
+<form name="frmPage1" method="post" id="frmPage"
+	action="<c:url value='/mypage/client_myreview_reg_possible.do'/>">
+	<input type="text" name="currentPage" id="currentPage" value="${param.currentPage}">
+	<input type="hidden" name="searchKeyword" 
+		value="${searchVO.searchKeyword }">	
+</form>
 <div class="mainSection">
 	<div class="location">
 		<ul>
@@ -55,43 +66,86 @@
 			<br class="clear-both">
 			<hr>
 			<!-- 작성 가능 리뷰가 없을때 -->
-			<div class="align-center">
-				<p>
-					<img alt="" src="<c:url value='/images/temp/NotFound.jpg'/>">
-				</p>
-				<p class="p2">작성 가능한 리뷰가 없습니다!!</p>
-				<br>
-				<hr>
-			</div>
+			<c:if test="${empty orderlistAllviews}">
+				<div class="align-center">
+					<p>
+						<img alt="" src="<c:url value='/images/temp/NotFound.jpg'/>">
+					</p>
+					<p class="p2">작성 가능한 리뷰가 없습니다!!</p>
+					<br>
+					<hr>
+				</div>
+			</c:if>
 			<!-- 작성 가능 리뷰가 있을때 -->
-			<div>
-				<table class="table3">
-					<colgroup>
-						<col style="width:15%;">
-						<col style="width:13%;">
-						<col style="width:46%;">
-						<col style="width:13%;">
-						<col style="width:13%;">
-					</colgroup>
-					<thead>
-						<tr>
-							<th>날짜</th>
-							<th>업소</th>
-							<th>메뉴</th>
-							<th colspan="2">주문금액</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>2016-09-13</td>
-							<td>향원</td>
-							<td>자장면 외 1개</td>
-							<td class="color-orange"><b>21,000원</b></td>
-							<td><span class="sp3 writeReview">리뷰작성하기</span></td>
-						</tr>
-					</tbody>
-				</table>
+			<c:if test="${!empty orderlistAllviews}">
+				<div>
+					<table class="table3">
+						<colgroup>
+							<col style="width:15%;">
+							<col style="width:13%;">
+							<col style="width:46%;">
+							<col style="width:13%;">
+							<col style="width:13%;">
+						</colgroup>
+						<thead>
+							<tr>
+								<th>날짜</th>
+								<th>업소</th>
+								<th>메뉴</th>
+								<th colspan="2">주문금액</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach var="orderAlllist" items="${orderlistAllviews}">
+								<tr>
+									<td><fmt:formatDate value="${orderAlllist.orderlistVo.orderlistRegdate}" pattern="YYYY-MM-dd"/></td>
+									<td>${orderAlllist.shopName}</td>
+									<td>
+										<c:set var="x" value="0"/>
+										<c:forEach var="orderdet" items="${orderAlllist.orderDetList}">
+											<c:if test="${x==0}">
+												${orderdet.orderdetProductname}
+											</c:if>			
+											<c:set var="x" value="${x+1}"/>
+										</c:forEach>
+										<c:if test="${x>1}">
+												외${x-1}개
+										</c:if>
+									</td>
+									<td class="color-orange"><b><fmt:formatNumber value="${orderAlllist.orderlistVo.orderlistPrice}" pattern="#,###"/>원</b></td>
+									<td><span class="sp3 writeReview">리뷰작성하기</span><input type="hidden" value="${orderAlllist.orderlistVo.shopNo}" class="shopno"></td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+				</div>
+			</c:if>
+			<br>
+			<div class="vertical-container">
+					<ul class="pagination">
+						<!-- 이전 블럭으로 이동 -->
+					<c:if test="${pagingInfo.firstPage>1 }">	
+							<li><a href="#" onclick="pageProc(${pagingInfo.firstPage-1})">&laquo;</a></li>
+					</c:if>
+					<!-- 페이지 번호 추가 -->						
+					<!-- [1][2][3][4][5][6][7][8][9][10] -->
+					<c:forEach var="i" begin="${pagingInfo.firstPage }" 
+						end="${pagingInfo.lastPage }">	 
+						<c:if test="${i==pagingInfo.currentPage }">
+							<li><a class="active">${i}</a></li>
+						</c:if>		
+						<c:if test="${i!=pagingInfo.currentPage }">
+							<li><a href="#" onclick="pageProc(${i})">${i}</a></li>
+						</c:if>
+					</c:forEach>	
+					<!--  페이지 번호 끝 -->
+						<!-- 다음 블럭으로 이동 -->
+					<c:if test="${pagingInfo.lastPage<pagingInfo.totalPage }">	
+						<li><a href="#" onclick="pageProc(${pagingInfo.lastPage+1})">&raquo;</a></li>
+					</c:if>
+				</ul>
 			</div>
+			<br>
 		</fieldset>
 	</div>
 	

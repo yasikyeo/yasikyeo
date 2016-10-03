@@ -15,4 +15,5 @@ public interface OrderListDAO {
 	public int selectCountOrderListView(int memberNo);
 	public Map<String, Object> selectOrderListViewByListNo(int orderlistNo);
 	public List<Integer> selectShopnofromOrderList(int memberNo);
+	public List<OrderListAllVo> selectOrderListviews(SearchVO searchVo);
 }

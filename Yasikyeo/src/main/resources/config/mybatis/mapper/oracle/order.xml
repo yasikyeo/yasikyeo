@@ -65,4 +65,35 @@
 			)LIST_ALL where rownum between 1 and 20
 		)
 	</select>
+	<resultMap type="OrderListAllVo" id="orderListResultMap">
+		<association property="orderlistVo" column="ORDERLIST_NO" javaType="OrderListVO">
+			<id column="ORDERLIST_NO" property="orderlistNo" jdbcType="BIGINT"/>
+			<result column="ORDERLIST_PRICE" property="orderlistPrice" jdbcType="BIGINT"/>
+			<result column="ORDERLIST_REGDATE" property="orderlistRegdate" jdbcType="TIMESTAMP"/>
+			<result column="SHOP_NO" property="shopNo" jdbcType="BIGINT"/>
+			<result column="ORDERLIST_PRICE" property="orderlistPrice" jdbcType="BIGINT"/>
+		</association>
+		<association property="shopName" column="SHOP_NAME" javaType="String">
+			<result column="SHOP_NAME" property="shopName" jdbcType="VARCHAR"/>
+		</association>
+		<collection property="orderDetList" column="ORDERLIST_NO" javaType="ArrayList" select="selectOrderDet">
+		</collection>
+	</resultMap>
+	
+	<select id="selectOrderListviews" parameterType="SearchVO"
+		resultMap="orderListResultMap">
+		select * from 
+		(
+			select rownum as RNUM, LIST_ALL.*
+		    from
+		        (select * from orderlistView
+		        	where member_no=#{searchKeyword} order by orderlist_Regdate desc
+		        ) LIST_ALL
+		)
+		<![CDATA[
+		where  RNUM> #{firstRecordIndex} 
+			and RNUM<= #{firstRecordIndex}
+			+ #{recordCountPerPage}
+		]]>
+	</select>
 </mapper>

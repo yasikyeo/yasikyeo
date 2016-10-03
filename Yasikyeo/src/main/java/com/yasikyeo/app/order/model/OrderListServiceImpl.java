@@ -98,4 +98,9 @@ public class OrderListServiceImpl implements OrderListService{
 		return orderListDao.selectShopnofromOrderList(memberNo);
 	}
 
+	@Override
+	public List<OrderListAllVo> selectOrderListviews(SearchVO searchVo) {
+		return orderListDao.selectOrderListviews(searchVo);
+	}
+
 }

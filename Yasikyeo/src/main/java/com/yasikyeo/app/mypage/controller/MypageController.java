@@ -31,6 +31,7 @@ import com.yasikyeo.app.common.Utility;
 import com.yasikyeo.app.member.model.MemberService;
 import com.yasikyeo.app.member.model.MemberVO;
 import com.yasikyeo.app.order.model.OrderDetVO;
+import com.yasikyeo.app.order.model.OrderListAllVo;
 import com.yasikyeo.app.order.model.OrderListService;
 import com.yasikyeo.app.order.model.OrderListVO;
 import com.yasikyeo.app.point.model.MemberPointService;
@@ -146,7 +147,30 @@ public class MypageController {
 	}
 	
 	@RequestMapping("/client_myreview_reg_possible.do")
-	public void MyReview_reg(){
+	public void MyReview_reg(@ModelAttribute SearchVO searchVo,
+			HttpSession session,Model model){
+		String memberId = (String) session.getAttribute("memberId");
+		MemberVO memberVo = memberService.selectMemberByMemberId(memberId);
+		logger.info("작성가능 리뷰 내역보기 memberVo={}",memberVo);
+		
+		PaginationInfo pagingInfo = new PaginationInfo();
+		pagingInfo.setBlockSize(Utility.CLIENT_PAYMENTLIST_BLOCK_SIZE);
+		pagingInfo.setRecordCountPerPage(Utility.CLIENT_PAYMENTLIST_RECODE_COUNT_PER_PAGE);
+		pagingInfo.setCurrentPage(searchVo.getCurrentPage());
+		
+		searchVo.setBlockSize(Utility.CLIENT_PAYMENTLIST_BLOCK_SIZE);
+		searchVo.setRecordCountPerPage(Utility.CLIENT_PAYMENTLIST_RECODE_COUNT_PER_PAGE);
+		searchVo.setFirstRecordIndex(pagingInfo.getFirstRecordIndex());
+		searchVo.setSearchKeyword(memberVo.getMemberNo()+"");
+		
+		List<OrderListAllVo>orderlistAllviews = orderListService.selectOrderListviews(searchVo);
+		logger.info("orderlistAllviews={}",orderlistAllviews);
+		
+		int totalRecord = orderListService.selectCountOrderListView(memberVo.getMemberNo());
+		pagingInfo.setTotalRecord(totalRecord);
+		
+		model.addAttribute("pagingInfo", pagingInfo);
+		model.addAttribute("orderlistAllviews", orderlistAllviews);
 	}
 	
 	@RequestMapping(value="/client_myinfo.do",method=RequestMethod.GET)
