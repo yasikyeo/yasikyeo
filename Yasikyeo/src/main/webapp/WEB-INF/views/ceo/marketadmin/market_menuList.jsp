@@ -13,6 +13,41 @@
 				return false;
 			}
 		});
+		
+		$("input[name='chkAll']").click(function(){
+			$("tbody input[type=checkbox]")
+				.prop("checked", this.checked);
+		});
+		
+		//선택한 상품 삭제
+		$("#checkDel").click(function(){
+			var count
+			=$("tbody input[type=checkbox]:checked").length;
+			
+			if(count==0){
+				alert("삭제하려는 상품을 먼저 체크하세요");
+				return false;
+			}
+			
+			frmList.action="<c:url value='/ceo/marketadmin/market_menuList.do'/>";
+			frmList.submit();
+		});
+		
+		//선택한 상품 이벤트로 등록
+		$("#checkCategory").click(function(){
+			var count=$("tbody input[type=checkbox]:checked").length;
+			
+			if(count==0){
+				alert("카테고리에 등록하려는 상품을 먼저 체크하세요");
+				return false;
+			}else if($("#categorySel").val().length<1){
+				alert("카테고리를 선택하세요");
+				return false;
+			}
+			
+			frmList.action="<c:url value='/ceo/marketadmin/market_categoryAdd.do'/>";
+			frmList.submit();
+		});
 	});
 
 
@@ -38,6 +73,24 @@
 								<p>등록된 즐겨찾기 수 - 0건</p>
 								<p>등록된 리뷰 수 - 0건</p>
 								<br>
+								
+								<form name="frmPage" method="post" action="<c:url value='/ceo/marketadmin/market_menuList.do'/>">
+									<input type="hidden" name="eventName" 	value="">
+									<input type="hidden" name="currentPage">	
+								</form>
+								
+								<form name="frmList" method="post" action="<c:url value='/ceo/marketadmin/market_menuList.do'/>">
+								<div class="btCg">
+								<select name="category" id="category" style="width: 170px; height: 30px;">
+								<c:set var="i" value="0"/>
+									<c:forEach var="vo" items="${cgList }" >
+										<option value="${vo.categoriName }" <c:if test="${vo.categoriName==param.categoriName}">selected</c:if>
+										>${vo.categoriName }</option>
+										<c:set var="i" value="${i+1}"/> 
+									</c:forEach>
+								</select>
+									<input type="submit" value="조회하기">	
+								</div><br>
 										<table border="1">
 											<colgroup>
 												<col width="5%">
@@ -50,7 +103,7 @@
 											</colgroup>
 											<thead>
 												<tr class="list">
-													<th scope="col"><input type="checkbox"></th>
+													<th scope="col"><input type="checkbox" name="chkAll"></th>
 													<th scope="col">메뉴 이미지</th>
 													<th scope="col">메뉴 이름</th>
 													<th scope="col">메뉴 가격</th>
@@ -109,7 +162,7 @@
 		begin="${pagingInfo.firstPage }" 
 		end="${pagingInfo.lastPage }">
 		<c:if test="${i==pagingInfo.currentPage }">					
-			<span style="color:blue;font-weight: bold">
+			<span style="color:blue; font-weight: bold">
 				${i}</span>
 		</c:if>		
 		<c:if test="${i!=pagingInfo.currentPage }">
@@ -131,15 +184,16 @@
 </div>
 
 <div class="btCg">
-	<input type="button" id="btDel" value="선택한 상품 삭제"><br><br>
+	<input type="button" id="checkDel" value="선택한 상품 삭제"><br><br>
 	선택한 상품을
-	<select name="eventSel" id="eventSel">
-		<option value=""></option>
-		<option value="NEW">신상품으로</option>
-		<option value="BEST">인기상품으로</option>
-		<option value="MD">MD추천상품으로</option>
+	<select name="categorySel" id="categorySel" style="width: 170px; height: 30px;">
+		<c:set var="i" value="0"/>
+		<c:forEach var="vo" items="${cgList }" >
+			<option value="${vo.categoriName }">${vo.categoriName }</option>
+			<c:set var="i" value="${i+1}"/> 
+		</c:forEach>
 	</select>
-	<input type="button" id="btEvent" value="등록">
+	<input type="button" id="checkCategory" value="등록">
 </div>
 </form>
 

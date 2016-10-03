@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.yasikyeo.app.categori.model.CategoriVO;
 import com.yasikyeo.app.common.SearchVO2;
 
 @Service
@@ -97,6 +98,21 @@ public class CeoShopServiceImpl implements CeoShopService{
 	@Override
 	public int deleteProduct(int productNo) {
 		return ceoShopDao.deleteProduct(productNo);
+	}
+
+	@Override
+	public int insertCategory(CategoriVO ceoCategoryVo) {
+		return ceoShopDao.insertCategory(ceoCategoryVo);
+	}
+
+	@Override
+	public List<CategoriVO> selectCategory(int shopNo) {
+		return ceoShopDao.selectCategory(shopNo);
+	}
+
+	@Override
+	public int updateProductCategory(CeoProductVO ceoProductVo) {
+		return ceoShopDao.updateProductCategory(ceoProductVo);
 	}
 }
 
