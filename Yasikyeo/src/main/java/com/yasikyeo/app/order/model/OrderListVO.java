@@ -6,7 +6,7 @@ public class OrderListVO {
 
 	private int orderlistNo;
 	private Timestamp orderlistRegdate;
-	private int orderlistTel;
+	private String orderlistTel;
 	private String orderlistAddress;
 	private String orderlistMessage;
 	private int orderlistPrice;
@@ -29,10 +29,10 @@ public class OrderListVO {
 	public void setOrderlistRegdate(Timestamp orderlistRegdate) {
 		this.orderlistRegdate = orderlistRegdate;
 	}
-	public int getOrderlistTel() {
+	public String getOrderlistTel() {
 		return orderlistTel;
 	}
-	public void setOrderlistTel(int orderlistTel) {
+	public void setOrderlistTel(String orderlistTel) {
 		this.orderlistTel = orderlistTel;
 	}
 	public String getOrderlistAddress() {

@@ -13,7 +13,7 @@
 		}
 		$("#usepoint").focus(function() {
 			$("#ck3").prop('checked', false);
-			$("#orderlistPaypoint").val("");
+			$("#orderlistPaypoint").val("0");
 			$(".point").text("-0원");
 			$(".tp").text(numberWithCommas(${sessionScope.totalMprice})+"원");
 			$("#orderlistCargeprice").val("${sessionScope.totalMprice}");
@@ -42,7 +42,7 @@
 				$("#orderlistCargeprice").val(${sessionScope.totalMprice}-$('#usepoint').val());
 				$(".tp").text(numberWithCommas((${sessionScope.totalMprice}-$('#usepoint').val()))+"원");
 			}else{
-				$("#orderlistPaypoint").val("");
+				$("#orderlistPaypoint").val("0");
 				$(".point").text("-0원");
 				$("#orderlistCargeprice").val("${sessionScope.totalMprice}");
 				$(".tp").text(numberWithCommas(${sessionScope.totalMprice})+"원");
@@ -249,7 +249,7 @@
 				 				<p class="relative p6 clear-both">총 상품금액<b class="float-right color-orange font15px"><fmt:formatNumber value="${sessionScope.totalMprice}" pattern="#,###"/>원</b></p>
 				 				<p class="relative p6 clear-both"><input type="text" name="orderlistPrice"  value="${sessionScope.totalMprice}"></p>
 				 				<p class="relative p6 clear-both">포인트 결제<b class="float-right font15px point">-0원</b></p>
-				 				<p class="relative p6 clear-both"><input type="text" name="orderlistPaypoint" id="orderlistPaypoint"></p>
+				 				<p class="relative p6 clear-both"><input type="text" name="orderlistPaypoint" id="orderlistPaypoint" value="0"></p>
 				 			</div>
 				 			<div class="div21">
 				 				<p class="relative clear-both p6"><b class="float-right">최종결제금액</b></p>
