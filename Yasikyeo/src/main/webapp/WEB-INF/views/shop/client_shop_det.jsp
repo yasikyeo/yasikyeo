@@ -81,7 +81,7 @@ $(document).ready(function () {
     	header: "> .btAccodion3",
     	collapsible: true,
     	heightStyle: "content",
-    	active: true,
+    	active: 0,
     	icons: icons
 	    }).sortable({
 	        axis: "y",
@@ -207,8 +207,12 @@ $(document).ready(function () {
 			});	
 		}
 	});
+	if(${orderCnt}>0){
+		$(".fieldset2").show();
+	}else{
+		$(".fieldset2").hide();
+	}
 });
-
 </script>
 <div class="mainSection">
 	<div class="location1">

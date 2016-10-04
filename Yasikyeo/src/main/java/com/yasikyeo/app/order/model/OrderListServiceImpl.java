@@ -103,4 +103,9 @@ public class OrderListServiceImpl implements OrderListService{
 		return orderListDao.selectOrderListviews(searchVo);
 	}
 
+	@Override
+	public int selectCountOrderList(Map<String, Object> map) {
+		return orderListDao.selectCountOrderList(map);
+	}
+
 }

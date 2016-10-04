@@ -1,6 +1,8 @@
 package com.yasikyeo.app.client.shop.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -25,6 +27,7 @@ import com.yasikyeo.app.common.SearchVO2;
 import com.yasikyeo.app.common.Utility;
 import com.yasikyeo.app.member.model.MemberService;
 import com.yasikyeo.app.member.model.MemberVO;
+import com.yasikyeo.app.order.model.OrderListService;
 
 @Controller
 @RequestMapping("/shop")
@@ -43,6 +46,9 @@ public class ClientShopController {
 	
 	@Autowired
 	private BookmarkService bookmarkService;
+	
+	@Autowired
+	private OrderListService orderListService;
 	
 	@RequestMapping("/client_shop_list.do")
 	public void clientShopList(@ModelAttribute SearchVO2 searchVo2,
@@ -88,13 +94,20 @@ public class ClientShopController {
 								HttpSession session,Model model){
 		String memberId = (String) session.getAttribute("memberId");
 		int bookmarkcnt=0;
+		int orderCnt=0;
 		if(memberId!=null && memberId!=""){
 			MemberVO memberVo = memberService.selectMemberByMemberId(memberId);
 			logger.info("업소상세내역 조회 파라미터 memberVo={}",memberVo);
 			BookmarkVO bookmarkvo = new BookmarkVO(no, memberVo.getMemberNo());
 			bookmarkcnt = bookmarkService.selectCountBookmark(bookmarkvo);
+			
+			Map<String, Object> map =new HashMap<String, Object>();
+			map.put("memberNo", memberVo.getMemberNo());
+			map.put("shopNo", no);
+			orderCnt=orderListService.selectCountOrderList(map);
 		}
 		logger.info("북마크내역조회 bookmarkcnt={}",bookmarkcnt);
+		logger.info("구매내역조회 orderCnt={}",orderCnt);
 		
 		
 		logger.info("업소 상세내역조회하기 파라미터 no={}",no);
@@ -109,6 +122,7 @@ public class ClientShopController {
 		logger.info("업소 상품 조회결과 productList.size={}",productList.size());
 		
 		
+		model.addAttribute("orderCnt", orderCnt);
 		model.addAttribute("bookmarkcnt", bookmarkcnt);
 		model.addAttribute("shop", shopVo);
 		model.addAttribute("cateList", cateList);

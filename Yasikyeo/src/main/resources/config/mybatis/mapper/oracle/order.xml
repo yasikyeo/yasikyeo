@@ -55,6 +55,10 @@
 		select count(*) from orderlistView where member_no=#{memberNo}
 	</select>
 	
+	<select id="selectCountOrderList" parameterType="map" resultType="int">
+		select count(*) from orderlist where member_no=#{memberNo} and shop_no=#{shopNo}
+	</select>
+	
 	<select id="selectShopnofromOrderList" parameterType="int" resultType="int">
 		select shop_no from
 		(
