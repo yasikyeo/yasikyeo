@@ -3,8 +3,50 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="config.mybatis.mapper.oracle.review">
-	<insert id="">
-	
+	<insert id="insertReview" parameterType="ReviewVO">
+		<selectKey keyProperty="reviewNo" resultType="int" order="BEFORE">
+			select review_no_seq.nextval from dual
+		</selectKey>
+		insert into review(review_no,review_hit,review_starscore,review_nickname
+		,review_content,review_image1,review_image2,review_image3,member_no,shop_no)
+		values(#{reviewNo},#{reviewHit},#{reviewStarscore},#{reviewNickname},#{reviewContent}
+		,#{reviewImage1},#{reviewImage2},#{reviewImage3},#{memberNo},#{shopNo})
 	</insert>
 	
+	<update id="updateReview" parameterType="ReviewVO">
+		update review
+		set review_starscore=#{reviewStarscore},review_nickname=#{reviewNickname}
+		,review_content=#{reviewContent},review_image1=#{reviewImage1}
+		,review_image2=#{reviewImage2},review_image3=#{reviewImage3}
+		where review_no=#{reviewNo}
+	</update>
+	
+	<delete id="deleteReview" parameterType="int">
+		delete from review where review_no=#{reviewNo}
+	</delete>
+	
+	<select id="selectReview" parameterType="SearchVO" resultType="map">
+		select * from 
+		(
+			select rownum as RNUM, LIST_ALL.*
+		    from
+		        (select * from reviewView
+		        	where shop_no=#{searchKeyword}
+		        	order by review_regdate desc
+		        ) LIST_ALL
+		)
+		<![CDATA[
+		where  RNUM> #{firstRecordIndex} 
+			and RNUM<= #{firstRecordIndex}
+			+ #{recordCountPerPage}
+		]]>
+	</select>
+	
+	<select id="selectCountReview" parameterType="int" resultType="int">
+		select count(*) from reviewView where shop_no=#{shopNo}
+	</select>
+	
+	<select id="selectCountReviewByMemberNo" parameterType="map" resultType="int">
+		select count(*) from reviewView where review_no=#{reviewNo} and member_no=#{memberNo}
+	</select>
 </mapper>

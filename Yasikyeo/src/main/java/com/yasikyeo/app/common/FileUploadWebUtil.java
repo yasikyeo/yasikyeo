@@ -29,6 +29,7 @@ public class FileUploadWebUtil {
 	 public static final int SHOP_IMAGE_UPLOAD=3;
 	 public static final int PROFILE_IMAGE_UPLOAD=4;//회원가입 프로필 이미지 업로드 경로
 	 public static final int PRODUCT_IMAGE_UPLOAD=5;
+	 public static final int REVIEW_IMAGE_UPLOAD=6;
 	
 	 public static final Logger logger 
 	 =LoggerFactory.getLogger(FileUploadWebUtil.class);
@@ -136,6 +137,8 @@ public class FileUploadWebUtil {
 				realPath=fileUploadProps.getProperty("profileimg.upload.path.test");
 			}else if(uploadType==PRODUCT_IMAGE_UPLOAD){
 				realPath=fileUploadProps.getProperty("shopProductImageFile.upload.path.test");
+			}else if(uploadType==REVIEW_IMAGE_UPLOAD){
+				realPath=fileUploadProps.getProperty("reviewimg.upload.path.test");
 			}
 				logger.info("테스트 경로={}",realPath);
 		}else{
@@ -155,6 +158,8 @@ public class FileUploadWebUtil {
 				realPath = fileUploadProps.getProperty("profileimg.upload.path");
 			}else if(uploadType==PRODUCT_IMAGE_UPLOAD){
 				realPath = fileUploadProps.getProperty("shopProductImageFile.upload.path");
+			}else if(uploadType==REVIEW_IMAGE_UPLOAD){
+				realPath = fileUploadProps.getProperty("reviewimg.upload.path");
 			}
 			
 			logger.info("실제 배포시 경로={}", realPath);

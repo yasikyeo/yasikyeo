@@ -5,7 +5,7 @@
 	$(function() {
 		$(".writeReview").click(function() {
 			var shopno = $(this).parent("td").find(".shopno").val();
-			$(location).attr("href","<c:url value='/shop/client_shop_det.do?no="+shopno+"#review'/>");
+			$(location).attr("href","<c:url value='/shop/client_shop_det.do?no="+shopno+"#writeReview'/>");
 		});
 	});
 	function pageProc(curPage){
