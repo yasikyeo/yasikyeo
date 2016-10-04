@@ -20,7 +20,6 @@ function inputFileStr(i) {
 	str+='</div>';
 	return str;
 };
-var sp11clickcount=0;
 $(document).ready(function () {
 	$('span.star2').raty({
 		readOnly: true,  
@@ -139,10 +138,9 @@ $(document).ready(function () {
 	  });
 
 	  $(".sp11").click(function() {
+		var inputimageCnt = $(this).parents(".addimagecon").find("input[type=file]").length;
+		$(this).parents(".addimagecon").append(inputFileStr(inputimageCnt+1));
 		$(this).parents(".div14").remove();
-		sp11clickcount++;
-		alert(sp11clickcount);
-		$(".addimagecon").append(inputFileStr(sp11clickcount));
 	});
 	
 	$(document).on("click","#image-upload4",function(){
@@ -468,26 +466,42 @@ $(document).ready(function () {
 								</div>
 								<div class="flex5 paddingCol5px">
 									<ul class="ul2">
-										<li><b class="font16px">${map['REVIEW_NICKNAME']}</b></li>
+										<li><b class="font16px">
+											<c:if test="${fn:length(map['REVIEW_NICKNAME'])>4}">
+												${fn:substring(map['REVIEW_NICKNAME'], 0,4)}...
+											</c:if>
+											<c:if test="${fn:length(map['REVIEW_NICKNAME'])<=4}">
+												${map['REVIEW_NICKNAME']}
+											</c:if>
+											</b>
+										</li>
 										<li>|</li>
-										<li>${map['REVIEW_REGDATE']}</li>
-										<li><span class="btbrown1">삭제</span></li>
-										<li><span class="btbrown1 updatebt">수정</span></li>
+										<li><fmt:formatDate value="${map['REVIEW_REGDATE']}" pattern="YYYY-MM-dd"/></li>
+										<c:if test="${map['MEMBER_NO']==memberVo.memberNo}">
+											<li><span class="btbrown1">삭제</span></li>
+											<li><span class="btbrown1 updatebt">수정</span></li>
+										</c:if>
 									</ul>
 									<div class="review">
 										<p class="star2" data-score="${map['REVIEW_STARSCORE']}"></p>
 										<eg:to-string var="textValue" value="${map['REVIEW_CONTENT']}"/>
 										<p><c:out value="${textValue}"/> </p>
 										<!-- 리뷰이미지 -->
-										<p class="p5">
-											<img alt="리뷰 이미지" src="<c:url value='/review_Image/${map["REVIEW_IMAGE1"]}'/> ">
-										</p>
-										<p class="p5">
-											<img alt="리뷰 이미지" src="<c:url value='/review_Image/${map["REVIEW_IMAGE2"]}'/> ">
-										</p>
-										<p class="p5">
-											<img alt="리뷰 이미지" src="<c:url value='/review_Image/${map["REVIEW_IMAGE3"]}'/> ">
-										</p>
+										<c:if test="${!empty map['REVIEW_IMAGE1']}">
+											<p class="p5">
+												<img alt="리뷰 이미지" src="<c:url value='/review_Image/${map["REVIEW_IMAGE1"]}'/> ">
+											</p>
+										</c:if>
+										<c:if test="${!empty map['REVIEW_IMAGE2']}">
+											<p class="p5">
+												<img alt="리뷰 이미지" src="<c:url value='/review_Image/${map["REVIEW_IMAGE2"]}'/> ">
+											</p>
+										</c:if>
+										<c:if test="${!empty map['REVIEW_IMAGE3']}">
+											<p class="p5">
+												<img alt="리뷰 이미지" src="<c:url value='/review_Image/${map["REVIEW_IMAGE3"]}'/> ">
+											</p>
+										</c:if>
 									</div>
 									<form class="form1 f3" action="" method="post" enctype="multipart/form-data">
 										<p class="p4">
@@ -502,24 +516,44 @@ $(document).ready(function () {
 											<span class="sp2 align-middle">이미지 파일 (GIF,PNG,JPG)을 기준으로 최대 10MB이하, 최대 3개까지 등록가능 합니다.</span>
 										</p>
 										<div class="fullwidth addimagecon">
-											<!-- 이미지 -->
-											<div class="div14 paddingtype1 align-middle">
-												<span class="sp11">&times;</span>
-												<img alt="" src="<c:url value='/review_Image/${map["REVIEW_IMAGE1"]}'/>">
-											</div>
-											<!-- 이미지 -->
-											<!-- 이미지 -->
-											<div class="div14 paddingtype1 align-middle">
-												<span class="sp11">&times;</span>
-												<img alt="" src="<c:url value='/review_Image/${map["REVIEW_IMAGE2"]}'/>">
-											</div>
-											<!-- 이미지 -->
-											<!-- 이미지 -->
-											<div class="div14 paddingtype1 align-middle">
-												<span class="sp11">&times;</span>
-												<img alt="" src="<c:url value='/review_Image/${map["REVIEW_IMAGE3"]}'/>">
-											</div>
-											<!-- 이미지 -->
+											<c:set var="x" value="3"/>
+											<c:if test="${!empty map['REVIEW_IMAGE1']}">
+												<c:set var="x" value="${x-1}"/>
+												<!-- 이미지 -->
+												<div class="div14 paddingtype1 align-middle">
+													<span class="sp11">&times;</span>
+													<img alt="" src="<c:url value='/review_Image/${map["REVIEW_IMAGE1"]}'/>">
+												</div>
+												<!-- 이미지 -->
+											</c:if>
+											<c:if test="${!empty map['REVIEW_IMAGE2']}">
+												<c:set var="x" value="${x-1}"/>
+												<!-- 이미지 -->
+												<div class="div14 paddingtype1 align-middle">
+													<span class="sp11">&times;</span>
+													<img alt="" src="<c:url value='/review_Image/${map["REVIEW_IMAGE2"]}'/>">
+												</div>
+												<!-- 이미지 -->
+											</c:if>
+											<c:if test="${!empty map['REVIEW_IMAGE3']}">
+												<c:set var="x" value="${x-1}"/>
+												<!-- 이미지 -->
+												<div class="div14 paddingtype1 align-middle">
+													<span class="sp11">&times;</span>
+													<img alt="" src="<c:url value='/review_Image/${map["REVIEW_IMAGE3"]}'/>">
+												</div>
+												<!-- 이미지 -->
+											</c:if>
+											<c:forEach begin="1" end="${x}" var="z">
+												<div class="inputimgcon1 paddingtype1 align-middle">
+													<div class="profile2">
+														<div class="image-preview${z+3}">
+															<input type="file" name="image" id="image-upload${z+3}" />
+														</div>
+														<label for="image-upload${z+3}" id="image-label${z+3}">파일첨부</label>
+													</div>
+												</div>
+											</c:forEach>
 										</div>
 										<div class="flex clear-both">
 											<input class="flex3 btblack bt3" type="submit" value="리뷰 작성 완료">

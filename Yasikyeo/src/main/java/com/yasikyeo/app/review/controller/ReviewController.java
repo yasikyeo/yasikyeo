@@ -35,10 +35,14 @@ public class ReviewController {
 		
 		List<Map<String, Object>> fileList = fileUploadWebUil.fileUpload(request, fileUploadWebUil.REVIEW_IMAGE_UPLOAD);
 		//새로 파일을 업로드하는 경우
+		reviewVo.setReviewImage1("");
+		reviewVo.setReviewImage2("");
+		reviewVo.setReviewImage3("");
+		
 		if(fileList!=null && !fileList.isEmpty()){
 			String fileName="";
 			logger.info("fileList.size={}",fileList.size());
-			
+									
 			for(int i=0; i<fileList.size();i++){
 				Map<String, Object> fileMap = fileList.get(i);
 				fileName=(String) fileMap.get("fileName");
