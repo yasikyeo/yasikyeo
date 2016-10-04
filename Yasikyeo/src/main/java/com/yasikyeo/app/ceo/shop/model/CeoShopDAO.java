@@ -25,6 +25,7 @@ public interface CeoShopDAO {
 	public int insertCategory(CategoriVO ceoCategoryVo);
 	public List<CategoriVO> selectCategory(int shopNo);
 	public int updateProductCategory(CeoProductVO ceoProductVo);
+	public List<CeoProductVO> productSelectByCategoryNo(int categoriNo);
 }
 
 

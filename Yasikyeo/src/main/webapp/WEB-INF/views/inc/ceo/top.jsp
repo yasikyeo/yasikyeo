@@ -27,8 +27,6 @@
 										<li><a href="<c:url value='/ceo/marketadmin/marketadmin.do'/>">메뉴 등록</a></li>
 										<li><a href="<c:url value='/ceo/marketadmin/market_category.do'/>">카테고리 등록</a></li>
 										<li><a href="<c:url value='/ceo/marketadmin/market_menuList.do'/>">메뉴 목록</a></li>
-										<li><a href="">리뷰 관리</li>
-										<li><a href="">주문 관리</li>
 									</ul>
 								</div></li>
 							<li class="float_leftmenu"><a href="<c:url value='/ceo/serviceintro/serviceintro.do'/>">서비스 소개</a></li>

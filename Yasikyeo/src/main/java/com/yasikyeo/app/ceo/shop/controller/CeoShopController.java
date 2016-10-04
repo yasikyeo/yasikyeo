@@ -250,14 +250,15 @@ public class CeoShopController {
 	public String market_menuList_get(@ModelAttribute CategoriVO searchVo,HttpSession session,Model model){
 		
 		//1.
-		logger.info("메뉴목록 파라미터 searchVo={}",
-				searchVo);
+		logger.info("메뉴목록 파라미터 searchVo={}",searchVo);
 		
 		String ceoId = (String) session.getAttribute("ceoId");
 		int ceoNo = ceoShopService.selectCeoNo(ceoId);
 		int shopNo = ceoShopService.selectShopNo(ceoNo);
 		
 		logger.info("ceoNo={},shopNo={}",ceoNo,shopNo);
+		
+		List<CeoProductVO> alist = null;
 		
 		//페이징 처리 관련 setting
 		//[1]
@@ -270,11 +271,14 @@ public class CeoShopController {
 		searchVo.setRecordCountPerPage(Utility.CEO_PDLIST_RECORD_COUNT_PER_PAGE);
 		searchVo.setFirstRecordIndex(pagingInfo.getFirstRecordIndex());
 		
-		//2.		
-		List<CeoProductVO> alist = ceoShopService.productSelectByShopNo(shopNo);
+		//2.
+		if(searchVo.getCategoriNo()>0){
+			alist = ceoShopService.productSelectByCategoryNo(searchVo.getCategoriNo());
+		}else{
+			alist = ceoShopService.productSelectByShopNo(shopNo);
+		}
 		List<CategoriVO> clist = ceoShopService.selectCategory(shopNo);
-		logger.info("메뉴목록 조회 결과, alist.size()={}",
-				alist.size());
+		logger.info("메뉴목록 조회 결과, alist.size()={}", alist.size());
 		
 		//전체 레코드개수 조회
 		int totalRecord = ceoShopService.countShop(shopNo);
@@ -403,22 +407,22 @@ public class CeoShopController {
 		return "common/message";
 	}
 	
-	/*@RequestMapping(value="ceo/marketadmin/market_categoryAdd.do")
-	public String market_categoryAdd(@RequestParam String categorySel,@ModelAttribute CeoProductListVO pdListVo  ,Model model){
+	@RequestMapping(value="ceo/marketadmin/market_categoryAdd.do")
+	public String market_categoryAdd(@RequestParam int categorySel,@ModelAttribute CeoProductListVO pdListVo  ,Model model){
 		
-		logger.info("선택한 상품 이벤트 등록 처리, 파라미터 pdListVo={}, eventSel={}", pdListVo, categorySel);
+		logger.info("선택한 상품 카테고리 등록 처리, 파라미터 pdListVo={}, eventSel={}", pdListVo, categorySel);
 		
 		//2.
 		List<CeoProductVO> pdList = pdListVo.getPdItems();
-		int cnt=productService.insertEventProduct(pdList, categorySel);
-		logger.info("선택한 상품 이벤트 등록 결과,cnt={}",cnt);
+		int cnt=ceoShopService.updateProductCategory(pdList, categorySel);
+		logger.info("선택한 상품 카테고리 등록 결과,cnt={}",cnt);
 		
 		//3.
-		String msg="", url="/admin/product/productList.do";
+		String msg="", url="/ceo/marketadmin/market_menuList.do";
 		if(cnt>0){
-			msg="선택한 상품을 해당 이벤트로 등록하였습니다.";
+			msg="선택한 상품의 카테고리 등록이 완료되었습니다.";
 		}else{
-			msg="선택한 상품을 이벤트로 등록하지 못했습니다.";
+			msg="선택한 상품의 카테고리 등록이 실패하였습니다.";
 		}//if
 		
 		model.addAttribute("msg", msg);
@@ -426,6 +430,31 @@ public class CeoShopController {
 		
 		return "common/message";
 		
-	}*/
+	}
+	
+	@RequestMapping(value="ceo/marketadmin/market_menuMultiDelete.do")
+	public String market_menuMultiDelete(@ModelAttribute CeoProductListVO pdListVo  ,Model model){
+		
+		logger.info("선택한 상품 다중 삭제 처리, 파라미터 pdListVo={}, eventSel={}", pdListVo);
+		
+		//2.
+		List<CeoProductVO> pdList = pdListVo.getPdItems();
+		int cnt=ceoShopService.multiDelete(pdList);
+		logger.info("선택한 상품 삭제 결과,cnt={}",cnt);
+		
+		//3.
+		String msg="", url="/ceo/marketadmin/market_menuList.do";
+		if(cnt>0){
+			msg="선택한 상품의 삭제가 모두 완료되었습니다.";
+		}else{
+			msg="선택한 상품의 삭제가 실패하였습니다.";
+		}//if
+		
+		model.addAttribute("msg", msg);
+		model.addAttribute("url", url);
+		
+		return "common/message";
+		
+	}
 	
 }

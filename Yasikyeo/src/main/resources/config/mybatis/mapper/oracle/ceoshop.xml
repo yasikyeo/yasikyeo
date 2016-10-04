@@ -92,6 +92,10 @@
 		select * from Product where shop_no=#{shopNo} order by CATEGORI_NO asc
 	</select>
 	
+	<select id="productSelectByCategoryNo" parameterType="int" resultType="CeoProductVO">
+		select * from Product where categori_no=#{categoriNo} order by CATEGORI_NO asc
+	</select>
+	
 	<select id="countShop" parameterType="int" resultType="int">
 		select count(*) from product where shop_no=#{shopNo}
 	</select>
