@@ -29,7 +29,7 @@
 				return false;
 			}
 			
-			frmList.action="<c:url value='/ceo/marketadmin/market_menuMultiDelete.do'/>";
+			frmList.action="<c:url value='/ceo/marketadmin/market_menuList.do'/>";
 			frmList.submit();
 		});
 		

@@ -26,6 +26,7 @@ public interface CeoShopService {
 	public List<CategoriVO> selectCategory(int shopNo);
 	public int updateProductCategory(List<CeoProductVO> pdList,int categoriNo);
 	public List<CeoProductVO> productSelectByCategoryNo(int categoriNo);
+	public int multiDelete(List<CeoProductVO> pdList);
 }
 
 

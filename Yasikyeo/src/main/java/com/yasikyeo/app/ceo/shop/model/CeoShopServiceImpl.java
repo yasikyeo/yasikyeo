@@ -133,6 +133,21 @@ public class CeoShopServiceImpl implements CeoShopService{
 	public List<CeoProductVO> productSelectByCategoryNo(int categoriNo) {
 		return ceoShopDao.productSelectByCategoryNo(categoriNo);
 	}
+
+	@Override
+	public int multiDelete(List<CeoProductVO> pdList) {
+		int cnt=0;
+		
+		for(CeoProductVO vo : pdList){
+			//체크한 상품만 등록
+			int productNo=vo.getProductNo();
+			if(productNo!=0){
+				cnt+=ceoShopDao.deleteProduct(productNo);
+			}
+		}
+		
+		return cnt;
+	}
 }
 
 
