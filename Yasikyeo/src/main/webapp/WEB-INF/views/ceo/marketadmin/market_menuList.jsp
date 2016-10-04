@@ -75,16 +75,17 @@
 								<br>
 								
 								<form name="frmPage" method="post" action="<c:url value='/ceo/marketadmin/market_menuList.do'/>">
-									<input type="hidden" name="eventName" 	value="">
+									<input type="hidden" name="categoriNo" value="">
 									<input type="hidden" name="currentPage">	
 								</form>
 								
 								<form name="frmList" method="post" action="<c:url value='/ceo/marketadmin/market_menuList.do'/>">
 								<div class="btCg">
-								<select name="category" id="category" style="width: 170px; height: 30px;">
+								<select name="categoriNo" id="categoriNo" style="width: 170px; height: 30px;">
+								<option value="0" <c:if test="${vo.categoriName==null}">selected</c:if>>전체상품 </option>
 								<c:set var="i" value="0"/>
 									<c:forEach var="vo" items="${cgList }" >
-										<option value="${vo.categoriName }" <c:if test="${vo.categoriName==param.categoriName}">selected</c:if>
+										<option value="${vo.categoriNo }" <c:if test="${vo.categoriNo==param.categoriNo}">selected</c:if>
 										>${vo.categoriName }</option>
 										<c:set var="i" value="${i+1}"/> 
 									</c:forEach>
@@ -189,7 +190,7 @@
 	<select name="categorySel" id="categorySel" style="width: 170px; height: 30px;">
 		<c:set var="i" value="0"/>
 		<c:forEach var="vo" items="${cgList }" >
-			<option value="${vo.categoriName }">${vo.categoriName }</option>
+			<option value="${vo.categoriNo }">${vo.categoriName }</option>
 			<c:set var="i" value="${i+1}"/> 
 		</c:forEach>
 	</select>

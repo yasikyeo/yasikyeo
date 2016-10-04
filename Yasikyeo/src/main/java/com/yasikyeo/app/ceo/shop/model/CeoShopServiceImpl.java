@@ -111,8 +111,27 @@ public class CeoShopServiceImpl implements CeoShopService{
 	}
 
 	@Override
-	public int updateProductCategory(CeoProductVO ceoProductVo) {
-		return ceoShopDao.updateProductCategory(ceoProductVo);
+	public int updateProductCategory(List<CeoProductVO> pdList,int categoriNo) {
+		int cnt=0;
+		
+		for(CeoProductVO vo : pdList){
+			//체크한 상품만 등록
+			int productNo=vo.getProductNo();
+			if(productNo!=0){
+				CeoProductVO ceoProductVo = new CeoProductVO();
+				ceoProductVo.setProductNo(productNo);
+				ceoProductVo.setCategoriNo(categoriNo);
+				
+				cnt+=ceoShopDao.updateProductCategory(ceoProductVo);
+			}
+		}
+		
+		return cnt;
+	}
+
+	@Override
+	public List<CeoProductVO> productSelectByCategoryNo(int categoriNo) {
+		return ceoShopDao.productSelectByCategoryNo(categoriNo);
 	}
 }
 
