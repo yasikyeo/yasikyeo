@@ -62,9 +62,9 @@
 			<div id="main_box">
 				<div id="box_1">
 					<div id="a_1">
-						<div id="show1">내 업소관리 - 메뉴목록</div>
+						<div id="show1">내 업소관리 - 주문내역</div>
 						<div class="show2">
-							<div id="lsh">사장님 업소에 대한 내용을 확인 및 수정할수 있는 페이지입니다.</div>
+							<div id="lsh">사장님 업소에 주문내역을 확인하는 페이지입니다.</div>
 						</div>
 							<div class="marketadmins">
 								
@@ -73,72 +73,47 @@
 								<p>등록된 즐겨찾기 수 - 0건</p>
 								<p>등록된 리뷰 수 - 0건</p>
 								<br>
-								
-								<form name="frmPage" method="post" action="<c:url value='/ceo/marketadmin/market_menuList.do'/>">
-									<input type="hidden" name="categoriNo" value="">
-									<input type="hidden" name="currentPage">	
-								</form>
-								
-								<form name="frmList" method="post" action="<c:url value='/ceo/marketadmin/market_menuList.do'/>">
-								<div class="btCg">
-								<select name="categoriNo" id="categoriNo" style="width: 170px; height: 30px;">
-								<option value="0" <c:if test="${vo.categoriName==null}">selected</c:if>>전체상품 </option>
-								<c:set var="i" value="0"/>
-									<c:forEach var="vo" items="${cgList }" >
-										<option value="${vo.categoriNo }" <c:if test="${vo.categoriNo==param.categoriNo}">selected</c:if>
-										>${vo.categoriName }</option>
-										<c:set var="i" value="${i+1}"/> 
-									</c:forEach>
-								</select>
-									<input type="submit" value="조회하기">	
-								</div><br>
-										<table border="1">
+									<table border="1">
 											<colgroup>
 												<col width="5%">
-												<col width="13%">
-												<col width="30%">
-												<col width="15%">
-												<col width="15%">
+												<col width="5%">
+												<col width="10%">
+												<col width="10%">
+												<col width="20%">
+												<col width="20%">
 												<col width="9%">
 												<col width="9%">
 											</colgroup>
 											<thead>
 												<tr class="list">
 													<th scope="col"><input type="checkbox" name="chkAll"></th>
-													<th scope="col">메뉴 이미지</th>
-													<th scope="col">메뉴 이름</th>
-													<th scope="col">메뉴 가격</th>
-													<th scope="col">등록일</th>
-													<th scope="col">수정</th>
-													<th scope="col">삭제</th>
+													<th scope="col">주문번호</th>
+													<th scope="col">상품명</th>
+													<th scope="col">상품옵션</th>
+													<th scope="col">고객주소</th>
+													<th scope="col">주문메세지</th>
+													<th scope="col">주문가격</th>
+													<th scope="col">주문상태</th>
 												</tr>
 											</thead>
 											<tbody>
 										<!-- 반복 시작 -->
 												<c:set var="i" value="0"/>
-												<c:forEach var="vo" items="${pdList }" >
+												<c:forEach var="vo" items="${odList }" >
 													<tr>
 														<td class="td-center2">
-															<input type="checkbox" name="pdItems[${i}].productNo" id="chk_${i}"
-																value="${vo.productNo}" >
-															<input type="hidden" 
-																name="pdItems[${i}].productImage"
-																value="${vo.productImage}">	
+															<input type="checkbox" name="odItems[${i}].orderdetNo" id="chk_${i}"
+																value="${vo.orderdetNo}" >
 														</td>
-														<td class="td-center">
-															<img src
-														="${pageContext.request.contextPath}/product_Image/${vo.productImage }" 
-																alt="${vo.productName }" width="50%">
-														</td>
-														<td class="td-center2">${vo.productName }</td>
+														<td class="td-center2">${vo.orderdetNo }</td>
+														<td class="td-center2">${vo.orderdetProductname }</td>
+														<td class="td-center2">${vo.orderdetOption}</td>
+														<td class="td-center2">${vo.orderlistAddress }</td>
+														<td class="td-center2">${vo.orderlistMessage }</td>
 														<td class="td-center2">
-															<fmt:formatNumber value="${vo.productPrice }"
+															<fmt:formatNumber value="${vo.orderdetTotalprice }"
 															pattern="#,###" />원 </td>
-														<td class="td-center2">
-															<fmt:formatDate value="${vo.productRegdate }"
-																pattern="yyyy-MM-dd"/></td>
-														<td class="td-center2"><a href="<c:url value='market_menuUpdate.do?productNo=${vo.productNo }'/>">수정</a></td>
-														<td class="td-center2"><a id="delete" href="<c:url value='market_menuDelete.do?productNo=${vo.productNo }'/>">삭제</a></td>
+														<td class="td-center2">${vo.orderlistState}</td>
 													</tr>
 													<c:set var="i" value="${i+1}"/> 
 												</c:forEach>
@@ -184,18 +159,7 @@
 	</c:if>
 </div>
 
-<div class="btCg">
-	<input type="button" id="checkDel" value="선택한 상품 삭제"><br><br>
-	선택한 상품을
-	<select name="categorySel" id="categorySel" style="width: 170px; height: 30px;">
-		<c:set var="i" value="0"/>
-		<c:forEach var="vo" items="${cgList }" >
-			<option value="${vo.categoriNo }">${vo.categoriName }</option>
-			<c:set var="i" value="${i+1}"/> 
-		</c:forEach>
-	</select>
-	<input type="button" id="checkCategory" value="등록">
-</div>
+
 </form>
 
 							

@@ -18,12 +18,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.yasikyeo.app.categori.model.CategoriVO;
+import com.yasikyeo.app.ceo.shop.model.CeoOrderDetVO;
 import com.yasikyeo.app.ceo.shop.model.CeoProductListVO;
 import com.yasikyeo.app.ceo.shop.model.CeoProductVO;
 import com.yasikyeo.app.ceo.shop.model.CeoShopService;
 import com.yasikyeo.app.ceo.shop.model.CeoShopVO;
 import com.yasikyeo.app.common.FileUploadWebUtil;
 import com.yasikyeo.app.common.PaginationInfo;
+import com.yasikyeo.app.common.SearchVO;
 import com.yasikyeo.app.common.Utility;
 
 @Controller
@@ -454,7 +456,45 @@ public class CeoShopController {
 		model.addAttribute("url", url);
 		
 		return "common/message";
-		
 	}
 	
+	@RequestMapping(value="ceo/marketadmin/market_orderList.do")
+	public String market_orderList_get(@ModelAttribute SearchVO searchVo,HttpSession session,Model model){
+		
+		//1.
+		logger.info("주문 목록 파라미터 searchVo={}",searchVo);
+		
+		String ceoId = (String) session.getAttribute("ceoId");
+		int ceoNo = ceoShopService.selectCeoNo(ceoId);
+		int shopNo = ceoShopService.selectShopNo(ceoNo);
+		
+		logger.info("ceoNo={},shopNo={}",ceoNo,shopNo);
+		
+		//페이징 처리 관련 setting
+		//[1]
+		PaginationInfo pagingInfo = new PaginationInfo();
+		pagingInfo.setBlockSize(Utility.BLOCK_SIZE);
+		pagingInfo.setRecordCountPerPage(Utility.CEO_PDLIST_RECORD_COUNT_PER_PAGE);
+		pagingInfo.setCurrentPage(searchVo.getCurrentPage());
+				
+		//[2]
+		searchVo.setRecordCountPerPage(Utility.CEO_PDLIST_RECORD_COUNT_PER_PAGE);
+		searchVo.setFirstRecordIndex(pagingInfo.getFirstRecordIndex());
+		
+		//2.
+		
+		List<CeoOrderDetVO> alist = ceoShopService.selectOrderDetView(shopNo);
+		logger.info("주문 목록 조회 결과, alist.size()={}", alist.size());
+		
+		//전체 레코드개수 조회
+		int totalRecord = ceoShopService.countOrder(shopNo);
+		logger.info("전체 레코드 개수 totalRecord={}",totalRecord);
+		pagingInfo.setTotalRecord(totalRecord);
+		
+		//3.
+		model.addAttribute("odList", alist);
+		model.addAttribute("pagingInfo", pagingInfo);
+		
+		return "ceo/marketadmin/market_orderList";
+	}
 }

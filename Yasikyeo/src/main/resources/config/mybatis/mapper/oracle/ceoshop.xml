@@ -133,4 +133,13 @@
 		where product_no=#{productNo}
 	</update>
 	
+	<select id="selectOrderDetView" parameterType="int" resultType="CeoOrderDetVO">
+		select * from orderdetView where shop_no=#{shopNo} order by orderdet_no desc
+	</select>
+	
+	<select id="countOrder" parameterType="int" resultType="int">
+		select count(*) from orderdetView where shop_no=#{shopNo}
+	</select>
+	
+	
 </mapper>

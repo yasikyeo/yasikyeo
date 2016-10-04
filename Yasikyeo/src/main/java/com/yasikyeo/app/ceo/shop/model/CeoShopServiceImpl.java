@@ -148,6 +148,16 @@ public class CeoShopServiceImpl implements CeoShopService{
 		
 		return cnt;
 	}
+
+	@Override
+	public List<CeoOrderDetVO> selectOrderDetView(int shopNo) {
+		return ceoShopDao.selectOrderDetView(shopNo);
+	}
+
+	@Override
+	public int countOrder(int shopNo) {
+		return ceoShopDao.countOrder(shopNo);
+	}
 }
 
 
