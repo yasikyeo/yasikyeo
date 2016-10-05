@@ -139,12 +139,12 @@ public class MypageController {
 		searchVo.setFirstRecordIndex(pagingInfo.getFirstRecordIndex());
 		searchVo.setSearchKeyword(memberVo.getMemberNo()+"");
 		
-		List<ReviewVO>reviewlist = reviewService.selectReviewbyMemberNO(searchVo);
+		List<Map<String, Object>>reviewMap = reviewService.selectReviewbyMemberNO(searchVo);
 		int totalRecord = reviewService.selectCountReviewByMemberNo(memberVo.getMemberNo());
 		pagingInfo.setTotalRecord(totalRecord);
 		
 		model.addAttribute("pagingInfo", pagingInfo);
-		model.addAttribute("reviewlist", reviewlist);
+		model.addAttribute("reviewMap", reviewMap);
 	}
 	
 	@RequestMapping("/client_paymentList.do")

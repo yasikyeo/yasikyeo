@@ -5,7 +5,7 @@
 	$(function() {
 		$(".writeReview").click(function() {
 			var shopno = $(this).parent("td").find(".shopno").val();
-			$(location).attr("href","<c:url value='/shop/client_shop_det.do?no="+shopno+"#writeReview'/>");
+			$(location).attr("href","<c:url value='/shop/client_shop_det.do?no="+shopno+"#review'/>");
 		});
 	});
 	function pageProc(curPage){
@@ -118,33 +118,33 @@
 						</tbody>
 					</table>
 				</div>
-			</c:if>
-			<br>
-			<div class="vertical-container">
-					<ul class="pagination">
-						<!-- 이전 블럭으로 이동 -->
-					<c:if test="${pagingInfo.firstPage>1 }">	
-							<li><a href="#" onclick="pageProc(${pagingInfo.firstPage-1})">&laquo;</a></li>
-					</c:if>
-					<!-- 페이지 번호 추가 -->						
-					<!-- [1][2][3][4][5][6][7][8][9][10] -->
-					<c:forEach var="i" begin="${pagingInfo.firstPage }" 
-						end="${pagingInfo.lastPage }">	 
-						<c:if test="${i==pagingInfo.currentPage }">
-							<li><a class="active">${i}</a></li>
-						</c:if>		
-						<c:if test="${i!=pagingInfo.currentPage }">
-							<li><a href="#" onclick="pageProc(${i})">${i}</a></li>
+				<br>
+				<div class="vertical-container">
+						<ul class="pagination">
+							<!-- 이전 블럭으로 이동 -->
+						<c:if test="${pagingInfo.firstPage>1 }">	
+								<li><a href="#" onclick="pageProc(${pagingInfo.firstPage-1})">&laquo;</a></li>
 						</c:if>
-					</c:forEach>	
-					<!--  페이지 번호 끝 -->
-						<!-- 다음 블럭으로 이동 -->
-					<c:if test="${pagingInfo.lastPage<pagingInfo.totalPage }">	
-						<li><a href="#" onclick="pageProc(${pagingInfo.lastPage+1})">&raquo;</a></li>
-					</c:if>
-				</ul>
-			</div>
-			<br>
+						<!-- 페이지 번호 추가 -->						
+						<!-- [1][2][3][4][5][6][7][8][9][10] -->
+						<c:forEach var="i" begin="${pagingInfo.firstPage }" 
+							end="${pagingInfo.lastPage }">	 
+							<c:if test="${i==pagingInfo.currentPage }">
+								<li><a class="active">${i}</a></li>
+							</c:if>		
+							<c:if test="${i!=pagingInfo.currentPage }">
+								<li><a href="#" onclick="pageProc(${i})">${i}</a></li>
+							</c:if>
+						</c:forEach>	
+						<!--  페이지 번호 끝 -->
+							<!-- 다음 블럭으로 이동 -->
+						<c:if test="${pagingInfo.lastPage<pagingInfo.totalPage }">	
+							<li><a href="#" onclick="pageProc(${pagingInfo.lastPage+1})">&raquo;</a></li>
+						</c:if>
+					</ul>
+				</div>
+				<br>
+			</c:if>
 		</fieldset>
 	</div>
 </div>

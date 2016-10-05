@@ -439,8 +439,8 @@ function pageProc(curPage){
 				</div>
 				<!-- 리뷰작성하기 -->
 				<div class="border-bottom1">
-					<fieldset class="fieldset2 accordion3" id="writeReview">
-						<legend class="font1-4em"><b>리뷰작성하기</b></legend>
+					<fieldset class="fieldset2 accordion3">
+						<legend class="font1-4em" id="writeReview"><b>리뷰작성하기</b></legend>
 						<span class="sp8 btAccodion3"></span>
 						<form class="form1" action="<c:url value='/addreview.do' />" method="post" enctype="multipart/form-data">
 							<p class="p4">
@@ -489,7 +489,7 @@ function pageProc(curPage){
 				<div class="contain3">
 					<c:forEach var="map" items="${reviewMap}">
 						<!-- 리뷰내용 -->
-						<div class="contain3 font16px ma-b-15px reviewcontain">
+						<div class="contain3 font16px ma-b-15px reviewcontain" id="review"+${map['REVIEW_NO']}>
 							<div class="flex">
 								<div class="flex1 img2">
 									<img class="fullwidth" alt="profil" src="<c:url value='/profile_Image/${map["MEMBER_IMAGE"]}'/> ">

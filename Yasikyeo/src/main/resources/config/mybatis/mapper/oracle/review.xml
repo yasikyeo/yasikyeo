@@ -42,12 +42,12 @@
 		]]>
 	</select>
 	
-	<select id="selectReviewbyMemberNO" parameterType="SearchVO" resultType="ReviewVO">
+	<select id="selectReviewbyMemberNO" parameterType="SearchVO" resultType="map">
 		select * from 
 		(
 			select rownum as RNUM, LIST_ALL.*
 		    from
-		        (select * from review
+		        (select * from reviewListView
 		        	where member_No=#{searchKeyword}
 		        	order by review_regdate desc
 		        ) LIST_ALL

@@ -63,7 +63,7 @@ public class ReviewDAOMybatis extends SqlSessionDaoSupport implements ReviewDAO{
 	}
 
 	@Override
-	public List<ReviewVO> selectReviewbyMemberNO(SearchVO searchVo) {
+	public List<Map<String, Object>> selectReviewbyMemberNO(SearchVO searchVo) {
 		return getSqlSession().selectList(namespace+".selectReviewbyMemberNO", searchVo);
 	}
 

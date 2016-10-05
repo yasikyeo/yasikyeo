@@ -1,13 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../inc/top2.jsp" %>
+<%@ taglib prefix="eg" tagdir="/WEB-INF/tags" %>
 <script type="text/javascript">
 	$(function() {
-		$(".update").click(function() {
-			$(location).attr("href","<c:url value='/shop/client_shop_det.do#review'/>");
+		$("tr").click(function() {
+			var shopNo = $(this).find(".shopno").val();
+			var reviewNo = $(this).find(".reviewno").val();
+			$(location).attr("href","<c:url value='/shop/client_shop_det.do?no="+shopNo+"#review"+reviewNo+"'/>");
 		});
 	});
+	function pageProc(curPage){
+		document.frmPage1.currentPage.value=curPage;
+		document.frmPage1.submit();
+	}
 </script>
+<form name="frmPage1" method="post" id="frmPage"
+	action="<c:url value='/mypage/client_myreview_reg_possible.do'/>">
+	<input type="hidden" name="currentPage" id="currentPage" value="${param.currentPage}">
+	<input type="hidden" name="searchKeyword" 
+		value="${searchVO.searchKeyword }">	
+</form>
 <div class="mainSection">
 	<div class="location">
 		<ul>
@@ -53,7 +66,7 @@
 			</div>
 			<br class="clear-both">
 			<hr>
-			<c:if test="${empty reviewlist}">
+			<c:if test="${empty reviewMap}">
 				<!-- 리뷰가 없을때 -->
 				<div class="align-center">
 					<p>
@@ -65,37 +78,62 @@
 				</div>
 			
 			</c:if>
-			<c:if test="${!empty reviewlist}">
+			<c:if test="${!empty reviewMap}">
 				<!-- 리뷰가 있을때 -->
 				<div>
 					<table class="table3">
 						<colgroup>
 							<col style="width:15%;">
-							<col style="width:13%;">
-							<col style="width:46%;">
-							<col style="width:13%;">
-							<col style="width:13%;">
+							<col style="width:15%;">
+							<col style="width:70%;">
 						</colgroup>
 						<thead>
 							<tr>
 								<th>날짜</th>
 								<th>업소</th>
 								<th>내용</th>
-								<th>수정</th>
-								<th>삭제</th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td>2016-09-13</td>
-								<td>향원</td>
-								<td>자장면 외 1개</td>
-								<td><a href="#"><span class="sp3 update">수정</span></a></td>
-								<td><a href="#"><span class="sp3">삭제</span></a></td>
-							</tr>
+							<c:forEach var="map" items="${reviewMap}">
+								<tr>
+									<td><fmt:formatDate value="${map['REVIEW_REGDATE']}" pattern="YYYY-MM-dd"/></td>
+									<td>${map['SHOP_NAME']}</td>
+									<td><eg:to-string var="textValue" value="${map['REVIEW_CONTENT']}"/>
+										${textValue}<input type="hidden" value="${map['REVIEW_NO']}" class="reviewno">
+										<input type="hidden" value="${map['SHOP_NO']}" class="shopno">
+									</td>
+								</tr>
+							</c:forEach>
 						</tbody>
 					</table>
 				</div>
+				<br>
+				<div class="vertical-container">
+						<ul class="pagination">
+							<!-- 이전 블럭으로 이동 -->
+						<c:if test="${pagingInfo.firstPage>1 }">	
+								<li><a href="#" onclick="pageProc(${pagingInfo.firstPage-1})">&laquo;</a></li>
+						</c:if>
+						<!-- 페이지 번호 추가 -->						
+						<!-- [1][2][3][4][5][6][7][8][9][10] -->
+						<c:forEach var="i" begin="${pagingInfo.firstPage }" 
+							end="${pagingInfo.lastPage }">	 
+							<c:if test="${i==pagingInfo.currentPage }">
+								<li><a class="active">${i}</a></li>
+							</c:if>		
+							<c:if test="${i!=pagingInfo.currentPage }">
+								<li><a href="#" onclick="pageProc(${i})">${i}</a></li>
+							</c:if>
+						</c:forEach>	
+						<!--  페이지 번호 끝 -->
+							<!-- 다음 블럭으로 이동 -->
+						<c:if test="${pagingInfo.lastPage<pagingInfo.totalPage }">	
+							<li><a href="#" onclick="pageProc(${pagingInfo.lastPage+1})">&raquo;</a></li>
+						</c:if>
+					</ul>
+				</div>
+				<br>
 			</c:if>
 		</fieldset>
 	</div>

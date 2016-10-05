@@ -17,5 +17,5 @@ public interface ReviewDAO {
 	public int updateStarScoreShop(Map<String, Object>map);
 	public int updateStarScoreShop2(Map<String, Object>map);
 	public int updateStarScoreShop3(Map<String, Object>map);
-	public List<ReviewVO> selectReviewbyMemberNO (SearchVO searchVo);
+	public List<Map<String, Object>> selectReviewbyMemberNO (SearchVO searchVo);
 }

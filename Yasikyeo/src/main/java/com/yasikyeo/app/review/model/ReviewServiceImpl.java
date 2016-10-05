@@ -65,7 +65,7 @@ public class ReviewServiceImpl implements ReviewService{
 	}
 
 	@Override
-	public List<ReviewVO> selectReviewbyMemberNO(SearchVO searchVo) {
+	public List<Map<String, Object>> selectReviewbyMemberNO(SearchVO searchVo) {
 		return reviewDao.selectReviewbyMemberNO(searchVo);
 	}
 	
