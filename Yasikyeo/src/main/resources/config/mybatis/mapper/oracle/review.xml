@@ -53,4 +53,24 @@
 	<select id="selectCountReviewByMemberNo" parameterType="map" resultType="int">
 		select count(*) from reviewView where review_no=#{reviewNo} and member_no=#{memberNo}
 	</select>
+	
+	<update id="updateStarScoreShop" parameterType="map">
+		update shop
+		set SHOP_AVGREVIEW=(((SHOP_AVGREVIEW*(SHOP_REVIEWCNT+1))+#{reviewStarscore})/(SHOP_REVIEWCNT+2))
+		,SHOP_REVIEWCNT=SHOP_REVIEWCNT+1
+		where shop_no = #{shopNo}
+	</update>
+	
+	<update id="updateStarScoreShop2" parameterType="map">
+		update shop
+		set SHOP_AVGREVIEW=((SHOP_AVGREVIEW*SHOP_REVIEWCNT)+#{reviewStarscore})/SHOP_REVIEWCNT
+		where shop_no = #{shopNo}
+	</update>
+	<update id="updateStarScoreShop3" parameterType="map">
+		update shop
+		set SHOP_AVGREVIEW=((SHOP_AVGREVIEW*SHOP_REVIEWCNT)+#{reviewStarscore})/(SHOP_REVIEWCNT-1)
+		,SHOP_REVIEWCNT=SHOP_REVIEWCNT-1
+		where shop_no = #{shopNo}
+	</update>
+	
 </mapper>

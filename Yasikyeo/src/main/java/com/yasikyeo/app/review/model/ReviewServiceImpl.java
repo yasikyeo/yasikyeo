@@ -48,6 +48,21 @@ public class ReviewServiceImpl implements ReviewService{
 	public ReviewVO selectReviewByNo(int reviewNo) {
 		return reviewDao.selectReviewByNo(reviewNo);
 	}
+
+	@Override
+	public int updateStarScoreShop(Map<String, Object> map) {
+		return reviewDao.updateStarScoreShop(map);
+	}
+
+	@Override
+	public int updateStarScoreShop2(Map<String, Object> map) {
+		return reviewDao.updateStarScoreShop2(map);
+	}
+
+	@Override
+	public int updateStarScoreShop3(Map<String, Object> map) {
+		return reviewDao.updateStarScoreShop3(map);
+	}
 	
 	
 }

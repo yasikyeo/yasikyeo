@@ -47,4 +47,19 @@ public class ReviewDAOMybatis extends SqlSessionDaoSupport implements ReviewDAO{
 		return getSqlSession().selectOne(namespace+".selectReviewByNo", reviewNo);
 	}
 
+	@Override
+	public int updateStarScoreShop(Map<String, Object> map) {
+		return getSqlSession().update(namespace+".updateStarScoreShop", map);
+	}
+
+	@Override
+	public int updateStarScoreShop2(Map<String, Object> map) {
+		return getSqlSession().update(namespace+".updateStarScoreShop2",map);
+	}
+
+	@Override
+	public int updateStarScoreShop3(Map<String, Object> map) {
+		return getSqlSession().update(namespace+".updateStarScoreShop3", map);
+	}
+
 }

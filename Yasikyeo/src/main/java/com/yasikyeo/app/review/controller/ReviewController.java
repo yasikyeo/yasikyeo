@@ -1,6 +1,7 @@
 package com.yasikyeo.app.review.controller;
 
 import java.io.File;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -63,6 +64,13 @@ public class ReviewController {
 		int cnt = reviewService.insertReview(reviewVo);
 		logger.info("리뷰 작성 결과 cnt={}",cnt);
 		
+		Map<String, Object>map = new HashMap<String, Object>();
+		map.put("reviewStarscore", reviewVo.getReviewStarscore());
+		map.put("shopNo", reviewVo.getShopNo());
+		
+		int result = reviewService.updateStarScoreShop(map);
+		logger.info("상점 별점평균 업데이트 결과 result = {}",result);
+		
 		return "redirect:/shop/client_shop_det.do?no="+reviewVo.getShopNo();
 	}
 	
@@ -71,7 +79,7 @@ public class ReviewController {
 							HttpServletRequest request,Model model){
 		logger.info("reviewUpdateVo={}",reviewUpdateVo);
 		ReviewVO reviewVo = reviewUpdateVo.getReviewVo();
-		
+		ReviewVO orldreviewVo = reviewService.selectReviewByNo(reviewVo.getReviewNo());
 		List<Map<String, Object>> fileList = fileUploadWebUil.fileUpload(request, fileUploadWebUil.REVIEW_IMAGE_UPLOAD);
 		
 		if(fileList!=null && !fileList.isEmpty()){
@@ -111,6 +119,14 @@ public class ReviewController {
 		int cnt = reviewService.updateReview(reviewVo);
 		logger.info("리뷰 수정 결과 cnt={}",cnt);
 		
+		double starscore = reviewVo.getReviewStarscore()-orldreviewVo.getReviewStarscore();
+		
+		Map<String, Object>map = new HashMap<String, Object>();
+		map.put("reviewStarscore", starscore);
+		map.put("shopNo", reviewVo.getShopNo());
+		int result = reviewService.updateStarScoreShop2(map);
+		logger.info("상점 별점평균 업데이트 결과 result = {}",result);
+		
 		return "redirect:/shop/client_shop_det.do?no="+reviewVo.getShopNo();
 	}
 	
@@ -129,6 +145,13 @@ public class ReviewController {
 		if(reviewVo.getReviewImage3()!=null && !reviewVo.getReviewImage3().isEmpty()){
 			deleteFile(reviewVo.getReviewImage3(),request);
 		}
+		
+		Map<String, Object>map = new HashMap<String, Object>();
+		map.put("reviewStarscore", reviewVo.getReviewStarscore());
+		map.put("shopNo", reviewVo.getShopNo());
+		int result = reviewService.updateStarScoreShop2(map);
+		logger.info("상점 별점평균 업데이트 결과 result = {}",result);
+		
 		int cnt = reviewService.deleteReview(reviewNo);
 		logger.info("리뷰삭제결과 cnt={}",cnt);
 		return "redirect:/shop/client_shop_det.do?no="+shopno;

@@ -14,4 +14,7 @@ public interface ReviewService {
 	public int selectCountReview(int shopNo);
 	public int selectCountReviewByMemberNo(Map<String, Object>map);
 	public ReviewVO selectReviewByNo(int reviewNo);
+	public int updateStarScoreShop(Map<String, Object>map);
+	public int updateStarScoreShop2(Map<String, Object>map);
+	public int updateStarScoreShop3(Map<String, Object>map);
 }
