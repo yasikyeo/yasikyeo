@@ -15,7 +15,7 @@
 </script>
 <form name="frmPage1" method="post" id="frmPage"
 	action="<c:url value='/mypage/client_myreview_reg_possible.do'/>">
-	<input type="text" name="currentPage" id="currentPage" value="${param.currentPage}">
+	<input type="hidden" name="currentPage" id="currentPage" value="${param.currentPage}">
 	<input type="hidden" name="searchKeyword" 
 		value="${searchVO.searchKeyword }">	
 </form>

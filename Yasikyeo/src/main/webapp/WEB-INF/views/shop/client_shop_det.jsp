@@ -150,7 +150,7 @@ $(document).ready(function () {
 	  $(".sp11").click(function() {
 		var inputimageCnt = $(this).parents(".addimagecon").find("input[type=file]").length;
 		$(this).parents(".addimagecon").append(inputFileStr(inputimageCnt+1));
-		var imageStr = $(this).parents(".div14").find("input[type=text]").val();
+		var imageStr = $(this).parents(".div14").find("input[type=hidden]").val();
 		
 		if($(".deleteImage1").val().length<1){
 			$(".deleteImage1").val(imageStr);
@@ -238,7 +238,17 @@ $(document).ready(function () {
 		$(".fieldset2").hide();
 	}
 });
+function pageProc(curPage){
+	document.frmPage.currentPage.value=curPage;
+	document.frmPage.submit();
+}
 </script>
+<form name="frmPage" method="post" id="frmPage"
+	action="<c:url value='/shop/client_shop_det.do?no=${param.no}'/>">
+	<input type="hidden" name="currentPage" id="currentPage" value="${searchVO.currentPage}">
+	<input type="hidden" name="searchKeyword" 
+		value="${searchVO.searchKeyword }">	
+</form>
 <div class="mainSection">
 	<div class="location1">
 		<ul>
@@ -436,9 +446,9 @@ $(document).ready(function () {
 							<p class="p4">
 								<span class="align-middle">별점</span>
 								<span class="star3" data-score="5"></span>
-								<input type="text" name="reviewStarscore" id="star3">
+								<input type="hidden" name="reviewStarscore" id="star3">
 							</p>
-							<p class="p4">닉네임 <b>${memberVo.memberNickname}</b><input type="text" value="${memberVo.memberNickname}" name="reviewNickname"></p>
+							<p class="p4">닉네임 <b>${memberVo.memberNickname}</b><input type="hidden" value="${memberVo.memberNickname}" name="reviewNickname"></p>
 							<textarea class="ta1" wrap="virtual" placeholder="솔직한 의견도 좋지만 무조건적인 비방글은 삼가주세요
 (한글 15자 이상 최대 400자 까지 작성 가능합니다.)" name="reviewContent"></textarea>
 							<p class="overflow-hidden"><span class="float-right sp2">0/400</span></p>
@@ -466,8 +476,8 @@ $(document).ready(function () {
 									<label for="image-upload3" id="image-label3">파일첨부</label>
 								</div>
 							</div>
-							<input type="text" value="${memberVo.memberNo}" name="memberNo">
-							<input type="text" value="${param.no}" name="shopNo">
+							<input type="hidden" value="${memberVo.memberNo}" name="memberNo">
+							<input type="hidden" value="${param.no}" name="shopNo">
 							<div class="flex">
 								<input class="flex3 btblack bt3" type="submit" value="리뷰 작성 완료">
 								<input class="flex1 btbrown bt3" type="button" value="취소">
@@ -527,7 +537,7 @@ $(document).ready(function () {
 										<p class="p4">
 											<span class="align-middle">별점</span>
 											<span class="star4" data-score="5"></span>
-											<input type="text" name="reviewVo.reviewStarscore" class="star4">
+											<input type="hidden" name="reviewVo.reviewStarscore" class="star4">
 										</p>
 										<p class="p4">닉네임 <b>${map['REVIEW_NICKNAME']}</b></p>
 										<textarea class="ta2" wrap="virtual" name="reviewVo.reviewContent"><c:out value="${textValue}"/></textarea>
@@ -544,7 +554,7 @@ $(document).ready(function () {
 												<div class="div14 paddingtype1 align-middle">
 													<span class="sp11">&times;</span>
 													<img alt="" src="<c:url value='/review_Image/${map["REVIEW_IMAGE1"]}'/>">
-													<input type="text" name="reviewVo.reviewImage1" value="${map['REVIEW_IMAGE1']}">
+													<input type="hidden" name="reviewVo.reviewImage1" value="${map['REVIEW_IMAGE1']}">
 												</div>
 												<!-- 이미지 -->
 											</c:if>
@@ -554,7 +564,7 @@ $(document).ready(function () {
 												<div class="div14 paddingtype1 align-middle">
 													<span class="sp11">&times;</span>
 													<img alt="" src="<c:url value='/review_Image/${map["REVIEW_IMAGE2"]}'/>">
-													<input type="text" name="reviewVo.reviewImage2" value="${map['REVIEW_IMAGE2']}">
+													<input type="hidden" name="reviewVo.reviewImage2" value="${map['REVIEW_IMAGE2']}">
 												</div>
 												<!-- 이미지 -->
 											</c:if>
@@ -564,7 +574,7 @@ $(document).ready(function () {
 												<div class="div14 paddingtype1 align-middle">
 													<span class="sp11">&times;</span>
 													<img alt="" src="<c:url value='/review_Image/${map["REVIEW_IMAGE3"]}'/>">
-													<input type="text" name="reviewVo.reviewImage3" value="${map['REVIEW_IMAGE3']}">
+													<input type="hidden" name="reviewVo.reviewImage3" value="${map['REVIEW_IMAGE3']}">
 												</div>
 												<!-- 이미지 -->
 											</c:if>
@@ -579,12 +589,12 @@ $(document).ready(function () {
 												</div>
 											</c:forEach>
 										</div>
-										<input type="text" name="deleteImage1" class="deleteImage1">
-										<input type="text" name="deleteImage2" class="deleteImage2">
-										<input type="text" name="deleteImage3" class="deleteImage3">
-										<input type="text" name="reviewVo.reviewNo" value="${map['REVIEW_NO']}" class="reviewNo">
-										<input type="text" name="reviewVo.reviewNickname" value="${memberVo.memberNickname}">
-										<input type="text" name="reviewVo.shopNo" value="${map['SHOP_NO']}">
+										<input type="hidden" name="deleteImage1" class="deleteImage1">
+										<input type="hidden" name="deleteImage2" class="deleteImage2">
+										<input type="hidden" name="deleteImage3" class="deleteImage3">
+										<input type="hidden" name="reviewVo.reviewNo" value="${map['REVIEW_NO']}" class="reviewNo">
+										<input type="hidden" name="reviewVo.reviewNickname" value="${memberVo.memberNickname}">
+										<input type="hidden" name="reviewVo.shopNo" value="${map['SHOP_NO']}">
 										<div class="flex clear-both">
 											<input class="flex3 btblack bt3" type="submit" value="리뷰 작성 완료">
 											<input class="flex1 btbrown bt3" type="button" value="취소">
@@ -614,6 +624,31 @@ $(document).ready(function () {
 						<!-- 리뷰내용 -->
 					</c:forEach>
 				</div>
+				<div class="vertical-container">
+		 			<ul class="pagination">
+		 				<!-- 이전 블럭으로 이동 -->
+						<c:if test="${pagingInfo.firstPage>1 }">	
+		 					<li><a href="#" onclick="pageProc(${pagingInfo.firstPage-1})">&laquo;</a></li>
+						</c:if>
+						<!-- 페이지 번호 추가 -->						
+						<!-- [1][2][3][4][5][6][7][8][9][10] -->
+						<c:forEach var="i" begin="${pagingInfo.firstPage }" 
+							end="${pagingInfo.lastPage }">	 
+							<c:if test="${i==pagingInfo.currentPage }">
+								<li><a class="active">${i}</a></li>
+							</c:if>		
+							<c:if test="${i!=pagingInfo.currentPage }">
+								<li><a href="#" onclick="pageProc(${i})">${i}</a></li>
+							</c:if>
+						</c:forEach>	
+						<!--  페이지 번호 끝 -->
+		 				<!-- 다음 블럭으로 이동 -->
+						<c:if test="${pagingInfo.lastPage<pagingInfo.totalPage }">	
+							<li><a href="#" onclick="pageProc(${pagingInfo.lastPage+1})">&raquo;</a></li>
+						</c:if>
+					</ul>
+				</div>
+				<br>
 			</div>
 		</div>
 		<div class="flex1">
@@ -733,6 +768,7 @@ $(document).on("click",".cartadd",function () {
 	var pricestr=price1[0];
 	var price=price1[1];
 	var str ="";
+	var hiddenstr="";
 	var menuprice=0;
 	if(pric2!=null){
 		var price2=pric2.split("/");
@@ -754,8 +790,8 @@ $(document).on("click",".cartadd",function () {
 			str = cartmenu(cartmenucnt,productName,price,price,pricestr);
 		}
 	}
-	
 	$(".cartform").prepend(str);
+	
 	
 	if(cartmenucnt>0){
 		var totalprice=$("#totalprice").text().replace(/[^0-9]/g,"");
@@ -788,6 +824,7 @@ $(document).on("click",".cartadd",function () {
 		     }
 	});
 //---------------------------------------------------------------
+	$("input[type=hidden]").hide();
 });
 //------------장바구니 X 버튼 클릭시---------------------------------
 $(document).on("click",".btmenuclose",function(){
@@ -834,16 +871,17 @@ function cartmenu(cartcnt,menu,price,price1,pricestr,price2,option) {
 			cartmenustr+='<div class="padding10px div15">';
 				cartmenustr+='<span class="float-left"><b>가격:'+pricestr+'</b></span>';
 				cartmenustr+='<span class="float-right pric1">+ '+numberWithCommas(price1)+'원</span>';
+				cartmenustr+='<div class="cartnum'+cartcnt+'"></div>';
 				if(price2!=null){
 					cartmenustr+='<span class="float-left"><b>추가선택: '+option+'</b></span>';
 					cartmenustr+='<span class="float-right pric2">+ '+numberWithCommas(price2)+'원</span>';
-					cartmenustr+='<input type="text" name="orderDetList['+cartcnt+'].orderdetOption" value="'+option+'"><br>';
-					cartmenustr+='<input type="text" name="orderDetList['+cartcnt+'].orderdetOptionprice" value="'+price2+'"><br>';
+					cartmenustr+='<input type="hidden" name="orderDetList['+cartcnt+'].orderdetOption" value="'+option+'" class="displaynone"><br>';
+					cartmenustr+='<input type="hidden" name="orderDetList['+cartcnt+'].orderdetOptionprice" value="'+price2+'" class="displaynone"><br>';
 				}
-				cartmenustr+='<input type="text" name="orderDetList['+cartcnt+'].orderdetProductname" value="'+menu+'"><br>';
-				cartmenustr+='<input type="text" name="orderDetList['+cartcnt+'].orderdetSelectproduct" value="'+pricestr+'"><br>';
-				cartmenustr+='<input type="text" name="orderDetList['+cartcnt+'].orderdetSelectprice" value="'+price1+'"><br>';
-				cartmenustr+='<input type="text" name="orderDetList['+cartcnt+'].orderdetTotalprice" value="'+price+'" class="detTotalprice"><br>';
+				cartmenustr+='<input type="hidden" name="orderDetList['+cartcnt+'].orderdetProductname" value="'+menu+'" class="displaynone"><br>';
+				cartmenustr+='<input type="hidden" name="orderDetList['+cartcnt+'].orderdetSelectproduct" value="'+pricestr+'" class="displaynone"><br>';
+				cartmenustr+='<input type="hidden" name="orderDetList['+cartcnt+'].orderdetSelectprice" value="'+price1+'" class="displaynone"><br>';
+				cartmenustr+='<input type="hidden" name="orderDetList['+cartcnt+'].orderdetTotalprice" value="'+price+'" class="detTotalprice displaynone"><br>';
 			cartmenustr+='</div>';
 		cartmenustr+='</div>';
 	cartmenustr+='</div>';
@@ -855,8 +893,8 @@ function cartsum(totalprice){
 		 cartsum+='<div class="padding10px align-right">';
 			 cartsum+='<p><b class="font15px">주문합계</b></p>';
 			 cartsum+='<p class="color-orange font18px"><b id="totalprice">'+numberWithCommas(totalprice)+'</b>원</p>';
-			 cartsum+='<input type="text" name="totalmenuprice" value="'+totalprice+'" id="totalmenuprice"><br>';
-			 cartsum+='<input type="text" name="shopno" value="'+${shop.shopNo}+'" id="shopno"><br>';
+			 cartsum+='<input type="hidden" name="totalmenuprice" value="'+totalprice+'" id="totalmenuprice" class="displaynone"><br>';
+			 cartsum+='<input type="hidden" name="shopno" value="'+${shop.shopNo}+'" id="shopno" class="displaynone"><br>';
 			 cartsum+='<p class="color-silver font13px">[최소주문금액:';
 			 cartsum+='<fmt:formatNumber pattern="#,###" value="${shop.shopMinprice}"/>원]</p>';
 		 cartsum+='</div>';

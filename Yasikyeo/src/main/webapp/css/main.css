@@ -1994,7 +1994,10 @@ p.btAccodion2 > span.ui-icon-active{
 /*
  	유틸 클래스 
 */
-
+.displaynone{
+	display: none;
+	visibility: hidden;
+}
 .relative{
 	position: relative;
 }

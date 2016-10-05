@@ -88,7 +88,7 @@ $(function () {
 					<!-- 음식점 조회 -->
 					<c:forEach var="shop" items="${shopList}">
 						<div class="bookmark cursor-pointer">
-							<div>${shop.shopName}<input type="text" value="${shop.shopNo}" class="shopno"></div>
+							<div>${shop.shopName}<input type="hidden" value="${shop.shopNo}" class="shopno"></div>
 							<div class="star" data-score="${shop.shopAvgreview}"></div>
 							<div class="description">리뷰<span>${shop.shopReviewcnt}</span>즐겨찾기<span>${shop.shopHit}</span></div>
 						</div>
@@ -119,7 +119,7 @@ $(function () {
 						<c:forEach var="bookmarkshop" items="${bookmarkshopList}">
 							<div class="bookmark cursor-pointer mark">
 								<span class="close close1">&times;</span>
-								<div>${bookmarkshop.shopName}<input type="text" value="${bookmarkshop.shopNo}" class="shopno"></div>
+								<div>${bookmarkshop.shopName}<input type="hidden" value="${bookmarkshop.shopNo}" class="shopno"></div>
 								<div class="star" data-score="${bookmarkshop.shopAvgreview}"></div>
 								<div class="description">리뷰<span>${bookmarkshop.shopReviewcnt}</span>즐겨찾기<span>${bookmarkshop.shopHit}</span></div>
 							</div>

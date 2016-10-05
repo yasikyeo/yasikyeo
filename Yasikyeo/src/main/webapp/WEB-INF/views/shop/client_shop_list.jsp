@@ -35,8 +35,8 @@ $(function () {
 </script>
 <form name="frmPage" method="post" id="frmPage"
 	action="<c:url value='/shop/client_shop_list.do?menu=${param.menu}'/>">
-	<input type="text" name="currentPage" id="currentPage" value="${param.currentPage}">
-	<input type="text" name="searchCondition" id="searchCondition"
+	<input type="hidden" name="currentPage" id="currentPage" value="${param.currentPage}">
+	<input type="hidden" name="searchCondition" id="searchCondition"
 		value="${param.searchCondition }">
 	<input type="hidden" name="searchKeyword" 
 		value="${searchVO2.searchKeyword }">	

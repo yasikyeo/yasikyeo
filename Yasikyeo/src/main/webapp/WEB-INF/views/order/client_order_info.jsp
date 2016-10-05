@@ -143,7 +143,7 @@
 	<input type="hidden" id="currentPage" name="currentPage" value="1"/>				<!-- 요청 변수 설정 (현재 페이지) -->
     <input type="hidden" id="countPerPage" name="countPerPage" value="5000"/>				<!-- 요청 변수 설정 (페이지당 출력 개수) -->
     <input type="hidden" name="confmKey" value="U01TX0FVVEgyMDE2MDcxODIyMDcxMzEzODg5"/>
-	<input type="text" id="dong" name="keyword" value="${sessionScope.gu}">
+	<input type="hidden" id="dong" name="keyword" value="${sessionScope.gu}">
 </form>
 	<br>
 	<br>
@@ -176,7 +176,7 @@
 				 				</select>
 				 				<input class="inputText1 flex4 adredet" type="text" placeholder="나머지 주소를 입력해 주세요">
 				 			</div>
-				 				<input type="text" name="orderlistAddress" id="orderlistAddress">
+				 				<input type="hidden" name="orderlistAddress" id="orderlistAddress">
 				 			<div class="vertical-container paddingCol5px">
 				 				<label class="align-middle lb2">&nbsp;</label>
 				 				<b>최근배송주소 </b><span class="sp14">▼</span><span class="sp15">최근배송주소 중 하나를 선택할수 있습니다</span>
@@ -247,13 +247,13 @@
 				 			<div class="div21">
 				 				<p class="relative p6 clear-both">수량<b class="float-right font15px">${i}개</b></p>
 				 				<p class="relative p6 clear-both">총 상품금액<b class="float-right color-orange font15px"><fmt:formatNumber value="${sessionScope.totalMprice}" pattern="#,###"/>원</b></p>
-				 				<p class="relative p6 clear-both"><input type="text" name="orderlistPrice"  value="${sessionScope.totalMprice}"></p>
+				 				<p class="relative p6 clear-both"><input type="hidden" name="orderlistPrice"  value="${sessionScope.totalMprice}"></p>
 				 				<p class="relative p6 clear-both">포인트 결제<b class="float-right font15px point">-0원</b></p>
-				 				<p class="relative p6 clear-both"><input type="text" name="orderlistPaypoint" id="orderlistPaypoint" value="0"></p>
+				 				<p class="relative p6 clear-both"><input type="hidden" name="orderlistPaypoint" id="orderlistPaypoint" value="0"></p>
 				 			</div>
 				 			<div class="div21">
 				 				<p class="relative clear-both p6"><b class="float-right">최종결제금액</b></p>
-				 				<p class="relative clear-both p6"><input type="text" name="orderlistCargeprice" id="orderlistCargeprice" value="${sessionScope.totalMprice}"></p>
+				 				<p class="relative clear-both p6"><input type="hidden" name="orderlistCargeprice" id="orderlistCargeprice" value="${sessionScope.totalMprice}"></p>
 				 				<p class="relative clear-both p6"><b class="float-right color-orange tp"><fmt:formatNumber value="${sessionScope.totalMprice}" pattern="#,###"/>원 </b></p>
 				 			</div>
 				 		</div>
