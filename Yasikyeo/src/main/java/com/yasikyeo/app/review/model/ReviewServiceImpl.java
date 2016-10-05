@@ -43,6 +43,11 @@ public class ReviewServiceImpl implements ReviewService{
 	public int selectCountReviewByMemberNo(Map<String, Object> map) {
 		return reviewDao.selectCountReviewByMemberNo(map);
 	}
+
+	@Override
+	public ReviewVO selectReviewByNo(int reviewNo) {
+		return reviewDao.selectReviewByNo(reviewNo);
+	}
 	
 	
 }

@@ -13,4 +13,5 @@ public interface ReviewService {
 	public List<Map<String, Object>> selectReview(SearchVO searchVo);
 	public int selectCountReview(int shopNo);
 	public int selectCountReviewByMemberNo(Map<String, Object>map);
+	public ReviewVO selectReviewByNo(int reviewNo);
 }

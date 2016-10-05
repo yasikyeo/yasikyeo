@@ -42,6 +42,10 @@
 		]]>
 	</select>
 	
+	<select id="selectReviewByNo" parameterType="int" resultType="ReviewVO">
+		select * from reviewView where review_no=#{reviewNo}
+	</select>
+	
 	<select id="selectCountReview" parameterType="int" resultType="int">
 		select count(*) from reviewView where shop_no=#{shopNo}
 	</select>

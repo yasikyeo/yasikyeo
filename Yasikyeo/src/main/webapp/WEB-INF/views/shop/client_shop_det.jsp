@@ -13,9 +13,9 @@ function inputFileStr(i) {
 	str+='<div class="inputimgcon1 paddingtype1 align-middle">';
 		str+='<div class="profile2">';
 			str+='<div class="image-preview'+(i+3)+'">';
-				str+='<input type="file" name="image" id="image-upload'+(i+3)+'" />';
+				str+='<input type="file" name="image" class="image-upload'+(i+3)+'" id="imageinput'+(i+3)+'"/>';
 			str+='</div>';
-			str+='<label for="image-upload'+(i+3)+'" id="image-label'+(i+3)+'">파일첨부</label>';
+			str+='<label for="imageinput'+(i+3)+'" class="image-label'+(i+3)+'">파일첨부</label>';
 		str+='</div>';
 	str+='</div>';
 	return str;
@@ -40,6 +40,16 @@ $(document).ready(function () {
 		  },
 		  half: true,
 		  target : '#star3',
+		  targetType : 'score',
+		  targetKeep : true,
+	 	  targetScore: '#hint'
+	});
+	$('span.star4').raty({
+		  score: function() {
+		    return $(this).attr('data-score');
+		  },
+		  half: true,
+		  target : '.star4',
 		  targetType : 'score',
 		  targetKeep : true,
 	 	  targetScore: '#hint'
@@ -140,36 +150,46 @@ $(document).ready(function () {
 	  $(".sp11").click(function() {
 		var inputimageCnt = $(this).parents(".addimagecon").find("input[type=file]").length;
 		$(this).parents(".addimagecon").append(inputFileStr(inputimageCnt+1));
+		var imageStr = $(this).parents(".div14").find("input[type=text]").val();
+		
+		if($(".deleteImage1").val().length<1){
+			$(".deleteImage1").val(imageStr);
+		}else if($(".deleteImage2").val().length<1){
+			$(".deleteImage2").val(imageStr);
+		}else if($(".deleteImage3").val().length<1){
+			$(".deleteImage3").val(imageStr);
+		}
+		
 		$(this).parents(".div14").remove();
 	});
 	
-	$(document).on("click","#image-upload4",function(){
+	$(document).on("click",".image-upload4",function(){
 		$.uploadPreview({
-		    input_field: "#image-upload4",   // Default: .image-upload
+		    input_field: ".image-upload4",   // Default: .image-upload
 		    preview_box: ".image-preview4",  // Default: .image-preview
-		    label_field: "#image-label4",    // Default: .image-label
+		    label_field: ".image-label4",    // Default: .image-label
 		    label_default: "파일첨부",   // Default: Choose File
 		    label_selected: "파일변경",  // Default: Change File
 		    no_label: false,                 // Default: false
 		    preview_default:"test-failed.png"
 		  });
 	});
-	$(document).on("click","#image-upload5",function(){
+	$(document).on("click",".image-upload5",function(){
 		$.uploadPreview({
-		    input_field: "#image-upload5",   // Default: .image-upload
+		    input_field: ".image-upload5",   // Default: .image-upload
 		    preview_box: ".image-preview5",  // Default: .image-preview
-		    label_field: "#image-label5",    // Default: .image-label
+		    label_field: ".image-label5",    // Default: .image-label
 		    label_default: "파일첨부",   // Default: Choose File
 		    label_selected: "파일변경",  // Default: Change File
 		    no_label: false,                 // Default: false
 		    preview_default:"test-failed.png"
 		  });
 	});
-	$(document).on("click","#image-upload6",function(){
+	$(document).on("click",".image-upload6",function(){
 		$.uploadPreview({
-		    input_field: "#image-upload6",   // Default: .image-upload
+		    input_field: ".image-upload6",   // Default: .image-upload
 		    preview_box: ".image-preview6",  // Default: .image-preview
-		    label_field: "#image-label6",    // Default: .image-label
+		    label_field: ".image-label6",    // Default: .image-label
 		    label_default: "파일첨부",   // Default: Choose File
 		    label_selected: "파일변경",  // Default: Change File
 		    no_label: false,                 // Default: false
@@ -478,7 +498,7 @@ $(document).ready(function () {
 										<li>|</li>
 										<li><fmt:formatDate value="${map['REVIEW_REGDATE']}" pattern="YYYY-MM-dd"/></li>
 										<c:if test="${map['MEMBER_NO']==memberVo.memberNo}">
-											<li><span class="btbrown1">삭제</span></li>
+											<li><span class="btbrown1 deletebt">삭제</span></li>
 											<li><span class="btbrown1 updatebt">수정</span></li>
 										</c:if>
 									</ul>
@@ -503,13 +523,14 @@ $(document).ready(function () {
 											</p>
 										</c:if>
 									</div>
-									<form class="form1 f3" action="" method="post" enctype="multipart/form-data">
+									<form class="form1 f3" action="<c:url value='/updatereview.do'/>" method="post" enctype="multipart/form-data">
 										<p class="p4">
 											<span class="align-middle">별점</span>
-											<span class="star3" data-score="${map['REVIEW_STARSCORE']}"></span>
+											<span class="star4" data-score="5"></span>
+											<input type="text" name="reviewVo.reviewStarscore" class="star4">
 										</p>
 										<p class="p4">닉네임 <b>${map['REVIEW_NICKNAME']}</b></p>
-										<textarea class="ta2" wrap="virtual"><c:out value="${textValue}"/></textarea>
+										<textarea class="ta2" wrap="virtual" name="reviewVo.reviewContent"><c:out value="${textValue}"/></textarea>
 										<p class="overflow-hidden"><span class="float-right sp2">0/400</span></p>
 										<p class="p4">
 											<b class="align-middle">사진첨부</b>
@@ -523,6 +544,7 @@ $(document).ready(function () {
 												<div class="div14 paddingtype1 align-middle">
 													<span class="sp11">&times;</span>
 													<img alt="" src="<c:url value='/review_Image/${map["REVIEW_IMAGE1"]}'/>">
+													<input type="text" name="reviewVo.reviewImage1" value="${map['REVIEW_IMAGE1']}">
 												</div>
 												<!-- 이미지 -->
 											</c:if>
@@ -532,6 +554,7 @@ $(document).ready(function () {
 												<div class="div14 paddingtype1 align-middle">
 													<span class="sp11">&times;</span>
 													<img alt="" src="<c:url value='/review_Image/${map["REVIEW_IMAGE2"]}'/>">
+													<input type="text" name="reviewVo.reviewImage2" value="${map['REVIEW_IMAGE2']}">
 												</div>
 												<!-- 이미지 -->
 											</c:if>
@@ -541,6 +564,7 @@ $(document).ready(function () {
 												<div class="div14 paddingtype1 align-middle">
 													<span class="sp11">&times;</span>
 													<img alt="" src="<c:url value='/review_Image/${map["REVIEW_IMAGE3"]}'/>">
+													<input type="text" name="reviewVo.reviewImage3" value="${map['REVIEW_IMAGE3']}">
 												</div>
 												<!-- 이미지 -->
 											</c:if>
@@ -548,13 +572,19 @@ $(document).ready(function () {
 												<div class="inputimgcon1 paddingtype1 align-middle">
 													<div class="profile2">
 														<div class="image-preview${z+3}">
-															<input type="file" name="image" id="image-upload${z+3}" />
+															<input type="file" name="image" class="image-upload${z+3}" id="imageinput${z+3}"/>
 														</div>
-														<label for="image-upload${z+3}" id="image-label${z+3}">파일첨부</label>
+														<label for="imageinput${z+3}" class="image-label${z+3}">파일첨부</label>
 													</div>
 												</div>
 											</c:forEach>
 										</div>
+										<input type="text" name="deleteImage1" class="deleteImage1">
+										<input type="text" name="deleteImage2" class="deleteImage2">
+										<input type="text" name="deleteImage3" class="deleteImage3">
+										<input type="text" name="reviewVo.reviewNo" value="${map['REVIEW_NO']}" class="reviewNo">
+										<input type="text" name="reviewVo.reviewNickname" value="${memberVo.memberNickname}">
+										<input type="text" name="reviewVo.shopNo" value="${map['SHOP_NO']}">
 										<div class="flex clear-both">
 											<input class="flex3 btblack bt3" type="submit" value="리뷰 작성 완료">
 											<input class="flex1 btbrown bt3" type="button" value="취소">
@@ -666,6 +696,10 @@ $(function() {
 	$(".updatebt").click(function() {
 		$(this).parents(".reviewcontain").find(".f3").toggle();
 		$(this).parents(".reviewcontain").find(".review").toggle();
+	});
+	$(".deletebt").click(function() {
+		var reviewNo = $(this).parents(".reviewcontain").find(".reviewNo").val();
+		$(location).attr("href","<c:url value='/deletereview.do?reviewNo="+reviewNo+"'/>");
 	});
 });
 $(document).on("change",".cnt",function () {

@@ -42,4 +42,9 @@ public class ReviewDAOMybatis extends SqlSessionDaoSupport implements ReviewDAO{
 		return getSqlSession().selectOne(namespace+".selectCountReviewByMemberNo", map);
 	}
 
+	@Override
+	public ReviewVO selectReviewByNo(int reviewNo) {
+		return getSqlSession().selectOne(namespace+".selectReviewByNo", reviewNo);
+	}
+
 }
