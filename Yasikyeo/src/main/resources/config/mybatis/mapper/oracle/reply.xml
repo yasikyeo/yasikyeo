@@ -3,7 +3,7 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="config.mybatis.mapper.oracle.reply">
-		<select id="">
-			select * from reply 
+		<select id="selectReplyByshopNo" parameterType="int" resultType="ReplyVO">
+			select * from reply where shop_no=#{shopNo}
 		</select>
 </mapper>

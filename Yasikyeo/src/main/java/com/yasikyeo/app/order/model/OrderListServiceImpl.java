@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.yasikyeo.app.common.SearchVO;
 import com.yasikyeo.app.point.model.MemberPointDAO;
@@ -24,6 +25,7 @@ public class OrderListServiceImpl implements OrderListService{
 	private static final Logger logger = LoggerFactory.getLogger(OrderListServiceImpl.class);
 	
 	@Override
+	@Transactional
 	public Map<String, Integer> insertOrderList(OrderListVO orderListVo, List<OrderDetVO> odList) {
 		
 		Map<String, Integer> result = new HashMap<String, Integer>();
@@ -36,7 +38,12 @@ public class OrderListServiceImpl implements OrderListService{
 		
 		int inOrderDCnt=0;
 		for(OrderDetVO det : odList){
+			if(det.getOrderdetOption()==null){
+				det.setOrderdetOption("");
+				det.setOrderdetOptionprice(0);
+			}
 			det.setOrderlistNo(orderListVo.getOrderlistNo());
+			logger.info("선택메뉴 det={}",det);
 			inOrderDCnt += orderListDao.insertOrderDet(det);
 		}
 		result.put("inOrderDCnt", inOrderDCnt);
