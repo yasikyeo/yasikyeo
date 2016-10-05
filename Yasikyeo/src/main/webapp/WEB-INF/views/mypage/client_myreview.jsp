@@ -45,53 +45,58 @@
 				<div class="div3 float-right">
 					<br>
 					<ul>
-						<a href="<c:url value='/mypage/client_myreview.do'/>"><li class="color-orange"><b>내가 작성한 리뷰보기</b></li></a>
+						<li class="color-orange"><b><a href="<c:url value='/mypage/client_myreview.do'/>">내가 작성한 리뷰보기</a></b></li>
 						<li>|</li>
-						<a href="<c:url value='/mypage/client_myreview_reg_possible.do'/>"><li class="cursor-pointer">작성가능한 리뷰보기</li></a>
+						<li class="cursor-pointer"><a href="<c:url value='/mypage/client_myreview_reg_possible.do'/>">작성가능한 리뷰보기</a></li>
 					</ul>
 				</div>
 			</div>
 			<br class="clear-both">
 			<hr>
-			<!-- 리뷰가 없을때 -->
-			<div class="align-center">
-				<p>
-					<img alt="" src="<c:url value='/images/temp/NotFound.jpg'/>">
-				</p>
-				<p class="p2">리뷰 작성 내역이 없습니다!!</p>
-				<br>
-				<hr>
-			</div>
-			<!-- 리뷰가 있을때 -->
-			<div>
-				<table class="table3">
-					<colgroup>
-						<col style="width:15%;">
-						<col style="width:13%;">
-						<col style="width:46%;">
-						<col style="width:13%;">
-						<col style="width:13%;">
-					</colgroup>
-					<thead>
-						<tr>
-							<th>날짜</th>
-							<th>업소</th>
-							<th>메뉴</th>
-							<th>수정</th>
-							<th>삭제</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>2016-09-13</td>
-							<td>향원</td>
-							<td>자장면 외 1개</td>
-							<td><a href="#"><span class="sp3 update">수정</span></a></td>
-							<td><a href="#"><span class="sp3">삭제</span></a></td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
+			<c:if test="${empty reviewlist}">
+				<!-- 리뷰가 없을때 -->
+				<div class="align-center">
+					<p>
+						<img alt="" src="<c:url value='/images/temp/NotFound.jpg'/>">
+					</p>
+					<p class="p2">리뷰 작성 내역이 없습니다!!</p>
+					<br>
+					<hr>
+				</div>
+			
+			</c:if>
+			<c:if test="${!empty reviewlist}">
+				<!-- 리뷰가 있을때 -->
+				<div>
+					<table class="table3">
+						<colgroup>
+							<col style="width:15%;">
+							<col style="width:13%;">
+							<col style="width:46%;">
+							<col style="width:13%;">
+							<col style="width:13%;">
+						</colgroup>
+						<thead>
+							<tr>
+								<th>날짜</th>
+								<th>업소</th>
+								<th>내용</th>
+								<th>수정</th>
+								<th>삭제</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>2016-09-13</td>
+								<td>향원</td>
+								<td>자장면 외 1개</td>
+								<td><a href="#"><span class="sp3 update">수정</span></a></td>
+								<td><a href="#"><span class="sp3">삭제</span></a></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</c:if>
 		</fieldset>
 	</div>
 	

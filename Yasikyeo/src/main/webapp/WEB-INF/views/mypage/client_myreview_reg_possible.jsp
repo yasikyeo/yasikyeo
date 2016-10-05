@@ -56,10 +56,9 @@
 				<div class="div3 float-right">
 					<br>
 					<ul>
-						<a href="<c:url value='/mypage/client_myreview.do'/>"><li class="cursor-pointer">내가 작성한 리뷰보기</li></a>
+						<li class="cursor-pointer"><a href="<c:url value='/mypage/client_myreview.do'/>">내가 작성한 리뷰보기</a></li>
 						<li>|</li>
-						<a href="<c:url value='/mypage/client_myreview_reg_possible.do'/>"><li class="color-orange">
-						<b>작성가능한 리뷰보기</b></li></a>
+						<li class="color-orange"><b><a href="<c:url value='/mypage/client_myreview_reg_possible.do'/>">작성가능한 리뷰보기</a></b></li>
 					</ul>
 				</div>
 			</div>

@@ -40,8 +40,8 @@ public class ReviewServiceImpl implements ReviewService{
 	}
 
 	@Override
-	public int selectCountReviewByMemberNo(Map<String, Object> map) {
-		return reviewDao.selectCountReviewByMemberNo(map);
+	public int selectCountReviewByMemberNo(int userNo) {
+		return reviewDao.selectCountReviewByMemberNo(userNo);
 	}
 
 	@Override
@@ -62,6 +62,11 @@ public class ReviewServiceImpl implements ReviewService{
 	@Override
 	public int updateStarScoreShop3(Map<String, Object> map) {
 		return reviewDao.updateStarScoreShop3(map);
+	}
+
+	@Override
+	public List<ReviewVO> selectReviewbyMemberNO(SearchVO searchVo) {
+		return reviewDao.selectReviewbyMemberNO(searchVo);
 	}
 	
 	

@@ -38,8 +38,8 @@ public class ReviewDAOMybatis extends SqlSessionDaoSupport implements ReviewDAO{
 	}
 
 	@Override
-	public int selectCountReviewByMemberNo(Map<String, Object> map) {
-		return getSqlSession().selectOne(namespace+".selectCountReviewByMemberNo", map);
+	public int selectCountReviewByMemberNo(int userNo) {
+		return getSqlSession().selectOne(namespace+".selectCountReviewByMemberNo", userNo);
 	}
 
 	@Override
@@ -60,6 +60,11 @@ public class ReviewDAOMybatis extends SqlSessionDaoSupport implements ReviewDAO{
 	@Override
 	public int updateStarScoreShop3(Map<String, Object> map) {
 		return getSqlSession().update(namespace+".updateStarScoreShop3", map);
+	}
+
+	@Override
+	public List<ReviewVO> selectReviewbyMemberNO(SearchVO searchVo) {
+		return getSqlSession().selectList(namespace+".selectReviewbyMemberNO", searchVo);
 	}
 
 }

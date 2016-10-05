@@ -42,6 +42,23 @@
 		]]>
 	</select>
 	
+	<select id="selectReviewbyMemberNO" parameterType="SearchVO" resultType="ReviewVO">
+		select * from 
+		(
+			select rownum as RNUM, LIST_ALL.*
+		    from
+		        (select * from review
+		        	where member_No=#{searchKeyword}
+		        	order by review_regdate desc
+		        ) LIST_ALL
+		)
+		<![CDATA[
+		where  RNUM> #{firstRecordIndex} 
+			and RNUM<= #{firstRecordIndex}
+			+ #{recordCountPerPage}
+		]]>
+	</select>
+	
 	<select id="selectReviewByNo" parameterType="int" resultType="ReviewVO">
 		select * from reviewView where review_no=#{reviewNo}
 	</select>
@@ -50,8 +67,8 @@
 		select count(*) from reviewView where shop_no=#{shopNo}
 	</select>
 	
-	<select id="selectCountReviewByMemberNo" parameterType="map" resultType="int">
-		select count(*) from reviewView where review_no=#{reviewNo} and member_no=#{memberNo}
+	<select id="selectCountReviewByMemberNo" parameterType="int" resultType="int">
+		select count(*) from reviewView where member_no=#{memberNo}
 	</select>
 	
 	<update id="updateStarScoreShop" parameterType="map">
