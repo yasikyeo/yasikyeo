@@ -29,6 +29,8 @@ import com.yasikyeo.app.common.Utility;
 import com.yasikyeo.app.member.model.MemberService;
 import com.yasikyeo.app.member.model.MemberVO;
 import com.yasikyeo.app.order.model.OrderListService;
+import com.yasikyeo.app.reply.model.ReplyService;
+import com.yasikyeo.app.reply.model.ReplyVO;
 import com.yasikyeo.app.review.model.ReviewService;
 
 @Controller
@@ -54,6 +56,9 @@ public class ClientShopController {
 	
 	@Autowired
 	private ReviewService reviewService;
+	
+	@Autowired
+	private ReplyService replyService;
 	
 	@RequestMapping("/client_shop_list.do")
 	public void clientShopList(@ModelAttribute SearchVO2 searchVo2,
@@ -145,7 +150,10 @@ public class ClientShopController {
 		List<CeoProductVO> productList= shopService.productSelectByShopNo(no);
 		logger.info("업소 상품 조회결과 productList.size={}",productList.size());
 		
+		List<ReplyVO> reviewReply = replyService.selectReplyByshopNo(no);
+		logger.info("업소 리플 조회 결과 reviewReply={}",reviewReply);
 		
+		model.addAttribute("reviewReply", reviewReply);
 		model.addAttribute("pagingInfo", pagingInfo);
 		model.addAttribute("reviewMap", reviewMap);
 		model.addAttribute("memberVo", memberVo);

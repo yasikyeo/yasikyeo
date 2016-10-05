@@ -592,20 +592,24 @@ $(document).ready(function () {
 									</form>
 								</div>
 							</div>
-							<!-- 리플내용 -->
-							<div class="flex">
-								<div class="flex1">
-								</div>
-								<div class="flex5 bgbrown padding10px ma-l-10px">
-									<ul class="ul2">
-										<li><b class="font16px">사장님</b></li>
-										<li>|</li>
-										<li>2016-01-01</li>
-									</ul>
-									<p>아이디4글자이후**님,감사합니다.</p>
-								</div>
-							</div>
-							<!-- 리플내용 -->
+							<c:forEach var="repl" items="${reviewReply}">
+								<c:if test="${repl.reviewNo==map['REVIEW_NO']}">
+									<!-- 리플내용 -->
+									<div class="flex">
+										<div class="flex1">
+										</div>
+										<div class="flex5 bgbrown padding10px ma-l-10px">
+											<ul class="ul2">
+												<li><b class="font16px">사장님</b></li>
+												<li>|</li>
+												<li><fmt:formatDate value="${repl.replyRegdate}" pattern="YYYY-MM-dd"/></li>
+											</ul>
+											<p>${repl.replyContent}</p>
+										</div>
+									</div>
+									<!-- 리플내용 -->
+								</c:if>
+							</c:forEach>
 						</div>
 						<!-- 리뷰내용 -->
 					</c:forEach>
