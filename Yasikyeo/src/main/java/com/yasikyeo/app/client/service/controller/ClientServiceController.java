@@ -102,7 +102,7 @@ public class ClientServiceController {
 		int cnt = qnaService.insertQna(qnaVo);
 		logger.info("qna 등록 결과 cnt={}",cnt);
 		
-		return "redirect:/client_qna_list.do";
+		return "redirect:/service/client_qna_list.do";
 	}
 	@RequestMapping("/client_qna_list.do")
 	public void clientQnaList(){

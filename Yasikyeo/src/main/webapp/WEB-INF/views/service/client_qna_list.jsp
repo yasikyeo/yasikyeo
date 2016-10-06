@@ -37,6 +37,7 @@
 				</ul>
 				<br class="clear-both">
 			</div>
+			<c:if test="${empty sessionScope.memberId }">
 			<!-- 로그인을안했거나 비회원으로 조회할때 -->
 			<form class="vertical-container" action="">
 				<div class="div8 vertical-container">
@@ -56,6 +57,7 @@
 				</div>
 			</form>
 			<!-- 로그인을안했거나 비회원으로 조회할때 끝 -->
+			</c:if>
 			<!--문의 내역이 없을때 -->
 			<div class="div9">
 				<div class="div8 vertical-container">
