@@ -30,6 +30,7 @@ public class FileUploadWebUtil {
 	 public static final int PROFILE_IMAGE_UPLOAD=4;//회원가입 프로필 이미지 업로드 경로
 	 public static final int PRODUCT_IMAGE_UPLOAD=5;
 	 public static final int REVIEW_IMAGE_UPLOAD=6;
+	 public static final int QNA_IMAGE_UPLOAD=7;
 	
 	 public static final Logger logger 
 	 =LoggerFactory.getLogger(FileUploadWebUtil.class);
@@ -79,6 +80,7 @@ public class FileUploadWebUtil {
 				
 				map.put("fileName", fileName);
 				map.put("fileSize", fileSize);
+				map.put("ofileName", ofileName);
 				
 				//map을 List에 저장한다
 				fileList.add(map);
@@ -139,6 +141,8 @@ public class FileUploadWebUtil {
 				realPath=fileUploadProps.getProperty("shopProductImageFile.upload.path.test");
 			}else if(uploadType==REVIEW_IMAGE_UPLOAD){
 				realPath=fileUploadProps.getProperty("reviewimg.upload.path.test");
+			}else if(uploadType==QNA_IMAGE_UPLOAD){
+				realPath=fileUploadProps.getProperty("qnaimg.upload.path.test");
 			}
 				logger.info("테스트 경로={}",realPath);
 		}else{
@@ -160,6 +164,8 @@ public class FileUploadWebUtil {
 				realPath = fileUploadProps.getProperty("shopProductImageFile.upload.path");
 			}else if(uploadType==REVIEW_IMAGE_UPLOAD){
 				realPath = fileUploadProps.getProperty("reviewimg.upload.path");
+			}else if(uploadType==QNA_IMAGE_UPLOAD){
+				realPath = fileUploadProps.getProperty("qnaimg.upload.path");
 			}
 			
 			logger.info("실제 배포시 경로={}", realPath);

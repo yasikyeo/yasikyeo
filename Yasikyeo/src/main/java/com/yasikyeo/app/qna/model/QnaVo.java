@@ -16,10 +16,18 @@ public class QnaVo {
 	private String qnaOriginfilename2; /* qna오리지날파일명2 */
 	private String qnaUpfilename3; /* qna업로드파일명3 */
 	private String qnaOriginfilename3; /* qna오리지날파일명3 */
+	private String qnaPwd;
 	private Timestamp qnaRegdate; /* qna등록일 */
-	private int memberNo;/* 회원코드 */
+	private String memberNo;/* 회원코드 */
 	private int ceoNo; /* 사장님코드 */
 	
+	
+	public String getQnaPwd() {
+		return qnaPwd;
+	}
+	public void setQnaPwd(String qnaPwd) {
+		this.qnaPwd = qnaPwd;
+	}
 	public int getQnaNo() {
 		return qnaNo;
 	}
@@ -98,10 +106,10 @@ public class QnaVo {
 	public void setQnaRegdate(Timestamp qnaRegdate) {
 		this.qnaRegdate = qnaRegdate;
 	}
-	public int getMemberNo() {
+	public String getMemberNo() {
 		return memberNo;
 	}
-	public void setMemberNo(int memberNo) {
+	public void setMemberNo(String memberNo) {
 		this.memberNo = memberNo;
 	}
 	public int getCeoNo() {
@@ -117,7 +125,7 @@ public class QnaVo {
 				+ qnaCategori + ", qnaTitle=" + qnaTitle + ", qnaContent=" + qnaContent + ", qnaUpfilename="
 				+ qnaUpfilename + ", qnaOriginfilename=" + qnaOriginfilename + ", qnaUpfilename2=" + qnaUpfilename2
 				+ ", qnaOriginfilename2=" + qnaOriginfilename2 + ", qnaUpfilename3=" + qnaUpfilename3
-				+ ", qnaOriginfilename3=" + qnaOriginfilename3 + ", qnaRegdate=" + qnaRegdate + ", memberNo=" + memberNo
-				+ ", ceoNo=" + ceoNo + "]";
+				+ ", qnaOriginfilename3=" + qnaOriginfilename3 + ", qnaPwd=" + qnaPwd + ", qnaRegdate=" + qnaRegdate
+				+ ", memberNo=" + memberNo + ", ceoNo=" + ceoNo + "]";
 	}
 }

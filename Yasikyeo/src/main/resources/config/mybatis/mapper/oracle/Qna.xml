@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="config.mybatis.mapper.oracle.qna">
+	
+	<insert id="insertQna" parameterType="QnaVo">
+		<selectKey keyProperty="qnaNo" order="BEFORE" resultType="int">
+			select qna_no_seq.nextval from dual 
+		</selectKey>
+		insert into qna(qna_no,qna_name,qna_email,qna_categori,qna_title,qna_content,
+		qna_upfilename,qna_originfilename,qna_upfilename2,qna_originfilename2,
+		qna_upfilename3,qna_originfilename3,qna_pwd,member_no)
+		values(#{qnaNo},#{qnaName},#{qnaName},#{qnaCategori},#{qnaTitle},#{qnaContent},
+		#{qnaUpfilename},#{qnaOriginfilename},#{qnaUpfilename2},#{qnaOriginfilename2},
+		#{qnaUpfilename3},#{qnaOriginfilename3},#{qnaPwd},#{memberNo}) 
+	</insert>	
+</mapper>
